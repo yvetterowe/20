@@ -10,13 +10,9 @@ import Foundation
 import SwiftUI
 import UIKit
 
-enum ColorPalette {
-    static let white: UIColor = .white
-}
-
 enum SementicColorPalette {
     
-    static let buttonTextColor: Color = UIColor { traitCollection in
+    static let defaultTextColor: Color = UIColor { traitCollection in
         switch traitCollection.userInterfaceStyle {
         case .dark:
             return ColorPalette.white
@@ -29,6 +25,17 @@ enum SementicColorPalette {
         }
     }.color
     
+    static let timerGradient: LinearGradient = .init(
+        gradient: .init(colors: [ColorPalette.pink.color,ColorPalette.orange.color]),
+        startPoint: .init(x: 0.25, y: 0.5),
+        endPoint: .init(x: 0.75, y: 0.5)
+    )
+}
+
+private enum ColorPalette {
+    static let white: UIColor = .white
+    static let pink: UIColor = .systemPink
+    static let orange: UIColor = .systemOrange
 }
 
 extension UIColor {

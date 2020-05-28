@@ -17,6 +17,7 @@
 		E78F057B247F53150066C687 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057A247F53150066C687 /* TimerView.swift */; };
 		E78F057D247F53260066C687 /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057C247F53260066C687 /* TextModel.swift */; };
 		E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057E247F6CF30066C687 /* ColorPalette.swift */; };
+		E78F058124803D290066C687 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058024803D290066C687 /* StatefulTimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		E78F057A247F53150066C687 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		E78F057C247F53260066C687 /* TextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
 		E78F057E247F6CF30066C687 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		E78F058024803D290066C687 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				E78F057A247F53150066C687 /* TimerView.swift */,
+				E78F058024803D290066C687 /* StatefulTimerView.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
+				E78F058124803D290066C687 /* StatefulTimerView.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E78F057B247F53150066C687 /* TimerView.swift in Sources */,
