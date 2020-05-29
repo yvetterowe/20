@@ -25,7 +25,8 @@
 		E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F0590248095BE0066C687 /* StatefulTimerButton.swift */; };
 		E78F059324809CB90066C687 /* TimerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059224809CB90066C687 /* TimerTabView.swift */; };
 		E78F05962480A86D0066C687 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05952480A86D0066C687 /* Mocks.swift */; };
-		E78F05982480A9B60066C687 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05972480A9B60066C687 /* Timer.swift */; };
+		E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05972480A9B60066C687 /* TwentyTimer.swift */; };
+		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +62,8 @@
 		E78F0590248095BE0066C687 /* StatefulTimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerButton.swift; sourceTree = "<group>"; };
 		E78F059224809CB90066C687 /* TimerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTabView.swift; sourceTree = "<group>"; };
 		E78F05952480A86D0066C687 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
-		E78F05972480A9B60066C687 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		E78F05972480A9B60066C687 /* TwentyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyTimer.swift; sourceTree = "<group>"; };
+		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				E78F057A247F53150066C687 /* TimerView.swift */,
-				E78F05972480A9B60066C687 /* Timer.swift */,
+				E78F05972480A9B60066C687 /* TwentyTimer.swift */,
+				E78F05992481D0D10066C687 /* BackgroundTimer.swift */,
 				E78F059224809CB90066C687 /* TimerTabView.swift */,
 				E78F058E248094E40066C687 /* TimerButton.swift */,
 				E78F0590248095BE0066C687 /* StatefulTimerButton.swift */,
@@ -269,9 +272,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78F058F248094E40066C687 /* TimerButton.swift in Sources */,
+				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
-				E78F05982480A9B60066C687 /* Timer.swift in Sources */,
+				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */,
