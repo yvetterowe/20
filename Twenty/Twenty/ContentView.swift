@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    private let timer: Timer
+    private let timer: TwentyTimer
     @State private var selection = 0
     
-    init(timer: Timer) {
+    init(timer: TwentyTimer) {
         self.timer = timer
     }
     
@@ -23,7 +23,7 @@ struct ContentView: View {
                 .tabItem {
                     VStack {
                         Image("first")
-                        Text("Timer")
+                        Text("TwentyTimer")
                     }
                 }
                 .tag(0)

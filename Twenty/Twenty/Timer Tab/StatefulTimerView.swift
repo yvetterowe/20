@@ -13,7 +13,7 @@ final class TimerViewStateStore: ObservableObject, Subscriber {
     
     @Published private(set) var state: StatefulTimerView.ViewState
     
-    init(initialState: StatefulTimerView.ViewState, timer: Timer) {
+    init(initialState: StatefulTimerView.ViewState, timer: TwentyTimer) {
         self._state = .init(initialValue: initialState)
         timer.state.subscribe(self)
     }

@@ -11,10 +11,10 @@ import SwiftUI
 
 struct TimerTabView: View {
     
-    private let timer: Timer
+    private let timer: TwentyTimer
     private let timerViewStateStore: TimerViewStateStore
     
-    init(initialTimerViewState: StatefulTimerView.ViewState, timer: Timer) {
+    init(initialTimerViewState: StatefulTimerView.ViewState, timer: TwentyTimer) {
         self.timer = timer
         self.timerViewStateStore = .init(initialState: initialTimerViewState, timer: timer)
     }

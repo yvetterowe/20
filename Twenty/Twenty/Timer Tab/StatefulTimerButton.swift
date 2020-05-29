@@ -11,7 +11,7 @@ import SwiftUI
 
 struct StatefulTimerButton: View {
     
-    private let timer: Timer
+    private let timer: TwentyTimer
     
     @State private var state: ViewState {
         didSet {
@@ -37,7 +37,7 @@ struct StatefulTimerButton: View {
         static let pauseButtonTitle = "Pause"
     }
     
-    init(viewState: ViewState, timer: Timer) {
+    init(viewState: ViewState, timer: TwentyTimer) {
         self._state = .init(initialValue: viewState)
         self.timer = timer
     }

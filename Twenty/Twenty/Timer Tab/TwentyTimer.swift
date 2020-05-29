@@ -1,5 +1,5 @@
 //
-//  Timer.swift
+//  TwentyTimer.swift
 //  Twenty
 //
 //  Created by Hao Luo on 5/28/20.
@@ -19,7 +19,7 @@ enum TimerState {
     case active(TimeInterval)
 }
 
-protocol Timer {
+protocol TwentyTimer {
     var state: AnyPublisher<TimerState, Never> { get }
     func sendAction(_ timerAction: TimerAction)
 }

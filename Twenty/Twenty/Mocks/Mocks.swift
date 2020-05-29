@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 
-final class MockTimer: Timer {
+final class MockTimer: TwentyTimer {
     @Published private var internalState: TimerState = .inactive(0)
     
     var state: AnyPublisher<TimerState, Never> {
