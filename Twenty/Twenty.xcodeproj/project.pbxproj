@@ -19,6 +19,7 @@
 		E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057E247F6CF30066C687 /* ColorPalette.swift */; };
 		E78F058124803D290066C687 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058024803D290066C687 /* StatefulTimerView.swift */; };
 		E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F0588248093140066C687 /* BackgroundColorMode.swift */; };
+		E78F058B248093D30066C687 /* BorderMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058A248093D30066C687 /* BorderMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		E78F057E247F6CF30066C687 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		E78F058024803D290066C687 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E78F0588248093140066C687 /* BackgroundColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorMode.swift; sourceTree = "<group>"; };
+		E78F058A248093D30066C687 /* BorderMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				E78F057C247F53260066C687 /* TextModel.swift */,
 				E78F057E247F6CF30066C687 /* ColorPalette.swift */,
 				E78F0588248093140066C687 /* BackgroundColorMode.swift */,
+				E78F058A248093D30066C687 /* BorderMode.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerView.swift in Sources */,
+				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E78F057B247F53150066C687 /* TimerView.swift in Sources */,
