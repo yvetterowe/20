@@ -14,7 +14,12 @@ enum TimerAction {
     case pause
 }
 
+enum TimerState {
+    case inactive(TimeInterval)
+    case active(TimeInterval)
+}
+
 protocol Timer {
-    var elapsedTime: AnyPublisher<TimeInterval, Never> { get }
+    var state: AnyPublisher<TimerState, Never> { get }
     func sendAction(_ timerAction: TimerAction)
 }

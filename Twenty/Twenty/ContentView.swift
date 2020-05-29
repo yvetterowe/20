@@ -18,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selection){
-            TimerTabView(timer: timer)
+            TimerTabView(initialTimerViewState: .inactive(0), timer: timer)
                 .font(.title)
                 .tabItem {
                     VStack {

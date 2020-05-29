@@ -6,28 +6,74 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
+import Combine
 import SwiftUI
+
+final class TimerViewStateStore: ObservableObject, Subscriber {
+    
+    @Published private(set) var state: StatefulTimerView.ViewState
+    
+    init(initialState: StatefulTimerView.ViewState, timer: Timer) {
+        self._state = .init(initialValue: initialState)
+        timer.state.subscribe(self)
+    }
+    // MARK: - Subscriber
+    
+    typealias Input = TimerState
+    typealias Failure = Never
+    
+    var combineIdentifier: CombineIdentifier {
+        return .init()
+    }
+    
+    func receive(subscription: Subscription) {
+        subscription.request(.unlimited)
+    }
+    
+    func receive(_ input: TimerState) -> Subscribers.Demand {
+        switch(state, input) {
+        case (.inactive, .inactive):
+            break
+        case (let .active(viewTime), .inactive):
+            state = .inactive(viewTime)
+        case (_, let .active(timerTime)):
+            state = .active(timerTime)
+        }
+        return .unlimited
+    }
+    
+    func receive(completion: Subscribers.Completion<Never>) {
+        self.state = .inactive(state.elapsedTime)
+    }
+}
 
 struct StatefulTimerView: View {
     
-    @State private var state: ViewState
+    @ObservedObject private var viewStateStore: TimerViewStateStore
     
-    init(viewState: ViewState) {
-        self._state = .init(initialValue: viewState)
+    init(viewStateStore: TimerViewStateStore) {
+        self.viewStateStore = viewStateStore
     }
     
     enum ViewState {
-        case inactive
+        case inactive(TimeInterval)
         case active(TimeInterval)
+        
+        var elapsedTime: TimeInterval {
+            switch self {
+            case let .inactive(time): return time
+            case let .active(time): return time
+            }
+        }
     }
     
     var body: some View {
-        switch state {
-        case .inactive:
+        switch viewStateStore.state {
+        case let .inactive(timeInterval):
             return TimerView(
                 model: .init(
                     textModel: .init(
-                        text: "00:00",
+                        text: timeInterval.format(),
                         textColor: SementicColorPalette.defaultTextColor,
                         textFont: .title
                     ),
@@ -64,10 +110,10 @@ private extension TimeInterval {
 struct StatefulTimerView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            StatefulTimerView(viewState: .inactive)
-            StatefulTimerView(viewState: .active(59))
-            StatefulTimerView(viewState: .active(80))
-            StatefulTimerView(viewState: .active(78305))
+            StatefulTimerView(viewStateStore: .init(initialState: .inactive(0), timer: MockTimer()))
+            StatefulTimerView(viewStateStore: .init(initialState: .inactive(59), timer: MockTimer()))
+            StatefulTimerView(viewStateStore: .init(initialState: .active(80), timer: MockTimer()))
+            StatefulTimerView(viewStateStore: .init(initialState: .active(78305), timer: MockTimer()))
         }
     }
 }

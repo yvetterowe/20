@@ -9,15 +9,21 @@
 import Combine
 import Foundation
 
-struct MockTimer: Timer {
-    var elapsedTime: AnyPublisher<TimeInterval, Never> { fatalError() }
+final class MockTimer: Timer {
+    @Published private var internalState: TimerState = .inactive(0)
+    
+    var state: AnyPublisher<TimerState, Never> {
+        return $internalState.eraseToAnyPublisher()
+    }
     
     func sendAction(_ timerAction: TimerAction) {
-        switch timerAction {
-        case .start:
-            print("timer start")
-        case .pause:
-            print("timer pause")
+        switch(internalState, timerAction) {
+        case (let .inactive(time), .start):
+            internalState = .active(time+1)
+        case (let .active(time), .pause):
+            internalState = .inactive(time)
+        default:
+            fatalError()
         }
     }
 }
