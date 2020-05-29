@@ -13,16 +13,19 @@ struct ButtonModel {
     let backgroundColorMode: BackgroundColorMode
     let cornerRadius: CGFloat
     let border: BorderMode
+    let action: () -> Void
         
     init(
         textModel: Text.Model,
         backgroundColorMode: BackgroundColorMode,
         cornerRadius: CGFloat = 24,
-        border: BorderMode = .none
+        border: BorderMode = .none,
+        action: @escaping () -> Void
     ) {
         self.textModel = textModel
         self.backgroundColorMode = backgroundColorMode
         self.cornerRadius = cornerRadius
         self.border = border
+        self.action = action
     }
 }

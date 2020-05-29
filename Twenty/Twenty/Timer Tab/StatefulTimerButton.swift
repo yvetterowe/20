@@ -6,12 +6,28 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
+import Combine
 import SwiftUI
 
 struct StatefulTimerButton: View {
-        
-    @State private var state: ViewState
-    enum ViewState {
+    
+    private let timer: Timer
+    
+    @State private var state: ViewState {
+        didSet {
+            if state == oldValue {
+                return
+            }
+            switch state {
+            case .inactive:
+                timer.sendAction(.pause)
+            case .active:
+                timer.sendAction(.start)
+            }
+        }
+    }
+    
+    enum ViewState: Equatable {
         case inactive
         case active
     }
@@ -21,8 +37,9 @@ struct StatefulTimerButton: View {
         static let pauseButtonTitle = "Pause"
     }
     
-    init(viewState: ViewState) {
+    init(viewState: ViewState, timer: Timer) {
         self._state = .init(initialValue: viewState)
+        self.timer = timer
     }
     
     var body: some View {
@@ -35,9 +52,9 @@ struct StatefulTimerButton: View {
                         textColor: SementicColorPalette.buttonTextColor,
                         textFont: .title // TODO: clean up font
                     ),
-                    backgroundColorMode: .gradient(SementicColorPalette.timerGradient)
-                )
-            )
+                    backgroundColorMode: .gradient(SementicColorPalette.timerGradient)) {
+                        self.state = .active
+                })
         
         case .active:
            return TimerButton(
@@ -53,17 +70,20 @@ struct StatefulTimerButton: View {
                     width: 1,
                     cornerRadius: 24
                    )
-               )
+               ) {
+                self.state = .inactive
+            }
            )
         }
     }
 }
 
 struct StatefulTimerButton_Previews: PreviewProvider {
+    
     static var previews: some View {
         VStack {
-            StatefulTimerButton(viewState: .inactive)
-            StatefulTimerButton(viewState: .active)
+            StatefulTimerButton(viewState: .inactive, timer: MockTimer())
+            StatefulTimerButton(viewState: .active, timer: MockTimer())
         }
     }
 }

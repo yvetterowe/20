@@ -12,9 +12,7 @@ struct TimerButton: View {
     var model: ButtonModel
     
     var body: some View {
-        Button(action: {
-            // TODO: handle button action
-        }) { Text(model.textModel.text) }
+        Button(action: model.action) { Text(model.textModel.text) }
         .padding()
         .border(model.border)
         .background(
@@ -32,7 +30,8 @@ struct TimerButton_Previews: PreviewProvider {
         TimerButton(
             model: .init(
                 textModel: .init(text: "hello", textColor: .blue, textFont: .title),
-                backgroundColorMode: .single(.pink)
+                backgroundColorMode: .single(.pink),
+                action: {}
             )
         )
     }

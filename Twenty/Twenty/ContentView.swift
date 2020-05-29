@@ -9,16 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let timer: Timer
     @State private var selection = 0
- 
+    
+    init(timer: Timer) {
+        self.timer = timer
+    }
+    
     var body: some View {
         TabView(selection: $selection){
-            Text("First View")
+            TimerTabView(timer: timer)
                 .font(.title)
                 .tabItem {
                     VStack {
                         Image("first")
-                        Text("First")
+                        Text("Timer")
                     }
                 }
                 .tag(0)
@@ -37,6 +42,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(timer: MockTimer())
     }
 }
