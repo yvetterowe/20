@@ -45,3 +45,15 @@ final class TimerStateStore: ObservableObject, Subscriber {
         self.state = .inactive(state.elapsedTime)
     }
 }
+
+import Foundation
+
+struct Goal {
+    let name: String
+    let records: [Record]
+    
+    struct Record {
+        let startDate: Date
+        let endDate: Date
+    }
+}
