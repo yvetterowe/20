@@ -9,50 +9,12 @@
 import Combine
 import SwiftUI
 
-final class TimerViewStateStore: ObservableObject, Subscriber {
-    
-    @Published private(set) var state: StatefulTimerView.ViewState
-    
-    init(initialState: StatefulTimerView.ViewState, timer: TwentyTimer) {
-        self._state = .init(initialValue: initialState)
-        timer.state.subscribe(self)
-    }
-    // MARK: - Subscriber
-    
-    typealias Input = TimerState
-    typealias Failure = Never
-    
-    var combineIdentifier: CombineIdentifier {
-        return .init()
-    }
-    
-    func receive(subscription: Subscription) {
-        subscription.request(.unlimited)
-    }
-    
-    func receive(_ input: TimerState) -> Subscribers.Demand {
-        switch(state, input) {
-        case (.inactive, .inactive):
-            break
-        case (let .active(viewTime), .inactive):
-            state = .inactive(viewTime)
-        case (_, let .active(timerTime)):
-            state = .active(timerTime)
-        }
-        return .unlimited
-    }
-    
-    func receive(completion: Subscribers.Completion<Never>) {
-        self.state = .inactive(state.elapsedTime)
-    }
-}
-
 struct StatefulTimerView: View {
     
-    @ObservedObject private var viewStateStore: TimerViewStateStore
+    @ObservedObject private var timerStateStore: TimerStateStore
     
-    init(viewStateStore: TimerViewStateStore) {
-        self.viewStateStore = viewStateStore
+    init(timerStateStore: TimerStateStore) {
+        self.timerStateStore = timerStateStore
     }
     
     enum ViewState {
@@ -68,7 +30,7 @@ struct StatefulTimerView: View {
     }
     
     var body: some View {
-        switch viewStateStore.state {
+        switch timerStateStore.state {
         case let .inactive(timeInterval):
             return TimerView(
                 model: .init(
@@ -110,10 +72,10 @@ private extension TimeInterval {
 struct StatefulTimerView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            StatefulTimerView(viewStateStore: .init(initialState: .inactive(0), timer: MockTimer()))
-            StatefulTimerView(viewStateStore: .init(initialState: .inactive(59), timer: MockTimer()))
-            StatefulTimerView(viewStateStore: .init(initialState: .active(80), timer: MockTimer()))
-            StatefulTimerView(viewStateStore: .init(initialState: .active(78305), timer: MockTimer()))
+            StatefulTimerView(timerStateStore: .init(initialState: .inactive(0), timer: MockTimer()))
+            StatefulTimerView(timerStateStore: .init(initialState: .inactive(59), timer: MockTimer()))
+            StatefulTimerView(timerStateStore: .init(initialState: .active(80), timer: MockTimer()))
+            StatefulTimerView(timerStateStore: .init(initialState: .active(78305), timer: MockTimer()))
         }
     }
 }

@@ -12,17 +12,17 @@ import SwiftUI
 struct TimerTabView: View {
     
     private let timer: TwentyTimer
-    private let timerViewStateStore: TimerViewStateStore
+    private let timerStateStore: TimerStateStore
     
     init(initialTimerViewState: StatefulTimerView.ViewState, timer: TwentyTimer) {
         self.timer = timer
-        self.timerViewStateStore = .init(initialState: initialTimerViewState, timer: timer)
+        self.timerStateStore = .init(initialState: initialTimerViewState, timer: timer)
     }
     
     var body: some View {
         VStack {
-            StatefulTimerView(viewStateStore: timerViewStateStore)
-            StatefulTimerButton(viewState: .inactive, timer: timer)
+            StatefulTimerView(timerStateStore: timerStateStore)
+            StatefulTimerButton(timerStateStore: timerStateStore, timer: timer)
         }
     }
 }

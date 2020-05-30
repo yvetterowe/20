@@ -27,6 +27,7 @@
 		E78F05962480A86D0066C687 /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05952480A86D0066C687 /* Mocks.swift */; };
 		E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05972480A9B60066C687 /* TwentyTimer.swift */; };
 		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
+		E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerStateStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		E78F05952480A86D0066C687 /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		E78F05972480A9B60066C687 /* TwentyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyTimer.swift; sourceTree = "<group>"; };
 		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
+		E78F059B2482B99A0066C687 /* TimerStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStateStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				E78F058E248094E40066C687 /* TimerButton.swift */,
 				E78F0590248095BE0066C687 /* StatefulTimerButton.swift */,
 				E78F058024803D290066C687 /* StatefulTimerView.swift */,
+				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
+				E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */,
 				E78F057B247F53150066C687 /* TimerView.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
