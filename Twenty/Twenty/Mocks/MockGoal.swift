@@ -33,7 +33,7 @@ struct MockGoal: Goal, Identifiable {
     let timeToComplete: TimeInterval
     var trackRecords: [DateInterval]
     
-    func totalTimeSpent(on date: Date) -> TimeInterval {
+    func totalTimeSpent(on date: StripTimeDate) -> TimeInterval {
         // TODO
         return 100
     }

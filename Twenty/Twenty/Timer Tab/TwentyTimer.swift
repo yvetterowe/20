@@ -45,7 +45,7 @@ final class RealTimer: TwentyTimer {
         self.timeInterval = timeInterval
         
         _ = goalPublisher.sink { goal in
-            self.internalState = .inactive(goal.totalTimeSpent(on: currentDate))
+            self.internalState = .inactive(goal.totalTimeSpent(on: .init(currentDate.stripTime())))
         }
     }
     

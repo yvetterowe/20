@@ -37,7 +37,7 @@ final class TimerStateStore: ObservableObject, Subscriber {
     func receive(_ input: Input) -> Subscribers.Demand {
         switch(state, input.timerState) {
         case (.loading, .inactive):
-            state = .inactive(input.goal.totalTimeSpent(on: currentDate))
+            state = .inactive(input.goal.totalTimeSpent(on: .init(currentDate.stripTime())))
         case (.loading, .active):
             fatalError("Timer shouldn't be active when view is in loading state")
         case (.inactive, .inactive):
