@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -106,6 +106,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E77A512824840FA1009243CC /* Stateless UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				E78F057A247F53150066C687 /* TimerView.swift */,
+				E78F058E248094E40066C687 /* TimerButton.swift */,
+			);
+			path = "Stateless UI Components";
+			sourceTree = "<group>";
+		};
 		E78F0540247F495D0066C687 = {
 			isa = PBXGroup;
 			children = (
@@ -176,11 +185,10 @@
 		E78F0579247F52F60066C687 /* Timer Tab */ = {
 			isa = PBXGroup;
 			children = (
-				E78F057A247F53150066C687 /* TimerView.swift */,
+				E77A512824840FA1009243CC /* Stateless UI Components */,
 				E78F05972480A9B60066C687 /* TwentyTimer.swift */,
 				E78F05992481D0D10066C687 /* BackgroundTimer.swift */,
 				E78F059224809CB90066C687 /* TimerTabView.swift */,
-				E78F058E248094E40066C687 /* TimerButton.swift */,
 				E78F0590248095BE0066C687 /* StatefulTimerButton.swift */,
 				E78F058024803D290066C687 /* StatefulTimerView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
