@@ -9,11 +9,9 @@
 import Combine
 import Foundation
 
-final class MockGoalStoreReader: GoalStoreReader {
+enum MockGoalFactory {
     
-    private typealias GoalSubject = CurrentValueSubject<Goal, Never>
-    
-    private static let mockGoals: [Goal] = [
+    static let mockGoals: [MockGoal] = [
         .init(
             id: "goal-0",
             name: "Learn SwiftUI",
@@ -22,19 +20,66 @@ final class MockGoalStoreReader: GoalStoreReader {
         )
     ]
     
-    private static let goalSubjectsByID: [Goal.ID: GoalSubject] = MockGoalStoreReader.mockGoals.reduce([:]) { (goalSubjectsByID, goal) -> [Goal.ID: GoalSubject] in
-        var dict = goalSubjectsByID
-        dict[goal.id] = GoalSubject(goal)
-        return dict
+    static func makeGoalReaderAndWriter(with goals: [MockGoal] = mockGoals)
+        -> (reader: AnyGoalStoreReader<MockGoalStore>, writer: GoalStoreWriter) {
+        let mockGoalStore = MockGoalStore(mockGoals: goals)
+        return (AnyGoalStoreReader(mockGoalStore), mockGoalStore)
+    }
+}
+
+struct MockGoal: Goal, Identifiable {
+    let id: GoalID
+    let name: String
+    let timeToComplete: TimeInterval
+    var trackRecords: [TrackRecord]
+    
+    func totalTimeSpent(on date: Date) -> TimeInterval {
+        // TODO
+        return 100
+    }
+    
+    mutating func appendTrackRecord(_ trackRecord: TrackRecord) {
+        self.trackRecords.append(trackRecord)
+    }
+}
+
+final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
+    
+    private typealias GoalSubject = CurrentValueSubject<MockGoal, Never>
+    
+    private var goalSubjectsByID: [GoalID: GoalSubject]
+    
+    init(mockGoals: [MockGoal]) {
+        self.goalSubjectsByID = mockGoals.reduce([:]) { (goalSubjectsByID, goal) -> [GoalID: GoalSubject] in
+            var dict = goalSubjectsByID
+            dict[goal.id] = GoalSubject(goal)
+            return dict
+        }
     }
     
     // MARK: - GoalStoreReader
     
-    func goalPublisher(for goalID: Goal.ID) -> GoalPublisher {
-        guard let goalSubject = MockGoalStoreReader.goalSubjectsByID[goalID] else {
+    func goalPublisher(for goalID: GoalID) -> GoalPublisher {
+        return goalSubject(for: goalID).map { $0 as Goal}
+            .eraseToAnyPublisher()
+    }
+    
+    // MARK: - GoalStoreWriter
+    
+    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) {
+        let subject = goalSubject(for: goalID)
+        var updatedGoal = subject.value
+        updatedGoal.appendTrackRecord(trackRecord)
+        subject.send(updatedGoal)
+    }
+    
+    // MARK: - Helpers
+    
+    private func goalSubject(for goalID: GoalID) -> GoalSubject {
+        guard let goalSubject = goalSubjectsByID[goalID] else {
             fatalError("Goal with id \(goalID) doesn't exist!")
         }
         
-        return goalSubject.eraseToAnyPublisher()
+        return goalSubject
     }
 }

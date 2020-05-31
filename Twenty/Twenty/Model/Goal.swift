@@ -8,19 +8,18 @@
 
 import Foundation
 
-struct Goal: Identifiable {
-    let id: String
-    let name: String
-    let timeToComplete: TimeInterval
-    let trackRecords: [TrackRecord]
+typealias GoalID = String
+
+struct TrackRecord {
+     let startDate: Date
+     let endDate: Date
+ }
+
+protocol Goal {
+    var id: GoalID { get }
+    var name: String { get }
+    var timeToComplete: TimeInterval { get }
+    var trackRecords: [TrackRecord] { get }
     
-    struct TrackRecord {
-        let startDate: Date
-        let endDate: Date
-    }
-    
-    func totalTimeSpent(on date: Date) -> TimeInterval {
-        // TODO
-        return 100
-    }
+    func totalTimeSpent(on date: Date) -> TimeInterval
 }

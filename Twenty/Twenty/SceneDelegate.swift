@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let currentDate: Date = mockCurrentDate
-        let goalStoreReader: AnyGoalStoreReader<MockGoalStoreReader> = .init(.init())
+        let goalStoreReader: AnyGoalStoreReader<MockGoalStore> = MockGoalFactory.makeGoalReaderAndWriter().reader
         let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: "goal-0")
         let timer: TwentyTimer = RealTimer(goalPublisher: goalPublisher, currentDate: currentDate)
         let contentView = ContentView(goalPublisher: goalPublisher, timer: timer, currentDate: currentDate)

@@ -11,7 +11,7 @@ import Combine
 typealias GoalPublisher = AnyPublisher<Goal, Never>
 
 protocol GoalStoreReader: ObservableObject {
-    func goalPublisher(for goalID: Goal.ID) -> GoalPublisher
+    func goalPublisher(for goalID: GoalID) -> GoalPublisher
 }
 
 final class AnyGoalStoreReader<StoreReaderType: GoalStoreReader>: ObservableObject {
@@ -22,7 +22,7 @@ final class AnyGoalStoreReader<StoreReaderType: GoalStoreReader>: ObservableObje
         self.storeReader = storeReader
     }
     
-    func goalPublisher(for goalID: Goal.ID) -> GoalPublisher {
+    func goalPublisher(for goalID: GoalID) -> GoalPublisher {
         return storeReader.goalPublisher(for: goalID)
     }
 }
