@@ -28,4 +28,4 @@ final class MockTimer: TwentyTimer {
     }
 }
 
-let mockCurrentDate: Date = .init(timeIntervalSince1970: 1590893932) // Saturday, May 30, 2020 10:58:52 PM EST
+let mockCurrentDate: Date = DateComponents(calendar: .current, year: 2020, month: 5, day: 30, hour: 14, minute: 30, second: 10).date!

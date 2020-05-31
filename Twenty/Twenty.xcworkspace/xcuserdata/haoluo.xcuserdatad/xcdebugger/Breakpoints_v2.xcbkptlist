@@ -7,25 +7,113 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E878EA4A-3656-4F30-A475-36B36BC9D062"
+            uuid = "4DF61470-181B-4D99-B53F-D95B28316C6A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Twenty/Timer Tab/TimerStateStore.swift"
+            filePath = "Twenty/Mocks/MockGoal.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "receive(_:)"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "totalTimeSpent(on:)"
             landmarkType = "7">
-            <Actions>
-               <BreakpointActionProxy
-                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
-                  <ActionContent
-                     consoleCommand = "po input">
-                  </ActionContent>
-               </BreakpointActionProxy>
-            </Actions>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "51758101-C009-4D19-AF35-807E3315B250"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Twenty/Mocks/MockGoal.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "appendTrackRecord(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D826C8CC-2C0B-46F9-B90C-C286A3D03AB2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Twenty/Mocks/MockGoal.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "init(id:name:timeToComplete:trackRecords:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6F05B6E-99B5-45E2-8950-C5AB66901FEC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Twenty/Mocks/MockGoal.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "init(id:name:timeToComplete:trackRecords:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A91AB29-3110-4D23-ADB2-A046D45D7563"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Twenty/Mocks/MockGoal.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "init(id:name:timeToComplete:trackRecords:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6A91AB29-3110-4D23-ADB2-A046D45D7563 - 71f51b614530d66f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Twenty.MockGoal.init(id: Swift.String, name: Swift.String, timeToComplete: Swift.Double, trackRecords: Swift.Array&lt;Foundation.DateInterval&gt;) -&gt; Twenty.MockGoal"
+                  moduleName = "Twenty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haoluo/dev/20/Twenty/Twenty/Mocks/MockGoal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "434">
+               </Location>
+               <Location
+                  uuid = "6A91AB29-3110-4D23-ADB2-A046D45D7563 - 5b09219620d11a06"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.DateInterval) -&gt; () in Twenty.MockGoal.init(id: Swift.String, name: Swift.String, timeToComplete: Swift.Double, trackRecords: Swift.Array&lt;Foundation.DateInterval&gt;) -&gt; Twenty.MockGoal"
+                  moduleName = "Twenty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/haoluo/dev/20/Twenty/Twenty/Mocks/MockGoal.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

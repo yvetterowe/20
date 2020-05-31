@@ -16,7 +16,16 @@ enum MockGoalFactory {
             id: "goal-0",
             name: "Learn SwiftUI",
             timeToComplete: 72000,
-            trackRecords: []
+            trackRecords: [
+                .init(
+                    start: DateComponents(calendar: .current, year: 2020, month: 5, day: 28, hour: 9).date!,
+                    duration: 1800
+                ),
+                .init(
+                    start: DateComponents(calendar: .current, year: 2020, month: 5, day: 30, hour: 9, minute: 45).date!,
+                    duration: 600
+                ),
+            ]
         )
     ]
     
@@ -31,15 +40,32 @@ struct MockGoal: Goal, Identifiable {
     let id: GoalID
     let name: String
     let timeToComplete: TimeInterval
-    var trackRecords: [DateInterval]
+    
+    private(set) var trackRecords: [DateInterval]
+    private var timeSpentByTimeStripDate: [StripTimeDate: TimeInterval]
+    
+    init(id: GoalID, name: String, timeToComplete: TimeInterval, trackRecords: [DateInterval]) {
+        self.id = id
+        self.name = name
+        self.timeToComplete = timeToComplete
+        self.trackRecords = []
+        self.timeSpentByTimeStripDate = [:]
+        
+        trackRecords.forEach {
+            self.appendTrackRecord($0)
+        }
+    }
     
     func totalTimeSpent(on date: StripTimeDate) -> TimeInterval {
-        // TODO
-        return 100
+        return timeSpentByTimeStripDate[date] ?? 0
     }
     
     mutating func appendTrackRecord(_ trackRecord: DateInterval) {
-        self.trackRecords.append(trackRecord)
+        trackRecords.append(trackRecord)
+        
+        // TODO(#13): handle `trackRecord` spreads across multiple days
+        let stripTimeDate = StripTimeDate(trackRecord.start.stripTime())
+        timeSpentByTimeStripDate[stripTimeDate] = (timeSpentByTimeStripDate[stripTimeDate] ?? 0) + trackRecord.duration
     }
 }
 
