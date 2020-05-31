@@ -10,13 +10,17 @@ import Foundation
 
 struct Goal: Identifiable {
     let id: String
-    
     let name: String
-    let timeTocComplete: TimeInterval
+    let timeToComplete: TimeInterval
     let trackRecords: [TrackRecord]
     
     struct TrackRecord {
         let startDate: Date
         let endDate: Date
+    }
+    
+    func totalTimeSpent(on date: Date) -> TimeInterval {
+        // TODO
+        return 100
     }
 }

@@ -14,9 +14,17 @@ struct TimerTabView: View {
     private let timer: TwentyTimer
     private let timerStateStore: TimerStateStore
     
-    init(initialTimerViewState: StatefulTimerView.ViewState, timer: TwentyTimer) {
+    init(
+        goalPublisher: GoalPublisher,
+        timer: TwentyTimer,
+        currentDate: Date
+    ) {
         self.timer = timer
-        self.timerStateStore = .init(initialState: initialTimerViewState, timer: timer)
+        self.timerStateStore = .init(
+            goalPublisher: goalPublisher,
+            timer: timer,
+            currentDate: currentDate
+        )
     }
     
     var body: some View {
@@ -24,11 +32,5 @@ struct TimerTabView: View {
             StatefulTimerView(timerStateStore: timerStateStore)
             StatefulTimerButton(timerStateStore: timerStateStore, timer: timer)
         }
-    }
-}
-
-struct TimerTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimerTabView(initialTimerViewState: .inactive(0), timer: MockTimer())
     }
 }

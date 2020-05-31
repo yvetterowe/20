@@ -27,3 +27,5 @@ final class MockTimer: TwentyTimer {
         }
     }
 }
+
+let mockCurrentDate: Date = .init(timeIntervalSince1970: 1590893932) // Saturday, May 30, 2020 10:58:52 PM EST

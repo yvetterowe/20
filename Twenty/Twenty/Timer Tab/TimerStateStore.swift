@@ -7,18 +7,23 @@
 //
 
 import Combine
+import Foundation
 
 final class TimerStateStore: ObservableObject, Subscriber {
     
-    @Published private(set) var state: StatefulTimerView.ViewState
+    @Published private(set) var state: StatefulTimerView.ViewState = .loading
+    private let currentDate: Date
     
-    init(initialState: StatefulTimerView.ViewState, timer: TwentyTimer) {
-        self._state = .init(initialValue: initialState)
-        timer.state.subscribe(self)
+    init(goalPublisher: GoalPublisher, timer: TwentyTimer, currentDate: Date) {
+        self.currentDate = currentDate
+        Publishers.CombineLatest(goalPublisher, timer.state)
+            .map{(goal: $0, timerState: $1)}
+            .receive(on: RunLoop.main)
+            .subscribe(self)
     }
     // MARK: - Subscriber
     
-    typealias Input = TimerState
+    typealias Input = (goal: Goal, timerState: TimerState)
     typealias Failure = Never
     
     var combineIdentifier: CombineIdentifier {
@@ -29,14 +34,22 @@ final class TimerStateStore: ObservableObject, Subscriber {
         subscription.request(.unlimited)
     }
     
-    func receive(_ input: TimerState) -> Subscribers.Demand {
-        switch(state, input) {
+    func receive(_ input: Input) -> Subscribers.Demand {
+        switch(state, input.timerState) {
+        case (.loading, .inactive):
+            state = .inactive(input.goal.totalTimeSpent(on: currentDate))
+        case (.loading, .active):
+            fatalError("Timer shouldn't be active when view is in loading state")
         case (.inactive, .inactive):
             break
-        case (let .active(viewTime), .inactive):
-            state = .inactive(viewTime)
         case (_, let .active(timerTime)):
             state = .active(timerTime)
+        case (let .active(viewTime), .inactive):
+            state = .inactive(viewTime)
+        case (.active, .loading):
+            fatalError("View shouldn't be active when timer is in loading state")
+        case (_, .loading):
+            break
         }
         return .unlimited
     }

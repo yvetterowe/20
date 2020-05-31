@@ -26,6 +26,16 @@ struct StatefulTimerButton: View {
     
     var body: some View {
         switch timerStateStore.state {
+        case .loading:  // TODO(#12): Button should be disabled and untappable in loading state
+            return TimerButton(
+            model: .init(
+                textModel: .init(
+                    text: "Still loading...",
+                    textColor: SementicColorPalette.buttonTextColor,
+                    textFont: .title
+                ),
+                backgroundColorMode: .gradient(SementicColorPalette.timerGradient)) {}
+            )
         case .inactive:
             return TimerButton(
                 model: .init(
@@ -56,18 +66,6 @@ struct StatefulTimerButton: View {
                 self.timer.sendAction(.pause)
             }
            )
-        }
-    }
-}
-
-struct StatefulTimerButton_Previews: PreviewProvider {
-
-    static let mockTimer = MockTimer()
-    
-    static var previews: some View {
-        VStack {
-            StatefulTimerButton(timerStateStore: .init(initialState: .inactive(0), timer: mockTimer), timer: mockTimer)
-            StatefulTimerButton(timerStateStore: .init(initialState: .active(80), timer: mockTimer), timer: mockTimer)
         }
     }
 }

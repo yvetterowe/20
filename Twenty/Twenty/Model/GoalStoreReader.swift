@@ -13,3 +13,16 @@ typealias GoalPublisher = AnyPublisher<Goal, Never>
 protocol GoalStoreReader: ObservableObject {
     func goalPublisher(for goalID: Goal.ID) -> GoalPublisher
 }
+
+final class AnyGoalStoreReader<StoreReaderType: GoalStoreReader>: ObservableObject {
+    
+    private let storeReader: StoreReaderType
+    
+    init(_ storeReader: StoreReaderType) {
+        self.storeReader = storeReader
+    }
+    
+    func goalPublisher(for goalID: Goal.ID) -> GoalPublisher {
+        return storeReader.goalPublisher(for: goalID)
+    }
+}

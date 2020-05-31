@@ -15,6 +15,7 @@ enum TimerAction {
 }
 
 enum TimerState {
+    case loading
     case inactive(TimeInterval)
     case active(TimeInterval)
 }
@@ -39,16 +40,19 @@ final class RealTimer: TwentyTimer {
         self.internalState = .active(totalActiveTime + self.timeInterval)
     }
     
-    init(timeInterval: TimeInterval = 1, totalActiveTime: TimeInterval) {
+    init(timeInterval: TimeInterval = 1, goalPublisher: GoalPublisher, currentDate: Date) {
+        self.internalState = .loading
         self.timeInterval = timeInterval
-        self.internalState = .inactive(totalActiveTime)
+        
+        _ = goalPublisher.sink { goal in
+            self.internalState = .inactive(goal.totalTimeSpent(on: currentDate))
+        }
     }
     
     // MARK: - TwentyTimer
     
     var state: AnyPublisher<TimerState, Never> {
         return $internalState
-            .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }
     

@@ -18,11 +18,13 @@ struct StatefulTimerView: View {
     }
     
     enum ViewState {
+        case loading
         case inactive(TimeInterval)
         case active(TimeInterval)
         
         var elapsedTime: TimeInterval {
             switch self {
+            case .loading: return 0
             case let .inactive(time): return time
             case let .active(time): return time
             }
@@ -31,6 +33,18 @@ struct StatefulTimerView: View {
     
     var body: some View {
         switch timerStateStore.state {
+        case .loading:
+            return TimerView(
+                model: .init(
+                    textModel: .init(
+                        text: "loading...",
+                        textColor: SementicColorPalette.defaultTextColor,
+                        textFont: .title
+                    ),
+                    radius: 86,
+                    backgroundColorMode: .single(.gray)
+                )
+            )
         case let .inactive(timeInterval):
             return TimerView(
                 model: .init(
@@ -66,16 +80,5 @@ private extension TimeInterval {
         let minutes = Int(self) / 60 % 60
         let seconds = Int(self) % 60
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
-    }
-}
-
-struct StatefulTimerView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            StatefulTimerView(timerStateStore: .init(initialState: .inactive(0), timer: MockTimer()))
-            StatefulTimerView(timerStateStore: .init(initialState: .inactive(59), timer: MockTimer()))
-            StatefulTimerView(timerStateStore: .init(initialState: .active(80), timer: MockTimer()))
-            StatefulTimerView(timerStateStore: .init(initialState: .active(78305), timer: MockTimer()))
-        }
     }
 }
