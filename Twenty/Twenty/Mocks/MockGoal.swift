@@ -31,14 +31,14 @@ struct MockGoal: Goal, Identifiable {
     let id: GoalID
     let name: String
     let timeToComplete: TimeInterval
-    var trackRecords: [TrackRecord]
+    var trackRecords: [DateInterval]
     
     func totalTimeSpent(on date: Date) -> TimeInterval {
         // TODO
         return 100
     }
     
-    mutating func appendTrackRecord(_ trackRecord: TrackRecord) {
+    mutating func appendTrackRecord(_ trackRecord: DateInterval) {
         self.trackRecords.append(trackRecord)
     }
 }
@@ -66,7 +66,7 @@ final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
     
     // MARK: - GoalStoreWriter
     
-    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) {
+    func appendTrackRecord(_ trackRecord: DateInterval, forGoal goalID: GoalID) {
         let subject = goalSubject(for: goalID)
         var updatedGoal = subject.value
         updatedGoal.appendTrackRecord(trackRecord)
