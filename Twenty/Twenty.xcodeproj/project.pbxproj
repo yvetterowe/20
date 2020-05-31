@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,8 @@
 		E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05972480A9B60066C687 /* TwentyTimer.swift */; };
 		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
 		E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerStateStore.swift */; };
+		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
+		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		E78F05972480A9B60066C687 /* TwentyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyTimer.swift; sourceTree = "<group>"; };
 		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		E78F059B2482B99A0066C687 /* TimerStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStateStore.swift; sourceTree = "<group>"; };
+		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +101,6 @@
 				889D85D83787130A2704596A /* Pods-Twenty.debug.xcconfig */,
 				AF69723C306F40791B2C46CA /* Pods-Twenty.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -124,6 +127,7 @@
 		E78F054B247F495D0066C687 /* Twenty */ = {
 			isa = PBXGroup;
 			children = (
+				E7D3DC712482FAEB00422C77 /* Model */,
 				E78F05942480A83C0066C687 /* Mocks */,
 				E78F0579247F52F60066C687 /* Timer Tab */,
 				E78F0578247F52EB0066C687 /* CommonUI */,
@@ -188,6 +192,15 @@
 				E78F05952480A86D0066C687 /* Mocks.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		E7D3DC712482FAEB00422C77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E7D3DC722483055800422C77 /* Goal.swift */,
+				E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F0CBD1D2BC05CEA0FA04C0DE /* Frameworks */ = {
@@ -351,6 +364,7 @@
 				E78F058124803D290066C687 /* StatefulTimerView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */,
+				E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */,
@@ -359,6 +373,7 @@
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				E78F05962480A86D0066C687 /* Mocks.swift in Sources */,
 				E78F059324809CB90066C687 /* TimerTabView.swift in Sources */,
+				E7D3DC732483055800422C77 /* Goal.swift in Sources */,
 				E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
