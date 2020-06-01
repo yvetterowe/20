@@ -10,6 +10,7 @@
 		2174D9B9E6EA8A3150EB28E3 /* libPods-Twenty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A5AC360BE63538BD4D7714 /* libPods-Twenty.a */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
 		E77A512E24843CE9009243CC /* StripTimeDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A512D24843CE9009243CC /* StripTimeDate.swift */; };
+		E77A5131248556A9009243CC /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A5130248556A9009243CC /* Store.swift */; };
 		E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054C247F495D0066C687 /* AppDelegate.swift */; };
 		E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054E247F495D0066C687 /* SceneDelegate.swift */; };
 		E78F0551247F495D0066C687 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F0550247F495D0066C687 /* ContentView.swift */; };
@@ -52,6 +53,7 @@
 		AF69723C306F40791B2C46CA /* Pods-Twenty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.release.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.release.xcconfig"; sourceTree = "<group>"; };
 		E77A51292484130C009243CC /* GoalStoreWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreWriter.swift; sourceTree = "<group>"; };
 		E77A512D24843CE9009243CC /* StripTimeDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripTimeDate.swift; sourceTree = "<group>"; };
+		E77A5130248556A9009243CC /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		E78F0549247F495D0066C687 /* Twenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78F054C247F495D0066C687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E78F054E247F495D0066C687 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 			path = "Stateless UI Components";
 			sourceTree = "<group>";
 		};
+		E77A512F2485565F009243CC /* Architecture */ = {
+			isa = PBXGroup;
+			children = (
+				E77A5130248556A9009243CC /* Store.swift */,
+			);
+			path = Architecture;
+			sourceTree = "<group>";
+		};
 		E78F0540247F495D0066C687 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +152,7 @@
 		E78F054B247F495D0066C687 /* Twenty */ = {
 			isa = PBXGroup;
 			children = (
+				E77A512F2485565F009243CC /* Architecture */,
 				E7D3DC712482FAEB00422C77 /* Model */,
 				E78F05942480A83C0066C687 /* Mocks */,
 				E78F0579247F52F60066C687 /* Timer Tab */,
@@ -360,6 +371,7 @@
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
 				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
+				E77A5131248556A9009243CC /* Store.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */,
