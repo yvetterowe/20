@@ -11,7 +11,6 @@ import SwiftUI
 
 struct StatefulTimerButton: View {
     
-    private let timer: TwentyTimer
     @ObservedObject private var timerStateStore: TimerStateStore
     
     private enum Strings {
@@ -19,9 +18,8 @@ struct StatefulTimerButton: View {
         static let pauseButtonTitle = "Pause"
     }
     
-    init(timerStateStore: TimerStateStore, timer: TwentyTimer) {
+    init(timerStateStore: TimerStateStore) {
         self.timerStateStore = timerStateStore
-        self.timer = timer
     }
     
     var body: some View {
@@ -36,6 +34,7 @@ struct StatefulTimerButton: View {
                 ),
                 backgroundColorMode: .gradient(SementicColorPalette.timerGradient)) {}
             )
+        
         case .inactive:
             return TimerButton(
                 model: .init(
@@ -45,7 +44,7 @@ struct StatefulTimerButton: View {
                         textFont: .title // TODO: clean up font
                     ),
                     backgroundColorMode: .gradient(SementicColorPalette.timerGradient)) {
-                        self.timer.sendAction(.start)
+                        self.timerStateStore.send(.timerButtonTapped)
                 })
         
         case .active:
@@ -63,9 +62,19 @@ struct StatefulTimerButton: View {
                     cornerRadius: 24
                    )
                ) {
-                self.timer.sendAction(.pause)
+                self.timerStateStore.send(.timerButtonTapped)
             }
            )
+        }
+    }
+}
+
+struct StatefulTimerButton_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            StatefulTimerButton(timerStateStore: MockTimerFactory.timerStateStore(.loading))
+            StatefulTimerButton(timerStateStore: MockTimerFactory.timerStateStore(.inactive(100)))
+            StatefulTimerButton(timerStateStore: MockTimerFactory.timerStateStore(.active(100)))
         }
     }
 }

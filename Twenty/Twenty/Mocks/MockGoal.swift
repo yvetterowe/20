@@ -70,7 +70,7 @@ struct MockGoal: Goal, Identifiable {
 }
 
 final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
-    
+     
     private typealias GoalSubject = CurrentValueSubject<MockGoal, Never>
     
     private var goalSubjectsByID: [GoalID: GoalSubject]

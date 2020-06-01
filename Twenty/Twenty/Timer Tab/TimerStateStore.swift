@@ -6,55 +6,55 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
-import Combine
 import Foundation
 
-final class TimerStateStore: ObservableObject, Subscriber {
-    
-    @Published private(set) var state: StatefulTimerView.ViewState = .loading
-    private let currentDate: Date
-    
-    init(goalPublisher: GoalPublisher, timer: TwentyTimer, currentDate: Date) {
-        self.currentDate = currentDate
-        Publishers.CombineLatest(goalPublisher, timer.state)
-            .map{(goal: $0, timerState: $1)}
-            .receive(on: RunLoop.main)
-            .subscribe(self)
-    }
-    // MARK: - Subscriber
-    
-    typealias Input = (goal: Goal, timerState: TimerState)
-    typealias Failure = Never
-    
-    var combineIdentifier: CombineIdentifier {
-        return .init()
-    }
-    
-    func receive(subscription: Subscription) {
-        subscription.request(.unlimited)
-    }
-    
-    func receive(_ input: Input) -> Subscribers.Demand {
-        switch(state, input.timerState) {
-        case (.loading, .inactive):
-            state = .inactive(input.goal.totalTimeSpent(on: .init(currentDate.stripTime())))
-        case (.loading, .active):
-            fatalError("Timer shouldn't be active when view is in loading state")
-        case (.inactive, .inactive):
-            break
-        case (_, let .active(timerTime)):
-            state = .active(timerTime)
-        case (let .active(viewTime), .inactive):
-            state = .inactive(viewTime)
-        case (.active, .loading):
-            fatalError("View shouldn't be active when timer is in loading state")
-        case (_, .loading):
-            break
+typealias TimerStateStore = Store<TimerState, TimerViewAction, TimerViewContext>
+
+enum TimerState {
+    case loading
+    case inactive(TimeInterval)
+    case active(TimeInterval)
+}
+
+enum TimerViewAction {
+    case goalLoaded(Goal)
+    case timerButtonTapped
+    case timerTicked(tickInterval: TimeInterval)
+}
+
+struct TimerViewContext {
+    let currentDate: Date
+    let timer: TwentyTimer
+}
+
+func timerViewReducer(state: inout TimerState, action: TimerViewAction, context: TimerViewContext) {
+    switch action {
+    case let .goalLoaded(goal):
+        switch state {
+        case .loading:
+            state = .inactive(goal.totalTimeSpent(on: .init(context.currentDate.stripTime())))
+        case .inactive, .active:
+            fatalError("View should not be in \(state) state for \(action) action")
         }
-        return .unlimited
-    }
     
-    func receive(completion: Subscribers.Completion<Never>) {
-        self.state = .inactive(state.elapsedTime)
+    case .timerButtonTapped:
+        switch state {
+        case .loading:
+            fatalError("View should not be in \(state) state for \(action) action")
+        case let .inactive(elapsedTime):
+            state = .active(elapsedTime)
+            context.timer.resume()
+        case let .active(elapsedTime):
+            state = .inactive(elapsedTime)
+            context.timer.suspend()
+        }
+        
+    case let .timerTicked(tickInterval):
+        switch state {
+        case .loading, .inactive:
+            fatalError("View should not be in \(state) state for \(action) action")
+        case let .active(elapsedTime):
+            state = .active(elapsedTime + tickInterval)
+        }
     }
 }

@@ -9,69 +9,38 @@
 import Combine
 import Foundation
 
-enum TimerAction {
-    case start
-    case pause
-}
-
-enum TimerState {
-    case loading
-    case inactive(TimeInterval)
-    case active(TimeInterval)
-}
-
 protocol TwentyTimer {
-    var state: AnyPublisher<TimerState, Never> { get }
-    func sendAction(_ timerAction: TimerAction)
+    func setTimerStateStore(_ store: TimerStateStore)
+    func resume()
+    func suspend()
 }
 
 final class RealTimer: TwentyTimer {
+    
     private let timeInterval: TimeInterval
-    @Published private var internalState: TimerState {
-        didSet {
-            print("\(internalState)")
+    private weak var timerStateStore: TimerStateStore!
+
+    private lazy var backgroundTimer: BackgroundTimer = .init(timeInterval: timeInterval) { tickInterval in
+        DispatchQueue.main.async {
+            self.timerStateStore.send(.timerTicked(tickInterval: tickInterval))
         }
     }
-    
-    private lazy var backgroundTimer: BackgroundTimer = .init(timeInterval: timeInterval) {
-        guard case let .active(totalActiveTime) = self.internalState else {
-            return
-        }
-        self.internalState = .active(totalActiveTime + self.timeInterval)
-    }
-    
-    init(timeInterval: TimeInterval = 1, goalPublisher: GoalPublisher, currentDate: Date) {
-        self.internalState = .loading
+
+    init(timeInterval: TimeInterval = 1) {
         self.timeInterval = timeInterval
-        
-        _ = goalPublisher.sink { goal in
-            self.internalState = .inactive(goal.totalTimeSpent(on: .init(currentDate.stripTime())))
-        }
     }
     
     // MARK: - TwentyTimer
     
-    var state: AnyPublisher<TimerState, Never> {
-        return $internalState
-            .eraseToAnyPublisher()
+    func setTimerStateStore(_ store: TimerStateStore) {
+        self.timerStateStore = store
+    }
+
+    func resume() {
+        backgroundTimer.resume()
     }
     
-    func sendAction(_ timerAction: TimerAction) {
-        switch timerAction {
-        case .start:
-            guard case let .inactive(timeInterval) = internalState else {
-                return
-            }
-            internalState = .active(timeInterval)
-            backgroundTimer.resume()
-            
-        case .pause:
-            guard case let .active(timeInterval) = internalState else {
-                return
-            }
-            internalState = .inactive(timeInterval)
-            backgroundTimer.suspend()
-        }
+    func suspend() {
+        backgroundTimer.suspend()
     }
-    
 }

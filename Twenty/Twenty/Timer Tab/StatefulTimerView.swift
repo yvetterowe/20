@@ -82,3 +82,13 @@ private extension TimeInterval {
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
 }
+
+struct StatefulTimerView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            StatefulTimerView(timerStateStore: MockTimerFactory.timerStateStore(.loading))
+            StatefulTimerView(timerStateStore: MockTimerFactory.timerStateStore(.inactive(100)))
+            StatefulTimerView(timerStateStore: MockTimerFactory.timerStateStore(.active(100)))
+        }
+    }
+}

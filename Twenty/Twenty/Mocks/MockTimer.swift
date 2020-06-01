@@ -6,26 +6,31 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
-import Combine
 import Foundation
 
-final class MockTimer: TwentyTimer {
-    @Published private var internalState: TimerState = .inactive(0)
+enum MockTimerFactory {
+    static let timer: TwentyTimer = MockTimer()
+    static let currentDate: Date = DateComponents(
+        calendar: .current, year: 2020, month: 5, day: 30, hour: 14, minute: 30, second: 10
+    ).date!
+
     
-    var state: AnyPublisher<TimerState, Never> {
-        return $internalState.eraseToAnyPublisher()
+    static func timerStateStore(_ initialState: TimerState) -> TimerStateStore {
+        return .init(
+            initialState: initialState,
+            reducer: { (_, _, _) in },
+            context: MockTimerFactory.timerContext
+        )
     }
     
-    func sendAction(_ timerAction: TimerAction) {
-        switch(internalState, timerAction) {
-        case (let .inactive(time), .start):
-            internalState = .active(time+1)
-        case (let .active(time), .pause):
-            internalState = .inactive(time)
-        default:
-            fatalError()
-        }
-    }
+    static let timerContext: TimerViewContext = .init(
+        currentDate: MockTimerFactory.currentDate,
+        timer: MockTimerFactory.timer
+    )
 }
 
-let mockCurrentDate: Date = DateComponents(calendar: .current, year: 2020, month: 5, day: 30, hour: 14, minute: 30, second: 10).date!
+private final class MockTimer: TwentyTimer {
+    func setTimerStateStore(_ store: TimerStateStore) {}
+    func resume() {}
+    func suspend() {}
+}

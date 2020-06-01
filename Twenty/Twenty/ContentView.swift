@@ -10,19 +10,17 @@ import SwiftUI
 
 struct ContentView: View {
     private let goalPublisher: GoalPublisher
-    private let timer: TwentyTimer
-    private let currentDate: Date
+    private let timerStateStore: TimerStateStore
     @State private var selection = 0
     
-    init(goalPublisher: GoalPublisher, timer: TwentyTimer, currentDate: Date) {
+    init(goalPublisher: GoalPublisher, timerStateStore: TimerStateStore) {
         self.goalPublisher = goalPublisher
-        self.timer = timer
-        self.currentDate = currentDate
+        self.timerStateStore = timerStateStore
     }
     
     var body: some View {
         TabView(selection: $selection){
-            TimerTabView(goalPublisher: goalPublisher, timer: timer,  currentDate: currentDate)
+            TimerTabView(timerStateStore: timerStateStore)
                 .font(.title)
                 .tabItem {
                     VStack {
@@ -46,6 +44,6 @@ struct ContentView: View {
 
 //struct ContentView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ContentView(timer: MockTimer())
+//        ContentView(goalPublisher: GoalPublisher, timerStateStore: <#T##TimerStateStore#>)
 //    }
 //}
