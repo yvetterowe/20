@@ -25,7 +25,7 @@ enum MockGoalFactory {
                     start: DateComponents(calendar: .current, year: 2020, month: 5, day: 30, hour: 9, minute: 45).date!,
                     duration: 600
                 ),
-            ]
+            ].map { TrackRecord(timeSpan: $0)}
         )
     ]
     
@@ -41,10 +41,10 @@ struct MockGoal: Goal, Identifiable {
     let name: String
     let timeToComplete: TimeInterval
     
-    private(set) var trackRecords: [DateInterval]
+    private(set) var trackRecords: [TrackRecord]
     private var timeSpentByTimeStripDate: [StripTimeDate: TimeInterval]
     
-    init(id: GoalID, name: String, timeToComplete: TimeInterval, trackRecords: [DateInterval]) {
+    init(id: GoalID, name: String, timeToComplete: TimeInterval, trackRecords: [TrackRecord]) {
         self.id = id
         self.name = name
         self.timeToComplete = timeToComplete
@@ -60,13 +60,13 @@ struct MockGoal: Goal, Identifiable {
         return timeSpentByTimeStripDate[date] ?? 0
     }
     
-    mutating func appendTrackRecord(_ trackRecord: DateInterval) {
+    mutating func appendTrackRecord(_ trackRecord: TrackRecord) {
         print("Track record added! \(trackRecord)")
         trackRecords.append(trackRecord)
         
         // TODO(#13): handle `trackRecord` spreads across multiple days
-        let stripTimeDate = StripTimeDate(trackRecord.start.stripTime())
-        timeSpentByTimeStripDate[stripTimeDate] = (timeSpentByTimeStripDate[stripTimeDate] ?? 0) + trackRecord.duration
+        let stripTimeDate = StripTimeDate(trackRecord.timeSpan.start.stripTime())
+        timeSpentByTimeStripDate[stripTimeDate] = (timeSpentByTimeStripDate[stripTimeDate] ?? 0) + trackRecord.timeSpan.duration
     }
 }
 
@@ -93,7 +93,7 @@ final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
     
     // MARK: - GoalStoreWriter
     
-    func appendTrackRecord(_ trackRecord: DateInterval, forGoal goalID: GoalID) {
+    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) {
         let subject = goalSubject(for: goalID)
         var updatedGoal = subject.value
         updatedGoal.appendTrackRecord(trackRecord)

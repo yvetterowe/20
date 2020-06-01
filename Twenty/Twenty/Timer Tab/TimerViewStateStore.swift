@@ -61,7 +61,10 @@ func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, cont
             )
             context.timer.suspend()
             print("paused! last active: \(currentSpan.duration) \(currentSpan)")
-            context.goalStoreWriter.appendTrackRecord(currentSpan, forGoal: goalID)
+            context.goalStoreWriter.appendTrackRecord(
+                .init(timeSpan: currentSpan),
+                forGoal: goalID
+            )
         }
         
     case let .timerTicked(tickDate, tickInterval):

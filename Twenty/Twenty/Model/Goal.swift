@@ -10,11 +10,15 @@ import Foundation
 
 typealias GoalID = String
 
+struct TrackRecord {
+    let timeSpan: DateInterval
+}
+
 protocol Goal {
     var id: GoalID { get }
     var name: String { get }
     var timeToComplete: TimeInterval { get }
-    var trackRecords: [DateInterval] { get }
+    var trackRecords: [TrackRecord] { get }
     
     func totalTimeSpent(on date: StripTimeDate) -> TimeInterval
 }
