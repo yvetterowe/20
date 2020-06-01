@@ -22,7 +22,7 @@ final class RealTimer: TwentyTimer {
 
     private lazy var backgroundTimer: BackgroundTimer = .init(timeInterval: timeInterval) { tickInterval in
         DispatchQueue.main.async {
-            self.timerViewStateStore.send(.timerTicked(tickInterval: tickInterval))
+            self.timerViewStateStore.send(.timerTicked(tickDate: Date(), tickInterval: tickInterval))
         }
     }
 

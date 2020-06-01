@@ -14,6 +14,12 @@ enum MockTimerFactory {
         calendar: .current, year: 2020, month: 5, day: 30, hour: 14, minute: 30, second: 10
     ).date!
 
+    static let activeState: TimerViewState = .active(
+        currentSpan: .init(start: MockTimerFactory.currentDate.advanced(by: -40), duration: 40),
+        totalElapsedSeconds: 100
+    )
+    
+    static let inactiveState: TimerViewState = .inactive(totalElapsedSeconds: 100)
     
     static func timerViewStateStore(_ initialState: TimerViewState) -> TimerViewStateStore {
         return .init(

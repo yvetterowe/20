@@ -73,8 +73,8 @@ struct StatefulTimerButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             StatefulTimerButton(timerViewStateStore: MockTimerFactory.timerViewStateStore(.loading))
-            StatefulTimerButton(timerViewStateStore: MockTimerFactory.timerViewStateStore(.inactive(100)))
-            StatefulTimerButton(timerViewStateStore: MockTimerFactory.timerViewStateStore(.active(100)))
+            StatefulTimerButton(timerViewStateStore: MockTimerFactory.timerViewStateStore(MockTimerFactory.inactiveState))
+            StatefulTimerButton(timerViewStateStore: MockTimerFactory.timerViewStateStore(MockTimerFactory.activeState))
         }
     }
 }

@@ -26,6 +26,6 @@ struct TimerTabView: View {
 
 struct TimerTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerTabView(timerViewStateStore: MockTimerFactory.timerViewStateStore(.active(100)))
+        TimerTabView(timerViewStateStore: MockTimerFactory.timerViewStateStore(MockTimerFactory.activeState))
     }
 }

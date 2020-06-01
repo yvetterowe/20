@@ -12,14 +12,14 @@ typealias TimerViewStateStore = Store<TimerViewState, TimerViewAction, TimerView
 
 enum TimerViewState {
     case loading
-    case inactive(TimeInterval)
-    case active(TimeInterval)
+    case inactive(totalElapsedSeconds: TimeInterval)
+    case active(currentSpan: DateInterval, totalElapsedSeconds: TimeInterval)
 }
 
 enum TimerViewAction {
     case goalLoaded(Goal)
     case timerButtonTapped
-    case timerTicked(tickInterval: TimeInterval)
+    case timerTicked(tickDate: Date, tickInterval: TimeInterval)
 }
 
 struct TimerViewContext {
@@ -32,7 +32,9 @@ func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, cont
     case let .goalLoaded(goal):
         switch state {
         case .loading:
-            state = .inactive(goal.totalTimeSpent(on: .init(context.currentDate.stripTime())))
+            state = .inactive(
+                totalElapsedSeconds: goal.totalTimeSpent(on: .init(context.currentDate.stripTime()))
+            )
         case .inactive, .active:
             fatalError("View should not be in \(state) state for \(action) action")
         }
@@ -41,20 +43,36 @@ func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, cont
         switch state {
         case .loading:
             fatalError("View should not be in \(state) state for \(action) action")
-        case let .inactive(elapsedTime):
-            state = .active(elapsedTime)
+        case let .inactive(totalElapsedSeconds):
+            let now = Date()
+            state = .active(
+                currentSpan: .init(start: now, end: now),
+                totalElapsedSeconds: totalElapsedSeconds
+            )
             context.timer.resume()
-        case let .active(elapsedTime):
-            state = .inactive(elapsedTime)
+        case let .active(currentSpan, totalElapsedSeconds):
+            // Timer goes from active to inactive
+            state = .inactive(totalElapsedSeconds: totalElapsedSeconds)
             context.timer.suspend()
+            print("paused! last active: \(currentSpan.duration) \(currentSpan)")
         }
         
-    case let .timerTicked(tickInterval):
+    case let .timerTicked(tickDate, tickInterval):
         switch state {
-        case .loading, .inactive:
+        case .loading:
             fatalError("View should not be in \(state) state for \(action) action")
-        case let .active(elapsedTime):
-            state = .active(elapsedTime + tickInterval)
+        case let .inactive(elapsedTime):
+            // First tick when timer goes from inactive to active
+            state = .active(
+                currentSpan: .init(start: tickDate, end: tickDate),
+                totalElapsedSeconds: elapsedTime
+            )
+        case let .active(currentSpan, totalElapsedSeconds):
+            // Non-first tick
+            state = .active(
+                currentSpan: .init(start: currentSpan.start, end: tickDate),
+                totalElapsedSeconds: totalElapsedSeconds + tickInterval
+            )
         }
     }
 }

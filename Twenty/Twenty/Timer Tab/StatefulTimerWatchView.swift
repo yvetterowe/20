@@ -58,7 +58,7 @@ struct StatefulTimerWatchView: View {
                 )
             )
             
-        case let .active(timeInterval):
+        case let .active(_, timeInterval):
             return TimerWatchView(
                 model: .init(
                     textModel: .init(
@@ -87,8 +87,8 @@ struct StatefulTimerWatchView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             StatefulTimerWatchView(timerViewStateStore: MockTimerFactory.timerViewStateStore(.loading))
-            StatefulTimerWatchView(timerViewStateStore: MockTimerFactory.timerViewStateStore(.inactive(100)))
-            StatefulTimerWatchView(timerViewStateStore: MockTimerFactory.timerViewStateStore(.active(100)))
+            StatefulTimerWatchView(timerViewStateStore: MockTimerFactory.timerViewStateStore(MockTimerFactory.activeState))
+            StatefulTimerWatchView(timerViewStateStore: MockTimerFactory.timerViewStateStore(MockTimerFactory.inactiveState))
         }
     }
 }
