@@ -45,7 +45,7 @@ struct StatefulTimerWatchView: View {
                     backgroundColorMode: .single(.gray)
                 )
             )
-        case let .inactive(timeInterval):
+        case let .inactive(_, timeInterval):
             return TimerWatchView(
                 model: .init(
                     textModel: .init(
@@ -58,7 +58,7 @@ struct StatefulTimerWatchView: View {
                 )
             )
             
-        case let .active(_, timeInterval):
+        case let .active(_, _, timeInterval):
             return TimerWatchView(
                 model: .init(
                     textModel: .init(

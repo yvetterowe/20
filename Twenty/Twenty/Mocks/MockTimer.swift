@@ -15,11 +15,15 @@ enum MockTimerFactory {
     ).date!
 
     static let activeState: TimerViewState = .active(
+        goalID: MockGoalFactory.mockGoals.first!.id,
         currentSpan: .init(start: MockTimerFactory.currentDate.advanced(by: -40), duration: 40),
         totalElapsedSeconds: 100
     )
     
-    static let inactiveState: TimerViewState = .inactive(totalElapsedSeconds: 100)
+    static let inactiveState: TimerViewState = .inactive(
+        goalID: MockGoalFactory.mockGoals.first!.id,
+        totalElapsedSeconds: 100
+    )
     
     static func timerViewStateStore(_ initialState: TimerViewState) -> TimerViewStateStore {
         return .init(

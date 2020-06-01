@@ -12,8 +12,8 @@ typealias TimerViewStateStore = Store<TimerViewState, TimerViewAction, TimerView
 
 enum TimerViewState {
     case loading
-    case inactive(totalElapsedSeconds: TimeInterval)
-    case active(currentSpan: DateInterval, totalElapsedSeconds: TimeInterval)
+    case inactive(goalID:GoalID, totalElapsedSeconds: TimeInterval)
+    case active(goalID:GoalID, currentSpan: DateInterval, totalElapsedSeconds: TimeInterval)
 }
 
 enum TimerViewAction {
@@ -33,6 +33,7 @@ func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, cont
         switch state {
         case .loading:
             state = .inactive(
+                goalID: goal.id,
                 totalElapsedSeconds: goal.totalTimeSpent(on: .init(context.currentDate.stripTime()))
             )
         case .inactive, .active:
@@ -43,16 +44,20 @@ func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, cont
         switch state {
         case .loading:
             fatalError("View should not be in \(state) state for \(action) action")
-        case let .inactive(totalElapsedSeconds):
+        case let .inactive(goalID, totalElapsedSeconds):
             let now = Date()
             state = .active(
+                goalID: goalID,
                 currentSpan: .init(start: now, end: now),
                 totalElapsedSeconds: totalElapsedSeconds
             )
             context.timer.resume()
-        case let .active(currentSpan, totalElapsedSeconds):
+        case let .active(goalID, currentSpan, totalElapsedSeconds):
             // Timer goes from active to inactive
-            state = .inactive(totalElapsedSeconds: totalElapsedSeconds)
+            state = .inactive(
+                goalID: goalID,
+                totalElapsedSeconds: totalElapsedSeconds
+            )
             context.timer.suspend()
             print("paused! last active: \(currentSpan.duration) \(currentSpan)")
         }
@@ -61,15 +66,17 @@ func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, cont
         switch state {
         case .loading:
             fatalError("View should not be in \(state) state for \(action) action")
-        case let .inactive(elapsedTime):
+        case let .inactive(goalID, elapsedTime):
             // First tick when timer goes from inactive to active
             state = .active(
+                goalID: goalID,
                 currentSpan: .init(start: tickDate, end: tickDate),
                 totalElapsedSeconds: elapsedTime
             )
-        case let .active(currentSpan, totalElapsedSeconds):
+        case let .active(goalID, currentSpan, totalElapsedSeconds):
             // Non-first tick
             state = .active(
+                goalID: goalID,
                 currentSpan: .init(start: currentSpan.start, end: tickDate),
                 totalElapsedSeconds: totalElapsedSeconds + tickInterval
             )
