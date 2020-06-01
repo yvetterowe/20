@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 protocol TwentyTimer {
-    func setTimerStateStore(_ store: TimerStateStore)
+    func setTimerViewStateStore(_ store: TimerViewStateStore)
     func resume()
     func suspend()
 }
@@ -18,11 +18,11 @@ protocol TwentyTimer {
 final class RealTimer: TwentyTimer {
     
     private let timeInterval: TimeInterval
-    private weak var timerStateStore: TimerStateStore!
+    private weak var timerViewStateStore: TimerViewStateStore!
 
     private lazy var backgroundTimer: BackgroundTimer = .init(timeInterval: timeInterval) { tickInterval in
         DispatchQueue.main.async {
-            self.timerStateStore.send(.timerTicked(tickInterval: tickInterval))
+            self.timerViewStateStore.send(.timerTicked(tickInterval: tickInterval))
         }
     }
 
@@ -32,8 +32,8 @@ final class RealTimer: TwentyTimer {
     
     // MARK: - TwentyTimer
     
-    func setTimerStateStore(_ store: TimerStateStore) {
-        self.timerStateStore = store
+    func setTimerViewStateStore(_ store: TimerViewStateStore) {
+        self.timerViewStateStore = store
     }
 
     func resume() {

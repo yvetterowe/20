@@ -29,14 +29,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             currentDate: currentDate,
             timer: timer
         )
-        let timerStateStore: TimerStateStore = .init(
-            initialState: .inactive(100),
+        let timerViewStateStore: TimerViewStateStore = .init(
+            initialState: .loading,
             reducer: timerViewReducer,
             context: timerViewContext
         )
-        timer.setTimerStateStore(timerStateStore)
+        timer.setTimerViewStateStore(timerViewStateStore)
         
-        let contentView = ContentView(goalPublisher: goalPublisher, timerStateStore: timerStateStore)
+        let contentView = ContentView(goalPublisher: goalPublisher, timerViewStateStore: timerViewStateStore)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

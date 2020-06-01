@@ -1,5 +1,5 @@
 //
-//  TimerView.swift
+//  TimerWatchView.swift
 //  Twenty
 //
 //  Created by Hao Luo on 5/27/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TimerView: View {
+struct TimerWatchView: View {
     var model: Model
     struct Model {
         var textModel: Text.Model
@@ -24,17 +24,17 @@ struct TimerView: View {
     }
 }
 
-struct TimerView_Previews: PreviewProvider {
+struct TimerWatchView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TimerView(
+            TimerWatchView(
                 model: .init(
                     textModel: .init(text: "00:00", textColor: .white, textFont: .title),
                     radius: 30,
                     backgroundColorMode: .single(.gray)
                 )
             )
-            TimerView(
+            TimerWatchView(
                 model: .init(
                     textModel: .init(text: "18:00", textColor: .white, textFont: .title),
                     radius: 86,

@@ -26,3 +26,29 @@ final class AnyGoalStoreReader<StoreReaderType: GoalStoreReader>: ObservableObje
         return storeReader.goalPublisher(for: goalID)
     }
 }
+
+
+
+typealias GoalStore = Store<GoalState, GoalAction, GoalContext>
+
+enum GoalState {
+    case loading
+    case loaed(Goal)
+}
+
+enum GoalAction {
+    
+}
+
+struct GoalContext {
+}
+
+
+let goalStore: GoalStore = .init(
+    initialState: .loading,
+    reducer: goalReducer,
+    context: GoalContext()
+)
+
+func goalReducer(state: inout GoalState, action: GoalAction, context: GoalContext) {
+}

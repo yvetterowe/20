@@ -1,5 +1,5 @@
 //
-//  TimerStateStore.swift
+//  TimerViewStateStore.swift
 //  Twenty
 //
 //  Created by Hao Luo on 5/30/20.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias TimerStateStore = Store<TimerState, TimerViewAction, TimerViewContext>
+typealias TimerViewStateStore = Store<TimerViewState, TimerViewAction, TimerViewContext>
 
-enum TimerState {
+enum TimerViewState {
     case loading
     case inactive(TimeInterval)
     case active(TimeInterval)
@@ -27,7 +27,7 @@ struct TimerViewContext {
     let timer: TwentyTimer
 }
 
-func timerViewReducer(state: inout TimerState, action: TimerViewAction, context: TimerViewContext) {
+func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, context: TimerViewContext) {
     switch action {
     case let .goalLoaded(goal):
         switch state {

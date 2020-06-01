@@ -15,7 +15,7 @@ enum MockTimerFactory {
     ).date!
 
     
-    static func timerStateStore(_ initialState: TimerState) -> TimerStateStore {
+    static func timerViewStateStore(_ initialState: TimerViewState) -> TimerViewStateStore {
         return .init(
             initialState: initialState,
             reducer: { (_, _, _) in },
@@ -30,7 +30,7 @@ enum MockTimerFactory {
 }
 
 private final class MockTimer: TwentyTimer {
-    func setTimerStateStore(_ store: TimerStateStore) {}
+    func setTimerViewStateStore(_ store: TimerViewStateStore) {}
     func resume() {}
     func suspend() {}
 }

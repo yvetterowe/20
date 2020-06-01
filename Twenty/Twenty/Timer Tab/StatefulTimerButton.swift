@@ -11,19 +11,19 @@ import SwiftUI
 
 struct StatefulTimerButton: View {
     
-    @ObservedObject private var timerStateStore: TimerStateStore
+    @ObservedObject private var timerViewStateStore: TimerViewStateStore
     
     private enum Strings {
         static let startTrackingButtonTitle = "Start tracking"
         static let pauseButtonTitle = "Pause"
     }
     
-    init(timerStateStore: TimerStateStore) {
-        self.timerStateStore = timerStateStore
+    init(timerViewStateStore: TimerViewStateStore) {
+        self.timerViewStateStore = timerViewStateStore
     }
     
     var body: some View {
-        switch timerStateStore.state {
+        switch timerViewStateStore.state {
         case .loading:  // TODO(#12): Button should be disabled and untappable in loading state
             return TimerButton(
             model: .init(
@@ -44,7 +44,7 @@ struct StatefulTimerButton: View {
                         textFont: .title // TODO: clean up font
                     ),
                     backgroundColorMode: .gradient(SementicColorPalette.timerGradient)) {
-                        self.timerStateStore.send(.timerButtonTapped)
+                        self.timerViewStateStore.send(.timerButtonTapped)
                 })
         
         case .active:
@@ -62,7 +62,7 @@ struct StatefulTimerButton: View {
                     cornerRadius: 24
                    )
                ) {
-                self.timerStateStore.send(.timerButtonTapped)
+                self.timerViewStateStore.send(.timerButtonTapped)
             }
            )
         }
@@ -72,9 +72,9 @@ struct StatefulTimerButton: View {
 struct StatefulTimerButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            StatefulTimerButton(timerStateStore: MockTimerFactory.timerStateStore(.loading))
-            StatefulTimerButton(timerStateStore: MockTimerFactory.timerStateStore(.inactive(100)))
-            StatefulTimerButton(timerStateStore: MockTimerFactory.timerStateStore(.active(100)))
+            StatefulTimerButton(timerViewStateStore: MockTimerFactory.timerViewStateStore(.loading))
+            StatefulTimerButton(timerViewStateStore: MockTimerFactory.timerViewStateStore(.inactive(100)))
+            StatefulTimerButton(timerViewStateStore: MockTimerFactory.timerViewStateStore(.active(100)))
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  StatefulTimerView.swift
+//  StatefulTimerWatchView.swift
 //  Twenty
 //
 //  Created by Hao Luo on 5/28/20.
@@ -9,12 +9,12 @@
 import Combine
 import SwiftUI
 
-struct StatefulTimerView: View {
+struct StatefulTimerWatchView: View {
     
-    @ObservedObject private var timerStateStore: TimerStateStore
+    @ObservedObject private var timerViewStateStore: TimerViewStateStore
     
-    init(timerStateStore: TimerStateStore) {
-        self.timerStateStore = timerStateStore
+    init(timerViewStateStore: TimerViewStateStore) {
+        self.timerViewStateStore = timerViewStateStore
     }
     
     enum ViewState {
@@ -32,9 +32,9 @@ struct StatefulTimerView: View {
     }
     
     var body: some View {
-        switch timerStateStore.state {
+        switch timerViewStateStore.state {
         case .loading:
-            return TimerView(
+            return TimerWatchView(
                 model: .init(
                     textModel: .init(
                         text: "loading...",
@@ -46,7 +46,7 @@ struct StatefulTimerView: View {
                 )
             )
         case let .inactive(timeInterval):
-            return TimerView(
+            return TimerWatchView(
                 model: .init(
                     textModel: .init(
                         text: timeInterval.format(),
@@ -59,7 +59,7 @@ struct StatefulTimerView: View {
             )
             
         case let .active(timeInterval):
-            return TimerView(
+            return TimerWatchView(
                 model: .init(
                     textModel: .init(
                         text: timeInterval.format(),
@@ -83,12 +83,12 @@ private extension TimeInterval {
     }
 }
 
-struct StatefulTimerView_Previews: PreviewProvider {
+struct StatefulTimerWatchView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            StatefulTimerView(timerStateStore: MockTimerFactory.timerStateStore(.loading))
-            StatefulTimerView(timerStateStore: MockTimerFactory.timerStateStore(.inactive(100)))
-            StatefulTimerView(timerStateStore: MockTimerFactory.timerStateStore(.active(100)))
+            StatefulTimerWatchView(timerViewStateStore: MockTimerFactory.timerViewStateStore(.loading))
+            StatefulTimerWatchView(timerViewStateStore: MockTimerFactory.timerViewStateStore(.inactive(100)))
+            StatefulTimerWatchView(timerViewStateStore: MockTimerFactory.timerViewStateStore(.active(100)))
         }
     }
 }
