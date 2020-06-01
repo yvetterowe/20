@@ -61,6 +61,7 @@ struct MockGoal: Goal, Identifiable {
     }
     
     mutating func appendTrackRecord(_ trackRecord: DateInterval) {
+        print("Track record added! \(trackRecord)")
         trackRecords.append(trackRecord)
         
         // TODO(#13): handle `trackRecord` spreads across multiple days

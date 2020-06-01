@@ -25,6 +25,7 @@ enum TimerViewAction {
 struct TimerViewContext {
     let currentDate: Date
     let timer: TwentyTimer
+    let goalStoreWriter: GoalStoreWriter
 }
 
 func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, context: TimerViewContext) {
@@ -60,6 +61,7 @@ func timerViewReducer(state: inout TimerViewState, action: TimerViewAction, cont
             )
             context.timer.suspend()
             print("paused! last active: \(currentSpan.duration) \(currentSpan)")
+            context.goalStoreWriter.appendTrackRecord(currentSpan, forGoal: goalID)
         }
         
     case let .timerTicked(tickDate, tickInterval):

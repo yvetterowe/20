@@ -35,7 +35,8 @@ enum MockTimerFactory {
     
     static let timerContext: TimerViewContext = .init(
         currentDate: MockTimerFactory.currentDate,
-        timer: MockTimerFactory.timer
+        timer: MockTimerFactory.timer,
+        goalStoreWriter: MockGoalFactory.makeGoalReaderAndWriter().writer
     )
 }
 

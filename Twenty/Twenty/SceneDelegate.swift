@@ -21,13 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let currentDate: Date = MockTimerFactory.currentDate
-        let goalStoreReader: AnyGoalStoreReader<MockGoalStore> = MockGoalFactory.makeGoalReaderAndWriter().reader
+        let (goalStoreReader, goalStoreWriter) = MockGoalFactory.makeGoalReaderAndWriter()
         let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: "goal-0")
         
         let timer: TwentyTimer = RealTimer(timeInterval: 1)
         let timerViewContext: TimerViewContext = .init(
             currentDate: currentDate,
-            timer: timer
+            timer: timer,
+            goalStoreWriter: goalStoreWriter
         )
         let timerViewStateStore: TimerViewStateStore = .init(
             initialState: .loading,
