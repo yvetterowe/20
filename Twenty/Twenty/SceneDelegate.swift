@@ -36,6 +36,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         timer.setTimerViewStateStore(timerViewStateStore)
         
+        _ = goalPublisher.sink { goal in
+            timerViewStateStore.send(.goalLoaded(goal))
+        }
+        
         let contentView = ContentView(goalPublisher: goalPublisher, timerViewStateStore: timerViewStateStore)
 
         // Use a UIHostingController as window root view controller.
