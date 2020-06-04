@@ -18,7 +18,7 @@ class CalendarTests: XCTestCase {
     func testDaysInWeek() {
         let daysInWeek = calendar.daysInWeek(today)
         
-        let expectedDaysInWeek: [Date] = [
+        let expectedDaysInWeek: [Date.Day] = [
             DateComponents(calendar: calendar, year: 2020, month: 5, day: 31),
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 1),
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 2),
@@ -26,7 +26,7 @@ class CalendarTests: XCTestCase {
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 4),
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 5),
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 6),
-        ].map{$0.date!}
+            ].map { $0.date!.asDay(in: calendar)}
         
         XCTAssertEqual(daysInWeek, expectedDaysInWeek)
     }
@@ -34,13 +34,13 @@ class CalendarTests: XCTestCase {
     func testWeeksInMonth() {
         let weeksInMonth = calendar.weeksInMonth(today)
         
-        let expectedWeeksInMonth: [Date] = [
+        let expectedWeeksInMonth: [Date.Week] = [
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 1),
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 7),
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 14),
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 21),
             DateComponents(calendar: calendar, year: 2020, month: 6, day: 28),
-        ].map{$0.date!}
+        ].map { $0.date!.asWeek(in: calendar)}
         
         XCTAssertEqual(weeksInMonth, expectedWeeksInMonth)
     }
@@ -48,8 +48,9 @@ class CalendarTests: XCTestCase {
     func testMonthsInYear() {
         let monthsInYear = calendar.monthsInYear(today)
         
-        let expectedMonthsInYear: [Date] = (1...12)
+        let expectedMonthsInYear: [Date.Month] = (1...12)
             .map { DateComponents(calendar: calendar, year: 2020, month: $0, day: 1).date! }
+            .map { $0.asMonth(in: calendar) }
         
         XCTAssertEqual(monthsInYear, expectedMonthsInYear)
     }
