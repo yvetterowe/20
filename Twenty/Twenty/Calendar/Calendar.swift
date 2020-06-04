@@ -32,6 +32,17 @@ extension Calendar {
         )
     }
     
+    func monthsInYear(_ year: Date) -> [Date] {
+        guard let yearInterval = dateInterval(of: .year, for: year) else {
+            return []
+        }
+        
+        return dates(
+            inside: yearInterval,
+            matching: DateComponents(day: 1, hour: 0, minute: 0, second: 0)
+        )
+    }
+    
     private func dates(inside interval: DateInterval, matching components: DateComponents) -> [Date] {
         var dates: [Date] = []
         dates.append(interval.start)

@@ -44,4 +44,13 @@ class CalendarTests: XCTestCase {
         
         XCTAssertEqual(weeksInMonth, expectedWeeksInMonth)
     }
+    
+    func testMonthsInYear() {
+        let monthsInYear = calendar.monthsInYear(today)
+        
+        let expectedMonthsInYear: [Date] = (1...12)
+            .map { DateComponents(calendar: calendar, year: 2020, month: $0, day: 1).date! }
+        
+        XCTAssertEqual(monthsInYear, expectedMonthsInYear)
+    }
 }
