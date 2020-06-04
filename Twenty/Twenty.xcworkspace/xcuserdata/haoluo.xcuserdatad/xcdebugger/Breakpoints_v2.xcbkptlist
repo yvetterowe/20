@@ -82,38 +82,6 @@
             endingLineNumber = "58"
             landmarkName = "MockGoal"
             landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "6A91AB29-3110-4D23-ADB2-A046D45D7563 - 71f51b614530d66f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Twenty.MockGoal.init(id: Swift.String, name: Swift.String, timeToComplete: Swift.Double, trackRecords: Swift.Array&lt;Foundation.DateInterval&gt;) -&gt; Twenty.MockGoal"
-                  moduleName = "Twenty"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/haoluo/dev/20/Twenty/Twenty/Mocks/MockGoal.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "434">
-               </Location>
-               <Location
-                  uuid = "6A91AB29-3110-4D23-ADB2-A046D45D7563 - 5b09219620d11a06"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Foundation.DateInterval) -&gt; () in Twenty.MockGoal.init(id: Swift.String, name: Swift.String, timeToComplete: Swift.Double, trackRecords: Swift.Array&lt;Foundation.DateInterval&gt;) -&gt; Twenty.MockGoal"
-                  moduleName = "Twenty"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/haoluo/dev/20/Twenty/Twenty/Mocks/MockGoal.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "34">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
