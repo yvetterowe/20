@@ -21,6 +21,17 @@ extension Calendar {
         )
     }
     
+    func weeksInMonth(_ month: Date) -> [Date] {
+        guard let monthInterval = dateInterval(of: .month, for: month) else {
+            return []
+        }
+        
+        return dates(
+            inside: monthInterval,
+            matching: DateComponents(hour: 0, minute: 0, second: 0, weekday: firstWeekday)
+        )
+    }
+    
     private func dates(inside interval: DateInterval, matching components: DateComponents) -> [Date] {
         var dates: [Date] = []
         dates.append(interval.start)
