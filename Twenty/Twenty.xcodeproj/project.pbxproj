@@ -36,6 +36,7 @@
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
+		E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4492489567100463D48 /* BackgroundShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
+		E7D3F4492489567100463D48 /* BackgroundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				E78F058C2480946C0066C687 /* ButtonModel.swift */,
 				E78F057E247F6CF30066C687 /* ColorPalette.swift */,
 				E78F0588248093140066C687 /* BackgroundColorMode.swift */,
+				E7D3F4492489567100463D48 /* BackgroundShape.swift */,
 				E78F058A248093D30066C687 /* BorderMode.swift */,
 				E7D3F4452489426D00463D48 /* GridStack.swift */,
 			);
@@ -374,6 +377,7 @@
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
 				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
+				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
 				E77A5131248556A9009243CC /* Store.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerWatchView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
