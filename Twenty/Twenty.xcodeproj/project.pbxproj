@@ -35,6 +35,7 @@
 		E7B88914248349D200C395AD /* MockGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B88913248349D200C395AD /* MockGoal.swift */; };
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
+		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		E7B88913248349D200C395AD /* MockGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGoal.swift; sourceTree = "<group>"; };
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
+		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				E78F057E247F6CF30066C687 /* ColorPalette.swift */,
 				E78F0588248093140066C687 /* BackgroundColorMode.swift */,
 				E78F058A248093D30066C687 /* BorderMode.swift */,
+				E7D3F4452489426D00463D48 /* GridStack.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */,
 				E77A512E24843CE9009243CC /* StripTimeDate.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
+				E7D3F4462489426D00463D48 /* GridStack.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E78F059C2482B99B0066C687 /* TimerViewStateStore.swift in Sources */,
 				E78F057B247F53150066C687 /* TimerWatchView.swift in Sources */,
