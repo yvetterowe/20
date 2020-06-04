@@ -1,5 +1,5 @@
 //
-//  CalendarGridCell.swift
+//  CalendarDayCell.swift
 //  Twenty
 //
 //  Created by Hao Luo on 6/4/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CalendarGridCell: View {
+struct CalendarDayCell: View {
     var model: Model
     struct Model {
         var cell: Cell
@@ -21,7 +21,7 @@ struct CalendarGridCell: View {
     var body: some View {
         switch model.cell {
         case .empty:
-            return TextButton.calendarGridCellPlaceholder
+            return TextButton.CalendarDayCellPlaceholder
         case let .button(buttonModel):
             return TextButton(model: buttonModel)
         }
@@ -30,7 +30,7 @@ struct CalendarGridCell: View {
 
 private extension TextButton {
     
-    static let calendarGridCellPlaceholder: TextButton = .init(
+    static let CalendarDayCellPlaceholder: TextButton = .init(
         model: .init(
             textModel: .init(text: "", textColor: .clear, textFont: .title),
             backgroundColorMode: .single(.clear),
@@ -39,11 +39,11 @@ private extension TextButton {
     )
 }
 
-struct CalendarGridCell_Previews: PreviewProvider {
+struct CalendarDayCell_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            CalendarGridCell(model: .init(cell: .empty))
-            CalendarGridCell(
+            CalendarDayCell(model: .init(cell: .empty))
+            CalendarDayCell(
                 model: .init(
                     cell: .button(
                         .init(
@@ -55,7 +55,7 @@ struct CalendarGridCell_Previews: PreviewProvider {
                     )
                 )
             )
-            CalendarGridCell(
+            CalendarDayCell(
                 model: .init(
                     cell: .button(
                         .init(

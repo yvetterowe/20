@@ -37,8 +37,7 @@
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
 		E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4492489567100463D48 /* BackgroundShape.swift */; };
-		E7D3F44C248956FE00463D48 /* CalendarGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F44B248956FE00463D48 /* CalendarGridCell.swift */; };
-		E7D3F44E248957E700463D48 /* CalendarGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F44D248957E700463D48 /* CalendarGridView.swift */; };
+		E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F44B248956FE00463D48 /* CalendarDayCell.swift */; };
 		E7D3F453248993BE00463D48 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F452248993BE00463D48 /* Calendar.swift */; };
 		E7D3F455248997F100463D48 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F454248997F000463D48 /* CalendarTests.swift */; };
 		E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */; };
@@ -92,8 +91,7 @@
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		E7D3F4492489567100463D48 /* BackgroundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShape.swift; sourceTree = "<group>"; };
-		E7D3F44B248956FE00463D48 /* CalendarGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarGridCell.swift; sourceTree = "<group>"; };
-		E7D3F44D248957E700463D48 /* CalendarGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridView.swift; sourceTree = "<group>"; };
+		E7D3F44B248956FE00463D48 /* CalendarDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		E7D3F452248993BE00463D48 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E7D3F454248997F000463D48 /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
 		E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekView.swift; sourceTree = "<group>"; };
@@ -131,8 +129,6 @@
 		E77A512824840FA1009243CC /* Stateless UI Components */ = {
 			isa = PBXGroup;
 			children = (
-				E7D3F44B248956FE00463D48 /* CalendarGridCell.swift */,
-				E7D3F44D248957E700463D48 /* CalendarGridView.swift */,
 				E78F057A247F53150066C687 /* TimerWatchView.swift */,
 			);
 			path = "Stateless UI Components";
@@ -256,11 +252,20 @@
 		E7D3F44F2489933B00463D48 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				E7D3F45A2489BB8B00463D48 /* Stateless UI Components */,
 				E7D3F452248993BE00463D48 /* Calendar.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		E7D3F45A2489BB8B00463D48 /* Stateless UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				E7D3F44B248956FE00463D48 /* CalendarDayCell.swift */,
 				E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */,
 				E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */,
 			);
-			path = Calendar;
+			path = "Stateless UI Components";
 			sourceTree = "<group>";
 		};
 		F0CBD1D2BC05CEA0FA04C0DE /* Frameworks */ = {
@@ -399,11 +404,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
-				E7D3F44C248956FE00463D48 /* CalendarGridCell.swift in Sources */,
+				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
-				E7D3F44E248957E700463D48 /* CalendarGridView.swift in Sources */,
 				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
 				E77A5131248556A9009243CC /* Store.swift in Sources */,
