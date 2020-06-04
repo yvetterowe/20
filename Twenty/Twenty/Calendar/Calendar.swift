@@ -10,7 +10,7 @@ import Foundation
 
 extension Date {
     
-    struct Day: Equatable {
+    struct Day: Hashable {
         let date: Date
         fileprivate init(date: Date) {
             self.date = date

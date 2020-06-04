@@ -41,6 +41,7 @@
 		E7D3F44E248957E700463D48 /* CalendarGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F44D248957E700463D48 /* CalendarGridView.swift */; };
 		E7D3F453248993BE00463D48 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F452248993BE00463D48 /* Calendar.swift */; };
 		E7D3F455248997F100463D48 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F454248997F000463D48 /* CalendarTests.swift */; };
+		E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		E7D3F44D248957E700463D48 /* CalendarGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridView.swift; sourceTree = "<group>"; };
 		E7D3F452248993BE00463D48 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E7D3F454248997F000463D48 /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
+		E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				E7D3F452248993BE00463D48 /* Calendar.swift */,
+				E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				E7B88914248349D200C395AD /* MockGoal.swift in Sources */,
 				E78F059324809CB90066C687 /* TimerTabView.swift in Sources */,
+				E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */,
 				E7D3DC732483055800422C77 /* Goal.swift in Sources */,
 				E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */,
 				E7D3F453248993BE00463D48 /* Calendar.swift in Sources */,
