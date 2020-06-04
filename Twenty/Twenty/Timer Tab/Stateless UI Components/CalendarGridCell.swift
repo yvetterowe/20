@@ -21,11 +21,22 @@ struct CalendarGridCell: View {
     var body: some View {
         switch model.cell {
         case .empty:
-            return AnyView(EmptyView())
+            return TextButton.calendarGridCellPlaceholder
         case let .button(buttonModel):
-            return AnyView(TextButton(model: buttonModel))
+            return TextButton(model: buttonModel)
         }
     }
+}
+
+private extension TextButton {
+    
+    static let calendarGridCellPlaceholder: TextButton = .init(
+        model: .init(
+            textModel: .init(text: "", textColor: .clear, textFont: .title),
+            backgroundColorMode: .single(.clear),
+            action: {}
+        )
+    )
 }
 
 struct CalendarGridCell_Previews: PreviewProvider {
@@ -57,5 +68,6 @@ struct CalendarGridCell_Previews: PreviewProvider {
                 )
             )
         }
+        .border(.some(color: .black, width: 1, cornerRadius: 0))
     }
 }

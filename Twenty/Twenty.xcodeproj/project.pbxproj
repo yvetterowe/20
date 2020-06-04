@@ -38,6 +38,7 @@
 		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
 		E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4492489567100463D48 /* BackgroundShape.swift */; };
 		E7D3F44C248956FE00463D48 /* CalendarGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F44B248956FE00463D48 /* CalendarGridCell.swift */; };
+		E7D3F44E248957E700463D48 /* CalendarGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F44D248957E700463D48 /* CalendarGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		E7D3F4492489567100463D48 /* BackgroundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShape.swift; sourceTree = "<group>"; };
 		E7D3F44B248956FE00463D48 /* CalendarGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarGridCell.swift; sourceTree = "<group>"; };
+		E7D3F44D248957E700463D48 /* CalendarGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				E7D3F44B248956FE00463D48 /* CalendarGridCell.swift */,
+				E7D3F44D248957E700463D48 /* CalendarGridView.swift */,
 				E78F057A247F53150066C687 /* TimerWatchView.swift */,
 			);
 			path = "Stateless UI Components";
@@ -380,6 +383,7 @@
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
+				E7D3F44E248957E700463D48 /* CalendarGridView.swift in Sources */,
 				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
 				E77A5131248556A9009243CC /* Store.swift in Sources */,

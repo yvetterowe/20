@@ -14,15 +14,20 @@ struct GridStack<Cell: View>: View {
         let numberOfRow: Int
         let numberOfColumns: Int
         let cell: (Int, Int) -> Cell
+        let cellSize: CGSize
         let backgroundColor: Color
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ForEach(0 ..< model.numberOfRow, id: \.self) { row in
-                HStack {
+                HStack(spacing:0) {
                     ForEach(0 ..< self.model.numberOfColumns, id: \.self) { column in
                         self.model.cell(row, column)
+                        .frame(
+                            width: self.model.cellSize.width,
+                            height: self.model.cellSize.height
+                        )
                     }
                 }
             }
@@ -31,7 +36,6 @@ struct GridStack<Cell: View>: View {
     }
 }
 
-
 struct GridStack_Previews: PreviewProvider {
     static var previews: some View {
         GridStack(
@@ -39,8 +43,9 @@ struct GridStack_Previews: PreviewProvider {
                 numberOfRow: 5,
                 numberOfColumns: 4,
                 cell: { row, column in
-                    Text("\(row)-\(column)")
+                    return row == column ? Text("") : Text("\(row)-\(column)")
                 },
+                cellSize: .init(width: 40, height: 40),
                 backgroundColor: .blue
             )
         )
