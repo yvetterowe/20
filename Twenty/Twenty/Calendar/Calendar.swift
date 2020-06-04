@@ -17,7 +17,7 @@ extension Date {
         }
     }
     
-    struct Week: Equatable {
+    struct Week: Hashable {
         let date: Date
         fileprivate init(date: Date) {
             self.date = date
@@ -41,7 +41,7 @@ extension Date {
     
     func asWeek(in calendar: Calendar) -> Week {
         precondition(
-            calendar.date(self, matchesComponents: calendar.weekMatchingComponents()),
+            calendar.date(self, matchesComponents: calendar.weekMatchingComponents(matchWeekday: false)),
             "\(self) doesn't satisfy components format for Week"
         )
         return .init(date: self)
@@ -76,7 +76,7 @@ extension Calendar {
         
         return dates(
             inside: monthInterval,
-            matching: DateComponents(hour: 0, minute: 0, second: 0, weekday: firstWeekday)
+            matching: weekMatchingComponents(matchWeekday: true)
         ).map { $0.asWeek(in: self) }
     }
     
@@ -87,7 +87,7 @@ extension Calendar {
         
         return dates(
             inside: yearInterval,
-            matching: DateComponents(day: 1, hour: 0, minute: 0, second: 0)
+            matching: monthMatchingComponents()
         ).map { $0.asMonth(in: self) }
     }
     
@@ -116,8 +116,12 @@ extension Calendar {
         return .init(hour: 0, minute: 0, second: 0)
     }
     
-    fileprivate func weekMatchingComponents() -> DateComponents {
-        return .init(hour: 0, minute: 0, second: 0, weekday: firstWeekday)
+    fileprivate func weekMatchingComponents(matchWeekday: Bool) -> DateComponents {
+        if matchWeekday {
+            return .init(hour: 0, minute: 0, second: 0, weekday: firstWeekday)
+        } else {
+            return .init(hour: 0, minute: 0, second: 0)
+        }
     }
     
     fileprivate func monthMatchingComponents() -> DateComponents {

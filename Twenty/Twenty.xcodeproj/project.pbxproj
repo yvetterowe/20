@@ -42,6 +42,7 @@
 		E7D3F453248993BE00463D48 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F452248993BE00463D48 /* Calendar.swift */; };
 		E7D3F455248997F100463D48 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F454248997F000463D48 /* CalendarTests.swift */; };
 		E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */; };
+		E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		E7D3F452248993BE00463D48 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E7D3F454248997F000463D48 /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
 		E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekView.swift; sourceTree = "<group>"; };
+		E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 			children = (
 				E7D3F452248993BE00463D48 /* Calendar.swift */,
 				E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */,
+				E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
 				E77A5131248556A9009243CC /* Store.swift in Sources */,
+				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerWatchView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */,
