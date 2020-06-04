@@ -1,5 +1,5 @@
 //
-//  TimerButton.swift
+//  TextButton.swift
 //  Twenty
 //
 //  Created by Hao Luo on 5/28/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TimerButton: View {
+struct TextButton: View {
     var model: ButtonModel
     
     var body: some View {
@@ -25,9 +25,9 @@ struct TimerButton: View {
     }
 }
 
-struct TimerButton_Previews: PreviewProvider {
+struct TextButton_Previews: PreviewProvider {
     static var previews: some View {
-        TimerButton(
+        TextButton(
             model: .init(
                 textModel: .init(text: "hello", textColor: .blue, textFont: .title),
                 backgroundColorMode: .single(.pink),

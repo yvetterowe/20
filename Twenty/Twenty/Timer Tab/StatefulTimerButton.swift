@@ -25,7 +25,7 @@ struct StatefulTimerButton: View {
     var body: some View {
         switch timerViewStateStore.state {
         case .loading:  // TODO(#12): Button should be disabled and untappable in loading state
-            return TimerButton(
+            return TextButton(
             model: .init(
                 textModel: .init(
                     text: "Still loading...",
@@ -36,7 +36,7 @@ struct StatefulTimerButton: View {
             )
         
         case .inactive:
-            return TimerButton(
+            return TextButton(
                 model: .init(
                     textModel: .init(
                         text: Strings.startTrackingButtonTitle,
@@ -48,7 +48,7 @@ struct StatefulTimerButton: View {
                 })
         
         case .active:
-           return TimerButton(
+           return TextButton(
                model: .init(
                    textModel: .init(
                        text: Strings.pauseButtonTitle,
