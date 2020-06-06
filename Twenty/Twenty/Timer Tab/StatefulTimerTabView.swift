@@ -1,5 +1,5 @@
 //
-//  TimerTabView.swift
+//  StatefulTimerTabView.swift
 //  Twenty
 //
 //  Created by Hao Luo on 5/28/20.
@@ -8,7 +8,10 @@
 
 import SwiftUI
 
-struct TimerTabView: View {
+
+
+
+struct StatefulTimerTabView: View {
     
     private let timerViewStateStore: TimerViewStateStore
     
@@ -24,8 +27,8 @@ struct TimerTabView: View {
     }
 }
 
-struct TimerTabView_Previews: PreviewProvider {
+struct StatefulTimerTabView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerTabView(timerViewStateStore: MockTimerFactory.timerViewStateStore(MockTimerFactory.activeState))
+        StatefulTimerTabView(timerViewStateStore: MockTimerFactory.timerViewStateStore(MockTimerFactory.activeState))
     }
 }

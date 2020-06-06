@@ -27,7 +27,7 @@
 		E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058C2480946C0066C687 /* ButtonModel.swift */; };
 		E78F058F248094E40066C687 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058E248094E40066C687 /* TextButton.swift */; };
 		E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F0590248095BE0066C687 /* StatefulTimerButton.swift */; };
-		E78F059324809CB90066C687 /* TimerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059224809CB90066C687 /* TimerTabView.swift */; };
+		E78F059324809CB90066C687 /* StatefulTimerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059224809CB90066C687 /* StatefulTimerTabView.swift */; };
 		E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05972480A9B60066C687 /* TwentyTimer.swift */; };
 		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
 		E78F059C2482B99B0066C687 /* TimerViewStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerViewStateStore.swift */; };
@@ -81,7 +81,7 @@
 		E78F058C2480946C0066C687 /* ButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
 		E78F058E248094E40066C687 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		E78F0590248095BE0066C687 /* StatefulTimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerButton.swift; sourceTree = "<group>"; };
-		E78F059224809CB90066C687 /* TimerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTabView.swift; sourceTree = "<group>"; };
+		E78F059224809CB90066C687 /* StatefulTimerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerTabView.swift; sourceTree = "<group>"; };
 		E78F05972480A9B60066C687 /* TwentyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyTimer.swift; sourceTree = "<group>"; };
 		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		E78F059B2482B99A0066C687 /* TimerViewStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewStateStore.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 				E77A512824840FA1009243CC /* Stateless UI Components */,
 				E78F05972480A9B60066C687 /* TwentyTimer.swift */,
 				E78F05992481D0D10066C687 /* BackgroundTimer.swift */,
-				E78F059224809CB90066C687 /* TimerTabView.swift */,
+				E78F059224809CB90066C687 /* StatefulTimerTabView.swift */,
 				E78F0590248095BE0066C687 /* StatefulTimerButton.swift */,
 				E78F058024803D290066C687 /* StatefulTimerWatchView.swift */,
 				E78F059B2482B99A0066C687 /* TimerViewStateStore.swift */,
@@ -427,7 +427,7 @@
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				E7B88914248349D200C395AD /* MockGoal.swift in Sources */,
-				E78F059324809CB90066C687 /* TimerTabView.swift in Sources */,
+				E78F059324809CB90066C687 /* StatefulTimerTabView.swift in Sources */,
 				E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */,
 				E7D3DC732483055800422C77 /* Goal.swift in Sources */,
 				E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */,
