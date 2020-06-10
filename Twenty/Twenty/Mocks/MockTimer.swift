@@ -9,39 +9,53 @@
 import Foundation
 
 enum MockTimerFactory {
+    static let calendar: Calendar = .current
     static let timer: TwentyTimer = MockTimer()
     static let currentDate: Date = DateComponents(
-        calendar: .current, year: 2020, month: 5, day: 30, hour: 14, minute: 30, second: 10
+        calendar: calendar, year: 2020, month: 5, day: 30, hour: 0, minute: 0, second: 0
     ).date!
 
-    static let activeState: TimerViewState = .active(
-        goalID: MockGoalFactory.mockGoals.first!.id,
-        currentSpan: .init(start: MockTimerFactory.currentDate.advanced(by: -40), duration: 40),
-        totalElapsedSeconds: 100
-    )
-    
-    static let inactiveState: TimerViewState = .inactive(
-        goalID: MockGoalFactory.mockGoals.first!.id,
-        totalElapsedSeconds: 100
-    )
-    
-    static func timerViewStateStore(_ initialState: TimerViewState) -> TimerViewStateStore {
-        return .init(
-            initialState: initialState,
-            reducer: { (_, _, _) in },
-            context: MockTimerFactory.timerContext
-        )
-    }
-    
-    static let timerContext: TimerViewContext = .init(
-        currentDate: MockTimerFactory.currentDate,
-        timer: MockTimerFactory.timer,
-        goalStoreWriter: MockGoalFactory.makeGoalReaderAndWriter().writer
-    )
+//    static let activeState: TimerViewState = .init(
+//        selectedDay: currentDate.asDay(in: calendar),
+//        today: currentDate.asDay(in: calendar),
+//        goalState: .loaded(MockGoalFactory.mockGoals.first!),
+//        timerState: .active(currentElapsedTime: .init(start: MockTimerFactory.currentDate.advanced(by: -40), duration: 40))
+//    )
+//    
+//    static let inactiveState: TimerViewState = .init(
+//        selectedDay: currentDate.asDay(in: calendar),
+//        today: currentDate.asDay(in: calendar),
+//        goalState: .loaded(MockGoalFactory.mockGoals.first!),
+//        timerState: .inactive
+//    )
+//    
+//    static func timerStateStore(_ initialState: TimerState) -> TimerStateStore {
+//        return .init(
+//            initialState: initialState,
+//            reducer: { (_, _, _) in },
+//            context: MockTimerFactory.timerContext
+//        )
+//    }
+//    
+//    static func TimerStateStore(_ initialState: TimerViewState) -> TimerStateStore {
+//        return .init(
+//            initialState: initialState,
+//            reducer: { (_, _, _) in },
+//            context: MockTimerFactory.timerViewContext
+//        )
+//    }
+//    
+//    static let timerContext: TimerContext = .init(
+//        timer: MockTimerFactory.timer,
+//        goalStoreWriter: MockGoalFactory.makeGoalReaderAndWriter().writer
+//    )
+//    
+//    static let timerViewContext: TimerViewContext = .init(
+//        timerStateStore: MockTimerFactory.timerStateStore(.inactive)
+//    )
 }
 
 private final class MockTimer: TwentyTimer {
-    func setTimerViewStateStore(_ store: TimerViewStateStore) {}
     func resume() {}
     func suspend() {}
 }

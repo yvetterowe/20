@@ -8,27 +8,28 @@
 
 import SwiftUI
 
-
-
-
 struct StatefulTimerTabView: View {
     
-    private let timerViewStateStore: TimerViewStateStore
+    private let timerStateStore: TimerStateStore
+    private let goalPublisher: GoalPublisher
+    private let timer: TwentyTimer
     
-    init(timerViewStateStore: TimerViewStateStore) {
-        self.timerViewStateStore = timerViewStateStore
+    init(timerStateStore: TimerStateStore, goalPublisher: GoalPublisher, timer: TwentyTimer) {
+        self.timerStateStore = timerStateStore
+        self.goalPublisher = goalPublisher
+        self.timer = timer
     }
     
     var body: some View {
         VStack {
-            StatefulTimerWatchView(timerViewStateStore: timerViewStateStore)
-            StatefulTimerButton(timerViewStateStore: timerViewStateStore)
+            StatefulTimerWatchView(timerStateStore: timerStateStore, goalPublisher: goalPublisher)
+            StatefulTimerButton(timer: timer)
         }
     }
 }
 
-struct StatefulTimerTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        StatefulTimerTabView(timerViewStateStore: MockTimerFactory.timerViewStateStore(MockTimerFactory.activeState))
-    }
-}
+//struct StatefulTimerTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StatefulTimerTabView(TimerStateStore: MockTimerFactory.TimerStateStore(MockTimerFactory.activeState))
+//    }
+//}

@@ -22,26 +22,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         let currentDate: Date = MockTimerFactory.currentDate
         let (goalStoreReader, goalStoreWriter) = MockGoalFactory.makeGoalReaderAndWriter()
-        let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: "goal-0")
+        let goalID = "goal-0"
+        let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: goalID)
         
-        let timer: TwentyTimer = RealTimer(timeInterval: 1)
-        let timerViewContext: TimerViewContext = .init(
-            currentDate: currentDate,
-            timer: timer,
-            goalStoreWriter: goalStoreWriter
+        let initialTimerState: TimerState = .init(activeState: .inactive, totalElapsedTime: 0)
+        let timerStateStore: TimerStateStore = .init(
+            initialState: initialTimerState,
+            goalStoreWriter: goalStoreWriter,
+            goalID: goalID
         )
-        let timerViewStateStore: TimerViewStateStore = .init(
-            initialState: .loading,
-            reducer: timerViewReducer,
-            context: timerViewContext
+        let timer: TwentyTimer = RealTimer(timeInterval: 1, store: timerStateStore)
+
+        
+        let contentView = ContentView(
+            goalPublisher: goalPublisher,
+            timerStateStore: timerStateStore,
+            timer: timer
         )
-        timer.setTimerViewStateStore(timerViewStateStore)
-        
-        _ = goalPublisher.sink { goal in
-            timerViewStateStore.send(.goalLoaded(goal))
-        }
-        
-        let contentView = ContentView(goalPublisher: goalPublisher, timerViewStateStore: timerViewStateStore)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
