@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -40,8 +41,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 timerStateStore: timerStateStore,
                 goalPublisher: goalPublisher,
                 timer: timer,
-                initialSelectedDay: currentDate,
-                selectDayStore: selectDayStore
+                selectDayStore: selectDayStore,
+                todayPublisher: Just(currentDate).eraseToAnyPublisher()
             )
         )
 

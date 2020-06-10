@@ -31,7 +31,7 @@ func timerButtonStateReducer(state: inout TimerButtonState, action: TimerButtonA
         case .inactive:
             state = .active
             context.timer.resume()
-            
+
         case .active:
             state = .inactive
             context.timer.suspend()

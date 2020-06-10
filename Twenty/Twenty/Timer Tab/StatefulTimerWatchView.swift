@@ -24,7 +24,6 @@ final class TimerWatchViewStateStore: ObservableObject, Subscriber {
         goalPublisher: AnyPublisher<Goal, Never>,
         timerStatePublisher: AnyPublisher<TimerState, Never>
     ) {
-        
         Publishers.CombineLatest4(
             selectedDayPublisher,
             todayPublisher,
@@ -65,7 +64,7 @@ extension StatefulTimerWatchView {
     init(context: StatefulTimerTabView.Context) {
         let viewStateStore: TimerWatchViewStateStore = .init(
             selectedDayPublisher: context.selectDayStore.selectDayPublisher,
-            todayPublisher: Just(MockTimerFactory.currentDate.asDay(in: .current)).eraseToAnyPublisher(),
+            todayPublisher: context.todayPublisher,
             goalPublisher: context.goalPublisher,
             timerStatePublisher: context.timerStateStore.timerStatePublisher
         )
