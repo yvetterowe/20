@@ -42,22 +42,22 @@ struct MockGoal: Goal, Identifiable {
     let timeToComplete: TimeInterval
     
     private(set) var trackRecords: [TrackRecord]
-    private var timeSpentByTimeStripDate: [StripTimeDate: TimeInterval]
+    private var timeSpentByDay: [Date.Day: TimeInterval]
     
     init(id: GoalID, name: String, timeToComplete: TimeInterval, trackRecords: [TrackRecord]) {
         self.id = id
         self.name = name
         self.timeToComplete = timeToComplete
         self.trackRecords = []
-        self.timeSpentByTimeStripDate = [:]
+        self.timeSpentByDay = [:]
         
         trackRecords.forEach {
             self.appendTrackRecord($0)
         }
     }
     
-    func totalTimeSpent(on date: StripTimeDate) -> TimeInterval {
-        return timeSpentByTimeStripDate[date] ?? 0
+    func totalTimeSpent(on day: Date.Day) -> TimeInterval {
+        return timeSpentByDay[day] ?? 0
     }
     
     mutating func appendTrackRecord(_ trackRecord: TrackRecord) {
@@ -65,8 +65,8 @@ struct MockGoal: Goal, Identifiable {
         trackRecords.append(trackRecord)
         
         // TODO(#13): handle `trackRecord` spreads across multiple days
-        let stripTimeDate = StripTimeDate(trackRecord.timeSpan.start.stripTime())
-        timeSpentByTimeStripDate[stripTimeDate] = (timeSpentByTimeStripDate[stripTimeDate] ?? 0) + trackRecord.timeSpan.duration
+        let day = trackRecord.timeSpan.start.asDay(in: .current)
+        timeSpentByDay[day] = (timeSpentByDay[day] ?? 0) + trackRecord.timeSpan.duration
     }
 }
 

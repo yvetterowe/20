@@ -32,11 +32,9 @@ extension Date {
     }
     
     func asDay(in calendar: Calendar) -> Day {
-        precondition(
-            calendar.date(self, matchesComponents: calendar.dayMatchingComponents()),
-            "\(self) doesn't satisfy components format for Day"
-        )
-        return .init(date: self)
+        let components = calendar.dateComponents([.year, .month, .day], from: self)
+        let stripTimeDate = calendar.date(from: components)!
+        return .init(date: stripTimeDate)
     }
     
     func asWeek(in calendar: Calendar) -> Week {

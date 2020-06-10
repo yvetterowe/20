@@ -20,5 +20,5 @@ protocol Goal {
     var timeToComplete: TimeInterval { get }
     var trackRecords: [TrackRecord] { get }
     
-    func totalTimeSpent(on date: StripTimeDate) -> TimeInterval
+    func totalTimeSpent(on day: Date.Day) -> TimeInterval
 }

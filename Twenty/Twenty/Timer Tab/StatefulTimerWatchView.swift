@@ -41,7 +41,7 @@ final class TimerWatchViewStateStore: ObservableObject, Subscriber {
     typealias Failure = Never
     
     func receive(_ input: Input) -> Subscribers.Demand {
-        var timeSpentOnSelectDay = input.goal.totalTimeSpent(on: .init(input.selectedDay.date.stripTime()))
+        var timeSpentOnSelectDay = input.goal.totalTimeSpent(on: input.selectedDay)
         if input.selectedDay == input.today {
             timeSpentOnSelectDay += input.timerState.totalElapsedTime
         }
