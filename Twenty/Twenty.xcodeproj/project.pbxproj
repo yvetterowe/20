@@ -43,6 +43,7 @@
 		E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */; };
 		E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */; };
 		E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F45D248BF2F700463D48 /* UnwrapView.swift */; };
+		E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekView.swift; sourceTree = "<group>"; };
 		E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthView.swift; sourceTree = "<group>"; };
 		E7D3F45D248BF2F700463D48 /* UnwrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwrapView.swift; sourceTree = "<group>"; };
+		E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulSelectDayHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 				E78F0590248095BE0066C687 /* StatefulTimerButton.swift */,
 				E78F058024803D290066C687 /* StatefulTimerWatchView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
+				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
 				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
+				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,

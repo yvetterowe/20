@@ -62,12 +62,12 @@ final class TimerWatchViewStateStore: ObservableObject, Subscriber {
 
 extension StatefulTimerWatchView {
     
-    init(timerStateStore: TimerStateStore, goalPublisher: GoalPublisher) {
+    init(context: StatefulTimerTabView.Context) {
         let viewStateStore: TimerWatchViewStateStore = .init(
-            selectedDayPublisher: Just(MockTimerFactory.currentDate.asDay(in: .current)).eraseToAnyPublisher(),
+            selectedDayPublisher: context.selectDayStore.selectDayPublisher,
             todayPublisher: Just(MockTimerFactory.currentDate.asDay(in: .current)).eraseToAnyPublisher(),
-            goalPublisher: goalPublisher,
-            timerStatePublisher: timerStateStore.timerStatePublisher
+            goalPublisher: context.goalPublisher,
+            timerStatePublisher: context.timerStateStore.timerStatePublisher
         )
         
         self.init(viewStateStore: viewStateStore)

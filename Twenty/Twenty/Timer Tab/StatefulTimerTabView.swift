@@ -6,24 +6,30 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
+import Combine
 import SwiftUI
 
 struct StatefulTimerTabView: View {
     
-    private let timerStateStore: TimerStateStore
-    private let goalPublisher: GoalPublisher
-    private let timer: TwentyTimer
+    struct Context {
+        let timerStateStore: TimerStateStore
+        let goalPublisher: GoalPublisher
+        let timer: TwentyTimer
+        let initialSelectedDay: Date.Day
+        let selectDayStore: SelectDayStore
+    }
     
-    init(timerStateStore: TimerStateStore, goalPublisher: GoalPublisher, timer: TwentyTimer) {
-        self.timerStateStore = timerStateStore
-        self.goalPublisher = goalPublisher
-        self.timer = timer
+    private let context: Context
+    
+    init(context: Context) {
+        self.context = context
     }
     
     var body: some View {
         VStack {
-            StatefulTimerWatchView(timerStateStore: timerStateStore, goalPublisher: goalPublisher)
-            StatefulTimerButton(timer: timer)
+            StatefulSelectDayHeader(store: context.selectDayStore)
+            StatefulTimerWatchView(context: context)
+            StatefulTimerButton(timer: context.timer)
         }
     }
 }

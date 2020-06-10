@@ -9,21 +9,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    private let goalPublisher: GoalPublisher
-    private let timerStateStore: TimerStateStore
-    private let timer: TwentyTimer
+    private let timerTabContext: StatefulTimerTabView.Context
     
     @State private var selection = 0
     
-    init(goalPublisher: GoalPublisher, timerStateStore: TimerStateStore, timer: TwentyTimer) {
-        self.goalPublisher = goalPublisher
-        self.timerStateStore = timerStateStore
-        self.timer = timer
+    init(timerTabContext: StatefulTimerTabView.Context) {
+        self.timerTabContext = timerTabContext
     }
     
     var body: some View {
         TabView(selection: $selection){
-            StatefulTimerTabView(timerStateStore: timerStateStore, goalPublisher: goalPublisher, timer: timer)
+            StatefulTimerTabView(context: timerTabContext)
                 .font(.title)
                 .tabItem {
                     VStack {

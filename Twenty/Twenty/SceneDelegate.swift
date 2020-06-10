@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let currentDate: Date = MockTimerFactory.currentDate
+        let currentDate: Date.Day = MockTimerFactory.currentDate.asDay(in: .current)
         let (goalStoreReader, goalStoreWriter) = MockGoalFactory.makeGoalReaderAndWriter()
         let goalID = "goal-0"
         let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: goalID)
@@ -33,11 +33,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         let timer: TwentyTimer = RealTimer(timeInterval: 1, store: timerStateStore)
 
+        let selectDayStore = SelectDayStore(initialSelectDay: currentDate)
         
         let contentView = ContentView(
-            goalPublisher: goalPublisher,
-            timerStateStore: timerStateStore,
-            timer: timer
+            timerTabContext: .init(
+                timerStateStore: timerStateStore,
+                goalPublisher: goalPublisher,
+                timer: timer,
+                initialSelectedDay: currentDate,
+                selectDayStore: selectDayStore
+            )
         )
 
         // Use a UIHostingController as window root view controller.
