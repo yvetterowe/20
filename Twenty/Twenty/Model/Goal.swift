@@ -10,7 +10,7 @@ import Foundation
 
 typealias GoalID = String
 
-struct TrackRecord {
+struct TrackRecord: Codable {
     let timeSpan: DateInterval
 }
 

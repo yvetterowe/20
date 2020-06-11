@@ -31,12 +31,12 @@ enum MockGoalFactory {
     
     static func makeGoalReaderAndWriter(with goals: [MockGoal] = mockGoals)
         -> (reader: AnyGoalStoreReader<MockGoalStore>, writer: GoalStoreWriter) {
-        let mockGoalStore = MockGoalStore(mockGoals: goals)
+        let mockGoalStore = MockGoalStore()
         return (AnyGoalStoreReader(mockGoalStore), mockGoalStore)
     }
 }
 
-struct MockGoal: Goal, Identifiable {
+struct MockGoal: Goal, Identifiable, Codable {
     let id: GoalID
     let name: String
     let timeToComplete: TimeInterval
@@ -76,7 +76,16 @@ final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
     
     private var goalSubjectsByID: [GoalID: GoalSubject]
     
-    init(mockGoals: [MockGoal]) {
+    private let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("mockdb")
+    
+    init() {
+        let mockGoals: [MockGoal]
+        if let jsonData = FileManager.default.contents(atPath: fileURL.path) {
+            mockGoals = try! JSONDecoder().decode([MockGoal].self, from: jsonData)
+        } else {
+            mockGoals = MockGoalFactory.mockGoals
+        }
+        
         self.goalSubjectsByID = mockGoals.reduce([:]) { (goalSubjectsByID, goal) -> [GoalID: GoalSubject] in
             var dict = goalSubjectsByID
             dict[goal.id] = GoalSubject(goal)
@@ -98,6 +107,8 @@ final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
         var updatedGoal = subject.value
         updatedGoal.appendTrackRecord(trackRecord)
         subject.send(updatedGoal)
+        
+        saveToFile()
     }
     
     // MARK: - Helpers
@@ -108,5 +119,15 @@ final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
         }
         
         return goalSubject
+    }
+    
+    private func saveToFile() {
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            try? FileManager.default.removeItem(at: fileURL)
+        }
+        
+        let goals = goalSubjectsByID.values.map {$0.value}
+        let jsonGoals = try! JSONEncoder().encode(goals)
+        try? jsonGoals.write(to: fileURL)
     }
 }
