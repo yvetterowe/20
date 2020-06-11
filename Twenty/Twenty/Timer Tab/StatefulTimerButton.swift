@@ -9,8 +9,6 @@
 import Combine
 import SwiftUI
 
-typealias TimerButtonStateStore = Store<TimerButtonState, TimerButtonAction, TimerButtonContext>
-
 enum TimerButtonState {
     case inactive
     case active
@@ -20,34 +18,65 @@ enum TimerButtonAction {
     case toggle
 }
 
-struct TimerButtonContext {
-    let timer: TwentyTimer
-}
-
-func timerButtonStateReducer(state: inout TimerButtonState, action: TimerButtonAction, context: TimerButtonContext) {
-    switch action {
-    case .toggle:
+final class TimerButtonStateStore: ObservableObject, Subscriber {
+    
+    @Published private(set) var state: TimerButtonState = .inactive
+    private let timer: TwentyTimer
+    
+    init(
+        timer: TwentyTimer,
+        timerStatePublisher: AnyPublisher<TimerState, Never>
+    ) {
+        self.timer = timer
+        timerStatePublisher.subscribe(self)
+    }
+    
+    func send(_ action: TimerButtonAction) {
         switch state {
         case .inactive:
             state = .active
-            context.timer.resume()
-
+            timer.resume()
+        
         case .active:
             state = .inactive
-            context.timer.suspend()
+            timer.suspend()
         }
     }
+    
+    // MARK: - Subscriber
+    
+    typealias Input = TimerState
+    typealias Failure = Never
+    
+    func receive(_ input: Input) -> Subscribers.Demand {
+        switch input.activeState {
+        case .inactive:
+            state = .inactive
+        case .active:
+            state = .active
+        }
+        
+        return .unlimited
+    }
+    
+    func receive(subscription: Subscription) {
+        subscription.request(.unlimited)
+    }
+    
+    func receive(completion: Subscribers.Completion<Never>) {
+        
+    }
+
 }
 
 extension StatefulTimerButton {
     
-    init(timer: TwentyTimer) {
+    init(context: StatefulTimerTabView.Context) {
         let timerButtonStateStore: TimerButtonStateStore = .init(
-            initialState: .inactive,
-            reducer: timerButtonStateReducer,
-            context: .init(timer: timer)
+            timer: context.timer,
+            timerStatePublisher: context.timerStateStore.timerStatePublisher
         )
-                
+        
         self.init(buttonStateStore: timerButtonStateStore)
     }
 }

@@ -77,9 +77,9 @@ struct StatefulTimerTabView: View {
             StatefulSelectDayHeader(store: context.selectDayStore)
             StatefulTimerWatchView(context: context)
             if viewStateStore.state == .today {
-                StatefulTimerButton(timer: context.timer)
+                StatefulTimerButton(context: context)
             } else {
-                StatefulTimerButton(timer: context.timer).hidden()
+                StatefulTimerButton(context: context).hidden()
             }
         }
     }
