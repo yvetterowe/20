@@ -20,7 +20,7 @@ struct TimerState {
         didSet {
             switch(oldValue, activeState) {
             case (_, .inactive):
-                break
+                totalElapsedTime = 0
             case (.inactive, let .active(currentElapsedTime)):
                 totalElapsedTime += currentElapsedTime.duration
             case (let .active(previousElapsedTime), let .active(currentElapsedTime)):
