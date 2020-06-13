@@ -42,6 +42,7 @@ struct MockGoal: Goal, Identifiable, Codable {
     let timeToComplete: TimeInterval
     
     private(set) var trackRecords: [TrackRecord]
+    private(set) var totalTimeSpent: TimeInterval
     private var timeSpentByDay: [Date.Day: TimeInterval]
     
     init(id: GoalID, name: String, timeToComplete: TimeInterval, trackRecords: [TrackRecord]) {
@@ -49,6 +50,7 @@ struct MockGoal: Goal, Identifiable, Codable {
         self.name = name
         self.timeToComplete = timeToComplete
         self.trackRecords = []
+        self.totalTimeSpent = 0
         self.timeSpentByDay = [:]
         
         trackRecords.forEach {
@@ -67,6 +69,7 @@ struct MockGoal: Goal, Identifiable, Codable {
         // TODO(#13): handle `trackRecord` spreads across multiple days
         let day = trackRecord.timeSpan.start.asDay(in: .current)
         timeSpentByDay[day] = (timeSpentByDay[day] ?? 0) + trackRecord.timeSpan.duration
+        totalTimeSpent += trackRecord.timeSpan.duration
     }
 }
 

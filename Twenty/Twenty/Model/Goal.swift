@@ -19,6 +19,6 @@ protocol Goal {
     var name: String { get }
     var timeToComplete: TimeInterval { get }
     var trackRecords: [TrackRecord] { get }
-    
+    var totalTimeSpent: TimeInterval { get }
     func totalTimeSpent(on day: Date.Day) -> TimeInterval
 }

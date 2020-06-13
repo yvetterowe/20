@@ -81,6 +81,7 @@ struct StatefulTimerTabView: View {
             } else {
                 StatefulTimerButton(context: context).hidden()
             }
+            StatefulProgressView(goalPublisher: context.goalPublisher).frame(height: 16)
         }
     }
 }

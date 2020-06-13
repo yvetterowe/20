@@ -43,6 +43,7 @@
 		E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */; };
 		E7D3F4682493129900463D48 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4672493129800463D48 /* ProgressBar.swift */; };
 		E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4692493216000463D48 /* ProgressView.swift */; };
+		E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F46D249453D800463D48 /* StatefulProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulSelectDayHeader.swift; sourceTree = "<group>"; };
 		E7D3F4672493129800463D48 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E7D3F4692493216000463D48 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		E7D3F46D249453D800463D48 /* StatefulProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				E78F058024803D290066C687 /* StatefulTimerWatchView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
+				E7D3F46D249453D800463D48 /* StatefulProgressView.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerWatchView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
+				E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */,
 				E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */,
 				E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */,
 				E7A46E6F248409860090B43D /* MockTimer.swift in Sources */,
