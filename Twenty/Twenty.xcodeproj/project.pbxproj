@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2174D9B9E6EA8A3150EB28E3 /* libPods-Twenty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A5AC360BE63538BD4D7714 /* libPods-Twenty.a */; };
+		73544F602495F0740038914D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F5F2495F0740038914D /* SignUpViewController.swift */; };
+		73544F622495F0900038914D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F612495F0900038914D /* SignInViewController.swift */; };
+		73544F642495F0CF0038914D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F632495F0CF0038914D /* HomeViewController.swift */; };
 		739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
 		E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054C247F495D0066C687 /* AppDelegate.swift */; };
@@ -58,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73544F5F2495F0740038914D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		73544F612495F0900038914D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		73544F632495F0CF0038914D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		889D85D83787130A2704596A /* Pods-Twenty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.debug.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A5AC360BE63538BD4D7714 /* libPods-Twenty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twenty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +129,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73544F5A2495C6B60038914D /* VIewController */ = {
+			isa = PBXGroup;
+			children = (
+				73544F5F2495F0740038914D /* SignUpViewController.swift */,
+				73544F612495F0900038914D /* SignInViewController.swift */,
+				73544F632495F0CF0038914D /* HomeViewController.swift */,
+			);
+			path = VIewController;
+			sourceTree = "<group>";
+		};
+		73544F652495FC1D0038914D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		DBABA955D96A1FAC323980DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +196,8 @@
 		E78F054B247F495D0066C687 /* Twenty */ = {
 			isa = PBXGroup;
 			children = (
+				73544F652495FC1D0038914D /* Helpers */,
+				73544F5A2495C6B60038914D /* VIewController */,
 				E7D3F44F2489933B00463D48 /* Calendar */,
 				E77A512F2485565F009243CC /* Architecture */,
 				E7D3DC712482FAEB00422C77 /* Model */,
@@ -296,6 +321,7 @@
 				E78F0545247F495D0066C687 /* Sources */,
 				E78F0546247F495D0066C687 /* Frameworks */,
 				E78F0547247F495D0066C687 /* Resources */,
+				0195DDD6E3C096C3CD3E80D2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -384,6 +410,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0195DDD6E3C096C3CD3E80D2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Twenty/Pods-Twenty-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Twenty/Pods-Twenty-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Twenty/Pods-Twenty-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3008ED82D0914D1F7B875E7A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,10 +456,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73544F602495F0740038914D /* SignUpViewController.swift in Sources */,
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
 				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
 				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
+				73544F642495F0CF0038914D /* HomeViewController.swift in Sources */,
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
@@ -436,6 +481,7 @@
 				E7D3F4462489426D00463D48 /* GridStack.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */,
+				73544F622495F0900038914D /* SignInViewController.swift in Sources */,
 				E78F057B247F53150066C687 /* TimerWatchView.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
