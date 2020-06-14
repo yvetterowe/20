@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2174D9B9E6EA8A3150EB28E3 /* libPods-Twenty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A5AC360BE63538BD4D7714 /* libPods-Twenty.a */; };
+		739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
 		E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054C247F495D0066C687 /* AppDelegate.swift */; };
 		E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054E247F495D0066C687 /* SceneDelegate.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		889D85D83787130A2704596A /* Pods-Twenty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.debug.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A5AC360BE63538BD4D7714 /* libPods-Twenty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twenty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF69723C306F40791B2C46CA /* Pods-Twenty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.release.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				E78F0550247F495D0066C687 /* ContentView.swift */,
 				E78F0552247F49630066C687 /* Assets.xcassets */,
 				E78F0557247F49630066C687 /* LaunchScreen.storyboard */,
+				739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */,
 				E78F055A247F49630066C687 /* Info.plist */,
 				E78F0554247F49630066C687 /* Preview Content */,
 			);
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78F0559247F49630066C687 /* LaunchScreen.storyboard in Resources */,
+				739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */,
 				E78F0556247F49630066C687 /* Preview Assets.xcassets in Resources */,
 				E78F0553247F49630066C687 /* Assets.xcassets in Resources */,
 			);
