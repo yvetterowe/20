@@ -1,24 +1,25 @@
 //
-//  HomeViewController.swift
+//  ViewController.swift
 //  Twenty
 //
-//  Created by Effy Zhang on 6/13/20.
+//  Created by Effy Zhang on 6/14/20.
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class ViewController: UIViewController {
 
+    @IBOutlet weak var SignUpBtn: UIButton!
+    @IBOutlet weak var SignInBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpElements()
         // Do any additional setup after loading the view.
+        setUpElements()
     }
     func setUpElements(){
-        //Hide the error label
-        //style the elements
-        //To do
+         Utilities.styleFilledButton(SignUpBtn)
+         Utilities.styleFilledButton(SignInBtn)
     }
 
     /*

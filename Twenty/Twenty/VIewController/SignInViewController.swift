@@ -16,10 +16,20 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpElements()
 
         // Do any additional setup after loading the view.
     }
     
+    func setUpElements(){
+        //Hide the error label
+        errorLabel.alpha = 0
+
+        Utilities.styleTextField(emailTextField)
+        Utilities.styleTextField(passwordTextField)
+        Utilities.styleFilledButton(signInBtn)
+        //To do
+    }
 
     /*
     // MARK: - Navigation
