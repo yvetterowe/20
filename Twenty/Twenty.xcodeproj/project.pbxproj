@@ -16,6 +16,7 @@
 		739C10E62497346D003B9B15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C10E52497346D003B9B15 /* Constants.swift */; };
 		739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */; };
 		73B7E98E249873C00061D923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E98D249873BF0061D923 /* Utilities.swift */; };
+		73B7E992249893E20061D923 /* GoogleSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E991249893E20061D923 /* GoogleSignInViewController.swift */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
 		E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054C247F495D0066C687 /* AppDelegate.swift */; };
 		E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054E247F495D0066C687 /* SceneDelegate.swift */; };
@@ -73,6 +74,7 @@
 		739C10E52497346D003B9B15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73B7E98D249873BF0061D923 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		73B7E991249893E20061D923 /* GoogleSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoogleSignInViewController.swift; path = ../../GoogleSignInViewController.swift; sourceTree = "<group>"; };
 		889D85D83787130A2704596A /* Pods-Twenty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.debug.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A5AC360BE63538BD4D7714 /* libPods-Twenty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twenty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF69723C306F40791B2C46CA /* Pods-Twenty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.release.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		73544F5A2495C6B60038914D /* VIewController */ = {
 			isa = PBXGroup;
 			children = (
+				73B7E991249893E20061D923 /* GoogleSignInViewController.swift */,
 				73544F5F2495F0740038914D /* SignUpViewController.swift */,
 				73544F612495F0900038914D /* SignInViewController.swift */,
 				73544F632495F0CF0038914D /* HomeViewController.swift */,
@@ -484,6 +487,7 @@
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
 				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerWatchView.swift in Sources */,
+				73B7E992249893E20061D923 /* GoogleSignInViewController.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */,
 				E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */,
