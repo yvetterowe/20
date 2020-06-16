@@ -16,10 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dL2-6x-HoF">
-                                <rect key="frame" x="20" y="610" width="374" height="132"/>
+                                <rect key="frame" x="20" y="534" width="374" height="208"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXI-uQ-fxf">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFe-0a-XcR" customClass="GIDSignInButton">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="56"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="7cW-nJ-9RE"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXI-uQ-fxf">
+                                        <rect key="frame" x="0.0" y="76" width="374" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="iM1-j5-1VM"/>
                                         </constraints>
@@ -29,7 +36,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJR-A1-YUO">
-                                        <rect key="frame" x="0.0" y="76" width="374" height="56"/>
+                                        <rect key="frame" x="0.0" y="152" width="374" height="56"/>
                                         <state key="normal" title="Sign In"/>
                                         <connections>
                                             <segue destination="1LM-6j-iG2" kind="show" id="OBV-M2-MkB"/>
@@ -51,6 +58,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="3tB-In-OVi"/>
                     <connections>
+                        <outlet property="GoogleBtn" destination="ZFe-0a-XcR" id="OKa-ox-e2n"/>
                         <outlet property="SignInBtn" destination="qJR-A1-YUO" id="2oT-4A-qiR"/>
                         <outlet property="SignUpBtn" destination="KXI-uQ-fxf" id="lea-CW-Egy"/>
                     </connections>
@@ -246,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ie0-Sq-N25" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3373.913043478261" y="375"/>
+            <point key="canvasLocation" x="4059" y="121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QkA-ww-tgC">
