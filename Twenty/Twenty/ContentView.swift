@@ -10,16 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
     private let timerTabContext: StatefulTimerTabView.Context
-    
 
     @State private var selection = 0
-    
+
     init(timerTabContext: StatefulTimerTabView.Context) {
         self.timerTabContext = timerTabContext
     }
     
     var body: some View {
-        
         CustomController()
 //        TabView(selection: $selection){
 //            StatefulTimerTabView(context: timerTabContext)
@@ -44,16 +42,10 @@ struct ContentView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView(goalPublisher: GoalPublisher, TimerStateStore: <#T##TimerStateStore#>)
-//    }
-//}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Text("Hello, World!")
-        
+//        ContentView(goalPublisher: GoalPublisher, TimerStateStore: <#T##TimerStateStore#>)
     }
 }
 

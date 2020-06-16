@@ -8,18 +8,14 @@
 
 import UIKit
 
+
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpElements()
         // Do any additional setup after loading the view.
     }
-    func setUpElements(){
-        //Hide the error label
-        //style the elements
-        //To do
-    }
+
 
     /*
     // MARK: - Navigation
