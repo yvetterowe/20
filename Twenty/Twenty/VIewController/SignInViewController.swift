@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -30,17 +31,47 @@ class SignInViewController: UIViewController {
         Utilities.styleFilledButton(signInBtn)
         //To do
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    @IBAction func signInTapped(_ sender: Any) {
+    
+    func validateFields() -> String? {
+        
+        // Check that all fields are filled in
+        if  emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            
+            return "Please fill in all fields."
+        }
+        return nil
     }
     
+    @IBAction func signInTapped(_ sender: Any) {
+        //Validate Text fields
+        let error = validateFields()
+        if error != nil {
+            showError(error!)
+        }else{
+            //Clean up the text fields
+            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                //Signing in the user
+            Auth.auth().signIn(withEmail: email, password:password){(result, err) in
+                if err !=  nil {
+                    self.showError(err!.localizedDescription)
+                }else{
+                    self.transitionToHome()
+                }
+            }
+        }
+
+    }
+    
+    func showError(_ message:String) {
+        errorLabel.text = message
+        errorLabel.alpha = 1
+    }
+    
+    func transitionToHome(){
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
+    }
 }
