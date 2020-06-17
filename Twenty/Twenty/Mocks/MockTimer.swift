@@ -6,26 +6,56 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
-import Combine
 import Foundation
 
-final class MockTimer: TwentyTimer {
-    @Published private var internalState: TimerState = .inactive(0)
-    
-    var state: AnyPublisher<TimerState, Never> {
-        return $internalState.eraseToAnyPublisher()
-    }
-    
-    func sendAction(_ timerAction: TimerAction) {
-        switch(internalState, timerAction) {
-        case (let .inactive(time), .start):
-            internalState = .active(time+1)
-        case (let .active(time), .pause):
-            internalState = .inactive(time)
-        default:
-            fatalError()
-        }
-    }
+enum MockTimerFactory {
+    static let calendar: Calendar = .current
+    static let timer: TwentyTimer = MockTimer()
+    static let currentDate: Date = DateComponents(
+        calendar: calendar, year: 2020, month: 5, day: 30, hour: 0, minute: 0, second: 0
+    ).date!
+
+//    static let activeState: TimerViewState = .init(
+//        selectedDay: currentDate.asDay(in: calendar),
+//        today: currentDate.asDay(in: calendar),
+//        goalState: .loaded(MockGoalFactory.mockGoals.first!),
+//        timerState: .active(currentElapsedTime: .init(start: MockTimerFactory.currentDate.advanced(by: -40), duration: 40))
+//    )
+//    
+//    static let inactiveState: TimerViewState = .init(
+//        selectedDay: currentDate.asDay(in: calendar),
+//        today: currentDate.asDay(in: calendar),
+//        goalState: .loaded(MockGoalFactory.mockGoals.first!),
+//        timerState: .inactive
+//    )
+//    
+//    static func timerStateStore(_ initialState: TimerState) -> TimerStateStore {
+//        return .init(
+//            initialState: initialState,
+//            reducer: { (_, _, _) in },
+//            context: MockTimerFactory.timerContext
+//        )
+//    }
+//    
+//    static func TimerStateStore(_ initialState: TimerViewState) -> TimerStateStore {
+//        return .init(
+//            initialState: initialState,
+//            reducer: { (_, _, _) in },
+//            context: MockTimerFactory.timerViewContext
+//        )
+//    }
+//    
+//    static let timerContext: TimerContext = .init(
+//        timer: MockTimerFactory.timer,
+//        goalStoreWriter: MockGoalFactory.makeGoalReaderAndWriter().writer
+//    )
+//    
+//    static let timerViewContext: TimerViewContext = .init(
+//        timerStateStore: MockTimerFactory.timerStateStore(.inactive)
+//    )
 }
 
-let mockCurrentDate: Date = DateComponents(calendar: .current, year: 2020, month: 5, day: 30, hour: 14, minute: 30, second: 10).date!
+private final class MockTimer: TwentyTimer {
+    func resume() {}
+    func suspend() {}
+}

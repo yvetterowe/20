@@ -17,9 +17,9 @@ final class BackgroundTimer {
     }
 
     private let timeInterval: TimeInterval
-    private let eventHandler: () -> Void
+    private let eventHandler: (_ tickInterval: TimeInterval) -> Void
     
-    init(timeInterval: TimeInterval, eventHandler: @escaping () -> Void) {
+    init(timeInterval: TimeInterval, eventHandler: @escaping (_ tickInterval: TimeInterval) -> Void) {
         self.timeInterval = timeInterval
         self.eventHandler = eventHandler
     }
@@ -28,7 +28,11 @@ final class BackgroundTimer {
         let t = DispatchSource.makeTimerSource()
         t.schedule(deadline: .now() + self.timeInterval, repeating: self.timeInterval)
         t.setEventHandler(handler: { [weak self] in
-            self?.eventHandler()
+            guard let self = self else {
+                return
+            }
+            
+            self.eventHandler(self.timeInterval)
         })
         return t
     }()

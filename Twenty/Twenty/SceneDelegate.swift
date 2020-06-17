@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -20,11 +21,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let currentDate: Date = mockCurrentDate
-        let goalStoreReader: AnyGoalStoreReader<MockGoalStore> = MockGoalFactory.makeGoalReaderAndWriter().reader
-        let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: "goal-0")
-        let timer: TwentyTimer = RealTimer(goalPublisher: goalPublisher, currentDate: currentDate)
-        let contentView = ContentView(goalPublisher: goalPublisher, timer: timer, currentDate: currentDate)
+        let currentDate: Date.Day = Date().asDay(in: .current)
+        let (goalStoreReader, goalStoreWriter) = MockGoalFactory.makeGoalReaderAndWriter()
+        let goalID = "goal-0"
+        let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: goalID)
+        
+        let initialTimerState: TimerState = .init(activeState: .inactive, totalElapsedTime: 0)
+        let timerStateStore: TimerStateStore = .init(
+            initialState: initialTimerState,
+            goalStoreWriter: goalStoreWriter,
+            goalID: goalID
+        )
+        let timer: TwentyTimer = RealTimer(timeInterval: 1, store: timerStateStore)
+
+        let selectDayStore = SelectDayStore(initialSelectDay: currentDate)
+        
+        let contentView = ContentView(
+            timerTabContext: .init(
+                timerStateStore: timerStateStore,
+                goalPublisher: goalPublisher,
+                timer: timer,
+                selectDayStore: selectDayStore,
+                todayPublisher: Just(currentDate).eraseToAnyPublisher()
+            )
+        )
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -66,3 +86,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+
+struct SceneDelegate_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}

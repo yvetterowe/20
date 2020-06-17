@@ -9,5 +9,5 @@
 import Foundation
 
 protocol GoalStoreWriter {
-    func appendTrackRecord(_ trackRecord: DateInterval, forGoal goalID: GoalID)
+    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID)
 }

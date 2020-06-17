@@ -9,52 +9,88 @@
 import Combine
 import Foundation
 
-final class TimerStateStore: ObservableObject, Subscriber {
+struct TimerState {
     
-    @Published private(set) var state: StatefulTimerView.ViewState = .loading
-    private let currentDate: Date
-    
-    init(goalPublisher: GoalPublisher, timer: TwentyTimer, currentDate: Date) {
-        self.currentDate = currentDate
-        Publishers.CombineLatest(goalPublisher, timer.state)
-            .map{(goal: $0, timerState: $1)}
-            .receive(on: RunLoop.main)
-            .subscribe(self)
-    }
-    // MARK: - Subscriber
-    
-    typealias Input = (goal: Goal, timerState: TimerState)
-    typealias Failure = Never
-    
-    var combineIdentifier: CombineIdentifier {
-        return .init()
+    enum ActiveState: Equatable {
+        case inactive
+        case active(currentElapsedTime: DateInterval)
     }
     
-    func receive(subscription: Subscription) {
-        subscription.request(.unlimited)
-    }
-    
-    func receive(_ input: Input) -> Subscribers.Demand {
-        switch(state, input.timerState) {
-        case (.loading, .inactive):
-            state = .inactive(input.goal.totalTimeSpent(on: .init(currentDate.stripTime())))
-        case (.loading, .active):
-            fatalError("Timer shouldn't be active when view is in loading state")
-        case (.inactive, .inactive):
-            break
-        case (_, let .active(timerTime)):
-            state = .active(timerTime)
-        case (let .active(viewTime), .inactive):
-            state = .inactive(viewTime)
-        case (.active, .loading):
-            fatalError("View shouldn't be active when timer is in loading state")
-        case (_, .loading):
-            break
+    var activeState: ActiveState {
+        didSet {
+            switch(oldValue, activeState) {
+            case (_, .inactive):
+                totalElapsedTime = 0
+            case (.inactive, let .active(currentElapsedTime)):
+                totalElapsedTime += currentElapsedTime.duration
+            case (let .active(previousElapsedTime), let .active(currentElapsedTime)):
+                guard previousElapsedTime.start == currentElapsedTime.start else {
+                    fatalError("Inconsistent start time \(previousElapsedTime.start) \(currentElapsedTime.start)")
+                }
+                totalElapsedTime += currentElapsedTime.end.timeIntervalSince(previousElapsedTime.end)
+            }
         }
-        return .unlimited
     }
     
-    func receive(completion: Subscribers.Completion<Never>) {
-        self.state = .inactive(state.elapsedTime)
+    private(set) var totalElapsedTime: TimeInterval
+}
+
+
+enum TimerAction {
+    case resume
+    case suspend
+    case ticked(tickDate: Date, tickInterval: TimeInterval)
+}
+
+final class TimerStateStore: ObservableObject {
+    
+    // MARK: - Public Properties
+    
+    @Published private(set) var state: TimerState
+    
+    var timerStatePublisher: AnyPublisher<TimerState, Never> {
+        return $state.eraseToAnyPublisher()
+    }
+    
+    // MARK: - Private Properties
+    
+    private let goalStoreWriter: GoalStoreWriter
+    private let goalID: GoalID
+    
+    init(initialState: TimerState, goalStoreWriter: GoalStoreWriter, goalID: GoalID) {
+        self._state = .init(initialValue: initialState)
+        self.goalStoreWriter = goalStoreWriter
+        self.goalID = goalID
+    }
+    
+    func send(_ action: TimerAction) {
+        switch action {
+        case .resume:
+            guard case .inactive = state.activeState else {
+                fatalError()
+            }
+            state.activeState = .active(currentElapsedTime: .init(start: Date(), duration: 0))
+                
+        case .suspend:
+            guard case let .active(currentElapsedTime) = state.activeState else {
+                 fatalError()
+            }
+            state.activeState = .inactive
+            print("paused! last active: \(currentElapsedTime.duration) \(currentElapsedTime)")
+            goalStoreWriter.appendTrackRecord(.init(timeSpan: currentElapsedTime), forGoal: goalID)
+        
+        case let .ticked(tickDate, _):
+            switch state.activeState {
+            case .inactive:
+                break
+            case let .active(currentElapsedTime):
+                state.activeState = .active(
+                    currentElapsedTime: .init(
+                        start: currentElapsedTime.start,
+                        end: tickDate
+                    )
+                )
+            }
+        }
     }
 }

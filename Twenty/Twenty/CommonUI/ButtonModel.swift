@@ -11,20 +11,20 @@ import SwiftUI
 struct ButtonModel {
     let textModel: Text.Model
     let backgroundColorMode: BackgroundColorMode
-    let cornerRadius: CGFloat
+    let backgroundShape: BackgroundShape
     let border: BorderMode
     let action: () -> Void
         
     init(
         textModel: Text.Model,
         backgroundColorMode: BackgroundColorMode,
-        cornerRadius: CGFloat = 24,
+        backgroundShape: BackgroundShape = .roundedRectangle(cornerRadius: 24),
         border: BorderMode = .none,
         action: @escaping () -> Void
     ) {
         self.textModel = textModel
         self.backgroundColorMode = backgroundColorMode
-        self.cornerRadius = cornerRadius
+        self.backgroundShape = backgroundShape
         self.border = border
         self.action = action
     }

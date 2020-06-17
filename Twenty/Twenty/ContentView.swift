@@ -9,43 +9,53 @@
 import SwiftUI
 
 struct ContentView: View {
-    private let goalPublisher: GoalPublisher
-    private let timer: TwentyTimer
-    private let currentDate: Date
+    private let timerTabContext: StatefulTimerTabView.Context
+
     @State private var selection = 0
-    
-    init(goalPublisher: GoalPublisher, timer: TwentyTimer, currentDate: Date) {
-        self.goalPublisher = goalPublisher
-        self.timer = timer
-        self.currentDate = currentDate
+
+    init(timerTabContext: StatefulTimerTabView.Context) {
+        self.timerTabContext = timerTabContext
     }
     
     var body: some View {
-        TabView(selection: $selection){
-            TimerTabView(goalPublisher: goalPublisher, timer: timer,  currentDate: currentDate)
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Image("first")
-                        Text("TwentyTimer")
-                    }
-                }
-                .tag(0)
-            Text("Second View")
-                .font(.title)
-                .tabItem {
-                    VStack {
-                        Image("second")
-                        Text("Second")
-                    }
-                }
-                .tag(1)
-        }
+        CustomController()
+//        TabView(selection: $selection){
+//            StatefulTimerTabView(context: timerTabContext)
+//                .font(.title)
+//                .tabItem {
+//                    VStack {
+//                        Image("first")
+//                        Text("TwentyTimer")
+//                    }
+//                }
+//                .tag(0)
+//            Text("Second View")
+//                .font(.title)
+//                .tabItem {
+//                    VStack {
+//                        Image("second")
+//                        Text("Second")
+//                    }
+//                }
+//                .tag(1)
+//        }
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView(timer: MockTimer())
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Hello, World!")
+//        ContentView(goalPublisher: GoalPublisher, TimerStateStore: <#T##TimerStateStore#>)
+    }
+}
+
+struct CustomController : UIViewControllerRepresentable {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<CustomController>) -> UIViewController {
+        let storyboard = UIStoryboard( name:"Login", bundle: Bundle.main)
+        let controller = storyboard.instantiateViewController(identifier: "Login")
+        return controller
+    }
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: UIViewControllerRepresentableContext<CustomController>) {
+        
+    }
+}

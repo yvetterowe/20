@@ -31,6 +31,10 @@ enum SementicColorPalette {
     
     static let buttonTextColor: Color = SementicColorPalette.defaultTextColor
     static let buttonBorderColor: Color = ColorPalette.black.color
+    
+    // MARK: - Progress Bar
+    
+    static let progressBarColor: Color = SementicColorPalette.defaultTextColor
         
     // MARK: - Background
     

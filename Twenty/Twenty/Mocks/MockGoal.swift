@@ -5,7 +5,6 @@
 //  Created by Hao Luo on 5/30/20.
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
-
 import Combine
 import Foundation
 
@@ -25,57 +24,70 @@ enum MockGoalFactory {
                     start: DateComponents(calendar: .current, year: 2020, month: 5, day: 30, hour: 9, minute: 45).date!,
                     duration: 600
                 ),
-            ]
+            ].map { TrackRecord(timeSpan: $0)}
         )
     ]
     
     static func makeGoalReaderAndWriter(with goals: [MockGoal] = mockGoals)
         -> (reader: AnyGoalStoreReader<MockGoalStore>, writer: GoalStoreWriter) {
-        let mockGoalStore = MockGoalStore(mockGoals: goals)
+        let mockGoalStore = MockGoalStore()
         return (AnyGoalStoreReader(mockGoalStore), mockGoalStore)
     }
 }
 
-struct MockGoal: Goal, Identifiable {
+struct MockGoal: Goal, Identifiable, Codable {
     let id: GoalID
     let name: String
     let timeToComplete: TimeInterval
     
-    private(set) var trackRecords: [DateInterval]
-    private var timeSpentByTimeStripDate: [StripTimeDate: TimeInterval]
+    private(set) var trackRecords: [TrackRecord]
+    private(set) var totalTimeSpent: TimeInterval
+    private var timeSpentByDay: [Date.Day: TimeInterval]
     
-    init(id: GoalID, name: String, timeToComplete: TimeInterval, trackRecords: [DateInterval]) {
+    init(id: GoalID, name: String, timeToComplete: TimeInterval, trackRecords: [TrackRecord]) {
         self.id = id
         self.name = name
         self.timeToComplete = timeToComplete
         self.trackRecords = []
-        self.timeSpentByTimeStripDate = [:]
+        self.totalTimeSpent = 0
+        self.timeSpentByDay = [:]
         
         trackRecords.forEach {
             self.appendTrackRecord($0)
         }
     }
     
-    func totalTimeSpent(on date: StripTimeDate) -> TimeInterval {
-        return timeSpentByTimeStripDate[date] ?? 0
+    func totalTimeSpent(on day: Date.Day) -> TimeInterval {
+        return timeSpentByDay[day] ?? 0
     }
     
-    mutating func appendTrackRecord(_ trackRecord: DateInterval) {
+    mutating func appendTrackRecord(_ trackRecord: TrackRecord) {
+        print("Track record added! \(trackRecord)")
         trackRecords.append(trackRecord)
         
         // TODO(#13): handle `trackRecord` spreads across multiple days
-        let stripTimeDate = StripTimeDate(trackRecord.start.stripTime())
-        timeSpentByTimeStripDate[stripTimeDate] = (timeSpentByTimeStripDate[stripTimeDate] ?? 0) + trackRecord.duration
+        let day = trackRecord.timeSpan.start.asDay(in: .current)
+        timeSpentByDay[day] = (timeSpentByDay[day] ?? 0) + trackRecord.timeSpan.duration
+        totalTimeSpent += trackRecord.timeSpan.duration
     }
 }
 
 final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
-    
+     
     private typealias GoalSubject = CurrentValueSubject<MockGoal, Never>
     
     private var goalSubjectsByID: [GoalID: GoalSubject]
     
-    init(mockGoals: [MockGoal]) {
+    private let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("mockdb")
+    
+    init() {
+        let mockGoals: [MockGoal]
+        if let jsonData = FileManager.default.contents(atPath: fileURL.path) {
+            mockGoals = try! JSONDecoder().decode([MockGoal].self, from: jsonData)
+        } else {
+            mockGoals = MockGoalFactory.mockGoals
+        }
+        
         self.goalSubjectsByID = mockGoals.reduce([:]) { (goalSubjectsByID, goal) -> [GoalID: GoalSubject] in
             var dict = goalSubjectsByID
             dict[goal.id] = GoalSubject(goal)
@@ -92,11 +104,13 @@ final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
     
     // MARK: - GoalStoreWriter
     
-    func appendTrackRecord(_ trackRecord: DateInterval, forGoal goalID: GoalID) {
+    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) {
         let subject = goalSubject(for: goalID)
         var updatedGoal = subject.value
         updatedGoal.appendTrackRecord(trackRecord)
         subject.send(updatedGoal)
+        
+        saveToFile()
     }
     
     // MARK: - Helpers
@@ -107,5 +121,15 @@ final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
         }
         
         return goalSubject
+    }
+    
+    private func saveToFile() {
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            try? FileManager.default.removeItem(at: fileURL)
+        }
+        
+        let goals = goalSubjectsByID.values.map {$0.value}
+        let jsonGoals = try! JSONEncoder().encode(goals)
+        try? jsonGoals.write(to: fileURL)
     }
 }
