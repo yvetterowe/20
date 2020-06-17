@@ -20,36 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
-        // Create the SwiftUI view that provides the window contents.
-        let currentDate: Date.Day = Date().asDay(in: .current)
-        let (goalStoreReader, goalStoreWriter) = MockGoalFactory.makeGoalReaderAndWriter()
-        let goalID = "goal-0"
-        let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: goalID)
-        
-        let initialTimerState: TimerState = .init(activeState: .inactive, totalElapsedTime: 0)
-        let timerStateStore: TimerStateStore = .init(
-            initialState: initialTimerState,
-            goalStoreWriter: goalStoreWriter,
-            goalID: goalID
-        )
-        let timer: TwentyTimer = RealTimer(timeInterval: 1, store: timerStateStore)
-
-        let selectDayStore = SelectDayStore(initialSelectDay: currentDate)
-        
-        let contentView = ContentView(
-            timerTabContext: .init(
-                timerStateStore: timerStateStore,
-                goalPublisher: goalPublisher,
-                timer: timer,
-                selectDayStore: selectDayStore,
-                todayPublisher: Just(currentDate).eraseToAnyPublisher()
-            )
-        )
-
-        // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            let storyboard = UIStoryboard( name:"Login", bundle: Bundle.main)
+            window.rootViewController = storyboard.instantiateViewController(identifier: "Login")
             self.window = window
             window.makeKeyAndVisible()
         }
