@@ -21,6 +21,15 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+*.xcodeproj/*
+!*.xcworkspace/contents.xcworkspacedata
+
+### Objective-C ###
+# OS X
+.DS_Store
+
+# CocoaPods
+Pods
 
 ## Gcc Patch
 /*.gcno
