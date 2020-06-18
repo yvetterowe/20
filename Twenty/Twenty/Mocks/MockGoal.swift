@@ -10,7 +10,7 @@ import Foundation
 
 enum MockGoalFactory {
     
-    static let mockGoals: [MockGoal] = [
+    static let mockGoals: [GoalImpl] = [
         .init(
             id: "goal-0",
             name: "Learn SwiftUI",
@@ -28,62 +28,25 @@ enum MockGoalFactory {
         )
     ]
     
-    static func makeGoalReaderAndWriter(with goals: [MockGoal] = mockGoals)
+    static func makeGoalReaderAndWriter(with goals: [GoalImpl] = mockGoals)
         -> (reader: AnyGoalStoreReader<MockGoalStore>, writer: GoalStoreWriter) {
         let mockGoalStore = MockGoalStore()
         return (AnyGoalStoreReader(mockGoalStore), mockGoalStore)
     }
 }
 
-struct MockGoal: Goal, Identifiable, Codable {
-    let id: GoalID
-    let name: String
-    let timeToComplete: TimeInterval
-    
-    private(set) var trackRecords: [TrackRecord]
-    private(set) var totalTimeSpent: TimeInterval
-    private var timeSpentByDay: [Date.Day: TimeInterval]
-    
-    init(id: GoalID, name: String, timeToComplete: TimeInterval, trackRecords: [TrackRecord]) {
-        self.id = id
-        self.name = name
-        self.timeToComplete = timeToComplete
-        self.trackRecords = []
-        self.totalTimeSpent = 0
-        self.timeSpentByDay = [:]
-        
-        trackRecords.forEach {
-            self.appendTrackRecord($0)
-        }
-    }
-    
-    func totalTimeSpent(on day: Date.Day) -> TimeInterval {
-        return timeSpentByDay[day] ?? 0
-    }
-    
-    mutating func appendTrackRecord(_ trackRecord: TrackRecord) {
-        print("Track record added! \(trackRecord)")
-        trackRecords.append(trackRecord)
-        
-        // TODO(#13): handle `trackRecord` spreads across multiple days
-        let day = trackRecord.timeSpan.start.asDay(in: .current)
-        timeSpentByDay[day] = (timeSpentByDay[day] ?? 0) + trackRecord.timeSpan.duration
-        totalTimeSpent += trackRecord.timeSpan.duration
-    }
-}
-
 final class MockGoalStore: GoalStoreReader, GoalStoreWriter {
      
-    private typealias GoalSubject = CurrentValueSubject<MockGoal, Never>
+    private typealias GoalSubject = CurrentValueSubject<GoalImpl, Never>
     
     private var goalSubjectsByID: [GoalID: GoalSubject]
     
     private let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("mockdb")
     
     init() {
-        let mockGoals: [MockGoal]
+        let mockGoals: [GoalImpl]
         if let jsonData = FileManager.default.contents(atPath: fileURL.path) {
-            mockGoals = try! JSONDecoder().decode([MockGoal].self, from: jsonData)
+            mockGoals = try! JSONDecoder().decode([GoalImpl].self, from: jsonData)
         } else {
             mockGoals = MockGoalFactory.mockGoals
         }

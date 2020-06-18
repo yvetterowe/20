@@ -53,6 +53,7 @@
 		E7D3F4682493129900463D48 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4672493129800463D48 /* ProgressBar.swift */; };
 		E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4692493216000463D48 /* ProgressView.swift */; };
 		E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F46D249453D800463D48 /* StatefulProgressView.swift */; };
+		E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00234249AF48F00403E50 /* GoalImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		E7D3F4672493129800463D48 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		E7D3F4692493216000463D48 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		E7D3F46D249453D800463D48 /* StatefulProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulProgressView.swift; sourceTree = "<group>"; };
+		E7E00234249AF48F00403E50 /* GoalImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				E7D3DC722483055800422C77 /* Goal.swift */,
+				E7E00234249AF48F00403E50 /* GoalImpl.swift */,
 				E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */,
 				E77A51292484130C009243CC /* GoalStoreWriter.swift */,
 			);
@@ -480,6 +483,7 @@
 				73544F642495F0CF0038914D /* HomeViewController.swift in Sources */,
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
+				E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */,
 				739C10E62497346D003B9B15 /* Constants.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
 				E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */,
