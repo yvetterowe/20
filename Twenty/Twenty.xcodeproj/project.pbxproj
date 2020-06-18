@@ -54,6 +54,9 @@
 		E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4692493216000463D48 /* ProgressView.swift */; };
 		E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F46D249453D800463D48 /* StatefulProgressView.swift */; };
 		E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00234249AF48F00403E50 /* GoalImpl.swift */; };
+		E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00237249AF61400403E50 /* PersistentDataStore.swift */; };
+		E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00239249AF88700403E50 /* GoalStoreImpl.swift */; };
+		E7E0023D249AFE1600403E50 /* DiskPersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E0023C249AFE1600403E50 /* DiskPersistentDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,9 @@
 		E7D3F4692493216000463D48 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		E7D3F46D249453D800463D48 /* StatefulProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulProgressView.swift; sourceTree = "<group>"; };
 		E7E00234249AF48F00403E50 /* GoalImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalImpl.swift; sourceTree = "<group>"; };
+		E7E00237249AF61400403E50 /* PersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataStore.swift; sourceTree = "<group>"; };
+		E7E00239249AF88700403E50 /* GoalStoreImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreImpl.swift; sourceTree = "<group>"; };
+		E7E0023C249AFE1600403E50 /* DiskPersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskPersistentDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +218,7 @@
 		E78F054B247F495D0066C687 /* Twenty */ = {
 			isa = PBXGroup;
 			children = (
+				E7E0023B249AFD7B00403E50 /* Persistence */,
 				73544F652495FC1D0038914D /* Helpers */,
 				73544F5A2495C6B60038914D /* VIewController */,
 				E7D3F44F2489933B00463D48 /* Calendar */,
@@ -295,6 +302,7 @@
 			children = (
 				E7D3DC722483055800422C77 /* Goal.swift */,
 				E7E00234249AF48F00403E50 /* GoalImpl.swift */,
+				E7E00239249AF88700403E50 /* GoalStoreImpl.swift */,
 				E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */,
 				E77A51292484130C009243CC /* GoalStoreWriter.swift */,
 			);
@@ -318,6 +326,15 @@
 				E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */,
 			);
 			path = "Stateless UI Components";
+			sourceTree = "<group>";
+		};
+		E7E0023B249AFD7B00403E50 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				E7E00237249AF61400403E50 /* PersistentDataStore.swift */,
+				E7E0023C249AFE1600403E50 /* DiskPersistentDataStore.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		F0CBD1D2BC05CEA0FA04C0DE /* Frameworks */ = {
@@ -479,6 +496,7 @@
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
 				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
+				E7E0023D249AFE1600403E50 /* DiskPersistentDataStore.swift in Sources */,
 				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
 				73544F642495F0CF0038914D /* HomeViewController.swift in Sources */,
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
@@ -489,6 +507,7 @@
 				E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */,
 				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
+				E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */,
 				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerWatchView.swift in Sources */,
 				73B7E992249893E20061D923 /* GoogleSignInViewController.swift in Sources */,
@@ -503,6 +522,7 @@
 				E7D3F4462489426D00463D48 /* GridStack.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */,
+				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
 				73544F622495F0900038914D /* SignInViewController.swift in Sources */,
 				E78F057B247F53150066C687 /* TimerWatchView.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
