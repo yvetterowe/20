@@ -10,8 +10,14 @@ import Foundation
 
 typealias GoalID = String
 
-struct TrackRecord: Codable {
+struct TrackRecord: Codable, Identifiable {
+    let id: UUID
     let timeSpan: DateInterval
+    
+    init(timeSpan: DateInterval){
+        self.id = UUID()
+        self.timeSpan = timeSpan
+    }
 }
 
 protocol Goal {
