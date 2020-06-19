@@ -16,34 +16,32 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
     private let persistentDataStore: PersistentDataStore
     private var goalSubjectsByID: [GoalID: GoalSubject]
     private var firstGoalSubject: CurrentValueSubject<GoalImpl?, Never>
+    private var cancellable: AnyCancellable!
     
     init(persistentDataStore: PersistentDataStore) {
         self.persistentDataStore = persistentDataStore
         self.goalSubjectsByID = [:]
         self.firstGoalSubject = .init(nil)
         
-        persistentDataStore.retrieveAllGoals{ [weak self] result in
-            switch result {
-            case let .success(goals):
+        self.cancellable = persistentDataStore
+            .retrieveAllGoals()
+            .sink(receiveCompletion: { completion in
+                print(completion)
+            }) { [weak self] goals in
                 guard let self = self else {
                     return
                 }
-                
+
                 self.goalSubjectsByID = goals.reduce([:]) { (goalSubjectsByID, goal) -> [GoalID: GoalSubject] in
                     var dict = goalSubjectsByID
                     dict[goal.id] = GoalSubject(goal)
                     return dict
                 }
-                
+
                 if let firstGoal = goals.first {
                     self.firstGoalSubject.send(firstGoal)
                 }
-                
-            case let .failure(error):
-                print(error)
-                
             }
-        }
     }
     
     // MARK: - GoalStoreReader
@@ -61,13 +59,16 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
     
     // MARK: - GoalStoreWriter
     
-    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) {
+    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError> {
         let subject = goalSubject(for: goalID)
         var updatedGoal = subject.value
         updatedGoal.appendTrackRecord(trackRecord)
         subject.send(updatedGoal)
         
-        persistentDataStore.updateGoal(for: goalID, with: updatedGoal) {_ in }
+        return persistentDataStore
+            .updateGoal(for: goalID, with: updatedGoal)
+            .mapError { GoalStoreWriterError.persistentStoreError($0) }
+            .eraseToAnyPublisher()
     }
     
     // MARK: - Helpers

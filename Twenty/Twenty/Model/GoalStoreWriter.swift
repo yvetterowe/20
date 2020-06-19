@@ -6,8 +6,12 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
-import Foundation
+import Combine
+
+enum GoalStoreWriterError: Error {
+    case persistentStoreError(Error)
+}
 
 protocol GoalStoreWriter {
-    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID)
+    func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError>
 }

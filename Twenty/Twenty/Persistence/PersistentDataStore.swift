@@ -6,6 +6,7 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 enum PersistentDataStoreError: Error {
@@ -14,8 +15,17 @@ enum PersistentDataStoreError: Error {
     case updateError(Error)
 }
 
+enum PersistentDataStoreReadError: Error {
+    case fetchError(Error)
+}
+
+enum PersistentDataStoreWriteError: Error {
+    case encodeError(Error)
+    case writeError(Error)
+}
+
 protocol PersistentDataStore {
-    func retrieveAllGoals(completion: @escaping (Result<[GoalImpl], PersistentDataStoreError>)->Void)
-    func addGoal(_ goal: GoalImpl, completion: @escaping (PersistentDataStoreError?) -> Void)
-    func updateGoal(for goalID: GoalID, with goal: GoalImpl, completion: @escaping (PersistentDataStoreError?) -> Void)
+    func retrieveAllGoals() -> AnyPublisher<[GoalImpl], PersistentDataStoreReadError>
+    func addGoal(_ goal: GoalImpl) -> AnyPublisher<Void, PersistentDataStoreWriteError>
+    func updateGoal(for goalID: GoalID, with goal: GoalImpl) -> AnyPublisher<Void, PersistentDataStoreWriteError>
 }

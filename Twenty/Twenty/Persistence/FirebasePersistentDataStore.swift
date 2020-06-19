@@ -6,6 +6,7 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
+import Combine
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
@@ -45,15 +46,16 @@ final class FirebasePersistentDataStore: PersistentDataStore {
         
     // MARK: - PersistentDataStore
     
-    func retrieveAllGoals(completion: @escaping (Result<[GoalImpl], PersistentDataStoreError>)->Void) {
-        db.collection(Keys.goalsCollection)
+    func retrieveAllGoals() -> AnyPublisher<[GoalImpl], PersistentDataStoreReadError> {
+        let db = self.db, userID = self.userID
+        return Future<[GoalImpl], PersistentDataStoreReadError> { promise in
+            db.collection(Keys.goalsCollection)
             .whereField(Keys.userIDField, isEqualTo: userID)
             .getDocuments { (querySnapshot, error) in
                 if let error = error {
-                    completion(.failure(.readError(error)))
+                    return promise(.failure(.fetchError(error)))
                 } else {
-                    let goals =
-                    querySnapshot?.documents
+                    let goals = querySnapshot?.documents
                         .compactMap { try? $0.data(as: FirebaseGoalModel.self) }
                         .map {
                             GoalImpl(
@@ -63,12 +65,13 @@ final class FirebasePersistentDataStore: PersistentDataStore {
                                 trackRecords: $0.trackRecords.map { TrackRecord(id: $0.id, timeSpan: .init(start: $0.startDate, end: $0.endDate)) }
                             )
                     } ?? []
-                    completion(.success(goals))
+                    return promise(.success(goals))
                 }
             }
+        }.eraseToAnyPublisher()
     }
     
-    func addGoal(_ goal: GoalImpl, completion: @escaping (PersistentDataStoreError?) -> Void) {
+    func addGoal(_ goal: GoalImpl) -> AnyPublisher<Void, PersistentDataStoreWriteError> {
         let firebaseGoal = FirebaseGoalModel(
             id: goal.id,
             userID: userID,
@@ -78,19 +81,25 @@ final class FirebasePersistentDataStore: PersistentDataStore {
             trackRecords: goal.trackRecords.map { FirebaseGoalModel.TrackRecord(id: $0.id, startDate: $0.timeSpan.start, endDate: $0.timeSpan.end) }
         )
         
-        do {
-            try db.collection(Keys.goalsCollection)
-                .document(goal.id)
-                .setData(from: firebaseGoal, encoder: Firestore.Encoder()) { error in
-                    completion(error.map{PersistentDataStoreError.createError($0)})
+        let db = self.db
+        return Future<Void, PersistentDataStoreWriteError> { promise in
+            let goalRef = db.collection(Keys.goalsCollection).document(goal.id)
+                
+            do {
+                try goalRef.setData(from: firebaseGoal, encoder: Firestore.Encoder()) { error in
+                    if let error = error {
+                        return promise(.failure(.writeError(error)))
+                    }
+                    return promise(.success(()))
                 }
-        } catch {
-            completion(.createError(error))
-        }
+            } catch {
+                return promise(.failure(.encodeError(error)))
+            }
+        }.eraseToAnyPublisher()
     }
     
-    func updateGoal(for goalID: GoalID, with goal: GoalImpl, completion: @escaping (PersistentDataStoreError?) -> Void) {
+    func updateGoal(for goalID: GoalID, with goal: GoalImpl) -> AnyPublisher<Void, PersistentDataStoreWriteError> {
         // TODO: only update track record instead of the whole goal
-        addGoal(goal, completion: completion)
+        return addGoal(goal)
     }
 }
