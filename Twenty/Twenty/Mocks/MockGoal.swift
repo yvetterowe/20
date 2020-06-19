@@ -17,20 +17,29 @@ enum MockGoalFactory {
             timeToComplete: 72000,
             trackRecords: [
                 .init(
-                    start: DateComponents(calendar: .current, year: 2020, month: 5, day: 28, hour: 9).date!,
-                    duration: 1800
+                    id: UUID().uuidString,
+                    timeSpan: .init(
+                        start: DateComponents(calendar: .current, year: 2020, month: 5, day: 28, hour: 9).date!,
+                        duration: 1800
+                    )
                 ),
                 .init(
-                    start: DateComponents(calendar: .current, year: 2020, month: 5, day: 30, hour: 9, minute: 45).date!,
-                    duration: 600
+                    id: UUID().uuidString,
+                    timeSpan: .init(
+                        start: DateComponents(calendar: .current, year: 2020, month: 5, day: 30, hour: 9, minute: 45).date!,
+                        duration: 600
+                    )
                 ),
-            ].map { TrackRecord(timeSpan: $0)}
+            ]
         )
     ]
     
-    static func makeGoalReaderAndWriter(with goals: [GoalImpl] = mockGoals)
+    static func makeGoalReaderAndWriter(group: DispatchGroup, userID: String)
         -> (reader: AnyGoalStoreReader<GoalStoreImpl>, writer: GoalStoreWriter) {
-            let mockGoalStore = GoalStoreImpl(persistentDataStore: DiskPersistentDataStore())
+            let mockGoalStore = GoalStoreImpl(
+                persistentDataStore: FirebasePersistentDataStore(userID: userID),
+                group: group
+            )
         return (AnyGoalStoreReader(mockGoalStore), mockGoalStore)
     }
 }

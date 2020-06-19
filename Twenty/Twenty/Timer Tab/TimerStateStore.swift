@@ -77,7 +77,13 @@ final class TimerStateStore: ObservableObject {
             }
             state.activeState = .inactive
             print("paused! last active: \(currentElapsedTime.duration) \(currentElapsedTime)")
-            goalStoreWriter.appendTrackRecord(.init(timeSpan: currentElapsedTime), forGoal: goalID)
+            goalStoreWriter.appendTrackRecord(
+                .init(
+                    id: UUID().uuidString,
+                    timeSpan: currentElapsedTime
+                ),
+                forGoal: goalID
+            )
         
         case let .ticked(tickDate, _):
             switch state.activeState {

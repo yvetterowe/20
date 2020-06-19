@@ -9,10 +9,11 @@
 import Foundation
 
 enum PersistentDataStoreError: Error {
+    case readError(Error)
 }
 
 protocol PersistentDataStore {
-    func retrieveAllGoals(forUser userID: String, completion: (Result<[GoalImpl], PersistentDataStoreError>)->Void)
+    func retrieveAllGoals(completion: @escaping (Result<[GoalImpl], PersistentDataStoreError>)->Void)
     func addGoal(_ goal: GoalImpl, completion: (PersistentDataStoreError?) -> Void)
     func updateGoal(for goalID: GoalID, with goal: GoalImpl, completion: (PersistentDataStoreError?) -> Void)
 }

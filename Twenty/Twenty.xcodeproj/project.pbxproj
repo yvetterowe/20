@@ -57,6 +57,7 @@
 		E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00237249AF61400403E50 /* PersistentDataStore.swift */; };
 		E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00239249AF88700403E50 /* GoalStoreImpl.swift */; };
 		E7E0023D249AFE1600403E50 /* DiskPersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E0023C249AFE1600403E50 /* DiskPersistentDataStore.swift */; };
+		E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		E7E00237249AF61400403E50 /* PersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataStore.swift; sourceTree = "<group>"; };
 		E7E00239249AF88700403E50 /* GoalStoreImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreImpl.swift; sourceTree = "<group>"; };
 		E7E0023C249AFE1600403E50 /* DiskPersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskPersistentDataStore.swift; sourceTree = "<group>"; };
+		E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePersistentDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 			children = (
 				E7E00237249AF61400403E50 /* PersistentDataStore.swift */,
 				E7E0023C249AFE1600403E50 /* DiskPersistentDataStore.swift */,
+				E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */,
 				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
+				E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */,
 				E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */,
 				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
 				E78F058124803D290066C687 /* StatefulTimerWatchView.swift in Sources */,

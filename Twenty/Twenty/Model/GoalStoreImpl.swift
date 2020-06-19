@@ -16,10 +16,11 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
     private let persistentDataStore: PersistentDataStore
     private var goalSubjectsByID: [GoalID: GoalSubject]
     
-    init(persistentDataStore: PersistentDataStore) {
+    init(persistentDataStore: PersistentDataStore, group: DispatchGroup) {
         self.persistentDataStore = persistentDataStore
         self.goalSubjectsByID = [:]
-        persistentDataStore.retrieveAllGoals(forUser: "") { [weak self] result in
+        
+        persistentDataStore.retrieveAllGoals{ [weak self] result in
             switch result {
             case let .success(goals):
                 guard let self = self else {
@@ -36,6 +37,8 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
                 print(error)
                 
             }
+            
+            group.leave()
         }
     }
     

@@ -15,7 +15,7 @@ final class DiskPersistentDataStore: PersistentDataStore {
     
     // MARK: - PersistentDataStore
     
-    func retrieveAllGoals(forUser userID: String, completion: (Result<[GoalImpl], PersistentDataStoreError>)->Void) {
+    func retrieveAllGoals(completion: (Result<[GoalImpl], PersistentDataStoreError>)->Void) {
         let mockGoals: [GoalImpl]
         if let jsonData = FileManager.default.contents(atPath: fileURL.path) {
             mockGoals = try! JSONDecoder().decode([GoalImpl].self, from: jsonData)

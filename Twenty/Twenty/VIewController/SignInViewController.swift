@@ -58,7 +58,10 @@ class SignInViewController: UIViewController {
                 if err !=  nil {
                     self.showError(err!.localizedDescription)
                 }else{
-                    self.transitionToHome()
+                    guard let userID = result?.user.uid else {
+                        fatalError("No userID")
+                    }
+                    self.transitionToHome(userID: userID)
                 }
             }
         }
@@ -70,8 +73,9 @@ class SignInViewController: UIViewController {
         errorLabel.alpha = 1
     }
     
-    func transitionToHome(){
+    func transitionToHome(userID: String){
         let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        homeViewController?.userID = userID
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
     }
