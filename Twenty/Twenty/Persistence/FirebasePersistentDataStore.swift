@@ -31,6 +31,7 @@ final class FirebasePersistentDataStore: PersistentDataStore {
     
     private enum Keys {
         static let goalsCollection = "Goals"
+        static let goalIDField = "id"
         static let userIDField = "userID"
         static let nameField = "name"
         static let secondsToCompleteField = "secondsToComplete"
@@ -67,11 +68,29 @@ final class FirebasePersistentDataStore: PersistentDataStore {
             }
     }
     
-    func addGoal(_ goal: GoalImpl, completion: (PersistentDataStoreError?) -> Void) {
+    func addGoal(_ goal: GoalImpl, completion: @escaping (PersistentDataStoreError?) -> Void) {
+        let firebaseGoal = FirebaseGoalModel(
+            id: goal.id,
+            userID: userID,
+            name: goal.name,
+            secondsSpent: Int(goal.totalTimeSpent),
+            secondsToComplete: Int(goal.totalTimeSpent),
+            trackRecords: goal.trackRecords.map { FirebaseGoalModel.TrackRecord(id: $0.id, startDate: $0.timeSpan.start, endDate: $0.timeSpan.end) }
+        )
         
+        do {
+            try db.collection(Keys.goalsCollection)
+                .document(goal.id)
+                .setData(from: firebaseGoal, encoder: Firestore.Encoder()) { error in
+                    completion(error.map{PersistentDataStoreError.createError($0)})
+                }
+        } catch {
+            completion(.createError(error))
+        }
     }
     
-    func updateGoal(for goalID: GoalID, with goal: GoalImpl, completion: (PersistentDataStoreError?) -> Void) {
-        // TODO
+    func updateGoal(for goalID: GoalID, with goal: GoalImpl, completion: @escaping (PersistentDataStoreError?) -> Void) {
+        // TODO: only update track record instead of the whole goal
+        addGoal(goal, completion: completion)
     }
 }

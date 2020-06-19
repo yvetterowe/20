@@ -33,13 +33,4 @@ enum MockGoalFactory {
             ]
         )
     ]
-    
-    static func makeGoalReaderAndWriter(group: DispatchGroup, userID: String)
-        -> (reader: AnyGoalStoreReader<GoalStoreImpl>, writer: GoalStoreWriter) {
-            let mockGoalStore = GoalStoreImpl(
-                persistentDataStore: FirebasePersistentDataStore(userID: userID),
-                group: group
-            )
-        return (AnyGoalStoreReader(mockGoalStore), mockGoalStore)
-    }
 }

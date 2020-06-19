@@ -15,10 +15,12 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
     
     private let persistentDataStore: PersistentDataStore
     private var goalSubjectsByID: [GoalID: GoalSubject]
+    private var firstGoalSubject: CurrentValueSubject<GoalImpl?, Never>
     
-    init(persistentDataStore: PersistentDataStore, group: DispatchGroup) {
+    init(persistentDataStore: PersistentDataStore) {
         self.persistentDataStore = persistentDataStore
         self.goalSubjectsByID = [:]
+        self.firstGoalSubject = .init(nil)
         
         persistentDataStore.retrieveAllGoals{ [weak self] result in
             switch result {
@@ -33,12 +35,14 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
                     return dict
                 }
                 
+                if let firstGoal = goals.first {
+                    self.firstGoalSubject.send(firstGoal)
+                }
+                
             case let .failure(error):
                 print(error)
                 
             }
-            
-            group.leave()
         }
     }
     
@@ -46,6 +50,12 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
     
     func goalPublisher(for goalID: GoalID) -> GoalPublisher {
         return goalSubject(for: goalID).map { $0 as Goal}
+            .eraseToAnyPublisher()
+    }
+    
+    var firstGoalPublisher: AnyPublisher<Goal?, Never> {
+        return firstGoalSubject
+            .map {$0 as Goal?}
             .eraseToAnyPublisher()
     }
     

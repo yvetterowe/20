@@ -11,6 +11,7 @@ import Combine
 typealias GoalPublisher = AnyPublisher<Goal, Never>
 
 protocol GoalStoreReader: ObservableObject {
+    var firstGoalPublisher: AnyPublisher<Goal?, Never> { get }
     func goalPublisher(for goalID: GoalID) -> GoalPublisher
 }
 

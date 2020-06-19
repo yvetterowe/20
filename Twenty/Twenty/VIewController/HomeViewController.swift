@@ -14,27 +14,34 @@ class HomeViewController: UIViewController {
     
     var userID: String?
 
+    private var cancellable: AnyCancellable!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let currentDate: Date.Day = Date().asDay(in: .current)
         
         // TODO: clean up DB async intialization
-        var goalStoreReader: AnyGoalStoreReader<GoalStoreImpl>?
-        var goalStoreWriter: GoalStoreWriter?
-        let group = DispatchGroup()
-        group.enter()
         
-        (goalStoreReader, goalStoreWriter) = MockGoalFactory.makeGoalReaderAndWriter(group: group, userID:userID!)
+        let goalStore = GoalStoreImpl(
+            persistentDataStore: FirebasePersistentDataStore(userID: userID!)
+        )
         
-        group.notify(queue: .main) { [unowned self] in
-            let goalID = "goal-0"
-            let goalPublisher: GoalPublisher = goalStoreReader!.goalPublisher(for: goalID)
+        let goalStoreReader = AnyGoalStoreReader(goalStore)
+        let goalStoreWriter = goalStore
+        
+        cancellable = goalStore.firstGoalPublisher.sink { firstGoal in
+            guard let firstGoal = firstGoal else {
+                return
+            }
+            
+            let goalID = firstGoal.id
+            let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: goalID)
             
             let initialTimerState: TimerState = .init(activeState: .inactive, totalElapsedTime: 0)
             let timerStateStore: TimerStateStore = .init(
                 initialState: initialTimerState,
-                goalStoreWriter: goalStoreWriter!,
+                goalStoreWriter: goalStoreWriter,
                 goalID: goalID
             )
             let timer: TwentyTimer = RealTimer(timeInterval: 1, store: timerStateStore)
