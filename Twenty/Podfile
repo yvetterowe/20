@@ -1,13 +1,17 @@
 platform :ios, '13.0'
-target 'Twenty' do
-end
 
-pod 'Firebase/Auth'
-pod 'FirebaseFirestoreSwift', :modular_headers => true
-pod 'FirebaseFirestore', :modular_headers => true
-pod 'GoogleSignIn'
-pod 'FBSDKCoreKit', '5.8.0'
-pod 'FBSDKLoginKit', '5.8.0'
+target 'Twenty' do
+    pod 'Firebase/Auth'
+    pod 'FirebaseFirestoreSwift', :modular_headers => true
+    pod 'FirebaseFirestore', :modular_headers => true
+    pod 'GoogleSignIn'
+    pod 'FBSDKCoreKit', '5.8.0'
+    pod 'FBSDKLoginKit', '5.8.0'
+
+    target 'TwentyTests' do
+        inherit! :search_paths
+    end
+end
 
 post_install do |pi|
     pi.pods_project.targets.each do |t|
