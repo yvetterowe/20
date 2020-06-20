@@ -77,7 +77,7 @@ final class FirebasePersistentDataStore: PersistentDataStore {
             userID: userID,
             name: goal.name,
             secondsSpent: Int(goal.totalTimeSpent),
-            secondsToComplete: Int(goal.totalTimeSpent),
+            secondsToComplete: Int(goal.timeToComplete),
             trackRecords: goal.trackRecords.map { FirebaseGoalModel.TrackRecord(id: $0.id, startDate: $0.timeSpan.start, endDate: $0.timeSpan.end) }
         )
         
