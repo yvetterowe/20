@@ -38,6 +38,7 @@
 		E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05972480A9B60066C687 /* TwentyTimer.swift */; };
 		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
 		E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerStateStore.swift */; };
+		E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7B8249EC8520011ED12 /* SwipeView.swift */; };
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
@@ -108,6 +109,7 @@
 		E78F05972480A9B60066C687 /* TwentyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyTimer.swift; sourceTree = "<group>"; };
 		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		E78F059B2482B99A0066C687 /* TimerStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStateStore.swift; sourceTree = "<group>"; };
+		E7C2B7B8249EC8520011ED12 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				E7D3F4492489567100463D48 /* BackgroundShape.swift */,
 				E78F058A248093D30066C687 /* BorderMode.swift */,
 				E7D3F4452489426D00463D48 /* GridStack.swift */,
+				E7C2B7B8249EC8520011ED12 /* SwipeView.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				73544F602495F0740038914D /* SignUpViewController.swift in Sources */,
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
+				E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */,
 				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
 				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
 				73544F642495F0CF0038914D /* HomeViewController.swift in Sources */,
