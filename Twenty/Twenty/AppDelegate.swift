@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //Add Firebase
         FirebaseApp.configure()
         //Add Google Signin
-//        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().clientID = "717039244726-v3p789ef17md3errdrcn6oop3e61f8ok.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+//        GIDSignIn.sharedInstance().clientID = "717039244726-v3p789ef17md3errdrcn6oop3e61f8ok.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
        
         return true
@@ -35,17 +35,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         if error != nil {
         return
       }
-
-//      guard let authentication = user.authentication else { return }
-//      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-//                                                        accessToken: authentication.accessToken)
-        print("User email: \(user.profile.email ?? "No Email")")
+        let _userId = user.userID
+        let _idToken = user.authentication.idToken
+        let _email = user.profile.email
+        print("User email: \(_email ?? "No Email")")
+        //Firebase signin
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+        accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            if let error = error {
+                print("Firebaes signin error: \(error)")
+                return
+            }
+            print("User is signed in with Firebase")
+        }
     }
-
+    
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
-        // ...
+        print("User signed out: \(user.profile.email ?? "No Email")")
     }
+    
     // MARK: UISceneSession Lifecycle
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
