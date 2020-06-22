@@ -64,7 +64,6 @@
                         <outlet property="GoogleBtn" destination="ZFe-0a-XcR" id="OKa-ox-e2n"/>
                         <outlet property="SignInBtn" destination="qJR-A1-YUO" id="2oT-4A-qiR"/>
                         <outlet property="SignUpBtn" destination="KXI-uQ-fxf" id="lea-CW-Egy"/>
-                        <segue destination="GZW-wd-N8M" kind="show" identifier="transitToHome" id="S75-P5-se8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYn-kx-fRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,6 +244,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2C-22-i5e">
+                                <rect key="frame" x="355" y="44" width="33" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="User"/>
+                                <connections>
+                                    <segue destination="UPn-UJ-dDv" kind="show" id="BYy-7X-JrY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -278,6 +285,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVq-HC-mx7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="962.31884057971024" y="375"/>
+        </scene>
+        <!--User View Controller-->
+        <scene sceneID="Qih-Rt-glN">
+            <objects>
+                <viewController id="UPn-UJ-dDv" customClass="UserViewController" customModule="Twenty" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QRx-cS-eVG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMU-IM-1py">
+                                <rect key="frame" x="20" y="393" width="374" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="SignOutBtnTapped:" destination="UPn-UJ-dDv" eventType="touchUpInside" id="HTi-H1-8cm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Af0-0n-OyP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Ri-Gv-LNF"/>
+                    <connections>
+                        <outlet property="SignOutBtn" destination="rMU-IM-1py" id="jHp-1z-71k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2gv-s7-ZHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4792.753623188406" y="120.53571428571428"/>
         </scene>
     </scenes>
 </document>
