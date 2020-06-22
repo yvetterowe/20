@@ -49,6 +49,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
         accessToken: authentication.accessToken)
         
+
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if let error = error {
                 print("Firebaes signin error: \(error)")
@@ -59,10 +60,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
         }
     }
     
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        print("User signed out: \(user.profile.email ?? "No Email")")
-    }
+
     func setUpElements(){
          Utilities.styleFilledButton(SignUpBtn)
          Utilities.styleFilledButton(SignInBtn)
