@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--LoginViewController-->
         <scene sceneID="nNZ-gc-vdL">
             <objects>
-                <viewController storyboardIdentifier="Login" id="kxO-co-3qX" customClass="ViewController" customModule="Twenty" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="kxO-co-3qX" userLabel="LoginViewController" customClass="ViewController" customModule="Twenty" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dSz-m0-2f9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,6 +24,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="7cW-nJ-9RE"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="GoogleBtnTapped:" destination="kxO-co-3qX" eventType="valueChanged" id="cO8-8t-FGr"/>
+                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXI-uQ-fxf">
                                         <rect key="frame" x="0.0" y="76" width="374" height="56"/>
@@ -61,6 +64,7 @@
                         <outlet property="GoogleBtn" destination="ZFe-0a-XcR" id="OKa-ox-e2n"/>
                         <outlet property="SignInBtn" destination="qJR-A1-YUO" id="2oT-4A-qiR"/>
                         <outlet property="SignUpBtn" destination="KXI-uQ-fxf" id="lea-CW-Egy"/>
+                        <segue destination="GZW-wd-N8M" kind="show" identifier="transitToHome" id="S75-P5-se8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYn-kx-fRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,6 +255,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fLH-FL-Dgb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="w9X-Bg-0iW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ie0-Sq-N25" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
