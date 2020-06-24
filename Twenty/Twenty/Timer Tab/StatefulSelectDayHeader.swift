@@ -13,8 +13,12 @@ protocol SelectDayStoreReader {
     var selectDayPublisher: AnyPublisher<Date.Day, Never> { get }
 }
 
-final class SelectDayStore: SelectDayStoreReader, ObservableObject {
-    @Published var selectedDate: Date
+protocol SelectDayStoreWriter {
+    func updateSelectDate(_ date: Date)
+}
+
+final class SelectDayStore: SelectDayStoreReader, SelectDayStoreWriter, ObservableObject {
+    @Published private(set) var selectedDate: Date
         
     var selectDayPublisher: AnyPublisher<Date.Day, Never> {
         return $selectedDate.map{$0.asDay(in: .current)}.eraseToAnyPublisher()
@@ -22,6 +26,10 @@ final class SelectDayStore: SelectDayStoreReader, ObservableObject {
     
     init(initialSelectDay: Date.Day) {
         self._selectedDate = .init(initialValue: initialSelectDay.date)
+    }
+    
+    func updateSelectDate(_ date: Date) {
+        selectedDate = date
     }
 }
 
@@ -35,9 +43,8 @@ struct StatefulSelectDayHeader: View {
     
     var body: some View {
         VStack {
-            DatePicker(selection: $store.selectedDate, displayedComponents: .date) {
-                Text("Day")
-            }
+            CalendarWeekHeaderView(selectDayStore: store)
+                .frame(height: 80)
             Text("\(store.selectedDate)")
         }
     }
