@@ -38,21 +38,19 @@ class HomeViewController: UIViewController {
             let goalID = firstGoal.id
             let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: goalID)
             
-            let initialTimerState: TimerState = .init(activeState: .inactive, totalElapsedTime: 0)
+            let initialTimerState: TimerState = .init(isActive: false, elapsedTime: nil)
             let timerStateStore: TimerStateStore = .init(
                 initialState: initialTimerState,
                 goalStoreWriter: goalStoreWriter,
                 goalID: goalID
             )
-            let timer: TwentyTimer = RealTimer(timeInterval: 1, store: timerStateStore)
-
+            
             let selectDayStore = SelectDayStore(initialSelectDay: currentDate)
             
             let contentView = ContentView(
                 timerTabContext: .init(
                     timerStateStore: timerStateStore,
                     goalPublisher: goalPublisher,
-                    timer: timer,
                     selectDayStore: selectDayStore,
                     todayPublisher: Just(currentDate).eraseToAnyPublisher()
                 )

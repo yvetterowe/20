@@ -18,6 +18,7 @@
 		739C10E62497346D003B9B15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C10E52497346D003B9B15 /* Constants.swift */; };
 		739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */; };
 		73B7E98E249873C00061D923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E98D249873BF0061D923 /* Utilities.swift */; };
+		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
 		E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054C247F495D0066C687 /* AppDelegate.swift */; };
 		E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054E247F495D0066C687 /* SceneDelegate.swift */; };
@@ -28,14 +29,11 @@
 		E78F057B247F53150066C687 /* TimerWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057A247F53150066C687 /* TimerWatchView.swift */; };
 		E78F057D247F53260066C687 /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057C247F53260066C687 /* TextModel.swift */; };
 		E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057E247F6CF30066C687 /* ColorPalette.swift */; };
-		E78F058124803D290066C687 /* StatefulTimerWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058024803D290066C687 /* StatefulTimerWatchView.swift */; };
 		E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F0588248093140066C687 /* BackgroundColorMode.swift */; };
 		E78F058B248093D30066C687 /* BorderMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058A248093D30066C687 /* BorderMode.swift */; };
 		E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058C2480946C0066C687 /* ButtonModel.swift */; };
 		E78F058F248094E40066C687 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058E248094E40066C687 /* TextButton.swift */; };
-		E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F0590248095BE0066C687 /* StatefulTimerButton.swift */; };
 		E78F059324809CB90066C687 /* StatefulTimerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059224809CB90066C687 /* StatefulTimerTabView.swift */; };
-		E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05972480A9B60066C687 /* TwentyTimer.swift */; };
 		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
 		E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerStateStore.swift */; };
 		E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7B8249EC8520011ED12 /* SwipeView.swift */; };
@@ -86,6 +84,7 @@
 		AF69723C306F40791B2C46CA /* Pods-Twenty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.release.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.release.xcconfig"; sourceTree = "<group>"; };
 		D1B89DAA20B7DE9543689DD2 /* libPods-TwentyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwentyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE7F2511A8714A1069E6F396 /* Pods-TwentyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwentyTests.release.xcconfig"; path = "Target Support Files/Pods-TwentyTests/Pods-TwentyTests.release.xcconfig"; sourceTree = "<group>"; };
+		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E77A51292484130C009243CC /* GoalStoreWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreWriter.swift; sourceTree = "<group>"; };
 		E78F0549247F495D0066C687 /* Twenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78F054C247F495D0066C687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,14 +99,11 @@
 		E78F057A247F53150066C687 /* TimerWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWatchView.swift; sourceTree = "<group>"; };
 		E78F057C247F53260066C687 /* TextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
 		E78F057E247F6CF30066C687 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
-		E78F058024803D290066C687 /* StatefulTimerWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerWatchView.swift; sourceTree = "<group>"; };
 		E78F0588248093140066C687 /* BackgroundColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorMode.swift; sourceTree = "<group>"; };
 		E78F058A248093D30066C687 /* BorderMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderMode.swift; sourceTree = "<group>"; };
 		E78F058C2480946C0066C687 /* ButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
 		E78F058E248094E40066C687 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
-		E78F0590248095BE0066C687 /* StatefulTimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerButton.swift; sourceTree = "<group>"; };
 		E78F059224809CB90066C687 /* StatefulTimerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerTabView.swift; sourceTree = "<group>"; };
-		E78F05972480A9B60066C687 /* TwentyTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyTimer.swift; sourceTree = "<group>"; };
 		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		E78F059B2482B99A0066C687 /* TimerStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStateStore.swift; sourceTree = "<group>"; };
 		E7C2B7B8249EC8520011ED12 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
@@ -283,11 +279,9 @@
 			isa = PBXGroup;
 			children = (
 				E77A512824840FA1009243CC /* Stateless UI Components */,
-				E78F05972480A9B60066C687 /* TwentyTimer.swift */,
 				E78F05992481D0D10066C687 /* BackgroundTimer.swift */,
 				E78F059224809CB90066C687 /* StatefulTimerTabView.swift */,
-				E78F0590248095BE0066C687 /* StatefulTimerButton.swift */,
-				E78F058024803D290066C687 /* StatefulTimerWatchView.swift */,
+				E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
 				E7D3F46D249453D800463D48 /* StatefulProgressView.swift */,
@@ -517,6 +511,7 @@
 			files = (
 				73544F602495F0740038914D /* SignUpViewController.swift in Sources */,
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
+				E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */,
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
 				E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */,
 				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
@@ -529,15 +524,12 @@
 				739C10E62497346D003B9B15 /* Constants.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
 				E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */,
-				E78F05982480A9B60066C687 /* TwentyTimer.swift in Sources */,
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
 				E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */,
 				E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */,
 				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
-				E78F058124803D290066C687 /* StatefulTimerWatchView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */,
-				E78F0591248095BE0066C687 /* StatefulTimerButton.swift in Sources */,
 				E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */,
 				E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,

@@ -56,7 +56,6 @@ struct StatefulTimerTabView: View {
     struct Context {
         let timerStateStore: TimerStateStore
         let goalPublisher: GoalPublisher
-        let timer: TwentyTimer
         let selectDayStore: SelectDayStore
         let todayPublisher: AnyPublisher<Date.Day, Never>
     }
@@ -75,12 +74,7 @@ struct StatefulTimerTabView: View {
     var body: some View {
         VStack {
             StatefulSelectDayHeader(store: context.selectDayStore)
-            StatefulTimerWatchView(context: context)
-            if viewStateStore.state == .today {
-                StatefulTimerButton(context: context)
-            } else {
-                StatefulTimerButton(context: context).hidden()
-            }
+            StatefulTimerView(timerStateStore: context.timerStateStore)
             StatefulProgressView(goalPublisher: context.goalPublisher).frame(height: 16)
         }
     }

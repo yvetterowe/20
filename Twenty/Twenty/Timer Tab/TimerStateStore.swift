@@ -10,35 +10,12 @@ import Combine
 import Foundation
 
 struct TimerState {
-    
-    enum ActiveState: Equatable {
-        case inactive
-        case active(currentElapsedTime: DateInterval)
-    }
-    
-    var activeState: ActiveState {
-        didSet {
-            switch(oldValue, activeState) {
-            case (_, .inactive):
-                totalElapsedTime = 0
-            case (.inactive, let .active(currentElapsedTime)):
-                totalElapsedTime += currentElapsedTime.duration
-            case (let .active(previousElapsedTime), let .active(currentElapsedTime)):
-                guard previousElapsedTime.start == currentElapsedTime.start else {
-                    fatalError("Inconsistent start time \(previousElapsedTime.start) \(currentElapsedTime.start)")
-                }
-                totalElapsedTime += currentElapsedTime.end.timeIntervalSince(previousElapsedTime.end)
-            }
-        }
-    }
-    
-    private(set) var totalElapsedTime: TimeInterval
+    let isActive: Bool
+    let elapsedTime: DateInterval?
 }
 
-
 enum TimerAction {
-    case resume
-    case suspend
+    case toggleTimerButtonTapped
     case ticked(tickDate: Date, tickInterval: TimeInterval)
 }
 
@@ -54,8 +31,14 @@ final class TimerStateStore: ObservableObject {
     
     // MARK: - Private Properties
     
+    private lazy var backgroundTimer: BackgroundTimer = .init(timeInterval: timerInterval) { tickInterval in
+        DispatchQueue.main.async {
+            self.send(.ticked(tickDate: Date(), tickInterval: tickInterval))
+        }
+    }
     private let goalStoreWriter: GoalStoreWriter
     private let goalID: GoalID
+    private let timerInterval: TimeInterval = 1
     
     init(initialState: TimerState, goalStoreWriter: GoalStoreWriter, goalID: GoalID) {
         self._state = .init(initialValue: initialState)
@@ -65,38 +48,36 @@ final class TimerStateStore: ObservableObject {
     
     func send(_ action: TimerAction) {
         switch action {
-        case .resume:
-            guard case .inactive = state.activeState else {
-                fatalError()
-            }
-            state.activeState = .active(currentElapsedTime: .init(start: Date(), duration: 0))
-                
-        case .suspend:
-            guard case let .active(currentElapsedTime) = state.activeState else {
-                 fatalError()
-            }
-            state.activeState = .inactive
-            print("paused! last active: \(currentElapsedTime.duration) \(currentElapsedTime)")
-            goalStoreWriter.appendTrackRecord(
-                .init(
-                    id: UUID().uuidString,
-                    timeSpan: currentElapsedTime
-                ),
-                forGoal: goalID
-            )
-        
-        case let .ticked(tickDate, _):
-            switch state.activeState {
-            case .inactive:
-                break
-            case let .active(currentElapsedTime):
-                state.activeState = .active(
-                    currentElapsedTime: .init(
-                        start: currentElapsedTime.start,
-                        end: tickDate
-                    )
+        case .toggleTimerButtonTapped:
+            if state.isActive {
+                guard let currentElapsedTime = state.elapsedTime else {
+                    fatalError()
+                }
+                _ = goalStoreWriter.appendTrackRecord(
+                    .init(
+                        id: UUID().uuidString,
+                        timeSpan: currentElapsedTime
+                    ),
+                    forGoal: goalID
                 )
+                backgroundTimer.suspend()
+            } else {
+                backgroundTimer.resume()
             }
+        
+            state = .init(
+                isActive: !state.isActive,
+                elapsedTime: state.elapsedTime
+            )
+            
+        case let .ticked(tickDate, _):
+            state = .init(
+                isActive: true,
+                elapsedTime: .init(
+                    start: state.elapsedTime?.start ?? tickDate,
+                    end: tickDate
+                )
+            )
         }
     }
 }
