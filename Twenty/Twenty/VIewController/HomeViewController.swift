@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
         )
         
         let goalStoreReader = AnyGoalStoreReader(goalStore)
-        let goalStoreWriter = goalStore
         
         cancellable = goalStore.firstGoalPublisher.sink { firstGoal in
             guard let firstGoal = firstGoal else {
@@ -36,22 +35,13 @@ class HomeViewController: UIViewController {
             }
             
             let goalID = firstGoal.id
-            let goalPublisher: GoalPublisher = goalStoreReader.goalPublisher(for: goalID)
-            
-            let initialTimerState: TimerState = .init(isActive: false, elapsedTime: nil)
-            let timerStateStore: TimerStateStore = .init(
-                initialState: initialTimerState,
-                goalStoreWriter: goalStoreWriter,
-                goalID: goalID
-            )
-            
-            let selectDayStore = SelectDayStore(initialSelectDay: currentDate)
-            
+                        
             let contentView = ContentView(
                 timerTabContext: .init(
-                    timerStateStore: timerStateStore,
-                    goalPublisher: goalPublisher,
-                    selectDayStore: selectDayStore,
+                    goalID: goalID,
+                    goalStoreWriter: goalStore,
+                    goalPublisher: goalStoreReader.goalPublisher(for: goalID),
+                    selectDayStore: .init(initialSelectDay: currentDate),
                     todayPublisher: Just(currentDate).eraseToAnyPublisher()
                 )
             )

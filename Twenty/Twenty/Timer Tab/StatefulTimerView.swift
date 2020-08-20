@@ -17,13 +17,17 @@ struct StatefulTimerView: View {
     }
     
     @ObservedObject private var timerStateStore: TimerStateStore
+    @Binding private var presentingTimer: Bool
+    @State private var dismissButtonEnabled: Bool = true
+    @State private var buttonTappedCount: Int = 0 // ugly hack = =
     
     private var timerState: TimerState {
         return timerStateStore.state
     }
     
-    init(timerStateStore: TimerStateStore) {
+    init(timerStateStore: TimerStateStore, presentingTimer: Binding<Bool>) {
         self.timerStateStore = timerStateStore
+        self._presentingTimer = presentingTimer
     }
     
     var body: some View {
@@ -38,8 +42,13 @@ struct StatefulTimerView: View {
             Text(viewModel.secondaryText)
             Spacer()
             Button(viewModel.buttonText) {
-                self.timerStateStore.send(.toggleTimerButtonTapped)
-            }
+                buttonTappedCount += 1
+                dismissButtonEnabled = !dismissButtonEnabled
+                timerStateStore.send(.toggleTimerButtonTapped)
+            }.disabled(buttonTappedCount >= 2)
+            Button("Confirm and Save") {
+                presentingTimer = false
+            }.disabled(!dismissButtonEnabled)
         }
     }
 }

@@ -54,7 +54,8 @@ final class TimerTabViewStateStore: ObservableObject, Subscriber {
 struct StatefulTimerTabView: View {
     
     struct Context {
-        let timerStateStore: TimerStateStore
+        let goalID: String
+        let goalStoreWriter: GoalStoreWriter
         let goalPublisher: GoalPublisher
         let selectDayStore: SelectDayStore
         let todayPublisher: AnyPublisher<Date.Day, Never>
@@ -62,6 +63,7 @@ struct StatefulTimerTabView: View {
     
     private let context: Context
     @ObservedObject private var viewStateStore: TimerTabViewStateStore
+    @State private var presentingTimer: Bool = false
     
     init(context: Context) {
         self.context = context
@@ -74,7 +76,20 @@ struct StatefulTimerTabView: View {
     var body: some View {
         VStack {
             StatefulSelectDayHeader(store: context.selectDayStore)
-            StatefulTimerView(timerStateStore: context.timerStateStore)
+            if case .today = viewStateStore.state {
+                Button("Start Tracking") {
+                    presentingTimer = true
+                }.sheet(isPresented: $presentingTimer) {
+                    StatefulTimerView(
+                        timerStateStore: .init(
+                            initialState: .init(isActive: false, elapsedTime: nil),
+                            goalStoreWriter: context.goalStoreWriter,
+                            goalID: context.goalID
+                        ),
+                        presentingTimer: $presentingTimer
+                    )
+                }
+            }
             StatefulProgressView(goalPublisher: context.goalPublisher).frame(height: 16)
         }
     }
