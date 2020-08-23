@@ -45,7 +45,6 @@ struct StatefulSelectDayHeader: View {
         VStack {
             CalendarWeekHeaderView(selectDayStore: store)
                 .frame(height: 80)
-            Text("\(store.selectedDate)")
         }
     }
 }

@@ -52,6 +52,18 @@ extension Date {
         )
         return .init(date: self)
     }
+    
+    func weekdayDescription() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self)
+    }
+    
+    func shortDayDescription() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd"
+        return dateFormatter.string(from: self)
+    }
 }
 
 extension Calendar {

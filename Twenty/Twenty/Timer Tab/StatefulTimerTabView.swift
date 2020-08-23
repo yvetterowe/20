@@ -9,14 +9,14 @@
 import Combine
 import SwiftUI
 
-enum TimerTabViewState: Equatable {
-    case today
-    case notToday
+struct SelectedDayViewState {
+    let isToday: Bool
+    let day: Date.Day
 }
 
 final class TimerTabViewStateStore: ObservableObject, Subscriber {
     
-    @Published private(set) var state: TimerTabViewState = .today
+    @Published private(set) var state: SelectedDayViewState = .init(isToday: true, day: Date().asDay(in: .current))
         
     init(
         selectedDayPublisher: AnyPublisher<Date.Day, Never>,
@@ -36,7 +36,10 @@ final class TimerTabViewStateStore: ObservableObject, Subscriber {
     typealias Failure = Never
     
     func receive(_ input: Input) -> Subscribers.Demand {
-        state = input.selectedDay == input.today ? .today : .notToday
+        state = .init(
+            isToday: input.selectedDay == input.today,
+            day: input.selectedDay
+        )
         
         return .unlimited
     }
@@ -75,8 +78,10 @@ struct StatefulTimerTabView: View {
     
     var body: some View {
         VStack {
+            StatefulDayViewHeader(viewModelStore: .init(selectedDayViewState: viewStateStore))
             StatefulSelectDayHeader(store: context.selectDayStore)
-            if case .today = viewStateStore.state {
+            StatefulProgressView(goalPublisher: context.goalPublisher).frame(height: 16)
+            if viewStateStore.state.isToday {
                 Button("Start Tracking") {
                     presentingTimer = true
                 }.sheet(isPresented: $presentingTimer) {
@@ -90,7 +95,6 @@ struct StatefulTimerTabView: View {
                     )
                 }
             }
-            StatefulProgressView(goalPublisher: context.goalPublisher).frame(height: 16)
         }
     }
 }
