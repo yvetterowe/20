@@ -90,7 +90,7 @@ struct StatefulTimerTabView: View {
                     goalPublisher: context.goalPublisher
                 )
             )
-            StatefulProgressView(goalPublisher: context.goalPublisher).frame(height: 16)
+            StatisticView.placeholder()
             if viewStateStore.state.isToday {
                 Button("Start Tracking") {
                     presentingTimer = true
