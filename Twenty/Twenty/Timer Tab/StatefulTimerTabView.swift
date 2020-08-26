@@ -78,8 +78,18 @@ struct StatefulTimerTabView: View {
     
     var body: some View {
         VStack {
-            StatefulDayViewHeader(viewModelStore: .init(selectedDayViewState: viewStateStore))
-            StatefulSelectDayHeader(store: context.selectDayStore)
+            StatefulDayViewHeader(
+                viewModelStore: .init(selectedDayViewState: viewStateStore)
+            )
+            StatefulSelectDayHeader(
+                store: context.selectDayStore
+            )
+            StatefulDayViewSummarySection(
+                viewModelStore: .init(
+                    selectedDayPublisher: context.selectDayStore.selectDayPublisher,
+                    goalPublisher: context.goalPublisher
+                )
+            )
             StatefulProgressView(goalPublisher: context.goalPublisher).frame(height: 16)
             if viewStateStore.state.isToday {
                 Button("Start Tracking") {
