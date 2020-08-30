@@ -12,7 +12,6 @@ struct StatefulTimerView: View {
     
     struct ViewModel {
         var primaryText: String
-        var secondaryText: String
         var buttonText: String
     }
     
@@ -33,13 +32,18 @@ struct StatefulTimerView: View {
     var body: some View {
         let viewModel = ViewModel(
             primaryText: timerState.primaryText,
-            secondaryText: timerState.secondaryText,
             buttonText: timerState.buttonText
         )
         VStack {
             Spacer()
             Text(viewModel.primaryText)
-            Text(viewModel.secondaryText)
+            if let elapsedTime = timerState.elapsedTime {
+                DateIntervalView(timerState: timerState) {
+                    print("Edit start")
+                } endTimeButtonAction: {
+                    print("Edit end")
+                }
+            }
             Spacer()
             Button(viewModel.buttonText) {
                 buttonTappedCount += 1
@@ -49,6 +53,28 @@ struct StatefulTimerView: View {
             Button("Confirm and Save") {
                 presentingTimer = false
             }.disabled(!dismissButtonEnabled)
+        }
+    }
+}
+
+private struct DateIntervalView: View {
+    let timerState: TimerState
+    let startTimeButtonAction: () -> Void
+    let endTimeButtonAction: () -> Void
+    
+    var body: some View {
+        if let elapsedTime = timerState.elapsedTime {
+            if timerState.isActive {
+                Text("Start at \(elapsedTime.start.timeFormat())")
+            } else {
+                HStack {
+                    Button("\(elapsedTime.start.timeFormat())", action: startTimeButtonAction)
+                    Text("-")
+                    Button("\(elapsedTime.start.timeFormat())", action: endTimeButtonAction)
+                }
+            }
+        } else {
+            Text("")
         }
     }
 }
