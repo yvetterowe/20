@@ -92,17 +92,22 @@ struct StatefulTimerTabView: View {
             )
             StatisticView.placeholder()
             if viewStateStore.state.isToday {
-                Button("Start Tracking") {
-                    presentingTimer = true
-                }.sheet(isPresented: $presentingTimer) {
-                    StatefulTimerView(
-                        timerStateStore: .init(
-                            initialState: .init(isActive: false, elapsedTime: nil),
-                            goalStoreWriter: context.goalStoreWriter,
-                            goalID: context.goalID
-                        ),
-                        presentingTimer: $presentingTimer
-                    )
+                if #available(iOS 14.0, *) {
+                    Button("Start Tracking") {
+                        presentingTimer = true
+                    }
+                    .fullScreenCover(isPresented: $presentingTimer) {
+                        StatefulTimerView(
+                            timerStateStore: .init(
+                                initialState: .init(isActive: false, elapsedTime: nil),
+                                goalStoreWriter: context.goalStoreWriter,
+                                goalID: context.goalID
+                            ),
+                            presentingTimer: $presentingTimer
+                        )
+                    }
+                } else {
+                    // Fallback on earlier versions
                 }
             }
         }
