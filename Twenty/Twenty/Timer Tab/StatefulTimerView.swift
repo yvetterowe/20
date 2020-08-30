@@ -11,12 +11,11 @@ import SwiftUI
 
 struct TimerViewState {
     let isActive: Bool
-    let elapsedTime: DateInterval?
+    var elapsedTime: DateInterval?
 }
 
 final class TimerViewStateStore: ObservableObject {
-    @Published private(set) var value: TimerViewState = .init(isActive: false, elapsedTime: nil)
-    
+    @Published var value: TimerViewState = .init(isActive: false, elapsedTime: nil)
     private let timerStateStore: TimerStateStore
     private let goalStoreWriter: GoalStoreWriter
     private let goalID: GoalID
@@ -88,11 +87,7 @@ struct StatefulTimerView: View {
             Spacer()
             Text(viewModel.primaryText)
             if let elapsedTime = viewState.elapsedTime {
-                DateIntervalView(viewState: viewState) {
-                    print("Edit start")
-                } endTimeButtonAction: {
-                    print("Edit end")
-                }
+                DateIntervalView(viewState: ($viewStateStore).value)
             }
             Spacer()
             Button(viewModel.buttonText) {
@@ -109,9 +104,8 @@ struct StatefulTimerView: View {
 }
 
 private struct DateIntervalView: View {
-    let viewState: TimerViewState
-    let startTimeButtonAction: () -> Void
-    let endTimeButtonAction: () -> Void
+    @Binding var viewState: TimerViewState
+    @State private var editingTime: Bool = false
     
     var body: some View {
         if let elapsedTime = viewState.elapsedTime {
@@ -119,9 +113,33 @@ private struct DateIntervalView: View {
                 Text("Start at \(elapsedTime.start.timeFormat())")
             } else {
                 HStack {
-                    Button("\(elapsedTime.start.timeFormat())", action: startTimeButtonAction)
+                    Button("\(elapsedTime.start.timeFormat())") {
+                        editingTime = true
+                    }
+                    .sheet(isPresented: $editingTime) {
+                        editingTime = false
+                    } content: {
+                        StatefulEditTimeView(
+                            viewStore: .init(
+                                editingTime: $editingTime,
+                                dateInterval: Binding(($viewState).elapsedTime)!
+                            )
+                        )
+                    }
                     Text("-")
-                    Button("\(elapsedTime.end.timeFormat())", action: endTimeButtonAction)
+                    Button("\(elapsedTime.end.timeFormat())") {
+                        editingTime = true
+                    }
+                    .sheet(isPresented: $editingTime) {
+                        editingTime = false
+                    } content: {
+                        StatefulEditTimeView(
+                            viewStore: .init(
+                                editingTime: $editingTime,
+                                dateInterval: Binding(($viewState).elapsedTime)!
+                            )
+                        )
+                    }
                 }
             }
         } else {
@@ -157,10 +175,16 @@ extension TimeInterval {
     }
 }
 
-private extension Date {
+extension Date {
     func timeFormat() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
+        return dateFormatter.string(from: self)
+    }
+    
+    func dayAndTimeFormat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/M/, HH:mm"
         return dateFormatter.string(from: self)
     }
 }

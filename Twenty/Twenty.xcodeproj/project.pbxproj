@@ -42,6 +42,7 @@
 		E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerStateStore.swift */; };
 		E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7B8249EC8520011ED12 /* SwipeView.swift */; };
 		E7C2B7BB24A301440011ED12 /* CalendarWeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */; };
+		E7C40FEC24FC3A9400DBB926 /* StatefulEditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */; };
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
@@ -116,6 +117,7 @@
 		E78F059B2482B99A0066C687 /* TimerStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStateStore.swift; sourceTree = "<group>"; };
 		E7C2B7B8249EC8520011ED12 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekHeaderView.swift; sourceTree = "<group>"; };
+		E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulEditTimeView.swift; sourceTree = "<group>"; };
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */,
 				E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */,
 				E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */,
+				E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
 				E7D3F46D249453D800463D48 /* StatefulProgressView.swift */,
@@ -545,6 +548,7 @@
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */,
 				E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */,
+				E7C40FEC24FC3A9400DBB926 /* StatefulEditTimeView.swift in Sources */,
 				E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
 				E7D3F4682493129900463D48 /* ProgressBar.swift in Sources */,
