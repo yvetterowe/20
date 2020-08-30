@@ -6,7 +6,57 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
+import Combine
 import SwiftUI
+
+struct TimerViewState {
+    let isActive: Bool
+    let elapsedTime: DateInterval?
+}
+
+final class TimerViewStateStore: ObservableObject {
+    @Published private(set) var value: TimerViewState = .init(isActive: false, elapsedTime: nil)
+    
+    private let timerStateStore: TimerStateStore
+    private let goalStoreWriter: GoalStoreWriter
+    private let goalID: GoalID
+    private var cancellable: AnyCancellable!
+    
+    init(timerStateStore: TimerStateStore, goalStoreWriter: GoalStoreWriter, goalID: GoalID) {
+        self.timerStateStore = timerStateStore
+        self.goalStoreWriter = goalStoreWriter
+        self.goalID = goalID
+        
+        self.cancellable = timerStateStore.$state.sink { [weak self] timerState in
+            guard let self = self else {
+                return
+            }
+            
+            self.value = .init(
+                isActive: timerState.isActive,
+                elapsedTime: timerState.elapsedTime
+            )
+        }
+    }
+    
+    func timerButtonTapped() {
+        timerStateStore.send(.toggleTimerButtonTapped)
+    }
+    
+    func saveCurrentRecord() {
+        guard let elapsedTime = value.elapsedTime else {
+            print("Time not started yet")
+            return
+        }
+        _ = goalStoreWriter.appendTrackRecord(
+            .init(
+                id: UUID().uuidString,
+                timeSpan: elapsedTime
+            ),
+            forGoal: goalID
+        )
+    }
+}
 
 struct StatefulTimerView: View {
     
@@ -15,30 +65,30 @@ struct StatefulTimerView: View {
         var buttonText: String
     }
     
-    @ObservedObject private var timerStateStore: TimerStateStore
+    @ObservedObject private var viewStateStore: TimerViewStateStore
     @Binding private var presentingTimer: Bool
     @State private var dismissButtonEnabled: Bool = true
     @State private var buttonTappedCount: Int = 0 // ugly hack = =
     
-    private var timerState: TimerState {
-        return timerStateStore.state
+    private var viewState: TimerViewState {
+        return viewStateStore.value
     }
     
-    init(timerStateStore: TimerStateStore, presentingTimer: Binding<Bool>) {
-        self.timerStateStore = timerStateStore
+    init(viewStateStore: TimerViewStateStore, presentingTimer: Binding<Bool>) {
+        self.viewStateStore = viewStateStore
         self._presentingTimer = presentingTimer
     }
     
     var body: some View {
         let viewModel = ViewModel(
-            primaryText: timerState.primaryText,
-            buttonText: timerState.buttonText
+            primaryText: viewState.primaryText,
+            buttonText: viewState.buttonText
         )
         VStack {
             Spacer()
             Text(viewModel.primaryText)
-            if let elapsedTime = timerState.elapsedTime {
-                DateIntervalView(timerState: timerState) {
+            if let elapsedTime = viewState.elapsedTime {
+                DateIntervalView(viewState: viewState) {
                     print("Edit start")
                 } endTimeButtonAction: {
                     print("Edit end")
@@ -48,29 +98,30 @@ struct StatefulTimerView: View {
             Button(viewModel.buttonText) {
                 buttonTappedCount += 1
                 dismissButtonEnabled = !dismissButtonEnabled
-                timerStateStore.send(.toggleTimerButtonTapped)
+                viewStateStore.timerButtonTapped()
             }.disabled(buttonTappedCount >= 2)
             Button("Confirm and Save") {
                 presentingTimer = false
+                viewStateStore.saveCurrentRecord()
             }.disabled(!dismissButtonEnabled)
         }
     }
 }
 
 private struct DateIntervalView: View {
-    let timerState: TimerState
+    let viewState: TimerViewState
     let startTimeButtonAction: () -> Void
     let endTimeButtonAction: () -> Void
     
     var body: some View {
-        if let elapsedTime = timerState.elapsedTime {
-            if timerState.isActive {
+        if let elapsedTime = viewState.elapsedTime {
+            if viewState.isActive {
                 Text("Start at \(elapsedTime.start.timeFormat())")
             } else {
                 HStack {
                     Button("\(elapsedTime.start.timeFormat())", action: startTimeButtonAction)
                     Text("-")
-                    Button("\(elapsedTime.start.timeFormat())", action: endTimeButtonAction)
+                    Button("\(elapsedTime.end.timeFormat())", action: endTimeButtonAction)
                 }
             }
         } else {
@@ -79,7 +130,7 @@ private struct DateIntervalView: View {
     }
 }
 
-private extension TimerState {
+private extension TimerViewState {
     var primaryText: String {
         return elapsedTime?.duration.format() ?? "Om"
     }

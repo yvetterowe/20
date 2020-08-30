@@ -98,8 +98,10 @@ struct StatefulTimerTabView: View {
                     }
                     .fullScreenCover(isPresented: $presentingTimer) {
                         StatefulTimerView(
-                            timerStateStore: .init(
-                                initialState: .init(isActive: false, elapsedTime: nil),
+                            viewStateStore: .init(
+                                timerStateStore: .init(
+                                    initialState: .init(isActive: false, elapsedTime: nil)
+                                ),
                                 goalStoreWriter: context.goalStoreWriter,
                                 goalID: context.goalID
                             ),

@@ -36,14 +36,11 @@ final class TimerStateStore: ObservableObject {
             self.send(.ticked(tickDate: Date(), tickInterval: tickInterval))
         }
     }
-    private let goalStoreWriter: GoalStoreWriter
-    private let goalID: GoalID
+    
     private let timerInterval: TimeInterval = 1
     
-    init(initialState: TimerState, goalStoreWriter: GoalStoreWriter, goalID: GoalID) {
+    init(initialState: TimerState) {
         self._state = .init(initialValue: initialState)
-        self.goalStoreWriter = goalStoreWriter
-        self.goalID = goalID
     }
     
     func send(_ action: TimerAction) {
@@ -53,13 +50,6 @@ final class TimerStateStore: ObservableObject {
                 guard let currentElapsedTime = state.elapsedTime else {
                     fatalError()
                 }
-                _ = goalStoreWriter.appendTrackRecord(
-                    .init(
-                        id: UUID().uuidString,
-                        timeSpan: currentElapsedTime
-                    ),
-                    forGoal: goalID
-                )
                 backgroundTimer.suspend()
             } else {
                 backgroundTimer.resume()
