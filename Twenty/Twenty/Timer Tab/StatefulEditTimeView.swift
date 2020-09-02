@@ -10,7 +10,6 @@ import Combine
 import SwiftUI
 
 final class StatefulEditTimeViewStore: ObservableObject {
-//    @Published private(set) var dateInterval: DateInterval
     @Binding var editingTime: Bool
     @Binding var dateInterval: DateInterval
     
@@ -31,6 +30,8 @@ final class StatefulEditTimeViewStore: ObservableObject {
 
 struct StatefulEditTimeView: View {
     @ObservedObject private var viewStore: StatefulEditTimeViewStore
+    @State private var editingStartTime: Bool = false
+    @State private var editingEndTime: Bool = false
     
     init(viewStore: StatefulEditTimeViewStore) {
         self.viewStore = viewStore
@@ -38,10 +39,27 @@ struct StatefulEditTimeView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            List {
                 Text(viewStore.dateInterval.duration.format())
-                Text("Start at \(viewStore.dateInterval.start.dayAndTimeFormat())")
-                Text("End at \(viewStore.dateInterval.end.dayAndTimeFormat())")
+                TimeListRow(
+                    model: .init(
+                        title: "Start at",
+                        buttonText: "\(viewStore.dateInterval.start.dayAndTimeFormat())",
+                        buttonAction: {
+                            self.editingStartTime = true
+                        }
+                    )
+                )
+
+                TimeListRow(
+                    model: .init(
+                        title: "End at",
+                        buttonText: "\(viewStore.dateInterval.end.dayAndTimeFormat())",
+                        buttonAction: {
+                            self.editingEndTime = true
+                        }
+                    )
+                )
             }
             .navigationBarTitle("Edit Time")
             .navigationBarItems(
@@ -55,6 +73,25 @@ struct StatefulEditTimeView: View {
                 }, label: {
                     Text("Done")
                 }))
+        }
+    }
+}
+
+struct TimeListRow: View {
+    
+    struct Model {
+        let title: String
+        let buttonText: String
+        let buttonAction: () -> Void
+    }
+    
+    let model: Model
+    
+    var body: some View {
+        HStack {
+            Text(model.title)
+            Spacer()
+            Button(model.buttonText, action: model.buttonAction)
         }
     }
 }

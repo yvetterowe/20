@@ -184,7 +184,7 @@ extension Date {
     
     func dayAndTimeFormat() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/M/, HH:mm"
+        dateFormatter.dateFormat = "dd/M, HH:mm:ss"
         return dateFormatter.string(from: self)
     }
 }
