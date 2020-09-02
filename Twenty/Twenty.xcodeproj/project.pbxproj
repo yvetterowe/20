@@ -30,7 +30,6 @@
 		E78F0553247F49630066C687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78F0552247F49630066C687 /* Assets.xcassets */; };
 		E78F0556247F49630066C687 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78F0555247F49630066C687 /* Preview Assets.xcassets */; };
 		E78F0559247F49630066C687 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78F0557247F49630066C687 /* LaunchScreen.storyboard */; };
-		E78F057B247F53150066C687 /* TimerWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057A247F53150066C687 /* TimerWatchView.swift */; };
 		E78F057D247F53260066C687 /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057C247F53260066C687 /* TextModel.swift */; };
 		E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057E247F6CF30066C687 /* ColorPalette.swift */; };
 		E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F0588248093140066C687 /* BackgroundColorMode.swift */; };
@@ -54,9 +53,6 @@
 		E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */; };
 		E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F45D248BF2F700463D48 /* UnwrapView.swift */; };
 		E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */; };
-		E7D3F4682493129900463D48 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4672493129800463D48 /* ProgressBar.swift */; };
-		E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4692493216000463D48 /* ProgressView.swift */; };
-		E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F46D249453D800463D48 /* StatefulProgressView.swift */; };
 		E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00234249AF48F00403E50 /* GoalImpl.swift */; };
 		E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00237249AF61400403E50 /* PersistentDataStore.swift */; };
 		E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00239249AF88700403E50 /* GoalStoreImpl.swift */; };
@@ -105,7 +101,6 @@
 		E78F055A247F49630066C687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E78F055F247F49640066C687 /* TwentyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwentyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78F0565247F49640066C687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E78F057A247F53150066C687 /* TimerWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWatchView.swift; sourceTree = "<group>"; };
 		E78F057C247F53260066C687 /* TextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
 		E78F057E247F6CF30066C687 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		E78F0588248093140066C687 /* BackgroundColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorMode.swift; sourceTree = "<group>"; };
@@ -129,9 +124,6 @@
 		E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthView.swift; sourceTree = "<group>"; };
 		E7D3F45D248BF2F700463D48 /* UnwrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwrapView.swift; sourceTree = "<group>"; };
 		E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulSelectDayHeader.swift; sourceTree = "<group>"; };
-		E7D3F4672493129800463D48 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		E7D3F4692493216000463D48 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
-		E7D3F46D249453D800463D48 /* StatefulProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulProgressView.swift; sourceTree = "<group>"; };
 		E7E00234249AF48F00403E50 /* GoalImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalImpl.swift; sourceTree = "<group>"; };
 		E7E00237249AF61400403E50 /* PersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataStore.swift; sourceTree = "<group>"; };
 		E7E00239249AF88700403E50 /* GoalStoreImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreImpl.swift; sourceTree = "<group>"; };
@@ -193,9 +185,6 @@
 		E77A512824840FA1009243CC /* Stateless UI Components */ = {
 			isa = PBXGroup;
 			children = (
-				E78F057A247F53150066C687 /* TimerWatchView.swift */,
-				E7D3F4672493129800463D48 /* ProgressBar.swift */,
-				E7D3F4692493216000463D48 /* ProgressView.swift */,
 				E73E687D24F5FA14005DC050 /* StatisticView.swift */,
 			);
 			path = "Stateless UI Components";
@@ -299,7 +288,6 @@
 				E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
-				E7D3F46D249453D800463D48 /* StatefulProgressView.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -540,25 +528,21 @@
 				E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */,
 				739C10E62497346D003B9B15 /* Constants.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
-				E7D3F46A2493216000463D48 /* ProgressView.swift in Sources */,
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
 				E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */,
 				E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */,
 				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
-				E7D3F46E249453D800463D48 /* StatefulProgressView.swift in Sources */,
 				E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */,
 				E7C40FEC24FC3A9400DBB926 /* StatefulEditTimeView.swift in Sources */,
 				E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
-				E7D3F4682493129900463D48 /* ProgressBar.swift in Sources */,
 				E7D3F4462489426D00463D48 /* GridStack.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */,
 				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
 				E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */,
 				73544F622495F0900038914D /* SignInViewController.swift in Sources */,
-				E78F057B247F53150066C687 /* TimerWatchView.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				73544F672496F8170038914D /* ViewController.swift in Sources */,
