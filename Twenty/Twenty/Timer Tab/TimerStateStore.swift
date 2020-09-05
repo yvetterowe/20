@@ -47,9 +47,6 @@ final class TimerStateStore: ObservableObject {
         switch action {
         case .toggleTimerButtonTapped:
             if state.isActive {
-                guard let currentElapsedTime = state.elapsedTime else {
-                    fatalError()
-                }
                 backgroundTimer.suspend()
             } else {
                 backgroundTimer.resume()

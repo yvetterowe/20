@@ -42,6 +42,7 @@
 		E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7B8249EC8520011ED12 /* SwipeView.swift */; };
 		E7C2B7BB24A301440011ED12 /* CalendarWeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */; };
 		E7C40FEC24FC3A9400DBB926 /* StatefulEditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */; };
+		E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C40FED2501ED7500DBB926 /* StatefulTimeConfirmView.swift */; };
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
@@ -113,6 +114,7 @@
 		E7C2B7B8249EC8520011ED12 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekHeaderView.swift; sourceTree = "<group>"; };
 		E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulEditTimeView.swift; sourceTree = "<group>"; };
+		E7C40FED2501ED7500DBB926 /* StatefulTimeConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimeConfirmView.swift; sourceTree = "<group>"; };
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */,
 				E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */,
 				E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */,
+				E7C40FED2501ED7500DBB926 /* StatefulTimeConfirmView.swift */,
 				E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
@@ -514,6 +517,7 @@
 			files = (
 				73544F602495F0740038914D /* SignUpViewController.swift in Sources */,
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
+				E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */,
 				E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */,
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
 				E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */,

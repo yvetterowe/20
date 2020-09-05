@@ -15,18 +15,24 @@ struct TimerViewState {
 }
 
 final class TimerViewStateStore: ObservableObject {
+    
     @Published var value: TimerViewState = .init(isActive: false, elapsedTime: nil)
+    
     private let timerStateStore: TimerStateStore
     private let goalStoreWriter: GoalStoreWriter
     private let goalID: GoalID
-    private var cancellable: AnyCancellable!
+    private var cancellable: Set<AnyCancellable> = .init()
     
-    init(timerStateStore: TimerStateStore, goalStoreWriter: GoalStoreWriter, goalID: GoalID) {
+    init(
+        timerStateStore: TimerStateStore,
+        goalStoreWriter: GoalStoreWriter,
+        goalID: GoalID
+    ) {
         self.timerStateStore = timerStateStore
         self.goalStoreWriter = goalStoreWriter
         self.goalID = goalID
         
-        self.cancellable = timerStateStore.$state.sink { [weak self] timerState in
+        timerStateStore.$state.sink { [weak self] timerState in
             guard let self = self else {
                 return
             }
@@ -35,7 +41,7 @@ final class TimerViewStateStore: ObservableObject {
                 isActive: timerState.isActive,
                 elapsedTime: timerState.elapsedTime
             )
-        }
+        }.store(in: &cancellable)
     }
     
     func timerButtonTapped() {
@@ -55,6 +61,10 @@ final class TimerViewStateStore: ObservableObject {
             forGoal: goalID
         )
     }
+    
+    func updateFromConfirm(_ newElapsedTime: DateInterval) {
+        self.value.elapsedTime = newElapsedTime
+    }
 }
 
 struct StatefulTimerView: View {
@@ -65,16 +75,22 @@ struct StatefulTimerView: View {
     }
     
     @ObservedObject private var viewStateStore: TimerViewStateStore
+    @ObservedObject private var confirmViewStateStore: TimeConfirmViewStateStore
     @Binding private var presentingTimer: Bool
     @State private var dismissButtonEnabled: Bool = true
     @State private var buttonTappedCount: Int = 0 // ugly hack = =
+    @State private var editingTimerTime: Bool = false
     
     private var viewState: TimerViewState {
         return viewStateStore.value
     }
     
-    init(viewStateStore: TimerViewStateStore, presentingTimer: Binding<Bool>) {
+    init(
+        viewStateStore: TimerViewStateStore,
+        presentingTimer: Binding<Bool>
+    ) {
         self.viewStateStore = viewStateStore
+        self.confirmViewStateStore = .init(timerViewStore: viewStateStore)
         self._presentingTimer = presentingTimer
     }
     
@@ -86,8 +102,18 @@ struct StatefulTimerView: View {
         VStack {
             Spacer()
             Text(viewModel.primaryText)
-            if let elapsedTime = viewState.elapsedTime {
-                DateIntervalView(viewState: ($viewStateStore).value)
+            if viewState.isActive {
+                if let elapsedTime = viewState.elapsedTime {
+                    Text("Start at \(elapsedTime.start.timeFormat())")
+                }
+            } else {
+                if viewState.elapsedTime != nil {
+                    StatefulTimeConfirmView(
+                        viewStateStore: confirmViewStateStore,
+                        initialElapsedTime: viewState.elapsedTime!,
+                        editingTime: $editingTimerTime
+                    )
+                }
             }
             Spacer()
             Button(viewModel.buttonText) {
@@ -103,62 +129,9 @@ struct StatefulTimerView: View {
     }
 }
 
-private struct DateIntervalView: View {
-    @Binding var viewState: TimerViewState
-    @State private var editingTime: Bool = false
-    
-    var body: some View {
-        if let elapsedTime = viewState.elapsedTime {
-            if viewState.isActive {
-                Text("Start at \(elapsedTime.start.timeFormat())")
-            } else {
-                HStack {
-                    Button("\(elapsedTime.start.timeFormat())") {
-                        editingTime = true
-                    }
-                    .sheet(isPresented: $editingTime) {
-                        editingTime = false
-                    } content: {
-                        StatefulEditTimeView(
-                            viewStore: .init(
-                                editingTime: $editingTime,
-                                dateInterval: Binding(($viewState).elapsedTime)!
-                            )
-                        )
-                    }
-                    Text("-")
-                    Button("\(elapsedTime.end.timeFormat())") {
-                        editingTime = true
-                    }
-                    .sheet(isPresented: $editingTime) {
-                        editingTime = false
-                    } content: {
-                        StatefulEditTimeView(
-                            viewStore: .init(
-                                editingTime: $editingTime,
-                                dateInterval: Binding(($viewState).elapsedTime)!
-                            )
-                        )
-                    }
-                }
-            }
-        } else {
-            Text("")
-        }
-    }
-}
-
 private extension TimerViewState {
     var primaryText: String {
         return elapsedTime?.duration.format() ?? "Om"
-    }
-    
-    var secondaryText: String {
-        if isActive {
-            return elapsedTime.map {"Start at \($0.start.timeFormat())" } ?? ""
-        } else {
-            return elapsedTime.map {"From \($0.start.timeFormat()) to \($0.end.timeFormat())"} ?? ""
-        }
     }
     
     var buttonText: String {
