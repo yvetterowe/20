@@ -55,15 +55,18 @@ final class TimeConfirmViewStateStore: ObservableObject {
 
 struct StatefulTimeConfirmView: View {
     @ObservedObject private var viewStateStore: TimeConfirmViewStateStore
-    @Binding private var editingTime: Bool
+    @Binding private var editingStartTime: Bool
+    @Binding private var editingEndTime: Bool
     
     init(
         viewStateStore: TimeConfirmViewStateStore,
         initialElapsedTime: DateInterval,
-        editingTime: Binding<Bool>
+        editingStartTime: Binding<Bool>,
+        editingEndTime: Binding<Bool>
     ) {
         self.viewStateStore = viewStateStore
-        self._editingTime = editingTime
+        self._editingStartTime = editingStartTime
+        self._editingEndTime = editingEndTime
     }
     
     private var viewState: TimeConfirmViewState {
@@ -73,14 +76,14 @@ struct StatefulTimeConfirmView: View {
     var body: some View {
         HStack {
             Button("\(viewState.elapsedTime!.start.timeFormat())") {
-                editingTime = true
+                editingStartTime = true
             }
-            .sheet(isPresented: $editingTime) {
+            .sheet(isPresented: $editingStartTime) {
                 StatefulEditTimeView(
                     initialDate: viewState.elapsedTime!.start,
                     viewStore: .init(
                         initialDate: viewState.elapsedTime!.start,
-                        editingTime: $editingTime,
+                        editingTime: $editingStartTime,
                         timeConfirmViewStateStore: viewStateStore,
                         type: .start
                     )
@@ -90,14 +93,14 @@ struct StatefulTimeConfirmView: View {
             Text("-")
             
             Button("\(viewState.elapsedTime!.end.timeFormat())") {
-                editingTime = true
+                editingEndTime = true
             }
-            .sheet(isPresented: $editingTime) {
+            .sheet(isPresented: $editingEndTime) {
                 StatefulEditTimeView(
                     initialDate: viewState.elapsedTime!.end,
                     viewStore: .init(
                         initialDate: viewState.elapsedTime!.end,
-                        editingTime: $editingTime,
+                        editingTime: $editingEndTime,
                         timeConfirmViewStateStore: viewStateStore,
                         type: .end
                     )

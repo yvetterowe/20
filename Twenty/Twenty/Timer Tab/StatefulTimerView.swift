@@ -78,7 +78,8 @@ struct StatefulTimerView: View {
     @Binding private var presentingTimer: Bool
     @State private var dismissButtonEnabled: Bool = true
     @State private var buttonTappedCount: Int = 0 // ugly hack = =
-    @State private var editingTimerTime: Bool = false
+    @State private var editingTimerStartTime: Bool = false
+    @State private var editingTimerEndTime: Bool = false
     
     private var viewState: TimerViewState {
         return viewStateStore.value
@@ -112,7 +113,8 @@ struct StatefulTimerView: View {
                             initialElapsedTime: viewState.elapsedTime!
                         ),
                         initialElapsedTime: viewState.elapsedTime!,
-                        editingTime: $editingTimerTime
+                        editingStartTime: $editingTimerStartTime,
+                        editingEndTime: $editingTimerEndTime
                     )
                 }
             }
