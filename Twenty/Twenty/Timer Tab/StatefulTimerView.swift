@@ -75,7 +75,6 @@ struct StatefulTimerView: View {
     }
     
     @ObservedObject private var viewStateStore: TimerViewStateStore
-    @ObservedObject private var confirmViewStateStore: TimeConfirmViewStateStore
     @Binding private var presentingTimer: Bool
     @State private var dismissButtonEnabled: Bool = true
     @State private var buttonTappedCount: Int = 0 // ugly hack = =
@@ -90,7 +89,6 @@ struct StatefulTimerView: View {
         presentingTimer: Binding<Bool>
     ) {
         self.viewStateStore = viewStateStore
-        self.confirmViewStateStore = .init(timerViewStore: viewStateStore)
         self._presentingTimer = presentingTimer
     }
     
@@ -109,7 +107,10 @@ struct StatefulTimerView: View {
             } else {
                 if viewState.elapsedTime != nil {
                     StatefulTimeConfirmView(
-                        viewStateStore: confirmViewStateStore,
+                        viewStateStore: .init(
+                            timerViewStore: viewStateStore,
+                            initialElapsedTime: viewState.elapsedTime!
+                        ),
                         initialElapsedTime: viewState.elapsedTime!,
                         editingTime: $editingTimerTime
                     )

@@ -14,14 +14,16 @@ struct TimeConfirmViewState: Equatable {
 }
 
 final class TimeConfirmViewStateStore: ObservableObject {
-    @Published private(set) var value: TimeConfirmViewState = .init(elapsedTime: nil)
+    @Published private(set) var value: TimeConfirmViewState
     private var cancellable: Set<AnyCancellable> = .init()
     private let timerViewStore: TimerViewStateStore
     
     init(
-        timerViewStore: TimerViewStateStore
+        timerViewStore: TimerViewStateStore,
+        initialElapsedTime: DateInterval
     ) {
         self.timerViewStore = timerViewStore
+        self._value = .init(initialValue: .init(elapsedTime: initialElapsedTime))
         
         self.$value
             .dropFirst()
@@ -34,12 +36,6 @@ final class TimeConfirmViewStateStore: ObservableObject {
                 timerViewStore.updateFromConfirm(elapsedTime)
             }
         }.store(in: &cancellable)
-    }
-    
-    func setInitialElapsedTime(_ initialElapsedTime: DateInterval) {
-        if initialElapsedTime != value.elapsedTime {
-            value.elapsedTime = initialElapsedTime
-        }
     }
     
     func updateStartDate(_ newStartDate: Date) {
@@ -67,7 +63,6 @@ struct StatefulTimeConfirmView: View {
         editingTime: Binding<Bool>
     ) {
         self.viewStateStore = viewStateStore
-        viewStateStore.setInitialElapsedTime(initialElapsedTime)
         self._editingTime = editingTime
     }
     
