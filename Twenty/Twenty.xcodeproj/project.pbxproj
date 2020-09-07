@@ -49,7 +49,6 @@
 		E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */; };
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
-		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
 		E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4492489567100463D48 /* BackgroundShape.swift */; };
 		E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F44B248956FE00463D48 /* CalendarDayCell.swift */; };
 		E7D3F453248993BE00463D48 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F452248993BE00463D48 /* Calendar.swift */; };
@@ -125,7 +124,6 @@
 		E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSectionComponent.swift; sourceTree = "<group>"; };
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
-		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		E7D3F4492489567100463D48 /* BackgroundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShape.swift; sourceTree = "<group>"; };
 		E7D3F44B248956FE00463D48 /* CalendarDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		E7D3F452248993BE00463D48 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 				E78F0588248093140066C687 /* BackgroundColorMode.swift */,
 				E7D3F4492489567100463D48 /* BackgroundShape.swift */,
 				E78F058A248093D30066C687 /* BorderMode.swift */,
-				E7D3F4452489426D00463D48 /* GridStack.swift */,
 				E7C2B7B8249EC8520011ED12 /* SwipeView.swift */,
 			);
 			path = CommonUI;
@@ -556,7 +553,6 @@
 				E7C4103125068A4D00DBB926 /* StatisticCellComponent.swift in Sources */,
 				E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */,
 				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
-				E7D3F4462489426D00463D48 /* GridStack.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E7C4102D2506840000DBB926 /* GoalSummarySectionComponent.swift in Sources */,
 				E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */,
