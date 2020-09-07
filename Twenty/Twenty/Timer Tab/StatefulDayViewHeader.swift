@@ -44,8 +44,10 @@ struct StatefulDayViewHeader: View {
     
     var body: some View {
         HStack {
-            Text("\(viewModel.title)")
-            Text("\(viewModel.subtitle)")
+            DayViewHeaderComponent(
+                title: viewModel.title,
+                subtitle: viewModel.subtitle
+            )
             Spacer()
             Image(systemName: "person")
             Image(systemName: "calendar")
