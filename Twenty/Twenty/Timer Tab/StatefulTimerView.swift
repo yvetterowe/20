@@ -70,7 +70,6 @@ final class TimerViewStateStore: ObservableObject {
 struct StatefulTimerView: View {
     
     struct ViewModel {
-        var primaryText: String
         var buttonText: String
     }
     
@@ -94,13 +93,10 @@ struct StatefulTimerView: View {
     }
     
     var body: some View {
-        let viewModel = ViewModel(
-            primaryText: viewState.primaryText,
-            buttonText: viewState.buttonText
-        )
+        let viewModel = ViewModel(buttonText: viewState.buttonText)
         VStack {
             Spacer()
-            Text(viewModel.primaryText)
+            TimeLabelComponent(duration: viewState.elapsedTime?.duration ?? 0)
             if viewState.isActive {
                 if let elapsedTime = viewState.elapsedTime {
                     Text("Start at \(elapsedTime.start.timeFormat())")
@@ -133,21 +129,8 @@ struct StatefulTimerView: View {
 }
 
 private extension TimerViewState {
-    var primaryText: String {
-        return elapsedTime?.duration.format() ?? "Om"
-    }
-    
     var buttonText: String {
         return isActive ? "Stop" : "Start"
-    }
-}
-
-extension TimeInterval {
-    func format() -> String {
-        let hours = Int(self) / 3600
-        let minutes = Int(self) / 60 % 60
-        let seconds = Int(self) % 60
-        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
 }
 

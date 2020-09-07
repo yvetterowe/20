@@ -45,6 +45,7 @@
 		E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C40FED2501ED7500DBB926 /* StatefulTimeConfirmView.swift */; };
 		E7C4102B2506829E00DBB926 /* DayViewHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4102A2506829E00DBB926 /* DayViewHeaderComponent.swift */; };
 		E7C4102D2506840000DBB926 /* GoalSummarySectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4102C2506840000DBB926 /* GoalSummarySectionComponent.swift */; };
+		E7C4102F2506854E00DBB926 /* TimeLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */; };
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
@@ -119,6 +120,7 @@
 		E7C40FED2501ED7500DBB926 /* StatefulTimeConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimeConfirmView.swift; sourceTree = "<group>"; };
 		E7C4102A2506829E00DBB926 /* DayViewHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewHeaderComponent.swift; sourceTree = "<group>"; };
 		E7C4102C2506840000DBB926 /* GoalSummarySectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummarySectionComponent.swift; sourceTree = "<group>"; };
+		E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelComponent.swift; sourceTree = "<group>"; };
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			children = (
 				E7C4102A2506829E00DBB926 /* DayViewHeaderComponent.swift */,
 				E7C4102C2506840000DBB926 /* GoalSummarySectionComponent.swift */,
+				E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */,
 			);
 			path = "Stateless UI Components";
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
 				E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */,
 				E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */,
+				E7C4102F2506854E00DBB926 /* TimeLabelComponent.swift in Sources */,
 				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */,

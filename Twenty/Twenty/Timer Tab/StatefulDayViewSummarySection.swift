@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 final class StatefulDayViewSummarySectionViewModelStore: ObservableObject {
-    @Published private(set) var value: StatefulDayViewSummarySection.ViewModel = .init(subtitle: "", title: "")
+    @Published private(set) var value: StatefulDayViewSummarySection.ViewModel = .init(subtitle: "", duration: 0)
     private var cancellable: AnyCancellable!
     
     init(
@@ -25,7 +25,7 @@ final class StatefulDayViewSummarySectionViewModelStore: ObservableObject {
                 
                 self.value = .init(
                     subtitle: goal.name,
-                    title: goal.totalTimeSpent(on: selectedDay).format()
+                    duration: goal.totalTimeSpent(on: selectedDay)
                 )
         })
     }
@@ -34,7 +34,7 @@ final class StatefulDayViewSummarySectionViewModelStore: ObservableObject {
 struct StatefulDayViewSummarySection: View {
     struct ViewModel {
         let subtitle: String
-        let title: String
+        let duration: TimeInterval
     }
     
     @ObservedObject private var viewModelStore: StatefulDayViewSummarySectionViewModelStore
@@ -48,11 +48,10 @@ struct StatefulDayViewSummarySection: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            GoalSummarySectionComponent(
-                title: viewModel.subtitle) {
+            GoalSummarySectionComponent(title: viewModel.subtitle) {
                 print("More tapped")
             }
-            Text(viewModel.title)
+            TimeLabelComponent(duration: viewModel.duration)
         }
     }
 }
