@@ -48,15 +48,9 @@ struct StatefulDayViewSummarySection: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Text(viewModel.subtitle)
-                Spacer()
-                Button {
-                    print("More tapped")
-                } label: {
-                    Image(systemName: "ellipsis")
-                }
-
+            GoalSummarySectionComponent(
+                title: viewModel.subtitle) {
+                print("More tapped")
             }
             Text(viewModel.title)
         }
