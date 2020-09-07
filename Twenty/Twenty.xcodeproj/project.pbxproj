@@ -21,7 +21,6 @@
 		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
 		E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */; };
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
-		E73E687E24F5FA15005DC050 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687D24F5FA14005DC050 /* StatisticView.swift */; };
 		E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687F24F5FA8E005DC050 /* ImageModel.swift */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
 		E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054C247F495D0066C687 /* AppDelegate.swift */; };
@@ -47,6 +46,7 @@
 		E7C4102D2506840000DBB926 /* GoalSummarySectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4102C2506840000DBB926 /* GoalSummarySectionComponent.swift */; };
 		E7C4102F2506854E00DBB926 /* TimeLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */; };
 		E7C4103125068A4D00DBB926 /* StatisticCellComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4103025068A4D00DBB926 /* StatisticCellComponent.swift */; };
+		E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */; };
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F4462489426D00463D48 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4452489426D00463D48 /* GridStack.swift */; };
@@ -93,7 +93,6 @@
 		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewHeader.swift; sourceTree = "<group>"; };
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
-		E73E687D24F5FA14005DC050 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		E73E687F24F5FA8E005DC050 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		E77A51292484130C009243CC /* GoalStoreWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreWriter.swift; sourceTree = "<group>"; };
 		E78F0549247F495D0066C687 /* Twenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +122,7 @@
 		E7C4102C2506840000DBB926 /* GoalSummarySectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSummarySectionComponent.swift; sourceTree = "<group>"; };
 		E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelComponent.swift; sourceTree = "<group>"; };
 		E7C4103025068A4D00DBB926 /* StatisticCellComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCellComponent.swift; sourceTree = "<group>"; };
+		E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSectionComponent.swift; sourceTree = "<group>"; };
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4452489426D00463D48 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
@@ -190,14 +190,6 @@
 				DE7F2511A8714A1069E6F396 /* Pods-TwentyTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		E77A512824840FA1009243CC /* Stateless UI Components */ = {
-			isa = PBXGroup;
-			children = (
-				E73E687D24F5FA14005DC050 /* StatisticView.swift */,
-			);
-			path = "Stateless UI Components";
 			sourceTree = "<group>";
 		};
 		E77A512F2485565F009243CC /* Architecture */ = {
@@ -290,7 +282,6 @@
 		E78F0579247F52F60066C687 /* Timer Tab */ = {
 			isa = PBXGroup;
 			children = (
-				E77A512824840FA1009243CC /* Stateless UI Components */,
 				E78F05992481D0D10066C687 /* BackgroundTimer.swift */,
 				E78F059224809CB90066C687 /* StatefulTimerTabView.swift */,
 				E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */,
@@ -311,6 +302,7 @@
 				E7C4102C2506840000DBB926 /* GoalSummarySectionComponent.swift */,
 				E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */,
 				E7C4103025068A4D00DBB926 /* StatisticCellComponent.swift */,
+				E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */,
 			);
 			path = "Stateless UI Components";
 			sourceTree = "<group>";
@@ -545,8 +537,8 @@
 				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
 				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
 				73544F642495F0CF0038914D /* HomeViewController.swift in Sources */,
+				E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */,
 				735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */,
-				E73E687E24F5FA15005DC050 /* StatisticView.swift in Sources */,
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
