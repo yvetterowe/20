@@ -54,26 +54,29 @@ final class TimerTabViewStateStore: ObservableObject, Subscriber {
 }
 
 
-struct StatefulTimerTabView: View {
-    
-    struct Context {
-        let goalID: String
-        let goalStoreWriter: GoalStoreWriter
-        let goalPublisher: GoalPublisher
-        let selectDayStore: SelectDayStore
-        let todayPublisher: AnyPublisher<Date.Day, Never>
-    }
+struct Context {
+    let goalID: String
+    let goalStoreWriter: GoalStoreWriter
+    let goalPublisher: GoalPublisher
+    let selectDayStore: SelectDayStore
+    let todayPublisher: AnyPublisher<Date.Day, Never>
+}
+
+struct StatefulTimerTabView<TimerView>: View where TimerView: View{
     
     private let context: Context
+    private let timerView: (Binding<Bool>) -> TimerView
     @ObservedObject private var viewStateStore: TimerTabViewStateStore
     @State private var presentingTimer: Bool = false
     
-    init(context: Context) {
+    init(
+        context: Context,
+        viewStateStore: TimerTabViewStateStore,
+        @ViewBuilder timerView: @escaping (Binding<Bool>) -> TimerView
+    ) {
         self.context = context
-        self.viewStateStore = .init(
-            selectedDayPublisher: context.selectDayStore.selectDayPublisher,
-            todayPublisher: context.todayPublisher
-        )
+        self.viewStateStore = viewStateStore
+        self.timerView = timerView
     }
     
     var body: some View {
@@ -109,19 +112,8 @@ struct StatefulTimerTabView: View {
                         presentingTimer = true
                     }
                     .fullScreenCover(isPresented: $presentingTimer) {
-                        StatefulTimerView(
-                            viewStateStore: .init(
-                                timerStateStore: .init(
-                                    initialState: .init(isActive: false, elapsedTime: nil)
-                                ),
-                                goalStoreWriter: context.goalStoreWriter,
-                                goalID: context.goalID
-                            ),
-                            presentingTimer: $presentingTimer
-                        )
+                        self.timerView($presentingTimer)
                     }
-                } else {
-                    // Fallback on earlier versions
                 }
             }
         }

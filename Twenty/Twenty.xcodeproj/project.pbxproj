@@ -18,6 +18,7 @@
 		739C10E62497346D003B9B15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C10E52497346D003B9B15 /* Constants.swift */; };
 		739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */; };
 		73B7E98E249873C00061D923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E98D249873BF0061D923 /* Utilities.swift */; };
+		E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */; };
 		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
 		E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */; };
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
@@ -89,6 +90,7 @@
 		AF69723C306F40791B2C46CA /* Pods-Twenty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.release.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.release.xcconfig"; sourceTree = "<group>"; };
 		D1B89DAA20B7DE9543689DD2 /* libPods-TwentyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TwentyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE7F2511A8714A1069E6F396 /* Pods-TwentyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwentyTests.release.xcconfig"; path = "Target Support Files/Pods-TwentyTests/Pods-TwentyTests.release.xcconfig"; sourceTree = "<group>"; };
+		E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableWrapper.swift; sourceTree = "<group>"; };
 		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewHeader.swift; sourceTree = "<group>"; };
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				E7D3F45D248BF2F700463D48 /* UnwrapView.swift */,
+				E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */,
 			);
 			path = Architecture;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				73544F672496F8170038914D /* ViewController.swift in Sources */,
 				73B7E98E249873C00061D923 /* Utilities.swift in Sources */,
 				E78F059324809CB90066C687 /* StatefulTimerTabView.swift in Sources */,
+				E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */,
 				E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */,
 				E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */,
 				E7D3DC732483055800422C77 /* Goal.swift in Sources */,
