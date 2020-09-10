@@ -111,8 +111,21 @@ struct StatefulTimerTabView<TimerView>: View where TimerView: View{
     }
 }
 
-//struct StatefulTimerTabView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatefulTimerTabView(TimerStateStore: MockTimerFactory.TimerStateStore(MockTimerFactory.activeState))
-//    }
-//}
+struct StatefulTimerTabView_Previews: PreviewProvider {
+    static var previews: some View {
+        StatefulTimerTabView(
+            context: Context(
+                goalID: "",
+                goalStoreWriter: NoOpGoalWriter(),
+                goalPublisher: Just(MockDataFactory.goal).eraseToAnyPublisher(),
+                selectDayStore: SelectDayStore(initialSelectDay: MockDataFactory.today),
+                todayPublisher: Just(MockDataFactory.today).eraseToAnyPublisher()
+            ),
+            viewStateStore: ObservableWrapper(
+                publisher: Just(SelectedDayViewState(isToday: true, day: MockDataFactory.today)).eraseToAnyPublisher()
+            )
+        ) { _ in
+            Text("Timer Placeholder")
+        }
+    }
+}
