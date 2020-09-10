@@ -9,20 +9,23 @@
 import Combine
 import SwiftUI
 
-final class DayViewHeaderViewModelStore: ObservableObject {
-    @Published private(set) var value: StatefulDayViewHeader.ViewModel = .init(title: "", subtitle: "")
-    private var cancellable: AnyCancellable!
+protocol DayViewHeaderViewModelReader {
+    var publisher: AnyPublisher<StatefulDayViewHeader.ViewModel, Never> { get }
+}
+
+final class DayViewHeaderViewModelStore: DayViewHeaderViewModelReader {
+        
+    // MARK: - DayViewHeaderViewModelReader
+    
+    let publisher: AnyPublisher<StatefulDayViewHeader.ViewModel, Never>
     
     init(selectedDayViewState: TimerTabViewStateStore) {
-        cancellable = selectedDayViewState.$state.sink { [weak self] state in
-            guard let self = self else {
-                return
-            }
-            self.value = .init(
+        self.publisher = selectedDayViewState.$state.map { state in
+            StatefulDayViewHeader.ViewModel(
                 title: state.isToday ? "Today" : state.day.date.weekdayDescription(),
                 subtitle: state.day.date.shortDayDescription()
             )
-        }
+        }.eraseToAnyPublisher()
     }
 }
 
@@ -33,12 +36,12 @@ struct StatefulDayViewHeader: View {
         let subtitle: String
     }
     
-    @ObservedObject private var viewModelStore: DayViewHeaderViewModelStore
+    @ObservedObject private var viewModelStore: ObservableWrapper<StatefulDayViewHeader.ViewModel>
     private var viewModel: ViewModel {
         return viewModelStore.value
     }
     
-    init(viewModelStore: DayViewHeaderViewModelStore) {
+    init(viewModelStore: ObservableWrapper<StatefulDayViewHeader.ViewModel>) {
         self.viewModelStore = viewModelStore
     }
     
@@ -54,9 +57,13 @@ struct StatefulDayViewHeader: View {
         }
     }
 }
-//
-//struct StatefulDayViewHeader_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatefulDayViewHeader()
-//    }
-//}
+
+struct StatefulDayViewHeader_Previews: PreviewProvider {
+    static var previews: some View {
+        StatefulDayViewHeader(
+            viewModelStore: .init(
+                publisher: Just(.init(title: "", subtitle:"")).eraseToAnyPublisher()
+            )
+        )
+    }
+}

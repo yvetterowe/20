@@ -9,7 +9,7 @@
 import Combine
 
 final class ObservableWrapper<Value>: ObservableObject {
-    @Published private(set) var value: Value?
+    @Published private(set) var value: Value!
     private var cancellables: Set<AnyCancellable> = .init()
     
     init(publisher: AnyPublisher<Value, Never>) {

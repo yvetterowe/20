@@ -67,6 +67,7 @@ struct StatefulTimerTabView<TimerView>: View where TimerView: View{
     private let context: Context
     private let timerView: (Binding<Bool>) -> TimerView
     @ObservedObject private var viewStateStore: TimerTabViewStateStore
+    private let dayViewHeaderViewModelStore: DayViewHeaderViewModelStore
     @State private var presentingTimer: Bool = false
     
     init(
@@ -77,12 +78,13 @@ struct StatefulTimerTabView<TimerView>: View where TimerView: View{
         self.context = context
         self.viewStateStore = viewStateStore
         self.timerView = timerView
+        self.dayViewHeaderViewModelStore = .init(selectedDayViewState: viewStateStore)
     }
     
     var body: some View {
         VStack {
             StatefulDayViewHeader(
-                viewModelStore: .init(selectedDayViewState: viewStateStore)
+                viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher)
             )
             StatefulSelectDayHeader(
                 store: context.selectDayStore
