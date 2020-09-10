@@ -14,42 +14,29 @@ struct SelectedDayViewState {
     let day: Date.Day
 }
 
-final class TimerTabViewStateStore: ObservableObject, Subscriber {
+protocol SelectedDayViewModelReader {
+    var publisher: AnyPublisher<SelectedDayViewState, Never> { get }
+}
+
+final class TimerTabViewStateStore: SelectedDayViewModelReader {
     
-    @Published private(set) var state: SelectedDayViewState = .init(isToday: true, day: Date().asDay(in: .current))
-        
+    // MARK: - SelectedDayViewModelReader
+    
+    let publisher: AnyPublisher<SelectedDayViewState, Never>
+    
     init(
         selectedDayPublisher: AnyPublisher<Date.Day, Never>,
         todayPublisher: AnyPublisher<Date.Day, Never>
     ) {
-        Publishers.CombineLatest(
+        self.publisher = Publishers.CombineLatest(
             selectedDayPublisher,
             todayPublisher
-        ).map {
-            (selectedDay: $0.0, today: $0.1)
-        }.subscribe(self)
-    }
-    
-    // MARK: - Subscriber
-    
-    typealias Input = (selectedDay: Date.Day, today: Date.Day)
-    typealias Failure = Never
-    
-    func receive(_ input: Input) -> Subscribers.Demand {
-        state = .init(
-            isToday: input.selectedDay == input.today,
-            day: input.selectedDay
-        )
-        
-        return .unlimited
-    }
-    
-    func receive(subscription: Subscription) {
-        subscription.request(.unlimited)
-    }
-    
-    func receive(completion: Subscribers.Completion<Never>) {
-        
+        ).map { (selectedDay, today) in
+            return SelectedDayViewState(
+                isToday: selectedDay == today,
+                day: selectedDay
+            )
+        }.eraseToAnyPublisher()
     }
 }
 
@@ -66,19 +53,19 @@ struct StatefulTimerTabView<TimerView>: View where TimerView: View{
     
     private let context: Context
     private let timerView: (Binding<Bool>) -> TimerView
-    @ObservedObject private var viewStateStore: TimerTabViewStateStore
+    @ObservedObject private var viewStateStore: ObservableWrapper<SelectedDayViewState>
     private let dayViewHeaderViewModelStore: DayViewHeaderViewModelStore
     @State private var presentingTimer: Bool = false
     
     init(
         context: Context,
-        viewStateStore: TimerTabViewStateStore,
+        viewStateStore: ObservableWrapper<SelectedDayViewState>,
         @ViewBuilder timerView: @escaping (Binding<Bool>) -> TimerView
     ) {
         self.context = context
         self.viewStateStore = viewStateStore
         self.timerView = timerView
-        self.dayViewHeaderViewModelStore = .init(selectedDayViewState: viewStateStore)
+        self.dayViewHeaderViewModelStore = .init(selectedDayViewStatePublisher: viewStateStore.$value.compactMap{$0}.eraseToAnyPublisher())
     }
     
     var body: some View {
@@ -110,7 +97,7 @@ struct StatefulTimerTabView<TimerView>: View where TimerView: View{
                     rowCount: 2
                 )
             }
-            if viewStateStore.state.isToday {
+            if viewStateStore.value.isToday {
                 if #available(iOS 14.0, *) {
                     Button("Start Tracking") {
                         presentingTimer = true

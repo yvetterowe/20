@@ -19,8 +19,8 @@ final class DayViewHeaderViewModelStore: DayViewHeaderViewModelReader {
     
     let publisher: AnyPublisher<StatefulDayViewHeader.ViewModel, Never>
     
-    init(selectedDayViewState: TimerTabViewStateStore) {
-        self.publisher = selectedDayViewState.$state.map { state in
+    init(selectedDayViewStatePublisher: AnyPublisher<SelectedDayViewState, Never>) {
+        self.publisher = selectedDayViewStatePublisher.map { state in
             StatefulDayViewHeader.ViewModel(
                 title: state.isToday ? "Today" : state.day.date.weekdayDescription(),
                 subtitle: state.day.date.shortDayDescription()

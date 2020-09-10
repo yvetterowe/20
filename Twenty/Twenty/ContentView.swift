@@ -21,9 +21,11 @@ struct ContentView: View {
         TabView(selection: $selection) {
             StatefulTimerTabView(
                 context: timerTabContext,
-                viewStateStore: .init(
-                    selectedDayPublisher: timerTabContext.selectDayStore.selectDayPublisher,
-                    todayPublisher: timerTabContext.todayPublisher
+                viewStateStore: ObservableWrapper(
+                    publisher: TimerTabViewStateStore(
+                        selectedDayPublisher: timerTabContext.selectDayStore.selectDayPublisher,
+                        todayPublisher: timerTabContext.todayPublisher
+                    ).publisher
                 )
             ) { presentingTimer in
                 StatefulTimerView(
