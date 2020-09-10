@@ -48,3 +48,9 @@ struct StatefulSelectDayHeader: View {
         }
     }
 }
+
+struct StatefulSelectDayHeader_Previews: PreviewProvider {
+    static var previews: some View {
+        StatefulSelectDayHeader(store: .init(initialSelectDay: Date().asDay(in: .current)))
+    }
+}
