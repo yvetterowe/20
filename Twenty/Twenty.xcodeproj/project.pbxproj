@@ -38,7 +38,7 @@
 		E78F058B248093D30066C687 /* BorderMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058A248093D30066C687 /* BorderMode.swift */; };
 		E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058C2480946C0066C687 /* ButtonModel.swift */; };
 		E78F058F248094E40066C687 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058E248094E40066C687 /* TextButton.swift */; };
-		E78F059324809CB90066C687 /* StatefulTimerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059224809CB90066C687 /* StatefulTimerTabView.swift */; };
+		E78F059324809CB90066C687 /* StatefulDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059224809CB90066C687 /* StatefulDayView.swift */; };
 		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
 		E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerStateStore.swift */; };
 		E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7B8249EC8520011ED12 /* SwipeView.swift */; };
@@ -116,7 +116,7 @@
 		E78F058A248093D30066C687 /* BorderMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderMode.swift; sourceTree = "<group>"; };
 		E78F058C2480946C0066C687 /* ButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
 		E78F058E248094E40066C687 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
-		E78F059224809CB90066C687 /* StatefulTimerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerTabView.swift; sourceTree = "<group>"; };
+		E78F059224809CB90066C687 /* StatefulDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayView.swift; sourceTree = "<group>"; };
 		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		E78F059B2482B99A0066C687 /* TimerStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStateStore.swift; sourceTree = "<group>"; };
 		E7C2B7B8249EC8520011ED12 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
@@ -297,7 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				E78F05992481D0D10066C687 /* BackgroundTimer.swift */,
-				E78F059224809CB90066C687 /* StatefulTimerTabView.swift */,
+				E78F059224809CB90066C687 /* StatefulDayView.swift */,
 				E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */,
 				E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */,
 				E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */,
@@ -582,7 +582,7 @@
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				73544F672496F8170038914D /* ViewController.swift in Sources */,
 				73B7E98E249873C00061D923 /* Utilities.swift in Sources */,
-				E78F059324809CB90066C687 /* StatefulTimerTabView.swift in Sources */,
+				E78F059324809CB90066C687 /* StatefulDayView.swift in Sources */,
 				E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */,
 				E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */,
 				E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */,

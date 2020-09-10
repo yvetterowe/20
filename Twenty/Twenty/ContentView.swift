@@ -19,10 +19,10 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            StatefulTimerTabView(
+            StatefulDayView(
                 context: timerTabContext,
                 viewStateStore: ObservableWrapper(
-                    publisher: TimerTabViewStateStore(
+                    publisher: DayViewModelStore(
                         selectedDayPublisher: timerTabContext.selectDayStore.selectDayPublisher,
                         todayPublisher: timerTabContext.todayPublisher
                     ).publisher

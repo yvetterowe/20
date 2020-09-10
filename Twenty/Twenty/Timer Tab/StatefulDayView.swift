@@ -1,5 +1,5 @@
 //
-//  StatefulTimerTabView.swift
+//  StatefulDayView.swift
 //  Twenty
 //
 //  Created by Hao Luo on 5/28/20.
@@ -14,13 +14,13 @@ struct SelectedDayViewState {
     let day: Date.Day
 }
 
-protocol SelectedDayViewModelReader {
+protocol DayViewModelReader {
     var publisher: AnyPublisher<SelectedDayViewState, Never> { get }
 }
 
-final class TimerTabViewStateStore: SelectedDayViewModelReader {
+final class DayViewModelStore: DayViewModelReader {
     
-    // MARK: - SelectedDayViewModelReader
+    // MARK: - DayViewModelReader
     
     let publisher: AnyPublisher<SelectedDayViewState, Never>
     
@@ -49,7 +49,7 @@ struct Context {
     let todayPublisher: AnyPublisher<Date.Day, Never>
 }
 
-struct StatefulTimerTabView<TimerView>: View where TimerView: View{
+struct StatefulDayView<TimerView>: View where TimerView: View{
     
     private let context: Context
     private let timerView: (Binding<Bool>) -> TimerView
@@ -111,9 +111,9 @@ struct StatefulTimerTabView<TimerView>: View where TimerView: View{
     }
 }
 
-struct StatefulTimerTabView_Previews: PreviewProvider {
+struct StatefulDayView_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulTimerTabView(
+        StatefulDayView(
             context: Context(
                 goalID: "",
                 goalStoreWriter: NoOpGoalWriter(),
