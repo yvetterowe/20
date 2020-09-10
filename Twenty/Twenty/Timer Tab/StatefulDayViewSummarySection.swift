@@ -9,25 +9,27 @@
 import Combine
 import SwiftUI
 
+protocol DayViewSummarySectionViewModelReader {
+    var publisher: AnyPublisher<StatefulDayViewSummarySection.ViewModel, Never> { get }
+}
+
 final class StatefulDayViewSummarySectionViewModelStore: ObservableObject {
-    @Published private(set) var value: StatefulDayViewSummarySection.ViewModel = .init(subtitle: "", duration: 0)
-    private var cancellable: AnyCancellable!
+    
+    // MARK: - DayViewSummarySectionViewModelReader
+    
+    let publisher: AnyPublisher<StatefulDayViewSummarySection.ViewModel, Never>
     
     init(
         selectedDayPublisher: AnyPublisher<Date.Day, Never>,
         goalPublisher: AnyPublisher<Goal, Never>
     ) {
-        cancellable = Publishers.CombineLatest(selectedDayPublisher, goalPublisher)
-            .sink(receiveValue: { [weak self] (selectedDay, goal)  in
-                guard let self = self else {
-                    return
-                }
-                
-                self.value = .init(
-                    subtitle: goal.name,
-                    duration: goal.totalTimeSpent(on: selectedDay)
-                )
-        })
+        self.publisher = Publishers.CombineLatest(selectedDayPublisher, goalPublisher).map {
+            (selectedDay, goal)  in
+            return StatefulDayViewSummarySection.ViewModel(
+                subtitle: goal.name,
+                duration: goal.totalTimeSpent(on: selectedDay)
+            )
+        }.eraseToAnyPublisher()
     }
 }
 
@@ -37,12 +39,12 @@ struct StatefulDayViewSummarySection: View {
         let duration: TimeInterval
     }
     
-    @ObservedObject private var viewModelStore: StatefulDayViewSummarySectionViewModelStore
+    @ObservedObject private var viewModelStore: ObservableWrapper<StatefulDayViewSummarySection.ViewModel>
     private var viewModel: ViewModel {
         return viewModelStore.value
     }
     
-    init(viewModelStore: StatefulDayViewSummarySectionViewModelStore) {
+    init(viewModelStore: ObservableWrapper<StatefulDayViewSummarySection.ViewModel>) {
         self.viewModelStore = viewModelStore
     }
     
@@ -56,8 +58,10 @@ struct StatefulDayViewSummarySection: View {
     }
 }
 
-//struct StatefulDayViewSummarySection_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatefulDayViewSummarySection()
-//    }
-//}
+struct StatefulDayViewSummarySection_Previews: PreviewProvider {
+    static var previews: some View {
+        StatefulDayViewSummarySection(
+            viewModelStore: .init(publisher: Just(StatefulDayViewSummarySection.ViewModel(subtitle: "", duration: 100)).eraseToAnyPublisher())
+        )
+    }
+}

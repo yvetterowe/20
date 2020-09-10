@@ -91,8 +91,10 @@ struct StatefulTimerTabView<TimerView>: View where TimerView: View{
             )
             StatefulDayViewSummarySection(
                 viewModelStore: .init(
-                    selectedDayPublisher: context.selectDayStore.selectDayPublisher,
-                    goalPublisher: context.goalPublisher
+                    publisher: StatefulDayViewSummarySectionViewModelStore(
+                        selectedDayPublisher: context.selectDayStore.selectDayPublisher,
+                        goalPublisher: context.goalPublisher
+                    ).publisher
                 )
             )
             if #available(iOS 14.0, *) {
