@@ -9,14 +9,13 @@
 import Combine
 import Foundation
 
-struct TimerState {
-    let isActive: Bool
-    let elapsedTime: DateInterval?
+enum TimerState {
+    case active(DateInterval)
+    case inactive(DateInterval)
 }
 
 enum TimerAction {
     case toggleTimerButtonTapped
-    case ticked(tickDate: Date, tickInterval: TimeInterval)
 }
 
 final class TimerStateStore: ObservableObject {
@@ -32,39 +31,39 @@ final class TimerStateStore: ObservableObject {
     // MARK: - Private Properties
     
     private lazy var backgroundTimer: BackgroundTimer = .init(timeInterval: timerInterval) { tickInterval in
-        DispatchQueue.main.async {
-            self.send(.ticked(tickDate: Date(), tickInterval: tickInterval))
+        DispatchQueue.main.async { [unowned self] in
+            guard case let .active(interval) = self.state else {
+                fatalError("Timer must already be in active state")
+            }
+            self.state = .active(
+                .init(
+                    start: interval.start,
+                    duration: interval.duration + tickInterval
+                )
+            )
+            
         }
     }
     
-    private let timerInterval: TimeInterval = 1
+    private let timerInterval: TimeInterval
     
-    init(initialState: TimerState) {
+    init(initialState: TimerState, timerInterval: TimeInterval = 1) {
         self._state = .init(initialValue: initialState)
+        self.timerInterval = timerInterval
     }
     
     func send(_ action: TimerAction) {
         switch action {
         case .toggleTimerButtonTapped:
-            if state.isActive {
+            switch state {
+            case let .active(interval):
+                state = .inactive(interval)
                 backgroundTimer.suspend()
-            } else {
+            
+            case let .inactive(interval):
+                state = .active(interval)
                 backgroundTimer.resume()
             }
-        
-            state = .init(
-                isActive: !state.isActive,
-                elapsedTime: state.elapsedTime
-            )
-            
-        case let .ticked(tickDate, _):
-            state = .init(
-                isActive: true,
-                elapsedTime: .init(
-                    start: state.elapsedTime?.start ?? tickDate,
-                    end: tickDate
-                )
-            )
         }
     }
 }

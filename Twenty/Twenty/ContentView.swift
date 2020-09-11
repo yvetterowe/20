@@ -30,9 +30,7 @@ struct ContentView: View {
             ) { presentingTimer in
                 StatefulTimerView(
                     viewStateStore: .init(
-                        timerStateStore: .init(
-                            initialState: .init(isActive: false, elapsedTime: nil)
-                        ),
+                        timerStateStore: .init(initialState: .inactive(.init())),
                         goalStoreWriter: timerTabContext.goalStoreWriter,
                         goalID: timerTabContext.goalID
                     ),

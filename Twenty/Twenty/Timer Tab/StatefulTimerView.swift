@@ -37,10 +37,13 @@ final class TimerViewStateStore: ObservableObject {
                 return
             }
             
-            self.value = .init(
-                isActive: timerState.isActive,
-                elapsedTime: timerState.elapsedTime
-            )
+            switch timerState {
+            case let .active(interval):
+                self.value = .init(isActive: true, elapsedTime: interval)
+            case let .inactive(interval):
+                self.value = .init(isActive: false, elapsedTime: interval)
+            }
+            
         }.store(in: &cancellable)
     }
     
