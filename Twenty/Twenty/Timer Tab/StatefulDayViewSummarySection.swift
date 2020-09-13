@@ -44,15 +44,22 @@ struct StatefulDayViewSummarySection: View {
         return viewModelStore.value
     }
     
-    init(viewModelStore: ObservableWrapper<StatefulDayViewSummarySection.ViewModel>) {
+    private let tapMoreButtonAction: () -> Void
+    
+    init(
+        viewModelStore: ObservableWrapper<StatefulDayViewSummarySection.ViewModel>,
+        tapMoreButtonAction: @escaping () -> Void
+    ) {
         self.viewModelStore = viewModelStore
+        self.tapMoreButtonAction = tapMoreButtonAction
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            GoalSummarySectionComponent(title: viewModel.subtitle) {
-                print("More tapped")
-            }
+            GoalSummarySectionComponent(
+                title: viewModel.subtitle,
+                buttonAction: tapMoreButtonAction
+            )
             TimeLabelComponent(duration: viewModel.duration)
         }
     }
@@ -61,7 +68,8 @@ struct StatefulDayViewSummarySection: View {
 struct StatefulDayViewSummarySection_Previews: PreviewProvider {
     static var previews: some View {
         StatefulDayViewSummarySection(
-            viewModelStore: .init(publisher: Just(StatefulDayViewSummarySection.ViewModel(subtitle: "", duration: 100)).eraseToAnyPublisher())
+            viewModelStore: .init(publisher: Just(StatefulDayViewSummarySection.ViewModel(subtitle: "", duration: 100)).eraseToAnyPublisher()),
+            tapMoreButtonAction: {}
         )
     }
 }

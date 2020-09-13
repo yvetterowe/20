@@ -56,6 +56,7 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
     @ObservedObject private var viewStateStore: ObservableWrapper<SelectedDayViewState>
     private let dayViewHeaderViewModelStore: DayViewHeaderViewModelStore
     @State private var presentingTimer: Bool = false
+    @State private var presentingMoreActionSheet: Bool = false
     
     init(
         context: Context,
@@ -73,17 +74,25 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
             StatefulDayViewHeader(
                 viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher)
             )
+            
             StatefulSelectDayHeader(
                 store: context.selectDayStore
             )
+            
             StatefulDayViewSummarySection(
                 viewModelStore: .init(
                     publisher: StatefulDayViewSummarySectionViewModelStore(
                         selectedDayPublisher: context.selectDayStore.selectDayPublisher,
                         goalPublisher: context.goalPublisher
                     ).publisher
-                )
+                ), tapMoreButtonAction: {
+                    presentingMoreActionSheet = true
+                }
             )
+            .sheet(isPresented: $presentingMoreActionSheet) {
+                Text("MoreActionListComponent placeholder")
+            }
+            
             if #available(iOS 14.0, *) {
                 StatisticSectionComponent(
                     items: Array(
