@@ -73,20 +73,13 @@ struct StatefulEditTimeView: View {
     }
     
     var body: some View {
-        NavigationView {
+        EditSheetComponent(
+            navigationBarTitle: "Edit Time") {
+            viewWriter.cancelEditTime()
+        } onDone: {
+            viewWriter.saveEditTime(editingDate)
+        } content: {
             DatePicker("", selection: $editingDate).datePickerStyle(WheelDatePickerStyle())
-            .navigationBarTitle("Edit Time")
-            .navigationBarItems(
-                leading: Button(action: {
-                    viewWriter.cancelEditTime()
-                }, label: {
-                    Text("Cancel")
-                }),
-                trailing: Button(action: {
-                    viewWriter.saveEditTime(editingDate)
-                }, label: {
-                    Text("Done")
-                }))
         }
     }
 }
