@@ -21,6 +21,8 @@
 		E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */; };
 		E739A06E2509D598001A4940 /* NoOpMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06D2509D598001A4940 /* NoOpMocks.swift */; };
 		E739A0702509D622001A4940 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06F2509D622001A4940 /* MockData.swift */; };
+		E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */; };
+		E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */; };
 		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
 		E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */; };
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
@@ -95,6 +97,8 @@
 		E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableWrapper.swift; sourceTree = "<group>"; };
 		E739A06D2509D598001A4940 /* NoOpMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOpMocks.swift; sourceTree = "<group>"; };
 		E739A06F2509D622001A4940 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreActionRowComponent.swift; sourceTree = "<group>"; };
+		E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreActionListComponent.swift; sourceTree = "<group>"; };
 		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewHeader.swift; sourceTree = "<group>"; };
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 				E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */,
 				E7C4103025068A4D00DBB926 /* StatisticCellComponent.swift */,
 				E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */,
+				E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */,
+				E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */,
 			);
 			path = "Stateless UI Components";
 			sourceTree = "<group>";
@@ -556,6 +562,7 @@
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
+				E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */,
 				E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */,
 				739C10E62497346D003B9B15 /* Constants.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
@@ -578,6 +585,7 @@
 				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
 				E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */,
 				73544F622495F0900038914D /* SignInViewController.swift in Sources */,
+				E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				73544F672496F8170038914D /* ViewController.swift in Sources */,
