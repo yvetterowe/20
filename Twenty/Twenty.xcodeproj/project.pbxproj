@@ -23,6 +23,7 @@
 		E739A0702509D622001A4940 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06F2509D622001A4940 /* MockData.swift */; };
 		E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */; };
 		E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */; };
+		E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */; };
 		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
 		E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */; };
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
@@ -99,6 +100,7 @@
 		E739A06F2509D622001A4940 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreActionRowComponent.swift; sourceTree = "<group>"; };
 		E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreActionListComponent.swift; sourceTree = "<group>"; };
+		E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulMoreActionListView.swift; sourceTree = "<group>"; };
 		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewHeader.swift; sourceTree = "<group>"; };
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
+				E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
 				E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */,
 				73544F622495F0900038914D /* SignInViewController.swift in Sources */,
+				E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */,
 				E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,

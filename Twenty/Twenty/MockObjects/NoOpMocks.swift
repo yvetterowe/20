@@ -28,3 +28,8 @@ final class NoOpEditTimeViewWriter: EditTimeViewWriter {
         
     }
 }
+
+final class NoOpMoreActionListViewWriter: MoreActionListViewWriter {
+    func send(_ action: MoreActionListViewAction) {
+    }
+}
