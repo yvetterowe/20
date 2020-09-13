@@ -72,7 +72,15 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
     }
     
     func updateGoalName(_ goalName: String, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError> {
-        fatalError("todo")
+        let subject = goalSubject(for: goalID)
+        var updatedGoal = subject.value
+        updatedGoal.name = goalName
+        subject.send(updatedGoal)
+        
+        return persistentDataStore
+            .updateGoal(for: goalID, with: updatedGoal)
+            .mapError { GoalStoreWriterError.persistentStoreError($0) }
+            .eraseToAnyPublisher()
     }
     
     // MARK: - Helpers

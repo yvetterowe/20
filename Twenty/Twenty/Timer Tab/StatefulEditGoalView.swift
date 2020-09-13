@@ -50,14 +50,17 @@ final class EditGoalStore: EditGoalViewReader, EditGoalViewWriter {
 
 struct StatefulEditGoalView: View {
     private let viewWriter: EditGoalViewWriter
+    private let goalID: GoalID
     @State private var editingGoalName: String = ""
     
     init(
         goalNameReader: ObservableWrapper<String>,
-        viewWriter: EditGoalViewWriter
+        viewWriter: EditGoalViewWriter,
+        goalID: GoalID
     ) {
         self.viewWriter = viewWriter
         self._editingGoalName = .init(initialValue: goalNameReader.value)
+        self.goalID = goalID
     }
     
     var body: some View {
@@ -65,7 +68,7 @@ struct StatefulEditGoalView: View {
             navigationBarTitle: "Edit Goal") {
             viewWriter.cancelEditGoal()
         } onDone: {
-            viewWriter.saveEditGoalName(editingGoalName, forGoal: "ssssss")
+            viewWriter.saveEditGoalName(editingGoalName, forGoal: goalID)
         } content: {
             TextField("Goal name", text: $editingGoalName)
         }
@@ -77,7 +80,8 @@ struct StatefulEditGoalView_Previews: PreviewProvider {
     static var previews: some View {
         StatefulEditGoalView(
             goalNameReader: .init(publisher: Just("Learn SwiftUI").eraseToAnyPublisher()),
-            viewWriter: NoOpEditGoalViewWriter()
+            viewWriter: NoOpEditGoalViewWriter(),
+            goalID: "goal-0"
         )
     }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 enum MockDataFactory {
@@ -18,4 +19,12 @@ enum MockDataFactory {
     )
     
     static let today: Date.Day = Date().asDay(in: .current)
+    
+    static let context: Context = .init(
+        goalID: "goal-id",
+        goalStoreWriter: NoOpGoalWriter(),
+        goalPublisher: Just(MockDataFactory.goal).eraseToAnyPublisher(),
+        selectDayStore: SelectDayStore(initialSelectDay: MockDataFactory.today),
+        todayPublisher: Just(MockDataFactory.today).eraseToAnyPublisher()
+    )
 }

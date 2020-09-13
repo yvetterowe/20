@@ -10,7 +10,7 @@ import Foundation
 
 struct GoalImpl: Goal, Identifiable, Codable {
     let id: GoalID
-    let name: String
+    var name: String
     let timeToComplete: TimeInterval
     
     private(set) var trackRecords: [TrackRecord]

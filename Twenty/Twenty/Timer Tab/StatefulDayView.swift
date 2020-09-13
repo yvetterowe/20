@@ -96,8 +96,7 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
                 StatefulMoreActionListView(
                     viewReader: .init(publisher: viewStore.titlePublisher),
                     viewWriter: viewStore,
-                    goalPublisher: context.goalPublisher,
-                    goalStoreWriter: context.goalStoreWriter
+                    context: context
                 )
             }
 
@@ -131,13 +130,7 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
 struct StatefulDayView_Previews: PreviewProvider {
     static var previews: some View {
         StatefulDayView(
-            context: Context(
-                goalID: "",
-                goalStoreWriter: NoOpGoalWriter(),
-                goalPublisher: Just(MockDataFactory.goal).eraseToAnyPublisher(),
-                selectDayStore: SelectDayStore(initialSelectDay: MockDataFactory.today),
-                todayPublisher: Just(MockDataFactory.today).eraseToAnyPublisher()
-            ),
+            context: MockDataFactory.context,
             viewStateStore: ObservableWrapper(
                 publisher: Just(SelectedDayViewState(isToday: true, day: MockDataFactory.today)).eraseToAnyPublisher()
             )

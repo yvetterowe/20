@@ -55,8 +55,7 @@ final class MoreActionListViewStore: MoreActionListViewReader, MoreActionListVie
 struct StatefulMoreActionListView: View {
     @ObservedObject private var viewReader: ObservableWrapper<String>
     private let viewWriter: MoreActionListViewWriter
-    private let goalPublisher: GoalPublisher
-    private let goalStoreWriter: GoalStoreWriter
+    private let context: Context
     
     @State private var addingTime: Bool = false
     @State private var editingGoal: Bool = false
@@ -66,13 +65,11 @@ struct StatefulMoreActionListView: View {
     init(
         viewReader: ObservableWrapper<String>,
         viewWriter: MoreActionListViewWriter,
-        goalPublisher: GoalPublisher,
-        goalStoreWriter: GoalStoreWriter
+        context: Context
     ) {
         self.viewReader = viewReader
         self.viewWriter = viewWriter
-        self.goalPublisher = goalPublisher
-        self.goalStoreWriter = goalStoreWriter
+        self.context = context
     }
     
     var body: some View {
@@ -99,15 +96,16 @@ struct StatefulMoreActionListView: View {
                     isSheetPresented: $editingGoal
                 ) {
                     let viewStore = EditGoalStore(
-                        goalPublisher: goalPublisher,
-                        goalStoreWriter: goalStoreWriter,
+                        goalPublisher: context.goalPublisher,
+                        goalStoreWriter: context.goalStoreWriter,
                         editing: $editingGoal
                     )
                     
                     AnyView(
                         StatefulEditGoalView(
                             goalNameReader: .init(publisher: viewStore.goalNamePublisher),
-                            viewWriter: viewStore
+                            viewWriter: viewStore,
+                            goalID: context.goalID
                         )
                     )
                 },
@@ -143,8 +141,7 @@ struct StatefulMoreActionListView_Previews: PreviewProvider {
         StatefulMoreActionListView(
             viewReader: .init(publisher: Just("Learn SwiftUI").eraseToAnyPublisher()),
             viewWriter: NoOpMoreActionListViewWriter(),
-            goalPublisher: Just(MockDataFactory.goal).eraseToAnyPublisher(),
-            goalStoreWriter: NoOpGoalWriter()
+            context: MockDataFactory.context
         )
     }
 }
