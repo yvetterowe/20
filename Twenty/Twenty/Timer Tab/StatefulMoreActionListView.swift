@@ -55,6 +55,8 @@ final class MoreActionListViewStore: MoreActionListViewReader, MoreActionListVie
 struct StatefulMoreActionListView: View {
     @ObservedObject private var viewReader: ObservableWrapper<String>
     private let viewWriter: MoreActionListViewWriter
+    private let goalPublisher: GoalPublisher
+    private let goalStoreWriter: GoalStoreWriter
     
     @State private var addingTime: Bool = false
     @State private var editingGoal: Bool = false
@@ -63,10 +65,14 @@ struct StatefulMoreActionListView: View {
     
     init(
         viewReader: ObservableWrapper<String>,
-        viewWriter: MoreActionListViewWriter
+        viewWriter: MoreActionListViewWriter,
+        goalPublisher: GoalPublisher,
+        goalStoreWriter: GoalStoreWriter
     ) {
         self.viewReader = viewReader
         self.viewWriter = viewWriter
+        self.goalPublisher = goalPublisher
+        self.goalStoreWriter = goalStoreWriter
     }
     
     var body: some View {
@@ -92,7 +98,18 @@ struct StatefulMoreActionListView: View {
                     },
                     isSheetPresented: $editingGoal
                 ) {
-                    AnyView(Text("Editing goal placeholder"))
+                    let viewStore = EditGoalStore(
+                        goalPublisher: goalPublisher,
+                        goalStoreWriter: goalStoreWriter,
+                        editing: $editingGoal
+                    )
+                    
+                    AnyView(
+                        StatefulEditGoalView(
+                            goalNameReader: .init(publisher: viewStore.goalNamePublisher),
+                            viewWriter: viewStore
+                        )
+                    )
                 },
                 
                 .init(
@@ -125,7 +142,9 @@ struct StatefulMoreActionListView_Previews: PreviewProvider {
     static var previews: some View {
         StatefulMoreActionListView(
             viewReader: .init(publisher: Just("Learn SwiftUI").eraseToAnyPublisher()),
-            viewWriter: NoOpMoreActionListViewWriter()
+            viewWriter: NoOpMoreActionListViewWriter(),
+            goalPublisher: Just(MockDataFactory.goal).eraseToAnyPublisher(),
+            goalStoreWriter: NoOpGoalWriter()
         )
     }
 }

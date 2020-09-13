@@ -95,7 +95,9 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
                 )
                 StatefulMoreActionListView(
                     viewReader: .init(publisher: viewStore.titlePublisher),
-                    viewWriter: viewStore
+                    viewWriter: viewStore,
+                    goalPublisher: context.goalPublisher,
+                    goalStoreWriter: context.goalStoreWriter
                 )
             }
 

@@ -21,13 +21,16 @@ protocol EditGoalViewWriter {
 final class EditGoalStore: EditGoalViewReader, EditGoalViewWriter {
     
     private let goalStoreWriter: GoalStoreWriter
+    @Binding private var editing: Bool
     
     init(
         goalPublisher: GoalPublisher,
-        goalStoreWriter: GoalStoreWriter
+        goalStoreWriter: GoalStoreWriter,
+        editing: Binding<Bool>
     ) {
         self.goalNamePublisher = goalPublisher.map { $0.name }.eraseToAnyPublisher()
         self.goalStoreWriter = goalStoreWriter
+        self._editing = editing
     }
     
     // MARK: EditGoalViewReader
@@ -36,10 +39,11 @@ final class EditGoalStore: EditGoalViewReader, EditGoalViewWriter {
     // MARK: EditGoalViewWriter
     
     func cancelEditGoal() {
-        
+        editing = false
     }
     
     func saveEditGoalName(_ newGoalName: String, forGoal goalID: GoalID) {
+        editing = false
         _ = goalStoreWriter.updateGoalName(newGoalName, forGoal: goalID)
     }
 }
