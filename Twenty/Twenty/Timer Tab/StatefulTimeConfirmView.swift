@@ -16,13 +16,13 @@ struct TimeConfirmViewState: Equatable {
 final class TimeConfirmViewStateStore: ObservableObject {
     @Published private(set) var value: TimeConfirmViewState
     private var cancellable: Set<AnyCancellable> = .init()
-    private let timerViewStore: TimerViewStateStore
+    private let timerViewWriter: TimerViewModelWriter
     
     init(
-        timerViewStore: TimerViewStateStore,
+        timerViewWriter: TimerViewModelWriter,
         initialElapsedTime: DateInterval
     ) {
-        self.timerViewStore = timerViewStore
+        self.timerViewWriter = timerViewWriter
         self._value = .init(initialValue: .init(elapsedTime: initialElapsedTime))
         
         self.$value
@@ -33,7 +33,7 @@ final class TimeConfirmViewStateStore: ObservableObject {
                 return
             }
             if let elapsedTime = newConfirmState.elapsedTime {
-                timerViewStore.updateFromConfirm(elapsedTime)
+                timerViewWriter.send(.timeConfirmed(elapsedTime))
             }
         }.store(in: &cancellable)
     }

@@ -13,3 +13,7 @@ final class NoOpGoalWriter: GoalStoreWriter {
         fatalError("Not Implemented")
     }
 }
+
+final class NoOpTimerViewWriter: TimerViewModelWriter {
+    func send(_ action: TimerViewAction) {}
+}

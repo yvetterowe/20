@@ -10,13 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     private let timerTabContext: Context
-    private let timerStateStore: TimerStateStore
 
     @State private var selection = 0
 
     init(timerTabContext: Context) {
         self.timerTabContext = timerTabContext
-        self.timerStateStore = .init(initialState: .inactive(.init()))
     }
     
     var body: some View {
@@ -30,13 +28,18 @@ struct ContentView: View {
                     ).publisher
                 )
             ) { presentingTimer in
+                
+                let timerStateStore = TimerStateStore(initialState: .inactive(.init()))
+                let timerViewStateStore = TimerViewStateStore(
+                    timerStatePublisher: timerStateStore.timerStatePublisher,
+                    timerStateWriter: timerStateStore,
+                    goalStoreWriter: timerTabContext.goalStoreWriter,
+                    goalID: timerTabContext.goalID
+                )
+                
                 StatefulTimerView(
-                    viewStateStore: .init(
-                        timerStatePublisher: timerStateStore.timerStatePublisher,
-                        timerStateWriter: timerStateStore,
-                        goalStoreWriter: timerTabContext.goalStoreWriter,
-                        goalID: timerTabContext.goalID
-                    ),
+                    viewStateReader: .init(publisher: timerViewStateStore.publisher),
+                    timerViewModelWriter: timerViewStateStore,
                     presentingTimer: presentingTimer
                 )
             }
