@@ -18,24 +18,26 @@ enum TimerAction {
     case toggleTimerButtonTapped
 }
 
-final class TimerStateStore: ObservableObject {
-    
-    // MARK: - Public Properties
-    
-    @Published private(set) var state: TimerState
-    
-    var timerStatePublisher: AnyPublisher<TimerState, Never> {
-        return $state.eraseToAnyPublisher()
-    }
+protocol TimerStateReader {
+    var timerStatePublisher: AnyPublisher<TimerState, Never> { get }
+}
+
+protocol TimerStateWriter {
+    func send(_ action: TimerAction)
+}
+
+final class TimerStateStore: TimerStateReader, TimerStateWriter {
     
     // MARK: - Private Properties
     
+    private var state: CurrentValueSubject<TimerState, Never>
+    
     private lazy var backgroundTimer: BackgroundTimer = .init(timeInterval: timerInterval) { tickInterval in
         DispatchQueue.main.async { [unowned self] in
-            guard case let .active(interval) = self.state else {
+            guard case let .active(interval) = self.state.value else {
                 fatalError("Timer must already be in active state")
             }
-            self.state = .active(
+            self.state.value = .active(
                 .init(
                     start: interval.start,
                     duration: interval.duration + tickInterval
@@ -48,20 +50,28 @@ final class TimerStateStore: ObservableObject {
     private let timerInterval: TimeInterval
     
     init(initialState: TimerState, timerInterval: TimeInterval = 1) {
-        self._state = .init(initialValue: initialState)
+        self.state = .init(initialState)
         self.timerInterval = timerInterval
     }
+    
+    // MARK: - TimerStateReader
+        
+    var timerStatePublisher: AnyPublisher<TimerState, Never> {
+        return state.eraseToAnyPublisher()
+    }
+    
+    // MARK: - TimerStateWriter
     
     func send(_ action: TimerAction) {
         switch action {
         case .toggleTimerButtonTapped:
-            switch state {
+            switch state.value {
             case let .active(interval):
-                state = .inactive(interval)
+                state.value = .inactive(interval)
                 backgroundTimer.suspend()
             
             case let .inactive(interval):
-                state = .active(interval)
+                state.value = .active(interval)
                 backgroundTimer.resume()
             }
         }

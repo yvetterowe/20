@@ -18,21 +18,24 @@ final class TimerViewStateStore: ObservableObject {
     
     @Published var value: TimerViewState = .init(isActive: false, elapsedTime: nil)
     
-    private let timerStateStore: TimerStateStore
+    private let timerStatePublisher: AnyPublisher<TimerState, Never>
+    private let timerStateWriter: TimerStateWriter
     private let goalStoreWriter: GoalStoreWriter
     private let goalID: GoalID
     private var cancellable: Set<AnyCancellable> = .init()
     
     init(
-        timerStateStore: TimerStateStore,
+        timerStatePublisher: AnyPublisher<TimerState, Never>,
+        timerStateWriter: TimerStateWriter,
         goalStoreWriter: GoalStoreWriter,
         goalID: GoalID
     ) {
-        self.timerStateStore = timerStateStore
+        self.timerStatePublisher = timerStatePublisher
+        self.timerStateWriter = timerStateWriter
         self.goalStoreWriter = goalStoreWriter
         self.goalID = goalID
         
-        timerStateStore.$state.sink { [weak self] timerState in
+        timerStatePublisher.sink { [weak self] timerState in
             guard let self = self else {
                 return
             }
@@ -48,7 +51,7 @@ final class TimerViewStateStore: ObservableObject {
     }
     
     func timerButtonTapped() {
-        timerStateStore.send(.toggleTimerButtonTapped)
+        timerStateWriter.send(.toggleTimerButtonTapped)
     }
     
     func saveCurrentRecord() {
