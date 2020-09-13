@@ -110,8 +110,16 @@ struct StatefulTimeConfirmView: View {
     }
 }
 
-//struct StatefulTimeConfirmView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatefulTimeConfirmView()
-//    }
-//}
+struct StatefulTimeConfirmView_Previews: PreviewProvider {
+    static var previews: some View {
+        StatefulTimeConfirmView(
+            viewStateStore: .init(
+                timerViewWriter: NoOpTimerViewWriter(),
+                initialElapsedTime: .init()
+            ),
+            initialElapsedTime: .init(),
+            editingStartTime: .constant(false),
+            editingEndTime: .constant(false)
+        )
+    }
+}
