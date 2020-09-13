@@ -67,6 +67,8 @@ final class TimerViewStateStore: TimerViewModelReader, TimerViewModelWriter {
         self.goalStoreWriter = goalStoreWriter
         self.goalID = goalID
         
+        timerStateWriter.send(.toggleTimerButtonTapped)
+        
         timerStatePublisher.sink { [weak self] timerState in
             guard let self = self else {
                 return
@@ -142,8 +144,6 @@ struct StatefulTimerView: View {
     private let timerViewModelWriter: TimerViewModelWriter
                 
     @Binding private var presentingTimer: Bool
-    @State private var dismissButtonEnabled: Bool = true
-    @State private var buttonTappedCount: Int = 0 // ugly hack = =
     @State private var editingTimerStartTime: Bool = false
     @State private var editingTimerEndTime: Bool = false
 
@@ -180,19 +180,17 @@ struct StatefulTimerView: View {
             }
             Spacer()
             Button(viewState.isActive ? "Stop" : "Start") {
-                buttonTappedCount += 1
-                dismissButtonEnabled = !dismissButtonEnabled
                 if viewState.isActive {
                     timerViewModelWriter.send(.pauseButtonTapped)
                 } else {
                     timerViewModelWriter.send(.startButtonTapped)
                 }
-            }.disabled(buttonTappedCount >= 2)
+            }.disabled(!viewState.isActive)
             Button("Confirm and Save") {
                 presentingTimer = false
                 timerViewModelWriter.send(.confirmButtonTapped)
                 
-            }.disabled(!dismissButtonEnabled)
+            }.disabled(viewState.isActive)
         }
     }
 }
