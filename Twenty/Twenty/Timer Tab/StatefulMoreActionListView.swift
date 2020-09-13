@@ -55,7 +55,11 @@ final class MoreActionListViewStore: MoreActionListViewReader, MoreActionListVie
 struct StatefulMoreActionListView: View {
     @ObservedObject private var viewReader: ObservableWrapper<String>
     private let viewWriter: MoreActionListViewWriter
+    
+    @State private var addingTime: Bool = false
     @State private var editingGoal: Bool = false
+    @State private var viewingActivities: Bool = false
+    @State private var deletingGoal: Bool = false
     
     init(
         viewReader: ObservableWrapper<String>,
@@ -72,31 +76,46 @@ struct StatefulMoreActionListView: View {
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Add Time",
-                    action: {
-                        viewWriter.send(.addTime)
-                    }
-                ),
+                    tapAction: {
+                        addingTime = true
+                    },
+                    isSheetPresented: $addingTime
+                ) {
+                    AnyView(Text("Adding time placeholder"))
+                },
+                
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Edit Goal",
-                    action: {
+                    tapAction: {
                         editingGoal = true
-                    }
-                ),
+                    },
+                    isSheetPresented: $editingGoal
+                ) {
+                    AnyView(Text("Editing goal placeholder"))
+                },
+                
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "View Activities",
-                    action: {
-                        viewWriter.send(.viewActivity)
-                    }
-                ),
+                    tapAction: {
+                        viewingActivities = true
+                    },
+                    isSheetPresented: $viewingActivities
+                ) {
+                    AnyView(Text("Viewing activities placeholder"))
+                },
+                
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Delete Goal",
-                    action: {
-                        viewWriter.send(.deleteGoal)
-                    }
-                )
+                    tapAction: {
+                        deletingGoal = true
+                    },
+                    isSheetPresented: $deletingGoal
+                ) {
+                    AnyView(Text("Deleting goal placeholder"))
+                },
             ]
         )
     }

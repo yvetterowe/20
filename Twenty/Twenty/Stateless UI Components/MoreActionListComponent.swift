@@ -10,13 +10,13 @@ import SwiftUI
 
 struct MoreActionListComponent: View {
     let title: String
-    let rows: [MoreActionRowComponent]
+    let rows: [MoreActionRowComponent<AnyView>]
     let rowHeight: CGFloat = 56
     
     var body: some View {
         NavigationView{
             List(0..<rows.count) { rowIndex in
-                Button(action: rows[rowIndex].action) {
+                Button(action: rows[rowIndex].tapAction) {
                     rows[rowIndex]
                 }
                 .frame(height: rowHeight)
@@ -34,13 +34,20 @@ struct MoreActionListComponent_Previews: PreviewProvider {
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Add Time",
-                    action: {}
-                ),
+                    tapAction: {},
+                    isSheetPresented: .constant(false)
+                ) {
+                    AnyView(Text("Adding time placeholder"))
+                },
+                
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Edit Goal",
-                    action: {}
-                )
+                    tapAction: {},
+                    isSheetPresented: .constant(false)
+                ) {
+                    AnyView(Text("Editing goal placeholder"))
+                },
             ]
         )
     }

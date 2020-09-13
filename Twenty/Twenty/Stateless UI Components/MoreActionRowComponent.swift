@@ -8,10 +8,26 @@
 
 import SwiftUI
 
-struct MoreActionRowComponent: View {
-    let icon: Image
-    let title: String
-    let action: () -> Void
+struct MoreActionRowComponent<SheetContent: View>: View {
+    private let icon: Image
+    private let title: String
+    let tapAction: () -> Void
+    private let sheetContent: () -> SheetContent
+    private var isSheetPresented: Binding<Bool>
+    
+    init(
+        icon: Image,
+        title: String,
+        tapAction: @escaping () -> Void,
+        isSheetPresented: Binding<Bool>,
+        @ViewBuilder sheetContent: @escaping () -> SheetContent
+    ) {
+        self.icon = icon
+        self.title = title
+        self.tapAction = tapAction
+        self.isSheetPresented = isSheetPresented
+        self.sheetContent = sheetContent
+    }
     
     var body: some View {
         HStack {
@@ -19,6 +35,10 @@ struct MoreActionRowComponent: View {
             Text(title)
             Spacer()
         }
+        .sheet(
+            isPresented: isSheetPresented,
+            content: sheetContent
+        )
     }
 }
 
@@ -27,7 +47,11 @@ struct MoreActionRowComponent_Previews: PreviewProvider {
         MoreActionRowComponent(
             icon: Image(systemName: "number.square"),
             title: "Edit Goal",
-            action: {}
-        ).previewLayout(.fixed(width: 320, height: 40))
+            tapAction: {},
+            isSheetPresented: .constant(false)
+        ) {
+            Text("sheet content")
+        }
+        .previewLayout(.fixed(width: 320, height: 40))
     }
 }
