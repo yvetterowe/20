@@ -90,9 +90,15 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
                 }
             )
             .sheet(isPresented: $presentingMoreActionSheet) {
-                Text("MoreActionListComponent placeholder")
+                let viewStore = MoreActionListViewStore(
+                    goalPublisher: context.goalPublisher
+                )
+                StatefulMoreActionListView(
+                    viewReader: .init(publisher: viewStore.titlePublisher),
+                    viewWriter: viewStore
+                )
             }
-            
+
             if #available(iOS 14.0, *) {
                 StatisticSectionComponent(
                     items: Array(
