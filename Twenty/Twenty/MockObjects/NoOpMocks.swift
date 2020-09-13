@@ -7,6 +7,7 @@
 //
 
 import Combine
+import Foundation
 
 final class NoOpGoalWriter: GoalStoreWriter {
     func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError> {
@@ -16,4 +17,14 @@ final class NoOpGoalWriter: GoalStoreWriter {
 
 final class NoOpTimerViewWriter: TimerViewModelWriter {
     func send(_ action: TimerViewAction) {}
+}
+
+final class NoOpEditTimeViewWriter: EditTimeViewWriter {
+    func cancelEditTime() {
+        
+    }
+    
+    func saveEditTime(_ newDate: Date) {
+        
+    }
 }

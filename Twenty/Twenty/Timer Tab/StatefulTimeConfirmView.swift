@@ -79,14 +79,15 @@ struct StatefulTimeConfirmView: View {
                 editingStartTime = true
             }
             .sheet(isPresented: $editingStartTime) {
+                let viewStore = EditTimeViewStore(
+                    initialDate: viewState.elapsedTime!.start,
+                    editingTime: $editingStartTime,
+                    timeConfirmViewStateStore: viewStateStore,
+                    type: .start
+                )
                 StatefulEditTimeView(
                     initialDate: viewState.elapsedTime!.start,
-                    viewStore: .init(
-                        initialDate: viewState.elapsedTime!.start,
-                        editingTime: $editingStartTime,
-                        timeConfirmViewStateStore: viewStateStore,
-                        type: .start
-                    )
+                    viewWriter: viewStore
                 )
             }
             
@@ -96,14 +97,15 @@ struct StatefulTimeConfirmView: View {
                 editingEndTime = true
             }
             .sheet(isPresented: $editingEndTime) {
+                let viewStore = EditTimeViewStore(
+                    initialDate: viewState.elapsedTime!.end,
+                    editingTime: $editingEndTime,
+                    timeConfirmViewStateStore: viewStateStore,
+                    type: .end
+                )
                 StatefulEditTimeView(
                     initialDate: viewState.elapsedTime!.end,
-                    viewStore: .init(
-                        initialDate: viewState.elapsedTime!.end,
-                        editingTime: $editingEndTime,
-                        timeConfirmViewStateStore: viewStateStore,
-                        type: .end
-                    )
+                    viewWriter: viewStore
                 )
             }
         }

@@ -9,7 +9,12 @@
 import Combine
 import SwiftUI
 
-final class EditTimeViewStore: ObservableObject {
+protocol EditTimeViewWriter {
+    func cancelEditTime()
+    func saveEditTime(_ newDate: Date)
+}
+
+final class EditTimeViewStore: ObservableObject, EditTimeViewWriter {
     enum EditType {
         case start, end
     }
@@ -46,6 +51,8 @@ final class EditTimeViewStore: ObservableObject {
         }.store(in: &cancellable)
     }
     
+    // MARK: - EditTimeViewWriter
+    
     func cancelEditTime() {
         editingTime = false
     }
@@ -57,11 +64,11 @@ final class EditTimeViewStore: ObservableObject {
 }
 
 struct StatefulEditTimeView: View {
-    @ObservedObject private var viewStore: EditTimeViewStore
+    private let viewWriter: EditTimeViewWriter
     @State private var editingDate: Date
     
-    init(initialDate: Date, viewStore: EditTimeViewStore) {
-        self.viewStore = viewStore
+    init(initialDate: Date, viewWriter: EditTimeViewWriter) {
+        self.viewWriter = viewWriter
         self._editingDate = .init(initialValue: initialDate)
     }
     
@@ -71,12 +78,12 @@ struct StatefulEditTimeView: View {
             .navigationBarTitle("Edit Time")
             .navigationBarItems(
                 leading: Button(action: {
-                    viewStore.cancelEditTime()
+                    viewWriter.cancelEditTime()
                 }, label: {
                     Text("Cancel")
                 }),
                 trailing: Button(action: {
-                    viewStore.saveEditTime(editingDate)
+                    viewWriter.saveEditTime(editingDate)
                 }, label: {
                     Text("Done")
                 }))
@@ -84,8 +91,11 @@ struct StatefulEditTimeView: View {
     }
 }
 
-//struct StatefulEditTimeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatefulEditTimeView()
-//    }
-//}
+struct StatefulEditTimeView_Previews: PreviewProvider {
+    static var previews: some View {
+        StatefulEditTimeView(
+            initialDate: .init(),
+            viewWriter: NoOpEditTimeViewWriter()
+        )
+    }
+}
