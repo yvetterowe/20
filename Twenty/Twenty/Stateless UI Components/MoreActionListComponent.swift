@@ -21,7 +21,8 @@ struct MoreActionListComponent: View {
                 }
                 .frame(height: rowHeight)
             }
-        }.navigationBarTitle(title)
+            .navigationBarTitle(title)
+        }
     }
 }
 
