@@ -71,6 +71,10 @@ final class GoalStoreImpl: GoalStoreReader, GoalStoreWriter {
             .eraseToAnyPublisher()
     }
     
+    func updateGoalName(_ goalName: String, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError> {
+        fatalError("todo")
+    }
+    
     // MARK: - Helpers
     
     private func goalSubject(for goalID: GoalID) -> GoalSubject {

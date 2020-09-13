@@ -25,6 +25,7 @@
 		E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */; };
 		E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */; };
 		E739A0B1250EAECC001A4940 /* EditSheetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0B0250EAECC001A4940 /* EditSheetComponent.swift */; };
+		E739A0B3250EB11F001A4940 /* StatefulEditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */; };
 		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
 		E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */; };
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
@@ -103,6 +104,7 @@
 		E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreActionListComponent.swift; sourceTree = "<group>"; };
 		E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulMoreActionListView.swift; sourceTree = "<group>"; };
 		E739A0B0250EAECC001A4940 /* EditSheetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetComponent.swift; sourceTree = "<group>"; };
+		E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulEditGoalView.swift; sourceTree = "<group>"; };
 		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewHeader.swift; sourceTree = "<group>"; };
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
 				E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */,
+				E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				E78F059324809CB90066C687 /* StatefulDayView.swift in Sources */,
 				E739A0B1250EAECC001A4940 /* EditSheetComponent.swift in Sources */,
 				E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */,
+				E739A0B3250EB11F001A4940 /* StatefulEditGoalView.swift in Sources */,
 				E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */,
 				E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */,
 				E7D3DC732483055800422C77 /* Goal.swift in Sources */,

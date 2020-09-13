@@ -14,4 +14,5 @@ enum GoalStoreWriterError: Error {
 
 protocol GoalStoreWriter {
     func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError>
+    func updateGoalName(_ goalName: String, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError>
 }

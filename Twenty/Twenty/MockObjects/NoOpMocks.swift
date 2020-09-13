@@ -13,6 +13,10 @@ final class NoOpGoalWriter: GoalStoreWriter {
     func appendTrackRecord(_ trackRecord: TrackRecord, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError> {
         fatalError("Not Implemented")
     }
+    
+    func updateGoalName(_ goalName: String, forGoal goalID: GoalID) -> AnyPublisher<Void, GoalStoreWriterError> {
+        fatalError("Not Implemented")
+    }
 }
 
 final class NoOpTimerViewWriter: TimerViewModelWriter {
@@ -32,4 +36,9 @@ final class NoOpEditTimeViewWriter: EditTimeViewWriter {
 final class NoOpMoreActionListViewWriter: MoreActionListViewWriter {
     func send(_ action: MoreActionListViewAction) {
     }
+}
+
+final class NoOpEditGoalViewWriter: EditGoalViewWriter{
+    func cancelEditGoal() {}
+    func saveEditGoalName(_ newGoalName: String, forGoal goalID: GoalID) {}
 }

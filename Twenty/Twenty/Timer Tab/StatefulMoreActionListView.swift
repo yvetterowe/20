@@ -55,6 +55,7 @@ final class MoreActionListViewStore: MoreActionListViewReader, MoreActionListVie
 struct StatefulMoreActionListView: View {
     @ObservedObject private var viewReader: ObservableWrapper<String>
     private let viewWriter: MoreActionListViewWriter
+    @State private var editingGoal: Bool = false
     
     init(
         viewReader: ObservableWrapper<String>,
@@ -79,7 +80,7 @@ struct StatefulMoreActionListView: View {
                     icon: Image(systemName: "number.square"),
                     title: "Edit Goal",
                     action: {
-                        viewWriter.send(.editGoal)
+                        editingGoal = true
                     }
                 ),
                 .init(
