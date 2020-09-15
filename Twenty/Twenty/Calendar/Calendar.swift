@@ -24,7 +24,7 @@ extension Date {
         }
     }
     
-    struct Month: Equatable {
+    struct Month: Hashable {
         let date: Date
         fileprivate init(date: Date) {
             self.date = date
