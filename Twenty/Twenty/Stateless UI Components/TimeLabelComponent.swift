@@ -12,16 +12,20 @@ struct TimeLabelComponent: View {
     let duration: TimeInterval
     
     var body: some View {
-        Text("\(duration.format())")
+        Text("\(duration.format(showSecond: true))")
     }
 }
 
-private extension TimeInterval {
-    func format() -> String {
+extension TimeInterval {
+    func format(showSecond: Bool) -> String {
         let hours = Int(self) / 3600
         let minutes = Int(self) / 60 % 60
-        let seconds = Int(self) % 60
-        return String(format:"%ih %im %is", hours, minutes, seconds)
+        if showSecond {
+            let seconds = Int(self) % 60
+            return String(format:"%ih %im %is", hours, minutes, seconds)
+        } else {
+            return String(format:"%ih %im", hours, minutes)
+        }
     }
 }
 
