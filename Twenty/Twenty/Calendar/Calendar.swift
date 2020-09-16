@@ -46,11 +46,9 @@ extension Date {
     }
     
     func asMonth(in calendar: Calendar) -> Month {
-        precondition(
-            calendar.date(self, matchesComponents: calendar.monthMatchingComponents()),
-            "\(self) doesn't satisfy components format for Month"
-        )
-        return .init(date: self)
+        let components = calendar.dateComponents([.year, .month], from: self)
+        let stripDayDate = calendar.date(from: components)!
+        return .init(date: stripDayDate)
     }
     
     func weekdayDescription() -> String {

@@ -10,48 +10,31 @@ import Combine
 import SwiftUI
 
 protocol ViewActivityListViewReader {
-    var publisher: AnyPublisher<[[DateInterval]], Never> { get }
+    var publisher: AnyPublisher<ActivityListComponent.Model, Never> { get }
 }
 
 final class ViewActivityListViewStore: ViewActivityListViewReader {
     
-    let publisher: AnyPublisher<[[DateInterval]], Never>
+    let publisher: AnyPublisher<ActivityListComponent.Model, Never>
     
     init(goalPublisher: GoalPublisher) {
         self.publisher = goalPublisher.map {
-            ViewActivityListViewStore.recordsSortedByMonth($0.trackRecords.map {$0.timeSpan})
+            ActivityListComponent.Model(records: $0.trackRecords.map { $0.timeSpan })
         }.eraseToAnyPublisher()
-    }
-    
-    private static func recordsSortedByMonth(_ records: [DateInterval]) -> [[DateInterval]] {
-        let recordsByMonth: [Date.Month: [DateInterval]] = records.reduce([:]) { (prev, record) in
-            var prevRecordsByMonth = prev
-            let month = record.start.asMonth(in: .current)
-            if prevRecordsByMonth[month] != nil {
-                prevRecordsByMonth[month]!.append(record)
-            } else {
-                prevRecordsByMonth[month] = [record]
-            }
-            return prevRecordsByMonth
-        }
-        
-        return recordsByMonth.keys
-            .sorted { $0 < $1 }
-            .map { recordsByMonth[$0]! }
     }
 }
 
 struct StatefulViewActivityListView: View {
     
-    @ObservedObject private var viewReader: ObservableWrapper<[[DateInterval]]>
+    @ObservedObject private var viewReader: ObservableWrapper<ActivityListComponent.Model>
     
-    init(viewReader: ObservableWrapper<[[DateInterval]]>) {
+    init(viewReader: ObservableWrapper<ActivityListComponent.Model>) {
         self.viewReader = viewReader
     }
     
     var body: some View {
         ActivityListComponent(
-            sortedRecords: viewReader.value
+            model: viewReader.value
         )
     }
 }
@@ -59,7 +42,12 @@ struct StatefulViewActivityListView: View {
 struct StatefulViewActivityListView_Previews: PreviewProvider {
     static var previews: some View {
         StatefulViewActivityListView(
-            viewReader: .init(publisher: Just(MockDataFactory.recordIntervals).eraseToAnyPublisher())
+            viewReader: .init(
+                publisher: Just(
+                    ActivityListComponent.Model(records: MockDataFactory.recordIntervals.flatMap{$0}
+                    )
+                ).eraseToAnyPublisher()
+            )
         )
     }
 }
