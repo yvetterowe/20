@@ -33,9 +33,12 @@ struct StatefulViewActivityListView: View {
     }
     
     var body: some View {
-        ActivityListComponent(
-            model: viewReader.value
-        )
+        NavigationView {
+            ActivityListComponent(
+                model: viewReader.value
+            )
+            .navigationBarTitle("Activities")
+        }
     }
 }
 
