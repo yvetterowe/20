@@ -27,18 +27,7 @@ struct ActivityListComponent: View {
 struct ActivityListComponent_Previews: PreviewProvider {
     static var previews: some View {
         ActivityListComponent(
-            sortedRecords: [
-                [
-                    .init(start: .init(year: 2020, month: 6, day: 30), duration: 1800)
-                ],
-                [
-                    .init(start: .init(year: 2020, month: 7, day: 2), duration: 3640),
-                    .init(start: .init(year: 2020, month: 7, day: 31), duration: 1800)
-                ],
-                [
-                    .init(start: .init(year: 2020, month: 9, day: 14), duration: 7200)
-                ],
-            ]
+            sortedRecords: MockDataFactory.recordIntervals
         )
     }
 }

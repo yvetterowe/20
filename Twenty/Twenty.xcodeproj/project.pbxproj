@@ -71,6 +71,7 @@
 		E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */; };
 		E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DC2510579100F62832 /* ActivityRowComponent.swift */; };
 		E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DE25105A7700F62832 /* ActivityListComponent.swift */; };
+		E7F727E12510638700F62832 /* StatefulViewActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,7 @@
 		E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePersistentDataStore.swift; sourceTree = "<group>"; };
 		E7F727DC2510579100F62832 /* ActivityRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowComponent.swift; sourceTree = "<group>"; };
 		E7F727DE25105A7700F62832 /* ActivityListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponent.swift; sourceTree = "<group>"; };
+		E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewActivityListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +322,7 @@
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
 				E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */,
+				E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */,
 				E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */,
 			);
 			path = "Timer Tab";
@@ -605,6 +608,7 @@
 				E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */,
 				E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
+				E7F727E12510638700F62832 /* StatefulViewActivityListView.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				73544F672496F8170038914D /* ViewController.swift in Sources */,
 				73B7E98E249873C00061D923 /* Utilities.swift in Sources */,

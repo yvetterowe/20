@@ -66,6 +66,12 @@ extension Date {
     }
 }
 
+extension Date.Month: Comparable {
+    static func < (lhs: Date.Month, rhs: Date.Month) -> Bool {
+        return lhs.date < rhs.date
+    }
+}
+
 extension Calendar {
     
     func daysInWeek(_ week: Date) -> [Date.Day] {

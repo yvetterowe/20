@@ -27,4 +27,17 @@ enum MockDataFactory {
         selectDayStore: SelectDayStore(initialSelectDay: MockDataFactory.today),
         todayPublisher: Just(MockDataFactory.today).eraseToAnyPublisher()
     )
+    
+    static let recordIntervals: [[DateInterval]] =  [
+        [
+            .init(start: .init(year: 2020, month: 6, day: 30), duration: 1800)
+        ],
+        [
+            .init(start: .init(year: 2020, month: 7, day: 2), duration: 3640),
+            .init(start: .init(year: 2020, month: 7, day: 31), duration: 1800)
+        ],
+        [
+            .init(start: .init(year: 2020, month: 9, day: 14), duration: 7200)
+        ],
+    ]
 }
