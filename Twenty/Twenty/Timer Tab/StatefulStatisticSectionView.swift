@@ -21,12 +21,17 @@ final class StatisticSectionViewStore: StatisticSectionViewReader {
                 .init(
                     icon: .init(systemName: "number.square"),
                     title: "\(goal.remainingTime.format(showSecond: false))",
-                    subtitle: "To Milestone"
+                    subtitle: "To milestone"
                 ),
                 .init(
                     icon: .init(systemName: "number.square"),
                     title: "\(goal.avgTimePerDay.format(showSecond: false))",
                     subtitle: "Avg everyday"
+                ),
+                .init(
+                    icon: .init(systemName: "number.square"),
+                    title: "\(goal.recordsCount)",
+                    subtitle: "Records count"
                 ),
             ]
         }

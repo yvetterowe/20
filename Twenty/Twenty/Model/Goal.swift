@@ -35,4 +35,8 @@ extension Goal {
         let dayCount = Dictionary(grouping: trackRecords, by: { $0.timeSpan.start.asDay(in: .current)}).keys.count
         return totalTime / TimeInterval(dayCount)
     }
+    
+    var recordsCount: Int {
+        return trackRecords.count
+    }
 }

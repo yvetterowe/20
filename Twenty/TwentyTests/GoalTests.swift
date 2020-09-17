@@ -18,5 +18,9 @@ class GoalTests: XCTestCase {
     func testAvgTimePerDay() {
         XCTAssertEqual(MockDataFactory.goal.avgTimePerDay, 3600)
     }
+    
+    func testRecordsCount() {
+        XCTAssertEqual(MockDataFactory.goal.recordsCount, 3)
+    }
 
 }
