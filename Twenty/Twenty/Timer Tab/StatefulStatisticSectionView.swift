@@ -16,14 +16,16 @@ protocol StatisticSectionViewReader {
 final class StatisticSectionViewStore: StatisticSectionViewReader {
     
     init(goalPublisher: GoalPublisher) {
-        self.publisher = Just(Array(
-            repeating: .init(
-                icon: .init(systemName: "number.square"),
-                title: "1h 3m",
-                subtitle: "subtitle"
-            ),
-            count: 4
-        )).eraseToAnyPublisher()
+        self.publisher = goalPublisher.map { goal -> [StatisticCellComponent.Model] in
+            return [
+                .init(
+                    icon: .init(systemName: "number.square"),
+                    title: "\((goal.timeToComplete - goal.totalTimeSpent).format(showSecond: false))",
+                    subtitle: "To Milestone"
+                ),
+            ]
+        }
+        .eraseToAnyPublisher()
     }
     
     // MARK: - StatisticSectionViewReader
@@ -50,8 +52,14 @@ struct StatefulStatisticSectionView: View {
     }
 }
 
-//struct StatefulStatisticSectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StatefulStatisticSectionView()
-//    }
-//}
+struct StatefulStatisticSectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        StatefulStatisticSectionView(
+            viewReader: .init(publisher: Just(Array(repeating: StatisticCellComponent.Model(
+                icon: .init(systemName: "number.square"),
+                title: "1h 3m",
+                subtitle: "subtitle"
+            ), count: 4)).eraseToAnyPublisher())
+        )
+    }
+}
