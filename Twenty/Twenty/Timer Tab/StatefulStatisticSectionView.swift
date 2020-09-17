@@ -33,6 +33,11 @@ final class StatisticSectionViewStore: StatisticSectionViewReader {
                     title: "\(goal.recordsCount)",
                     subtitle: "Records count"
                 ),
+                .init(
+                    icon: .init(systemName: "number.square"),
+                    title: "\(goal.streakCount(asOf: Date().asDay(in: .current)) )",
+                    subtitle: "Streak"
+                ),
             ]
         }
         .eraseToAnyPublisher()

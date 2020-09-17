@@ -39,4 +39,21 @@ extension Goal {
     var recordsCount: Int {
         return trackRecords.count
     }
+    
+    func streakCount(asOf day: Date.Day) -> Int {
+        let recordsAsOfDay = records(asOf: day)
+            .sorted { $0.start.asDay(in: .current) < $1.start.asDay(in: .current) }
+        
+        var streak = 0
+        var referenceDay = day
+        
+        // TODO
+        return 0
+    }
+    
+    private func records(asOf day: Date.Day) -> [DateInterval] {
+        return trackRecords
+            .map { $0.timeSpan }
+            .filter { $0.start.asDay(in: .current) <= day }
+    }
 }
