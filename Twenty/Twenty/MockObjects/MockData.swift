@@ -14,8 +14,12 @@ enum MockDataFactory {
     static let goal: GoalImpl = .init(
         id: "goal-id",
         name: "Learn SwiftUI",
-        timeToComplete: 1000,
-        trackRecords: []
+        timeToComplete: 72000,
+        trackRecords: [
+            .init(id: "record0", timeSpan: .init(start: .init(year: 2020, month: 6, day: 30, hour: 3, minute: 0, second: 0), duration: 1800)),
+            .init(id: "record0", timeSpan: .init(start: .init(year: 2020, month: 6, day: 30, hour: 8, minute: 0, second: 0), duration: 3600)), // 2020-06-30, total: 1.5h
+            .init(id: "record1", timeSpan: .init(start: .init(year: 2020, month: 7, day: 13), duration: 1800)), // 2020-07-13, total: 0.5h
+        ]
     )
     
     static let today: Date.Day = Date().asDay(in: .current)

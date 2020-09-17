@@ -20,8 +20,13 @@ final class StatisticSectionViewStore: StatisticSectionViewReader {
             return [
                 .init(
                     icon: .init(systemName: "number.square"),
-                    title: "\((goal.timeToComplete - goal.totalTimeSpent).format(showSecond: false))",
+                    title: "\(goal.remainingTime.format(showSecond: false))",
                     subtitle: "To Milestone"
+                ),
+                .init(
+                    icon: .init(systemName: "number.square"),
+                    title: "\(goal.avgTimePerDay.format(showSecond: false))",
+                    subtitle: "Avg everyday"
                 ),
             ]
         }

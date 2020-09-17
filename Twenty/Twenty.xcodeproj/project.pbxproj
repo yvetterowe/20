@@ -74,6 +74,7 @@
 		E7F727E12510638700F62832 /* StatefulViewActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */; };
 		E7F727E32511B02500F62832 /* ActivityListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */; };
 		E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */; };
+		E7F727E72513010600F62832 /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E62513010600F62832 /* GoalTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,7 @@
 		E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewActivityListView.swift; sourceTree = "<group>"; };
 		E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponentTests.swift; sourceTree = "<group>"; };
 		E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulStatisticSectionView.swift; sourceTree = "<group>"; };
+		E7F727E62513010600F62832 /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 			children = (
 				E7D3F454248997F000463D48 /* CalendarTests.swift */,
 				E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */,
+				E7F727E62513010600F62832 /* GoalTests.swift */,
 				E78F0565247F49640066C687 /* Info.plist */,
 			);
 			path = TwentyTests;
@@ -637,6 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7F727E32511B02500F62832 /* ActivityListComponentTests.swift in Sources */,
+				E7F727E72513010600F62832 /* GoalTests.swift in Sources */,
 				E7D3F455248997F100463D48 /* CalendarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
