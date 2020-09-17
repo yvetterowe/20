@@ -100,19 +100,11 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
                 )
             }
 
-            if #available(iOS 14.0, *) {
-                StatisticSectionComponent(
-                    items: Array(
-                        repeating: .init(
-                            icon: .init(systemName: "number.square"),
-                            title: "1h 3m",
-                            subtitle: "subtitle"
-                        ),
-                        count: 4
-                    ),
-                    rowCount: 2
-                )
-            }
+            StatefulStatisticSectionView(
+                viewReader: .init(
+                    publisher: StatisticSectionViewStore(goalPublisher: context.goalPublisher).publisher)
+            )
+            
             if viewStateStore.value.isToday {
                 if #available(iOS 14.0, *) {
                     Button("Start Tracking") {

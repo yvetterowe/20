@@ -73,6 +73,7 @@
 		E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DE25105A7700F62832 /* ActivityListComponent.swift */; };
 		E7F727E12510638700F62832 /* StatefulViewActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */; };
 		E7F727E32511B02500F62832 /* ActivityListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */; };
+		E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 		E7F727DE25105A7700F62832 /* ActivityListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponent.swift; sourceTree = "<group>"; };
 		E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewActivityListView.swift; sourceTree = "<group>"; };
 		E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponentTests.swift; sourceTree = "<group>"; };
+		E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulStatisticSectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 			children = (
 				E78F05992481D0D10066C687 /* BackgroundTimer.swift */,
 				E78F059224809CB90066C687 /* StatefulDayView.swift */,
+				E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */,
 				E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */,
 				E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */,
 				E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */,
@@ -573,6 +576,7 @@
 				E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */,
 				E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */,
 				E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */,
+				E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */,
 				E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */,
 				E7C4102B2506829E00DBB926 /* DayViewHeaderComponent.swift in Sources */,
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
