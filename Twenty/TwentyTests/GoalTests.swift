@@ -11,16 +11,18 @@ import XCTest
 
 class GoalTests: XCTestCase {
     
+    private let selectedDay: Date.Day = Date(year: 2020, month: 7, day: 14).asDay(in: .current)
+    
     func testRemainingTime() {
-        XCTAssertEqual(MockDataFactory.goal.remainingTime, 64800)
+        XCTAssertEqual(MockDataFactory.goal.remainingTime(asOf: selectedDay), 64800)
     }
     
     func testAvgTimePerDay() {
-        XCTAssertEqual(MockDataFactory.goal.avgTimePerDay, 3600)
+        XCTAssertEqual(MockDataFactory.goal.avgTimePerDay(asOf: selectedDay), 3600)
     }
     
     func testRecordsCount() {
-        XCTAssertEqual(MockDataFactory.goal.recordsCount, 3)
+        XCTAssertEqual(MockDataFactory.goal.recordsCount(asOf: selectedDay), 3)
     }
 
 }

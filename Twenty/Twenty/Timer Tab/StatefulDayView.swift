@@ -102,7 +102,11 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
 
             StatefulStatisticSectionView(
                 viewReader: .init(
-                    publisher: StatisticSectionViewStore(goalPublisher: context.goalPublisher).publisher)
+                    publisher: StatisticSectionViewStore(
+                        goalPublisher: context.goalPublisher,
+                        selectedDayPublisher: context.selectDayStore.selectDayPublisher
+                    ).publisher
+                )
             )
             
             if viewStateStore.value.isToday {

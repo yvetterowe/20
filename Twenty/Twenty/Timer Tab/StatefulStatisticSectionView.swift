@@ -15,27 +15,30 @@ protocol StatisticSectionViewReader {
 
 final class StatisticSectionViewStore: StatisticSectionViewReader {
     
-    init(goalPublisher: GoalPublisher) {
-        self.publisher = goalPublisher.map { goal -> [StatisticCellComponent.Model] in
+    init(
+        goalPublisher: GoalPublisher,
+        selectedDayPublisher: AnyPublisher<Date.Day, Never>
+    ) {
+        self.publisher = Publishers.CombineLatest(goalPublisher, selectedDayPublisher).map { (goal, selectedDay) -> [StatisticCellComponent.Model] in
             return [
                 .init(
                     icon: .init(systemName: "number.square"),
-                    title: "\(goal.remainingTime.format(showSecond: false))",
+                    title: "\(goal.remainingTime(asOf: selectedDay).format(showSecond: false))",
                     subtitle: "To milestone"
                 ),
                 .init(
                     icon: .init(systemName: "number.square"),
-                    title: "\(goal.avgTimePerDay.format(showSecond: false))",
+                    title: "\(goal.avgTimePerDay(asOf: selectedDay).format(showSecond: false))",
                     subtitle: "Avg everyday"
                 ),
                 .init(
                     icon: .init(systemName: "number.square"),
-                    title: "\(goal.recordsCount)",
+                    title: "\(goal.recordsCount(asOf: selectedDay))",
                     subtitle: "Records count"
                 ),
                 .init(
                     icon: .init(systemName: "number.square"),
-                    title: "\(goal.streakCount(asOf: Date().asDay(in: .current)) )",
+                    title: "\(goal.streakCount(asOf: selectedDay))",
                     subtitle: "Streak"
                 ),
             ]
