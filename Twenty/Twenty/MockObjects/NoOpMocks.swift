@@ -44,11 +44,16 @@ final class NoOpEditGoalViewWriter: EditGoalViewWriter{
 }
 
 final class NoOpCalendarListViewWriter: CalendarListViewWriter {
-    func didSelectDay(_ day: Date.Day) {
+    func didSelectDay(_ day: Date) {
         
     }
     
     func didCancel() {
         
+    }
+}
+
+final class NoOpSelectDayStoreWriter: SelectDayStoreWriter {
+    func updateSelectDate(_ date: Date) {
     }
 }

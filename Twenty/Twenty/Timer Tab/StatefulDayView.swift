@@ -57,6 +57,7 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
     private let dayViewHeaderViewModelStore: DayViewHeaderViewModelStore
     @State private var presentingTimer: Bool = false
     @State private var presentingMoreActionSheet: Bool = false
+    @State private var presentingCalendar: Bool = false
     
     init(
         context: Context,
@@ -72,7 +73,9 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
     var body: some View {
         VStack {
             StatefulDayViewHeader(
-                viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher)
+                viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher),
+                selectDayWriter: context.selectDayStore,
+                presentingCalendar: $presentingCalendar
             )
             
             StatefulSelectDayHeader(

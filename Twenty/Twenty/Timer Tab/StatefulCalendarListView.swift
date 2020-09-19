@@ -10,61 +10,53 @@ import Combine
 import SwiftUI
 
 protocol CalendarListViewWriter {
-    func didSelectDay(_ day: Date.Day)
     func didCancel()
 }
 
-protocol CalendarListViewReader {
-    var selectedDay: AnyPublisher<Date.Day, Never> { get }
-}
-
-final class CalendarListViewStore: CalendarListViewWriter, CalendarListViewReader {
+final class CalendarListViewStore: CalendarListViewWriter, ObservableObject {
+    @Published var selectedDate: Date {
+        didSet {
+            selectDayWriter.updateSelectDate(selectedDate)
+            presentingCalendar = false
+        }
+    }
     
-    let selectedDay: AnyPublisher<Date.Day, Never>
+    private let selectDayWriter: SelectDayStoreWriter
+    @Binding private var presentingCalendar: Bool
     
     init(
+        initialSelectedDay: Date,
         selectDayWriter: SelectDayStoreWriter,
-        selectDayPublisher: AnyPublisher<Date.Day, Never>
+        presentingCalendar: Binding<Bool>
     ) {
-        self.selectedDay = selectDayPublisher
+        self._selectedDate = .init(initialValue: initialSelectedDay)
+        self._presentingCalendar = presentingCalendar
+        self.selectDayWriter = selectDayWriter
     }
     
-    func didSelectDay(_ day: Date.Day) {
-        
-    }
+    // MARK: CalendarListViewWriter
     
     func didCancel() {
-        
+        presentingCalendar = false
     }
 }
  
 struct StatefulCalendarListView: View {
     
-    private let viewWriter: CalendarListViewWriter
-    @State private var selectedDate: Date {
-        didSet {
-            viewWriter.didSelectDay(selectedDate.asDay(in: .current))
-        }
-    }
-    
+    @Binding private var selectedDay: Date
     init(
-        initialSelectedDay: Date.Day,
-        viewWriter: CalendarListViewWriter
+        selectedDay: Binding<Date>
     ) {
-        self._selectedDate = .init(initialValue: initialSelectedDay.date)
-        self.viewWriter = viewWriter
+        self._selectedDay = selectedDay
     }
     
     var body: some View {
-        DatePicker("", selection: $selectedDate).datePickerStyle(WheelDatePickerStyle())
+        DatePicker("", selection: $selectedDay).datePickerStyle(WheelDatePickerStyle())
     }
 }
 
 struct StatefulCalendarListView_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulCalendarListView(
-            initialSelectedDay: Date().asDay(in: .current),
-            viewWriter: NoOpCalendarListViewWriter()
-        )
+        StatefulCalendarListView(selectedDay: .constant(Date()))
     }
 }
