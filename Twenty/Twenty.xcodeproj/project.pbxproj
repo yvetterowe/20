@@ -75,6 +75,7 @@
 		E7F727E32511B02500F62832 /* ActivityListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */; };
 		E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */; };
 		E7F727E72513010600F62832 /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E62513010600F62832 /* GoalTests.swift */; };
+		E7F727E9251632C300F62832 /* StatefulCalendarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E8251632C300F62832 /* StatefulCalendarListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponentTests.swift; sourceTree = "<group>"; };
 		E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulStatisticSectionView.swift; sourceTree = "<group>"; };
 		E7F727E62513010600F62832 /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
+		E7F727E8251632C300F62832 /* StatefulCalendarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulCalendarListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 				E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */,
 				E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */,
 				E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */,
+				E7F727E8251632C300F62832 /* StatefulCalendarListView.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				E739A0B3250EB11F001A4940 /* StatefulEditGoalView.swift in Sources */,
 				E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */,
 				E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */,
+				E7F727E9251632C300F62832 /* StatefulCalendarListView.swift in Sources */,
 				E7D3DC732483055800422C77 /* Goal.swift in Sources */,
 				E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */,
 				E7D3F453248993BE00463D48 /* Calendar.swift in Sources */,

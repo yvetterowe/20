@@ -53,7 +53,11 @@ struct StatefulDayViewHeader: View {
             )
             Spacer()
             Image(systemName: "person")
-            Image(systemName: "calendar")
+            Button(action: {
+                
+            }, label: {
+                Image(systemName: "calendar")
+            })
         }
     }
 }
