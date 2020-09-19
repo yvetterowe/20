@@ -18,6 +18,7 @@
 		739C10E62497346D003B9B15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C10E52497346D003B9B15 /* Constants.swift */; };
 		739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */; };
 		73B7E98E249873C00061D923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E98D249873BF0061D923 /* Utilities.swift */; };
+		73F20740250EE92600B1673B /* VarelaRound-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */; };
 		E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */; };
 		E739A06E2509D598001A4940 /* NoOpMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06D2509D598001A4940 /* NoOpMocks.swift */; };
 		E739A0702509D622001A4940 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06F2509D622001A4940 /* MockData.swift */; };
@@ -91,6 +92,7 @@
 		739C10E52497346D003B9B15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73B7E98D249873BF0061D923 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VarelaRound-Regular.ttf"; path = "Assets/VarelaRound-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		889D85D83787130A2704596A /* Pods-Twenty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.debug.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.debug.xcconfig"; sourceTree = "<group>"; };
 		8F718BB692FA2755032BE0AF /* Pods-TwentyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwentyTests.debug.xcconfig"; path = "Target Support Files/Pods-TwentyTests/Pods-TwentyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A5AC360BE63538BD4D7714 /* libPods-Twenty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twenty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +263,7 @@
 				E78F054E247F495D0066C687 /* SceneDelegate.swift */,
 				E78F0550247F495D0066C687 /* ContentView.swift */,
 				E78F0552247F49630066C687 /* Assets.xcassets */,
+				73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */,
 				E78F0557247F49630066C687 /* LaunchScreen.storyboard */,
 				73544F6C2497098E0038914D /* Login.storyboard */,
 				739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */,
@@ -475,6 +478,7 @@
 				E78F0556247F49630066C687 /* Preview Assets.xcassets in Resources */,
 				E78F0553247F49630066C687 /* Assets.xcassets in Resources */,
 				73544F6D2497098E0038914D /* Login.storyboard in Resources */,
+				73F20740250EE92600B1673B /* VarelaRound-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
