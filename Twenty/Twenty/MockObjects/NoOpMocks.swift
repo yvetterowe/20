@@ -42,3 +42,18 @@ final class NoOpEditGoalViewWriter: EditGoalViewWriter{
     func cancelEditGoal() {}
     func saveEditGoalName(_ newGoalName: String, forGoal goalID: GoalID) {}
 }
+
+final class NoOpCalendarListViewWriter: CalendarListViewWriter {
+    func didSelectDay(_ day: Date) {
+        
+    }
+    
+    func didCancel() {
+        
+    }
+}
+
+final class NoOpSelectDayStoreWriter: SelectDayStoreWriter {
+    func updateSelectDate(_ date: Date) {
+    }
+}

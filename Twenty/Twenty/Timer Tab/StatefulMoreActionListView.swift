@@ -118,7 +118,14 @@ struct StatefulMoreActionListView: View {
                     },
                     isSheetPresented: $viewingActivities
                 ) {
-                    AnyView(Text("Viewing activities placeholder"))
+                    let viewStore = ViewActivityListViewStore(
+                        goalPublisher: context.goalPublisher
+                    )
+                    AnyView(
+                        StatefulViewActivityListView(
+                            viewReader: .init(publisher: viewStore.publisher)
+                        )
+                    )
                 },
                 
                 .init(

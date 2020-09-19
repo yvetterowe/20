@@ -70,6 +70,13 @@
 		E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00237249AF61400403E50 /* PersistentDataStore.swift */; };
 		E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00239249AF88700403E50 /* GoalStoreImpl.swift */; };
 		E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */; };
+		E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DC2510579100F62832 /* ActivityRowComponent.swift */; };
+		E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DE25105A7700F62832 /* ActivityListComponent.swift */; };
+		E7F727E12510638700F62832 /* StatefulViewActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */; };
+		E7F727E32511B02500F62832 /* ActivityListComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */; };
+		E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */; };
+		E7F727E72513010600F62832 /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E62513010600F62832 /* GoalTests.swift */; };
+		E7F727E9251632C300F62832 /* StatefulCalendarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727E8251632C300F62832 /* StatefulCalendarListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +161,13 @@
 		E7E00237249AF61400403E50 /* PersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataStore.swift; sourceTree = "<group>"; };
 		E7E00239249AF88700403E50 /* GoalStoreImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreImpl.swift; sourceTree = "<group>"; };
 		E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePersistentDataStore.swift; sourceTree = "<group>"; };
+		E7F727DC2510579100F62832 /* ActivityRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowComponent.swift; sourceTree = "<group>"; };
+		E7F727DE25105A7700F62832 /* ActivityListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponent.swift; sourceTree = "<group>"; };
+		E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewActivityListView.swift; sourceTree = "<group>"; };
+		E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponentTests.swift; sourceTree = "<group>"; };
+		E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulStatisticSectionView.swift; sourceTree = "<group>"; };
+		E7F727E62513010600F62832 /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
+		E7F727E8251632C300F62832 /* StatefulCalendarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulCalendarListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				E7D3F454248997F000463D48 /* CalendarTests.swift */,
+				E7F727E22511B02500F62832 /* ActivityListComponentTests.swift */,
+				E7F727E62513010600F62832 /* GoalTests.swift */,
 				E78F0565247F49640066C687 /* Info.plist */,
 			);
 			path = TwentyTests;
@@ -311,6 +327,7 @@
 			children = (
 				E78F05992481D0D10066C687 /* BackgroundTimer.swift */,
 				E78F059224809CB90066C687 /* StatefulDayView.swift */,
+				E7F727E42512F76200F62832 /* StatefulStatisticSectionView.swift */,
 				E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */,
 				E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */,
 				E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */,
@@ -319,7 +336,9 @@
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
 				E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */,
+				E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */,
 				E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */,
+				E7F727E8251632C300F62832 /* StatefulCalendarListView.swift */,
 			);
 			path = "Timer Tab";
 			sourceTree = "<group>";
@@ -335,6 +354,8 @@
 				E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */,
 				E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */,
 				E739A0B0250EAECC001A4940 /* EditSheetComponent.swift */,
+				E7F727DC2510579100F62832 /* ActivityRowComponent.swift */,
+				E7F727DE25105A7700F62832 /* ActivityListComponent.swift */,
 			);
 			path = "Stateless UI Components";
 			sourceTree = "<group>";
@@ -562,7 +583,10 @@
 			files = (
 				73544F602495F0740038914D /* SignUpViewController.swift in Sources */,
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
+				E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */,
+				E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */,
 				E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */,
+				E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */,
 				E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */,
 				E7C4102B2506829E00DBB926 /* DayViewHeaderComponent.swift in Sources */,
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
@@ -601,6 +625,7 @@
 				E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */,
 				E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
+				E7F727E12510638700F62832 /* StatefulViewActivityListView.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				73544F672496F8170038914D /* ViewController.swift in Sources */,
 				73B7E98E249873C00061D923 /* Utilities.swift in Sources */,
@@ -610,6 +635,7 @@
 				E739A0B3250EB11F001A4940 /* StatefulEditGoalView.swift in Sources */,
 				E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */,
 				E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */,
+				E7F727E9251632C300F62832 /* StatefulCalendarListView.swift in Sources */,
 				E7D3DC732483055800422C77 /* Goal.swift in Sources */,
 				E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */,
 				E7D3F453248993BE00463D48 /* Calendar.swift in Sources */,
@@ -621,6 +647,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F727E32511B02500F62832 /* ActivityListComponentTests.swift in Sources */,
+				E7F727E72513010600F62832 /* GoalTests.swift in Sources */,
 				E7D3F455248997F100463D48 /* CalendarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

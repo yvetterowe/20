@@ -24,7 +24,7 @@ extension Date {
         }
     }
     
-    struct Month: Equatable {
+    struct Month: Hashable {
         let date: Date
         fileprivate init(date: Date) {
             self.date = date
@@ -46,11 +46,9 @@ extension Date {
     }
     
     func asMonth(in calendar: Calendar) -> Month {
-        precondition(
-            calendar.date(self, matchesComponents: calendar.monthMatchingComponents()),
-            "\(self) doesn't satisfy components format for Month"
-        )
-        return .init(date: self)
+        let components = calendar.dateComponents([.year, .month], from: self)
+        let stripDayDate = calendar.date(from: components)!
+        return .init(date: stripDayDate)
     }
     
     func weekdayDescription() -> String {
@@ -63,6 +61,18 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd"
         return dateFormatter.string(from: self)
+    }
+}
+
+extension Date.Month: Comparable {
+    static func < (lhs: Date.Month, rhs: Date.Month) -> Bool {
+        return lhs.date < rhs.date
+    }
+}
+
+extension Date.Day: Comparable {
+    static func < (lhs: Date.Day, rhs: Date.Day) -> Bool {
+        return lhs.date < rhs.date
     }
 }
 

@@ -23,7 +23,8 @@ final class DayViewHeaderViewModelStore: DayViewHeaderViewModelReader {
         self.publisher = selectedDayViewStatePublisher.map { state in
             StatefulDayViewHeader.ViewModel(
                 title: state.isToday ? "Today" : state.day.date.weekdayDescription(),
-                subtitle: state.day.date.shortDayDescription()
+                subtitle: state.day.date.shortDayDescription(),
+                selectedDay: state.day
             )
         }.eraseToAnyPublisher()
     }
@@ -34,15 +35,31 @@ struct StatefulDayViewHeader: View {
     struct ViewModel {
         let title: String
         let subtitle: String
+        let selectedDay: Date.Day
     }
     
     @ObservedObject private var viewModelStore: ObservableWrapper<StatefulDayViewHeader.ViewModel>
+    private let selectDayWriter: SelectDayStoreWriter
+    @Binding var presentingCalendar: Bool
+    @ObservedObject private var calendarStore: CalendarListViewStore
+    
     private var viewModel: ViewModel {
         return viewModelStore.value
     }
     
-    init(viewModelStore: ObservableWrapper<StatefulDayViewHeader.ViewModel>) {
+    init(
+        viewModelStore: ObservableWrapper<StatefulDayViewHeader.ViewModel>,
+        selectDayWriter: SelectDayStoreWriter,
+        presentingCalendar: Binding<Bool>
+    ) {
         self.viewModelStore = viewModelStore
+        self.selectDayWriter = selectDayWriter
+        self._presentingCalendar = presentingCalendar
+        self.calendarStore = .init(
+            initialSelectedDay: viewModelStore.value.selectedDay.date,
+            selectDayWriter: selectDayWriter,
+            presentingCalendar: presentingCalendar
+        )
     }
     
     var body: some View {
@@ -53,7 +70,15 @@ struct StatefulDayViewHeader: View {
             )
             Spacer()
             Image(systemName: "person")
-            Image(systemName: "calendar")
+            
+            Button(action: {
+                presentingCalendar = true
+            }, label: {
+                Image(systemName: "calendar")
+            })
+            .sheet(isPresented: $presentingCalendar) {
+                StatefulCalendarListView(selectedDay: $calendarStore.selectedDate)
+            }
         }
     }
 }
@@ -62,8 +87,16 @@ struct StatefulDayViewHeader_Previews: PreviewProvider {
     static var previews: some View {
         StatefulDayViewHeader(
             viewModelStore: .init(
-                publisher: Just(.init(title: "", subtitle:"")).eraseToAnyPublisher()
-            )
+                publisher: Just(
+                    .init(
+                        title: "Today",
+                        subtitle:"Sept 19",
+                        selectedDay: Date().asDay(in: .current)
+                    )
+                ).eraseToAnyPublisher()
+            ),
+            selectDayWriter: NoOpSelectDayStoreWriter(),
+            presentingCalendar: .constant(false)
         )
     }
 }
