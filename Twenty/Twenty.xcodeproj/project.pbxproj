@@ -47,6 +47,8 @@
 		E78F059324809CB90066C687 /* StatefulDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059224809CB90066C687 /* StatefulDayView.swift */; };
 		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
 		E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerStateStore.swift */; };
+		E7B95F9B251C32FC00BC90BD /* BottomSheetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B95F9A251C32FC00BC90BD /* BottomSheetComponent.swift */; };
+		E7B95F9D251C43F800BC90BD /* BottomSheetHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B95F9C251C43F800BC90BD /* BottomSheetHeaderComponent.swift */; };
 		E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7B8249EC8520011ED12 /* SwipeView.swift */; };
 		E7C2B7BB24A301440011ED12 /* CalendarWeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */; };
 		E7C40FEC24FC3A9400DBB926 /* StatefulEditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */; };
@@ -138,6 +140,8 @@
 		E78F059224809CB90066C687 /* StatefulDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayView.swift; sourceTree = "<group>"; };
 		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		E78F059B2482B99A0066C687 /* TimerStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStateStore.swift; sourceTree = "<group>"; };
+		E7B95F9A251C32FC00BC90BD /* BottomSheetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetComponent.swift; sourceTree = "<group>"; };
+		E7B95F9C251C43F800BC90BD /* BottomSheetHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetHeaderComponent.swift; sourceTree = "<group>"; };
 		E7C2B7B8249EC8520011ED12 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekHeaderView.swift; sourceTree = "<group>"; };
 		E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulEditTimeView.swift; sourceTree = "<group>"; };
@@ -356,6 +360,8 @@
 				E739A0B0250EAECC001A4940 /* EditSheetComponent.swift */,
 				E7F727DC2510579100F62832 /* ActivityRowComponent.swift */,
 				E7F727DE25105A7700F62832 /* ActivityListComponent.swift */,
+				E7B95F9A251C32FC00BC90BD /* BottomSheetComponent.swift */,
+				E7B95F9C251C43F800BC90BD /* BottomSheetHeaderComponent.swift */,
 			);
 			path = "Stateless UI Components";
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 			files = (
 				73544F602495F0740038914D /* SignUpViewController.swift in Sources */,
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
+				E7B95F9B251C32FC00BC90BD /* BottomSheetComponent.swift in Sources */,
 				E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */,
 				E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */,
 				E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */,
@@ -622,6 +629,7 @@
 				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
 				E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */,
 				73544F622495F0900038914D /* SignInViewController.swift in Sources */,
+				E7B95F9D251C43F800BC90BD /* BottomSheetHeaderComponent.swift in Sources */,
 				E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */,
 				E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
