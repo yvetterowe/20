@@ -6,9 +6,10 @@
 //  Copyright © 2020 Hao Luo. All rights reserved.
 //
 
-import UIKit
 import Combine
+import Firebase
 import SwiftUI
+import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -21,8 +22,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let storyboard = UIStoryboard( name:"Login", bundle: Bundle.main)
-            window.rootViewController = storyboard.instantiateViewController(identifier: "Login")
+            let storyboard = UIStoryboard(name:"Login", bundle: Bundle.main)
+            let landingViewController: UIViewController
+            if let userID = Auth.auth().currentUser?.uid {
+                let homeVC = storyboard.instantiateViewController(identifier: UIConstants.Storyboard.homeViewController) as! HomeViewController
+                homeVC.userID = userID
+                landingViewController = homeVC
+            } else {
+                landingViewController = storyboard.instantiateViewController(identifier: "Login")
+            }
+            window.rootViewController = landingViewController
+            
             self.window = window
             window.makeKeyAndVisible()
         }
