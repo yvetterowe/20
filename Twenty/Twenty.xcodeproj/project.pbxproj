@@ -16,7 +16,6 @@
 		73544F6D2497098E0038914D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73544F6C2497098E0038914D /* Login.storyboard */; };
 		735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D5BBB24A0571000AFD70E /* UserViewController.swift */; };
 		739C10E62497346D003B9B15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C10E52497346D003B9B15 /* Constants.swift */; };
-		739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */; };
 		73B7E98E249873C00061D923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E98D249873BF0061D923 /* Utilities.swift */; };
 		73F20740250EE92600B1673B /* VarelaRound-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */; };
 		E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */; };
@@ -71,6 +70,7 @@
 		E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00234249AF48F00403E50 /* GoalImpl.swift */; };
 		E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00237249AF61400403E50 /* PersistentDataStore.swift */; };
 		E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00239249AF88700403E50 /* GoalStoreImpl.swift */; };
+		E7F3893C2565B9A000A15A60 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7F3893B2565B9A000A15A60 /* GoogleService-Info.plist */; };
 		E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */; };
 		E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DC2510579100F62832 /* ActivityRowComponent.swift */; };
 		E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DE25105A7700F62832 /* ActivityListComponent.swift */; };
@@ -99,7 +99,6 @@
 		73544F6C2497098E0038914D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		735D5BBB24A0571000AFD70E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		739C10E52497346D003B9B15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		73B7E98D249873BF0061D923 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VarelaRound-Regular.ttf"; path = "Assets/VarelaRound-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		889D85D83787130A2704596A /* Pods-Twenty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.debug.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +163,7 @@
 		E7E00234249AF48F00403E50 /* GoalImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalImpl.swift; sourceTree = "<group>"; };
 		E7E00237249AF61400403E50 /* PersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataStore.swift; sourceTree = "<group>"; };
 		E7E00239249AF88700403E50 /* GoalStoreImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreImpl.swift; sourceTree = "<group>"; };
+		E7F3893B2565B9A000A15A60 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePersistentDataStore.swift; sourceTree = "<group>"; };
 		E7F727DC2510579100F62832 /* ActivityRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowComponent.swift; sourceTree = "<group>"; };
 		E7F727DE25105A7700F62832 /* ActivityListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponent.swift; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 				73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */,
 				E78F0557247F49630066C687 /* LaunchScreen.storyboard */,
 				73544F6C2497098E0038914D /* Login.storyboard */,
-				739EBF79248D8D6F000FEE6D /* GoogleService-Info.plist */,
+				E7F3893B2565B9A000A15A60 /* GoogleService-Info.plist */,
 				E78F055A247F49630066C687 /* Info.plist */,
 				E78F0554247F49630066C687 /* Preview Content */,
 			);
@@ -501,11 +501,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78F0559247F49630066C687 /* LaunchScreen.storyboard in Resources */,
-				739EBF7A248D8D6F000FEE6D /* GoogleService-Info.plist in Resources */,
 				E78F0556247F49630066C687 /* Preview Assets.xcassets in Resources */,
 				E78F0553247F49630066C687 /* Assets.xcassets in Resources */,
 				73544F6D2497098E0038914D /* Login.storyboard in Resources */,
 				73F20740250EE92600B1673B /* VarelaRound-Regular.ttf in Resources */,
+				E7F3893C2565B9A000A15A60 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
