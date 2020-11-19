@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             } else {
                 landingViewController = storyboard.instantiateViewController(identifier: "Login")
             }
+            //landingViewController = UIHostingController(rootView: SignUpLandingView())
             window.rootViewController = landingViewController
             
             self.window = window

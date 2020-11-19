@@ -9,10 +9,15 @@
 import SwiftUI
 
 struct EmailSignInView: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
     var body: some View {
         VStack {
             OnboardingTitleLabelComponent(title: "Welcome back")
-            
+            OnboardingTextFieldComponent(placeholder: "Email address", text: $email)
+            OnboardingTextFieldComponent(placeholder: "Password", text: $password)
+            Text("Forgot your password?")
             Button("Log in") {
                 // TODO: firebase log in
             }

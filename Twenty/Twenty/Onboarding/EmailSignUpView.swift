@@ -9,10 +9,18 @@
 import SwiftUI
 
 struct EmailSignUpView: View {
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
     var body: some View {
         VStack {
             OnboardingTitleLabelComponent(title: "Let's get started")
-            Text("TODO: Email sign up placeholder")
+            OnboardingTextFieldComponent(placeholder: "First name", text: $firstName)
+            OnboardingTextFieldComponent(placeholder: "Last name", text: $lastName)
+            OnboardingTextFieldComponent(placeholder: "Email", text: $email)
+            OnboardingTextFieldComponent(placeholder: "Password (8+ characters)", text: $password)
             Button("Sign up") {
                 // TODO: firebase email sign up
             }

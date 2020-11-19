@@ -75,6 +75,8 @@
 		E7F389492565ECB300A15A60 /* EmailSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389482565ECB300A15A60 /* EmailSignUpView.swift */; };
 		E7F3894D2565ED3C00A15A60 /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3894C2565ED3C00A15A60 /* EmailSignInView.swift */; };
 		E7F389542565F34200A15A60 /* OnboardingTitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */; };
+		E7F389582565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */; };
+		E7F3895C2565F54A00A15A60 /* OnboardingTextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */; };
 		E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */; };
 		E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DC2510579100F62832 /* ActivityRowComponent.swift */; };
 		E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DE25105A7700F62832 /* ActivityListComponent.swift */; };
@@ -172,6 +174,8 @@
 		E7F389482565ECB300A15A60 /* EmailSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpView.swift; sourceTree = "<group>"; };
 		E7F3894C2565ED3C00A15A60 /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
 		E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitleLabelComponent.swift; sourceTree = "<group>"; };
+		E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubtitleLabelComponent.swift; sourceTree = "<group>"; };
+		E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextFieldComponent.swift; sourceTree = "<group>"; };
 		E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePersistentDataStore.swift; sourceTree = "<group>"; };
 		E7F727DC2510579100F62832 /* ActivityRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowComponent.swift; sourceTree = "<group>"; };
 		E7F727DE25105A7700F62832 /* ActivityListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponent.swift; sourceTree = "<group>"; };
@@ -423,6 +427,8 @@
 			isa = PBXGroup;
 			children = (
 				E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */,
+				E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */,
+				E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */,
 				E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */,
 				E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */,
+				E7F3895C2565F54A00A15A60 /* OnboardingTextFieldComponent.swift in Sources */,
 				E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */,
 				E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */,
 				E7C4102B2506829E00DBB926 /* DayViewHeaderComponent.swift in Sources */,
@@ -622,6 +629,7 @@
 				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
 				73544F642495F0CF0038914D /* HomeViewController.swift in Sources */,
 				E7F3894D2565ED3C00A15A60 /* EmailSignInView.swift in Sources */,
+				E7F389582565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift in Sources */,
 				E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */,
 				735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */,
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,

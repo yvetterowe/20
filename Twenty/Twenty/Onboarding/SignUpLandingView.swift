@@ -15,10 +15,8 @@ struct SignUpLandingView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Learn Something new in 20hrs")
-                    .font(.title)
-                Text("Research shows...")
-                    .font(.subheadline)
+                OnboardingTitleLabelComponent(title: "Learn Something new in 20hrs")
+                OnboardingSubtitleLabelComponent(subtitle: "Research shows...")
                 NavigationLink(
                     destination: EmailSignUpView(),
                     isActive: $signUpButtonTapped
@@ -29,7 +27,7 @@ struct SignUpLandingView: View {
                 }
                 
                 HStack {
-                    Text("Already have an account?")
+                    OnboardingSubtitleLabelComponent(subtitle: "Already have an account?")
                     NavigationLink(
                         destination: EmailSignInView(),
                         isActive: $signInButtonTapped
