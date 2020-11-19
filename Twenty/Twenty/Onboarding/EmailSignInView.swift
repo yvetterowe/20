@@ -11,8 +11,8 @@ import SwiftUI
 struct EmailSignInView: View {
     var body: some View {
         VStack {
-            Text("Welcome back").font(.title)
-            Text("TODO: sign in placeholder")
+            OnboardingTitleLabelComponent(title: "Welcome back")
+            
             Button("Log in") {
                 // TODO: firebase log in
             }

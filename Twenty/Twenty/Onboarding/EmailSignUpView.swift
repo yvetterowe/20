@@ -11,7 +11,7 @@ import SwiftUI
 struct EmailSignUpView: View {
     var body: some View {
         VStack {
-            Text("Let's get started").font(.title)
+            OnboardingTitleLabelComponent(title: "Let's get started")
             Text("TODO: Email sign up placeholder")
             Button("Sign up") {
                 // TODO: firebase email sign up
