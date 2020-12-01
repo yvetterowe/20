@@ -15,6 +15,8 @@
 		73544F672496F8170038914D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F662496F8170038914D /* ViewController.swift */; };
 		73544F6D2497098E0038914D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73544F6C2497098E0038914D /* Login.storyboard */; };
 		735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D5BBB24A0571000AFD70E /* UserViewController.swift */; };
+		736665FF2576012200EFB600 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736665FE2576012200EFB600 /* Colors.xcassets */; };
+		736666012576062B00EFB600 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736666002576062B00EFB600 /* ColorManager.swift */; };
 		739C10E62497346D003B9B15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C10E52497346D003B9B15 /* Constants.swift */; };
 		73B7E98E249873C00061D923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E98D249873BF0061D923 /* Utilities.swift */; };
 		73F20740250EE92600B1673B /* VarelaRound-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */; };
@@ -101,6 +103,8 @@
 		73544F662496F8170038914D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		73544F6C2497098E0038914D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		735D5BBB24A0571000AFD70E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		736665FE2576012200EFB600 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		736666002576062B00EFB600 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		739C10E52497346D003B9B15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		73B7E98D249873BF0061D923 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VarelaRound-Regular.ttf"; path = "Assets/VarelaRound-Regular.ttf"; sourceTree = SOURCE_ROOT; };
@@ -290,6 +294,7 @@
 				E78F054E247F495D0066C687 /* SceneDelegate.swift */,
 				E78F0550247F495D0066C687 /* ContentView.swift */,
 				E78F0552247F49630066C687 /* Assets.xcassets */,
+				736665FE2576012200EFB600 /* Colors.xcassets */,
 				73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */,
 				E78F0557247F49630066C687 /* LaunchScreen.storyboard */,
 				73544F6C2497098E0038914D /* Login.storyboard */,
@@ -371,6 +376,7 @@
 				E7F727DE25105A7700F62832 /* ActivityListComponent.swift */,
 				E7B95F9A251C32FC00BC90BD /* BottomSheetComponent.swift */,
 				E7B95F9C251C43F800BC90BD /* BottomSheetHeaderComponent.swift */,
+				736666002576062B00EFB600 /* ColorManager.swift */,
 			);
 			path = "Stateless UI Components";
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 				73544F6D2497098E0038914D /* Login.storyboard in Resources */,
 				73F20740250EE92600B1673B /* VarelaRound-Regular.ttf in Resources */,
 				E7F3893C2565B9A000A15A60 /* GoogleService-Info.plist in Resources */,
+				736665FF2576012200EFB600 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +649,7 @@
 				73544F622495F0900038914D /* SignInViewController.swift in Sources */,
 				E7B95F9D251C43F800BC90BD /* BottomSheetHeaderComponent.swift in Sources */,
 				E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */,
+				736666012576062B00EFB600 /* ColorManager.swift in Sources */,
 				E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */,
 				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
 				E7F727E12510638700F62832 /* StatefulViewActivityListView.swift in Sources */,

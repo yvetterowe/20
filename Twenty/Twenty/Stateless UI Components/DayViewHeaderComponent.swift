@@ -8,6 +8,20 @@
 
 import SwiftUI
 
+struct Header: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(Font.custom("VarelaRound-Regular", size: 24))
+            
+    }
+}
+
+extension View {
+    func headerStyle() -> some View {
+        self.modifier(Header())
+    }
+}
+
 struct DayViewHeaderComponent: View {
     let title: String
     let subtitle: String
@@ -15,7 +29,11 @@ struct DayViewHeaderComponent: View {
     var body: some View {
         HStack {
             Text(title)
+                .headerStyle()
+                .foregroundColor(ColorManager.DarkGray)
             Text(subtitle)
+                .headerStyle()
+                .foregroundColor(ColorManager.MidGray)
         }
     }
 }
