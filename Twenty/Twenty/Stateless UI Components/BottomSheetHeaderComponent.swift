@@ -8,6 +8,21 @@
 
 import SwiftUI
 
+struct SubHeader: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(Font.custom("VarelaRound-Regular", size: 18))
+            .foregroundColor(ColorManager.DarkGray)
+            
+    }
+}
+
+extension View {
+    func subHeaderStyle() -> some View {
+        self.modifier(SubHeader())
+    }
+}
+
 
 struct BottomSheetHeaderComponent<NavigationLeadingItem: View, NavigationTrailingItem: View>: View {
     
@@ -35,6 +50,7 @@ struct BottomSheetHeaderComponent<NavigationLeadingItem: View, NavigationTrailin
                     self.navigationLeadingItem
                     Spacer()
                     Text("\(self.title)")
+                        .subHeaderStyle()
                     Spacer()
                     self.navigationTrailingItem
                 }
@@ -51,17 +67,22 @@ struct BottomSheetHeaderComponent_Previews: PreviewProvider {
             BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {}, navigationTrailingItem: {})
             BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {
                 Text("Left")
+                    .subHeaderStyle()
             }, navigationTrailingItem: {
                 
             })
             BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {
             }, navigationTrailingItem: {
                 Text("Right")
+                    .subHeaderStyle()
+
             })
             BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {
                 Text("Left")
+                    .subHeaderStyle()
             }, navigationTrailingItem: {
                 Text("Right")
+                    .subHeaderStyle()
             })
         }
     }
