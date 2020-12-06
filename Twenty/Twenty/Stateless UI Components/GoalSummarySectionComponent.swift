@@ -8,6 +8,22 @@
 
 import SwiftUI
 
+struct SectionTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(Font.custom("VarelaRound-Regular", size: 18))
+
+    }
+}
+
+extension View {
+    func sectionTitleStyle() -> some View {
+        self.modifier(SectionTitle())
+    }
+}
+
+
+
 struct GoalSummarySectionComponent: View {
     let title: String
     let buttonAction: () -> Void
@@ -15,11 +31,14 @@ struct GoalSummarySectionComponent: View {
     var body: some View {
         HStack {
             Text(title)
+                .sectionTitleStyle()
+                .foregroundColor(ColorManager.DarkGray)
             Spacer()
             Button(action: buttonAction) {
-                Image(systemName: "ellipsis")
+                Image("more-horizontal")
             }
         }
+        .padding(.init(top: 4, leading: 20, bottom: 4, trailing: 20))
     }
 }
 
