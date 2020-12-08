@@ -30,7 +30,18 @@ final class FirebaseAuthenticationService: AuthenticationService {
     }
     
     func signIn(email: String, password: String) {
-        stateWriter.update(.unauthenticated)
+        let stateWriter = self.stateWriter
+        firebaseAuth.signIn(withEmail: email, password:password){(result, err) in
+            if let err = err {
+                stateWriter.update(.authenticateFailed(err))
+            } else{
+                guard let userID = result?.user.uid else {
+                    fatalError("No userID")
+                }
+                
+                stateWriter.update(.authenticated(userID))
+            }
+        }
     }
     
     func signOut() {

@@ -39,7 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.authService = FirebaseAuthenticationService(firebaseAuth: Auth.auth(), stateWriter: authStore)
             window.rootViewController = UIHostingController(
                 rootView: RootView(
-                    authStateStore: .init(publisher: authStore.authStatePublisher)
+                    authStateStore: .init(publisher: authStore.authStatePublisher),
+                    authService: authService
                 )
             )
             

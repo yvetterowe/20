@@ -13,6 +13,7 @@ typealias UserID = String
 enum AuthenticationState {
     case unauthenticated
     case authenticated(UserID)
+    case authenticateFailed(Error)
 }
 
 protocol AuthenticationService {

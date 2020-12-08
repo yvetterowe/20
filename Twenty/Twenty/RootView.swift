@@ -11,17 +11,27 @@ import SwiftUI
 
 struct RootView: View {
     @ObservedObject private var authStateStore: ObservableWrapper<AuthenticationState>
+    private let authService: AuthenticationService
     
-    init(authStateStore: ObservableWrapper<AuthenticationState>) {
+    init(
+        authStateStore: ObservableWrapper<AuthenticationState>,
+        authService: AuthenticationService
+    ) {
         self.authStateStore = authStateStore
+        self.authService = authService
     }
     
     var body: some View {
         switch authStateStore.value {
         case .unauthenticated:
-            Text("Unknown user")
+            SignUpLandingView(authService: authService)
         case let .authenticated(userID):
             HomeWrapperView(userID: userID)
+        case .authenticateFailed:
+            VStack {
+                SignUpLandingView(authService: authService)
+                Text("Auth failed placeholder")
+            }
         case .none:
             fatalError("Invalid state")
         }
@@ -30,6 +40,9 @@ struct RootView: View {
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView(authStateStore: .init(publisher: Just(.unauthenticated).eraseToAnyPublisher()))
+        RootView(
+            authStateStore: .init(publisher: Just(.unauthenticated).eraseToAnyPublisher()),
+            authService: NoOpAuthService()
+        )
     }
 }

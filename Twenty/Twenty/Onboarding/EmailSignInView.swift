@@ -10,20 +10,22 @@ import SwiftUI
 
 
 final class EmailSignInStore {
-    private let authenticator: AuthenticationService
+    private let authService: AuthenticationService
     
-    init(authenticator: AuthenticationService) {
-        self.authenticator = authenticator
+    init(authService: AuthenticationService) {
+        self.authService = authService
     }
     
     func signInButtonTapped(email: String, password: String) {
-        authenticator.signIn(email: email, password: password)
+        authService.signIn(email: email, password: password)
     }
 }
 
 struct EmailSignInView: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    
+    let store: EmailSignInStore
     
     var body: some View {
         VStack {
@@ -32,14 +34,17 @@ struct EmailSignInView: View {
             OnboardingTextFieldComponent(placeholder: "Password", text: $password)
             Text("Forgot your password?")
             Button("Log in") {
-                // TODO: sign in
+                store.signInButtonTapped(
+                    email: email.trimmingCharacters(in: .whitespacesAndNewlines),
+                    password: password.trimmingCharacters(in: .whitespacesAndNewlines)
+                )
             }
         }
     }
 }
 
-//struct EmailSignInView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EmailSignInView()
-//    }
-//}
+struct EmailSignInView_Previews: PreviewProvider {
+    static var previews: some View {
+        EmailSignInView(store: .init(authService: NoOpAuthService()))
+    }
+}

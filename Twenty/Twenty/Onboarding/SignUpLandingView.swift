@@ -12,6 +12,8 @@ struct SignUpLandingView: View {
     @State private var signUpButtonTapped = false
     @State private var signInButtonTapped = false
     
+    let authService: AuthenticationService
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,7 +31,7 @@ struct SignUpLandingView: View {
                 HStack {
                     OnboardingSubtitleLabelComponent(subtitle: "Already have an account?")
                     NavigationLink(
-                        destination: EmailSignInView(),
+                        destination: EmailSignInView(store: .init(authService: authService)),
                         isActive: $signInButtonTapped
                     ){
                         Button("Sign in") {
@@ -44,6 +46,6 @@ struct SignUpLandingView: View {
 
 struct SignUpLandingView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpLandingView()
+        SignUpLandingView(authService: NoOpAuthService())
     }
 }

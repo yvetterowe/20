@@ -57,3 +57,9 @@ final class NoOpSelectDayStoreWriter: SelectDayStoreWriter {
     func updateSelectDate(_ date: Date) {
     }
 }
+
+final class NoOpAuthService: AuthenticationService {
+    func signUp(email: String, password: String) {}
+    func signIn(email: String, password: String) {}
+    func signOut() {}
+}
