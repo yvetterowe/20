@@ -24,17 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-//            let storyboard = UIStoryboard(name:"Login", bundle: Bundle.main)
-//            var landingViewController: UIViewController
-//            if let userID = Auth.auth().currentUser?.uid {
-//                let homeVC = storyboard.instantiateViewController(identifier: UIConstants.Storyboard.homeViewController) as! HomeViewController
-//                homeVC.userID = userID
-//                landingViewController = homeVC
-//            } else {
-//                landingViewController = storyboard.instantiateViewController(identifier: "Login")
-//            }
-//            landingViewController = UIHostingController(rootView: SignUpLandingView())
-//            window.rootViewController = landingViewController
             self.authStore = .init()
             self.authService = FirebaseAuthenticationService(firebaseAuth: Auth.auth(), stateWriter: authStore)
             window.rootViewController = UIHostingController(
