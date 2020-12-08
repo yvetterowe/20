@@ -14,6 +14,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var authService: AuthenticationService!
+    var authStore: AuthenticationStore!
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,17 +24,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let storyboard = UIStoryboard(name:"Login", bundle: Bundle.main)
-            let landingViewController: UIViewController
-            if let userID = Auth.auth().currentUser?.uid {
-                let homeVC = storyboard.instantiateViewController(identifier: UIConstants.Storyboard.homeViewController) as! HomeViewController
-                homeVC.userID = userID
-                landingViewController = homeVC
-            } else {
-                landingViewController = storyboard.instantiateViewController(identifier: "Login")
-            }
-            //landingViewController = UIHostingController(rootView: SignUpLandingView())
-            window.rootViewController = landingViewController
+//            let storyboard = UIStoryboard(name:"Login", bundle: Bundle.main)
+//            var landingViewController: UIViewController
+//            if let userID = Auth.auth().currentUser?.uid {
+//                let homeVC = storyboard.instantiateViewController(identifier: UIConstants.Storyboard.homeViewController) as! HomeViewController
+//                homeVC.userID = userID
+//                landingViewController = homeVC
+//            } else {
+//                landingViewController = storyboard.instantiateViewController(identifier: "Login")
+//            }
+//            landingViewController = UIHostingController(rootView: SignUpLandingView())
+//            window.rootViewController = landingViewController
+            self.authStore = .init()
+            self.authService = FirebaseAuthenticationService(firebaseAuth: Auth.auth(), stateWriter: authStore)
+            window.rootViewController = UIHostingController(
+                rootView: RootView(
+                    authStateStore: .init(publisher: authStore.authStatePublisher)
+                )
+            )
             
             self.window = window
             window.makeKeyAndVisible()

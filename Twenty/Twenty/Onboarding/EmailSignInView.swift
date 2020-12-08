@@ -8,6 +8,19 @@
 
 import SwiftUI
 
+
+final class EmailSignInStore {
+    private let authenticator: AuthenticationService
+    
+    init(authenticator: AuthenticationService) {
+        self.authenticator = authenticator
+    }
+    
+    func signInButtonTapped(email: String, password: String) {
+        authenticator.signIn(email: email, password: password)
+    }
+}
+
 struct EmailSignInView: View {
     @State private var email: String = ""
     @State private var password: String = ""
@@ -19,14 +32,14 @@ struct EmailSignInView: View {
             OnboardingTextFieldComponent(placeholder: "Password", text: $password)
             Text("Forgot your password?")
             Button("Log in") {
-                // TODO: firebase log in
+                // TODO: sign in
             }
         }
     }
 }
 
-struct EmailSignInView_Previews: PreviewProvider {
-    static var previews: some View {
-        EmailSignInView()
-    }
-}
+//struct EmailSignInView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EmailSignInView()
+//    }
+//}

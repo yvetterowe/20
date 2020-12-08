@@ -11,7 +11,7 @@
 		2308FE3AFDD07D2D44011C87 /* libPods-TwentyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B89DAA20B7DE9543689DD2 /* libPods-TwentyTests.a */; };
 		73544F602495F0740038914D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F5F2495F0740038914D /* SignUpViewController.swift */; };
 		73544F622495F0900038914D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F612495F0900038914D /* SignInViewController.swift */; };
-		73544F642495F0CF0038914D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F632495F0CF0038914D /* HomeViewController.swift */; };
+		73544F642495F0CF0038914D /* HomeWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F632495F0CF0038914D /* HomeWrapperView.swift */; };
 		73544F672496F8170038914D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F662496F8170038914D /* ViewController.swift */; };
 		73544F6D2497098E0038914D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73544F6C2497098E0038914D /* Login.storyboard */; };
 		735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D5BBB24A0571000AFD70E /* UserViewController.swift */; };
@@ -59,6 +59,10 @@
 		E7C4102F2506854E00DBB926 /* TimeLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */; };
 		E7C4103125068A4D00DBB926 /* StatisticCellComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C4103025068A4D00DBB926 /* StatisticCellComponent.swift */; };
 		E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */; };
+		E7CE50C9257F19F3001F5656 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50C8257F19F3001F5656 /* AuthenticationService.swift */; };
+		E7CE50CD257F1ABE001F5656 /* FirebaseAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50CC257F1ABE001F5656 /* FirebaseAuthenticationService.swift */; };
+		E7CE50D3257F1DC6001F5656 /* AuthenticationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50D2257F1DC6001F5656 /* AuthenticationStore.swift */; };
+		E7CE50D7257F1E43001F5656 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50D6257F1E43001F5656 /* RootView.swift */; };
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4492489567100463D48 /* BackgroundShape.swift */; };
@@ -79,6 +83,7 @@
 		E7F389542565F34200A15A60 /* OnboardingTitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */; };
 		E7F389582565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */; };
 		E7F3895C2565F54A00A15A60 /* OnboardingTextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */; };
+		E7F389B62567405100A15A60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389B52567405100A15A60 /* User.swift */; };
 		E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */; };
 		E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DC2510579100F62832 /* ActivityRowComponent.swift */; };
 		E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F727DE25105A7700F62832 /* ActivityListComponent.swift */; };
@@ -102,7 +107,7 @@
 /* Begin PBXFileReference section */
 		73544F5F2495F0740038914D /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		73544F612495F0900038914D /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		73544F632495F0CF0038914D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		73544F632495F0CF0038914D /* HomeWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWrapperView.swift; sourceTree = "<group>"; };
 		73544F662496F8170038914D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		73544F6C2497098E0038914D /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		735D5BBB24A0571000AFD70E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +165,10 @@
 		E7C4102E2506854E00DBB926 /* TimeLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelComponent.swift; sourceTree = "<group>"; };
 		E7C4103025068A4D00DBB926 /* StatisticCellComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCellComponent.swift; sourceTree = "<group>"; };
 		E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSectionComponent.swift; sourceTree = "<group>"; };
+		E7CE50C8257F19F3001F5656 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		E7CE50CC257F1ABE001F5656 /* FirebaseAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationService.swift; sourceTree = "<group>"; };
+		E7CE50D2257F1DC6001F5656 /* AuthenticationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStore.swift; sourceTree = "<group>"; };
+		E7CE50D6257F1E43001F5656 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4492489567100463D48 /* BackgroundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShape.swift; sourceTree = "<group>"; };
@@ -180,6 +189,7 @@
 		E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitleLabelComponent.swift; sourceTree = "<group>"; };
 		E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubtitleLabelComponent.swift; sourceTree = "<group>"; };
 		E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextFieldComponent.swift; sourceTree = "<group>"; };
+		E7F389B52567405100A15A60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePersistentDataStore.swift; sourceTree = "<group>"; };
 		E7F727DC2510579100F62832 /* ActivityRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRowComponent.swift; sourceTree = "<group>"; };
 		E7F727DE25105A7700F62832 /* ActivityListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListComponent.swift; sourceTree = "<group>"; };
@@ -218,7 +228,7 @@
 				E7F389482565ECB300A15A60 /* EmailSignUpView.swift */,
 				E7F3894C2565ED3C00A15A60 /* EmailSignInView.swift */,
 				73544F612495F0900038914D /* SignInViewController.swift */,
-				73544F632495F0CF0038914D /* HomeViewController.swift */,
+				73544F632495F0CF0038914D /* HomeWrapperView.swift */,
 				73544F662496F8170038914D /* ViewController.swift */,
 				735D5BBB24A0571000AFD70E /* UserViewController.swift */,
 			);
@@ -286,6 +296,7 @@
 		E78F054B247F495D0066C687 /* Twenty */ = {
 			isa = PBXGroup;
 			children = (
+				E7CE50C7257F19AD001F5656 /* Authentication */,
 				E739A06C2509D582001A4940 /* MockObjects */,
 				E7C410292506806800DBB926 /* Stateless UI Components */,
 				E7E0023B249AFD7B00403E50 /* Persistence */,
@@ -299,6 +310,7 @@
 				E78F054C247F495D0066C687 /* AppDelegate.swift */,
 				E78F054E247F495D0066C687 /* SceneDelegate.swift */,
 				E78F0550247F495D0066C687 /* ContentView.swift */,
+				E7CE50D6257F1E43001F5656 /* RootView.swift */,
 				E78F0552247F49630066C687 /* Assets.xcassets */,
 				736665FE2576012200EFB600 /* Colors.xcassets */,
 				73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */,
@@ -388,6 +400,16 @@
 			path = "Stateless UI Components";
 			sourceTree = "<group>";
 		};
+		E7CE50C7257F19AD001F5656 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E7CE50C8257F19F3001F5656 /* AuthenticationService.swift */,
+				E7CE50CC257F1ABE001F5656 /* FirebaseAuthenticationService.swift */,
+				E7CE50D2257F1DC6001F5656 /* AuthenticationStore.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		E7D3DC712482FAEB00422C77 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +418,7 @@
 				E7E00239249AF88700403E50 /* GoalStoreImpl.swift */,
 				E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */,
 				E77A51292484130C009243CC /* GoalStoreWriter.swift */,
+				E7F389B52567405100A15A60 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -625,6 +648,7 @@
 				E7B95F9B251C32FC00BC90BD /* BottomSheetComponent.swift in Sources */,
 				E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */,
 				E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */,
+				E7CE50CD257F1ABE001F5656 /* FirebaseAuthenticationService.swift in Sources */,
 				E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */,
 				E7F3895C2565F54A00A15A60 /* OnboardingTextFieldComponent.swift in Sources */,
 				E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */,
@@ -634,7 +658,7 @@
 				E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */,
 				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
 				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
-				73544F642495F0CF0038914D /* HomeViewController.swift in Sources */,
+				73544F642495F0CF0038914D /* HomeWrapperView.swift in Sources */,
 				E7F3894D2565ED3C00A15A60 /* EmailSignInView.swift in Sources */,
 				E7F389582565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift in Sources */,
 				E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */,
@@ -642,8 +666,10 @@
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
+				E7CE50D3257F1DC6001F5656 /* AuthenticationStore.swift in Sources */,
 				E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */,
 				E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */,
+				E7F389B62567405100A15A60 /* User.swift in Sources */,
 				739C10E62497346D003B9B15 /* Constants.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
 				E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */,
@@ -652,7 +678,9 @@
 				E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */,
 				E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */,
 				E7C4102F2506854E00DBB926 /* TimeLabelComponent.swift in Sources */,
+				E7CE50C9257F19F3001F5656 /* AuthenticationService.swift in Sources */,
 				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
+				E7CE50D7257F1E43001F5656 /* RootView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */,
 				E7C40FEC24FC3A9400DBB926 /* StatefulEditTimeView.swift in Sources */,

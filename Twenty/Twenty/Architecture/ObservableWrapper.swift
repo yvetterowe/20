@@ -13,8 +13,14 @@ final class ObservableWrapper<Value>: ObservableObject {
     private var cancellables: Set<AnyCancellable> = .init()
     
     init(publisher: AnyPublisher<Value, Never>) {
+        print("hao-debug: ObservableWrapper init \(publisher)")
         publisher.sink { [unowned self] publishedValue in
+            print("hao-debug: ObservableWrapper emit \(publishedValue)")
             self.value = publishedValue
         }.store(in: &cancellables)
+    }
+    
+    deinit {
+        print("hao-debug: ObservableWrapper deinit")
     }
 }
