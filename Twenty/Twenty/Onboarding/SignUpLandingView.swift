@@ -20,7 +20,7 @@ struct SignUpLandingView: View {
                 OnboardingTitleLabelComponent(title: "Learn Something new in 20hrs")
                 OnboardingSubtitleLabelComponent(subtitle: "Research shows...")
                 NavigationLink(
-                    destination: EmailSignUpView(),
+                    destination: EmailSignUpView(store: .init(authService: authService)),
                     isActive: $signUpButtonTapped
                 ){
                     Button("Sign up") {

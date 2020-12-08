@@ -25,8 +25,24 @@ final class FirebaseAuthenticationService: AuthenticationService {
     
     // MARK: - AuthenticationService
     
-    func signUp(email: String, password: String) {
-        stateWriter.update(.unauthenticated)
+    func signUp(email: String, password: String, firstName: String?, lastName: String?) {
+        let stateWriter = self.stateWriter
+        firebaseAuth.createUser(withEmail: email, password: password) { (result, err) in
+            if let err = err {
+                stateWriter.update(.authenticateFailed(err))
+            } else {
+                //user was created successfully
+                let db = Firestore.firestore()
+                let userID = result!.user.uid
+                db.collection("users").addDocument(data: ["firstName" : firstName, "lastName": lastName, "uid": userID ]){(err) in
+                    if let err = err  {
+                        stateWriter.update(.authenticateFailed(err))
+                    } else {
+                        stateWriter.update(.authenticated(userID))
+                    }
+                }
+            }
+        }
     }
     
     func signIn(email: String, password: String) {

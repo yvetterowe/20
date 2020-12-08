@@ -59,7 +59,7 @@ final class NoOpSelectDayStoreWriter: SelectDayStoreWriter {
 }
 
 final class NoOpAuthService: AuthenticationService {
-    func signUp(email: String, password: String) {}
+    func signUp(email: String, password: String, firstName: String?, lastName: String?) {}
     func signIn(email: String, password: String) {}
     func signOut() {}
 }
