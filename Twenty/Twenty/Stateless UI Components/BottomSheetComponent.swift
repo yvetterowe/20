@@ -69,8 +69,7 @@ struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, Navigati
                     navigationLeadingItem: self.navigationLeadingItem,
                     navigationTrailingItem: self.navigationTrailingItem
                 )
-                Spacer()
-                self.content.padding()
+                self.content
                 Spacer()
                 self.indicator.padding()
             }
@@ -90,6 +89,13 @@ struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, Navigati
                     }
                     self.isOpen = value.translation.height < 0
                 }
+            )
+            .offset(y: isOpen ? 0 : UIScreen.main.bounds.height)
+            .background(
+                Color.black.opacity(isOpen ? 0.3 : 0).ignoresSafeArea()
+                    .onTapGesture(perform: {
+                        withAnimation{isOpen.toggle()}
+                    })
             )
         }
     }

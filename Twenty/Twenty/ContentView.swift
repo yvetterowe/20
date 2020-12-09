@@ -25,7 +25,8 @@ struct ContentView: View {
                 viewStateStore: ObservableWrapper(
                     publisher: DayViewModelStore(
                         selectedDayPublisher: timerTabContext.selectDayStore.selectDayPublisher,
-                        todayPublisher: timerTabContext.todayPublisher
+                        todayPublisher: timerTabContext.todayPublisher,
+                        goalPublisher: timerTabContext.goalPublisher
                     ).publisher
                 )
             ) { presentingTimer in

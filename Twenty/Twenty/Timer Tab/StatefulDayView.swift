@@ -12,6 +12,7 @@ import SwiftUI
 struct SelectedDayViewState {
     let isToday: Bool
     let day: Date.Day
+    let goalName: String
 }
 
 protocol DayViewModelReader {
@@ -26,15 +27,18 @@ final class DayViewModelStore: DayViewModelReader {
     
     init(
         selectedDayPublisher: AnyPublisher<Date.Day, Never>,
-        todayPublisher: AnyPublisher<Date.Day, Never>
+        todayPublisher: AnyPublisher<Date.Day, Never>,
+        goalPublisher: AnyPublisher<Goal, Never>
     ) {
-        self.publisher = Publishers.CombineLatest(
+        self.publisher = Publishers.CombineLatest3(
             selectedDayPublisher,
-            todayPublisher
-        ).map { (selectedDay, today) in
+            todayPublisher,
+            goalPublisher
+        ).map { (selectedDay, today, goal) in
             return SelectedDayViewState(
                 isToday: selectedDay == today,
-                day: selectedDay
+                day: selectedDay,
+                goalName: goal.name
             )
         }.eraseToAnyPublisher()
     }
@@ -71,28 +75,57 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
     }
     
     var body: some View {
-        VStack {
-            StatefulDayViewHeader(
-                viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher),
-                selectDayWriter: context.selectDayStore,
-                presentingCalendar: $presentingCalendar
-            )
-            
-            StatefulSelectDayHeader(
-                store: context.selectDayStore
-            )
-            
-            StatefulDayViewSummarySection(
-                viewModelStore: .init(
-                    publisher: StatefulDayViewSummarySectionViewModelStore(
-                        selectedDayPublisher: context.selectDayStore.selectDayPublisher,
-                        goalPublisher: context.goalPublisher
-                    ).publisher
-                ), tapMoreButtonAction: {
-                    presentingMoreActionSheet = true
+        ZStack {
+            VStack {
+                StatefulDayViewHeader(
+                    viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher),
+                    selectDayWriter: context.selectDayStore,
+                    presentingCalendar: $presentingCalendar
+                )
+                
+                StatefulSelectDayHeader(
+                    store: context.selectDayStore
+                )
+                
+                StatefulDayViewSummarySection(
+                    viewModelStore: .init(
+                        publisher: StatefulDayViewSummarySectionViewModelStore(
+                            selectedDayPublisher: context.selectDayStore.selectDayPublisher,
+                            goalPublisher: context.goalPublisher
+                        ).publisher
+                    ), tapMoreButtonAction: {
+                        presentingMoreActionSheet = true
+                    }
+                )
+                
+                StatefulStatisticSectionView(
+                    viewReader: .init(
+                        publisher: StatisticSectionViewStore(
+                            goalPublisher: context.goalPublisher,
+                            selectedDayPublisher: context.selectDayStore.selectDayPublisher
+                        ).publisher
+                    )
+                )
+                
+                if viewStateStore.value.isToday {
+                    if #available(iOS 14.0, *) {
+                        Button("Start Tracking") {
+                            presentingTimer = true
+                        }
+                        .fullScreenCover(isPresented: $presentingTimer) {
+                            self.timerView($presentingTimer)
+                        }
+                    }
                 }
-            )
-            .sheet(isPresented: $presentingMoreActionSheet) {
+            }
+            
+            BottomSheetComponent<StatefulMoreActionListView, EmptyView, EmptyView>(
+                isOpen: $presentingMoreActionSheet,
+                maxHeight: 360,
+                title: viewStateStore.value.goalName,
+                navigationLeadingItem: {},
+                navigationTrailingItem: {}
+            ) {
                 let viewStore = MoreActionListViewStore(
                     goalPublisher: context.goalPublisher
                 )
@@ -101,26 +134,6 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
                     viewWriter: viewStore,
                     context: context
                 )
-            }
-
-            StatefulStatisticSectionView(
-                viewReader: .init(
-                    publisher: StatisticSectionViewStore(
-                        goalPublisher: context.goalPublisher,
-                        selectedDayPublisher: context.selectDayStore.selectDayPublisher
-                    ).publisher
-                )
-            )
-            
-            if viewStateStore.value.isToday {
-                if #available(iOS 14.0, *) {
-                    Button("Start Tracking") {
-                        presentingTimer = true
-                    }
-                    .fullScreenCover(isPresented: $presentingTimer) {
-                        self.timerView($presentingTimer)
-                    }
-                }
             }
         }
     }
@@ -131,7 +144,7 @@ struct StatefulDayView_Previews: PreviewProvider {
         StatefulDayView(
             context: MockDataFactory.context,
             viewStateStore: ObservableWrapper(
-                publisher: Just(SelectedDayViewState(isToday: true, day: MockDataFactory.today)).eraseToAnyPublisher()
+                publisher: Just(SelectedDayViewState(isToday: true, day: MockDataFactory.today, goalName: "Learn surfing")).eraseToAnyPublisher()
             )
         ) { _ in
             Text("Timer Placeholder")

@@ -57,7 +57,7 @@ struct BottomSheetHeaderComponent<NavigationLeadingItem: View, NavigationTrailin
                 Divider()
             }
             .frame(height: height)
-        }
+        }.frame(height: height)
     }
 }
 

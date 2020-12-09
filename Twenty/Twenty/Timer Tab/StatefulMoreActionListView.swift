@@ -74,7 +74,6 @@ struct StatefulMoreActionListView: View {
     
     var body: some View {
         MoreActionListComponent(
-            title: viewReader.value,
             rows: [
                 .init(
                     icon: Image(systemName: "number.square"),

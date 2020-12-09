@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct MoreActionListComponent: View {
-    let title: String
     let rows: [MoreActionRowComponent<AnyView>]
     let rowHeight: CGFloat = 56
     
@@ -21,7 +20,7 @@ struct MoreActionListComponent: View {
                 }
                 .frame(height: rowHeight)
             }
-            .navigationBarTitle(title)
+            .navigationBarHidden(true)
         }
     }
 }
@@ -29,7 +28,6 @@ struct MoreActionListComponent: View {
 struct MoreActionListComponent_Previews: PreviewProvider {
     static var previews: some View {
         MoreActionListComponent(
-            title: "Learn SwiftUI",
             rows: [
                 .init(
                     icon: Image(systemName: "number.square"),
