@@ -61,6 +61,11 @@ final class FirebaseAuthenticationService: AuthenticationService {
     }
     
     func signOut() {
-         // TODO
+        do {
+          try firebaseAuth.signOut()
+            stateWriter.update(.unauthenticated)
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
     }
 }

@@ -51,6 +51,7 @@ struct Context {
     let goalPublisher: GoalPublisher
     let selectDayStore: SelectDayStore
     let todayPublisher: AnyPublisher<Date.Day, Never>
+    let authService: AuthenticationService
 }
 
 struct StatefulDayView<TimerView>: View where TimerView: View{
@@ -62,6 +63,7 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
     @State private var presentingTimer: Bool = false
     @State private var presentingMoreActionSheet: Bool = false
     @State private var presentingCalendar: Bool = false
+    @State private var presentingProfile: Bool = false
     
     init(
         context: Context,
@@ -79,7 +81,9 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
             StatefulDayViewHeader(
                 viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher),
                 selectDayWriter: context.selectDayStore,
-                presentingCalendar: $presentingCalendar
+                presentingCalendar: $presentingCalendar,
+                presentingProfile: $presentingProfile,
+                authService: context.authService
             )
             
             StatefulSelectDayHeader(

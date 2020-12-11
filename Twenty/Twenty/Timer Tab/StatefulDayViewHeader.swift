@@ -40,8 +40,14 @@ struct StatefulDayViewHeader: View {
     
     @ObservedObject private var viewModelStore: ObservableWrapper<StatefulDayViewHeader.ViewModel>
     private let selectDayWriter: SelectDayStoreWriter
+    
+    // Calendar
     @Binding var presentingCalendar: Bool
     @ObservedObject private var calendarStore: CalendarListViewStore
+    
+    // Profile
+    @Binding var presentingProfile: Bool
+    private let profileStore: UserProfileViewStore
     
     private var viewModel: ViewModel {
         return viewModelStore.value
@@ -50,7 +56,9 @@ struct StatefulDayViewHeader: View {
     init(
         viewModelStore: ObservableWrapper<StatefulDayViewHeader.ViewModel>,
         selectDayWriter: SelectDayStoreWriter,
-        presentingCalendar: Binding<Bool>
+        presentingCalendar: Binding<Bool>,
+        presentingProfile: Binding<Bool>,
+        authService: AuthenticationService
     ) {
         self.viewModelStore = viewModelStore
         self.selectDayWriter = selectDayWriter
@@ -60,6 +68,8 @@ struct StatefulDayViewHeader: View {
             selectDayWriter: selectDayWriter,
             presentingCalendar: presentingCalendar
         )
+        self._presentingProfile = presentingProfile
+        self.profileStore = .init(authService: authService)
     }
     
     var body: some View {
@@ -69,7 +79,14 @@ struct StatefulDayViewHeader: View {
                 subtitle: viewModel.subtitle
             )
             Spacer()
-            Image(systemName: "person")
+            Button(action: {
+                presentingProfile = true
+            }, label: {
+                Image(systemName: "person")
+            })
+            .sheet(isPresented: $presentingProfile) {
+                StatefulUserProfileView(store: profileStore)
+            }
             
             Button(action: {
                 presentingCalendar = true
@@ -96,7 +113,9 @@ struct StatefulDayViewHeader_Previews: PreviewProvider {
                 ).eraseToAnyPublisher()
             ),
             selectDayWriter: NoOpSelectDayStoreWriter(),
-            presentingCalendar: .constant(false)
+            presentingCalendar: .constant(false),
+            presentingProfile: .constant(false),
+            authService: NoOpAuthService()
         )
     }
 }

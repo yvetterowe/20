@@ -33,14 +33,15 @@ private final class HomeViewStateStore: ObservableObject {
 }
 
 extension HomeWrapperView {
-    init(userID: String) {
+    init(userID: String, authService: AuthenticationService) {
         let goalStore = GoalStoreImpl(
             persistentDataStore: FirebasePersistentDataStore(userID: userID)
         )
         
         self.init(
             goalStore: goalStore,
-            viewStateStore: .init(firstGoalPublisher: goalStore.firstGoalPublisher)
+            viewStateStore: .init(firstGoalPublisher: goalStore.firstGoalPublisher),
+            authService: authService
         )
     }
 }
@@ -50,11 +51,13 @@ struct HomeWrapperView: View {
     @ObservedObject fileprivate var viewStateStore: HomeViewStateStore
     private let goalStore: GoalStoreImpl
     private let currentDate: Date.Day
+    private let authService: AuthenticationService
     
-    fileprivate init(goalStore: GoalStoreImpl, viewStateStore: HomeViewStateStore) {
+    fileprivate init(goalStore: GoalStoreImpl, viewStateStore: HomeViewStateStore, authService: AuthenticationService) {
         self.goalStore = goalStore
         self.viewStateStore = viewStateStore
         self.currentDate = Date().asDay(in: .current)
+        self.authService = authService
     }
     
     var body: some View {
@@ -67,7 +70,8 @@ struct HomeWrapperView: View {
                     goalStoreWriter: goalStore,
                     goalPublisher: AnyGoalStoreReader(goalStore).goalPublisher(for: goalID),
                     selectDayStore: .init(initialSelectDay: currentDate),
-                    todayPublisher: Just(currentDate).eraseToAnyPublisher()
+                    todayPublisher: Just(currentDate).eraseToAnyPublisher(),
+                    authService: authService
                 )
             )
         }

@@ -30,7 +30,8 @@ enum MockDataFactory {
         goalStoreWriter: NoOpGoalWriter(),
         goalPublisher: Just(MockDataFactory.goal).eraseToAnyPublisher(),
         selectDayStore: SelectDayStore(initialSelectDay: MockDataFactory.today),
-        todayPublisher: Just(MockDataFactory.today).eraseToAnyPublisher()
+        todayPublisher: Just(MockDataFactory.today).eraseToAnyPublisher(),
+        authService: NoOpAuthService()
     )
     
     static let recordIntervals: [[DateInterval]] =  [

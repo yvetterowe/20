@@ -26,7 +26,7 @@ struct RootView: View {
         case .unauthenticated:
             SignUpLandingView(authService: authService)
         case let .authenticated(userID):
-            HomeWrapperView(userID: userID)
+            HomeWrapperView(userID: userID, authService: authService)
         case .authenticateFailed:
             VStack {
                 SignUpLandingView(authService: authService)
