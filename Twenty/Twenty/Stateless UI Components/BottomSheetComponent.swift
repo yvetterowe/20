@@ -101,6 +101,29 @@ struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, Navigati
     }
 }
 
+extension View {
+    func bottomSheet<Content: View, NavigationLeadingItem: View, NavigationTrailingItem: View>(
+        isOpen: Binding<Bool>,
+        maxHeight: CGFloat,
+        title: String,
+        @ViewBuilder navigationLeadingItem: @escaping () -> NavigationLeadingItem?,
+        @ViewBuilder navigationTrailingItem: @escaping () -> NavigationTrailingItem?,
+        @ViewBuilder content: @escaping () -> Content
+    ) -> some View {
+        ZStack {
+            self
+            BottomSheetComponent<Content, NavigationLeadingItem, NavigationTrailingItem>(
+                isOpen: isOpen,
+                maxHeight: maxHeight,
+                title: title,
+                navigationLeadingItem: navigationLeadingItem,
+                navigationTrailingItem: navigationTrailingItem,
+                content: content
+            )
+        }
+    }
+}
+
 struct BottomSheetComponent_Previews: PreviewProvider {
     static var previews: some View {
         BottomSheetComponent<VStack<TupleView<(Text, Text)>>, Button<Text>, Button<Text>>(

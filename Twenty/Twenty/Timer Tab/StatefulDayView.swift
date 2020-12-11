@@ -75,66 +75,62 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
     }
     
     var body: some View {
-        ZStack {
-            VStack {
-                StatefulDayViewHeader(
-                    viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher),
-                    selectDayWriter: context.selectDayStore,
-                    presentingCalendar: $presentingCalendar
+        VStack {
+            StatefulDayViewHeader(
+                viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher),
+                selectDayWriter: context.selectDayStore,
+                presentingCalendar: $presentingCalendar
+            )
+            
+            StatefulSelectDayHeader(
+                store: context.selectDayStore
+            )
+            
+            StatefulDayViewSummarySection(
+                viewModelStore: .init(
+                    publisher: StatefulDayViewSummarySectionViewModelStore(
+                        selectedDayPublisher: context.selectDayStore.selectDayPublisher,
+                        goalPublisher: context.goalPublisher
+                    ).publisher
+                ), tapMoreButtonAction: {
+                    presentingMoreActionSheet = true
+                }
+            )
+            
+            StatefulStatisticSectionView(
+                viewReader: .init(
+                    publisher: StatisticSectionViewStore(
+                        goalPublisher: context.goalPublisher,
+                        selectedDayPublisher: context.selectDayStore.selectDayPublisher
+                    ).publisher
                 )
-                
-                StatefulSelectDayHeader(
-                    store: context.selectDayStore
-                )
-                
-                StatefulDayViewSummarySection(
-                    viewModelStore: .init(
-                        publisher: StatefulDayViewSummarySectionViewModelStore(
-                            selectedDayPublisher: context.selectDayStore.selectDayPublisher,
-                            goalPublisher: context.goalPublisher
-                        ).publisher
-                    ), tapMoreButtonAction: {
-                        presentingMoreActionSheet = true
+            )
+            
+            if viewStateStore.value.isToday {
+                if #available(iOS 14.0, *) {
+                    Button("Start Tracking") {
+                        presentingTimer = true
                     }
-                )
-                
-                StatefulStatisticSectionView(
-                    viewReader: .init(
-                        publisher: StatisticSectionViewStore(
-                            goalPublisher: context.goalPublisher,
-                            selectedDayPublisher: context.selectDayStore.selectDayPublisher
-                        ).publisher
-                    )
-                )
-                
-                if viewStateStore.value.isToday {
-                    if #available(iOS 14.0, *) {
-                        Button("Start Tracking") {
-                            presentingTimer = true
-                        }
-                        .fullScreenCover(isPresented: $presentingTimer) {
-                            self.timerView($presentingTimer)
-                        }
+                    .fullScreenCover(isPresented: $presentingTimer) {
+                        self.timerView($presentingTimer)
                     }
                 }
             }
-            
-            BottomSheetComponent<StatefulMoreActionListView, EmptyView, EmptyView>(
-                isOpen: $presentingMoreActionSheet,
-                maxHeight: 360,
-                title: viewStateStore.value.goalName,
-                navigationLeadingItem: {},
-                navigationTrailingItem: {}
-            ) {
-                let viewStore = MoreActionListViewStore(
-                    goalPublisher: context.goalPublisher
-                )
-                StatefulMoreActionListView(
-                    viewReader: .init(publisher: viewStore.titlePublisher),
-                    viewWriter: viewStore,
-                    context: context
-                )
-            }
+        }.bottomSheet(
+            isOpen: $presentingMoreActionSheet,
+            maxHeight: 360,
+            title: viewStateStore.value.goalName,
+            navigationLeadingItem: {},
+            navigationTrailingItem: {}
+        ) {
+            let viewStore = MoreActionListViewStore(
+                goalPublisher: context.goalPublisher
+            )
+            StatefulMoreActionListView(
+                viewReader: .init(publisher: viewStore.titlePublisher),
+                viewWriter: viewStore,
+                context: context
+            )
         }
     }
 }
