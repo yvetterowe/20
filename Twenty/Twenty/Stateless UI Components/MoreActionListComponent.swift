@@ -13,14 +13,11 @@ struct MoreActionListComponent: View {
     let rowHeight: CGFloat = 56
     
     var body: some View {
-        NavigationView{
-            List(0..<rows.count) { rowIndex in
-                Button(action: rows[rowIndex].tapAction) {
-                    rows[rowIndex]
-                }
-                .frame(height: rowHeight)
+        List(0..<rows.count) { rowIndex in
+            Button(action: rows[rowIndex].tapAction) {
+                rows[rowIndex]
             }
-            .navigationBarHidden(true)
+            .frame(height: rowHeight)
         }
     }
 }
