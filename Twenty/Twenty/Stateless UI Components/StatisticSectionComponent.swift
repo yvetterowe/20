@@ -32,28 +32,29 @@ struct StatisticSectionComponent_Previews: PreviewProvider {
             StatisticSectionComponent(
                 items: [
                     .init(
-                        icon: .init(systemName: "number.square"),
+                        icon: .init("activity_icon"),
                         title: "1h 3m",
                         subtitle: "subtitle"
                     ),
                     .init(
-                        icon: .init(systemName: "number.square"),
+                        icon: .init("activity_icon"),
                         title: "7",
                         subtitle: "short"
                     ),
                     .init(
-                        icon: .init(systemName: "number.square"),
+                        icon: .init("activity_icon"),
                         title: "1h 3m",
                         subtitle: "lonnnnnnng"
                     ),
                     .init(
-                        icon: .init(systemName: "number.square"),
+                        icon: .init("activity_icon"),
                         title: "looooooong",
                         subtitle: "avg"
                     ),
                 ],
                 rowCount: 2
-            ).frame(width: 312.0).border(Color.red)
+            )
+            .padding(.init(top: 16, leading: 20, bottom: 16, trailing: 20))
         } else {
             // Fallback on earlier versions
         }

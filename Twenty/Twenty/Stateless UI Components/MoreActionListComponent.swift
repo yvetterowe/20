@@ -33,6 +33,7 @@ struct MoreActionListComponent_Previews: PreviewProvider {
                     icon: Image(systemName: "number.square"),
                     title: "Add Time",
                     tapAction: {},
+                    isActionDistructive: false,
                     isSheetPresented: .constant(false)
                 ) {
                     AnyView(Text("Adding time placeholder"))
@@ -42,6 +43,7 @@ struct MoreActionListComponent_Previews: PreviewProvider {
                     icon: Image(systemName: "number.square"),
                     title: "Edit Goal",
                     tapAction: {},
+                    isActionDistructive: false,
                     isSheetPresented: .constant(false)
                 ) {
                     AnyView(Text("Editing goal placeholder"))

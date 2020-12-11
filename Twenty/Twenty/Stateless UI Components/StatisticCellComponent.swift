@@ -20,9 +20,17 @@ struct StatisticCellComponent: View {
     var body: some View {
         HStack {
             model.icon
+                .resizable()
+                .frame(width: 40, height: 40, alignment: .topLeading)
             VStack(alignment: .leading) {
                 Text(model.title)
+                    .font(Font.custom("VarelaRound-Regular", size: 16))
+                    .foregroundColor(ColorManager.Blue)
                 Text(model.subtitle)
+                    .font(Font.custom("VarelaRound-Regular", size: 14))
+                    .foregroundColor(ColorManager.MidGray)
+                
+                    
             }
         }
     }
@@ -32,7 +40,7 @@ struct StatisticCellComponent_Previews: PreviewProvider {
     static var previews: some View {
         StatisticCellComponent(
             model: .init(
-                icon: Image(systemName: "number.square"),
+                icon: Image("activity_icon"),
                 title: "1h 15m",
                 subtitle: "Avg everyday"
             )
