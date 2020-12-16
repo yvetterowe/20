@@ -58,6 +58,8 @@
 		E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */; };
 		E7C72B1A2583538300A3E0EC /* UserProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C72B192583538300A3E0EC /* UserProfileComponent.swift */; };
 		E7C72B1F2583544E00A3E0EC /* StatefulUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C72B1E2583544E00A3E0EC /* StatefulUserProfileView.swift */; };
+		E7C72B232589CA7E00A3E0EC /* AddTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C72B222589CA7E00A3E0EC /* AddTimeComponent.swift */; };
+		E7C72B272589CAAE00A3E0EC /* EditTimeRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C72B262589CAAE00A3E0EC /* EditTimeRowComponent.swift */; };
 		E7CE50C9257F19F3001F5656 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50C8257F19F3001F5656 /* AuthenticationService.swift */; };
 		E7CE50CD257F1ABE001F5656 /* FirebaseAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50CC257F1ABE001F5656 /* FirebaseAuthenticationService.swift */; };
 		E7CE50D3257F1DC6001F5656 /* AuthenticationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50D2257F1DC6001F5656 /* AuthenticationStore.swift */; };
@@ -163,6 +165,8 @@
 		E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticSectionComponent.swift; sourceTree = "<group>"; };
 		E7C72B192583538300A3E0EC /* UserProfileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileComponent.swift; sourceTree = "<group>"; };
 		E7C72B1E2583544E00A3E0EC /* StatefulUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulUserProfileView.swift; sourceTree = "<group>"; };
+		E7C72B222589CA7E00A3E0EC /* AddTimeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeComponent.swift; sourceTree = "<group>"; };
+		E7C72B262589CAAE00A3E0EC /* EditTimeRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimeRowComponent.swift; sourceTree = "<group>"; };
 		E7CE50C8257F19F3001F5656 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		E7CE50CC257F1ABE001F5656 /* FirebaseAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationService.swift; sourceTree = "<group>"; };
 		E7CE50D2257F1DC6001F5656 /* AuthenticationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStore.swift; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 				E7C72B192583538300A3E0EC /* UserProfileComponent.swift */,
 				E7B95F9A251C32FC00BC90BD /* BottomSheetComponent.swift */,
 				E7B95F9C251C43F800BC90BD /* BottomSheetHeaderComponent.swift */,
+				E7C72B222589CA7E00A3E0EC /* AddTimeComponent.swift */,
+				E7C72B262589CAAE00A3E0EC /* EditTimeRowComponent.swift */,
 				736666002576062B00EFB600 /* ColorManager.swift */,
 			);
 			path = "Stateless UI Components";
@@ -661,6 +667,7 @@
 				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
 				E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */,
 				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
+				E7C72B272589CAAE00A3E0EC /* EditTimeRowComponent.swift in Sources */,
 				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
 				73544F642495F0CF0038914D /* HomeWrapperView.swift in Sources */,
 				E7F3894D2565ED3C00A15A60 /* EmailSignInView.swift in Sources */,
@@ -673,6 +680,7 @@
 				E7CE50D3257F1DC6001F5656 /* AuthenticationStore.swift in Sources */,
 				E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */,
 				E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */,
+				E7C72B232589CA7E00A3E0EC /* AddTimeComponent.swift in Sources */,
 				E7F389B62567405100A15A60 /* User.swift in Sources */,
 				739C10E62497346D003B9B15 /* Constants.swift in Sources */,
 				E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */,
