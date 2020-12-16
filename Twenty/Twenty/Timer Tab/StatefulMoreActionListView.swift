@@ -53,13 +53,21 @@ final class MoreActionListViewStore: MoreActionListViewReader, MoreActionListVie
 }
 
 struct StatefulMoreActionListView: View {
+    
+    enum ActiveSheet: Identifiable {
+        case addTime, editGoal, viewActivities
+        
+        var id: Int {
+            hashValue
+        }
+    }
+    
     @ObservedObject private var viewReader: ObservableWrapper<String>
     private let viewWriter: MoreActionListViewWriter
     private let context: Context
     
-    @State private var addingTime: Bool = false
     @State private var editingGoal: Bool = false
-    @State private var viewingActivities: Bool = false
+    @State private var activeSheet: ActiveSheet?
     @State private var deletingGoal: Bool = false
     
     init(
@@ -79,66 +87,60 @@ struct StatefulMoreActionListView: View {
                     icon: Image(systemName: "number.square"),
                     title: "Add Time",
                     tapAction: {
-                        addingTime = true
-                    },
-                    isSheetPresented: $addingTime
-                ) {
-                    AnyView(Text("Adding time placeholder"))
-                },
+                        activeSheet = .addTime
+                    }
+                ),
                 
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Edit Goal",
                     tapAction: {
                         editingGoal = true
-                    },
-                    isSheetPresented: $editingGoal
-                ) {
-                    let viewStore = EditGoalStore(
-                        goalPublisher: context.goalPublisher,
-                        goalStoreWriter: context.goalStoreWriter,
-                        editing: $editingGoal
-                    )
-                    
-                    AnyView(
-                        StatefulEditGoalView(
-                            goalNameReader: .init(publisher: viewStore.goalNamePublisher),
-                            viewWriter: viewStore,
-                            goalID: context.goalID
-                        )
-                    )
-                },
+                        activeSheet = .editGoal
+                    }
+                ),
                 
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "View Activities",
                     tapAction: {
-                        viewingActivities = true
-                    },
-                    isSheetPresented: $viewingActivities
-                ) {
-                    let viewStore = ViewActivityListViewStore(
-                        goalPublisher: context.goalPublisher
-                    )
-                    AnyView(
-                        StatefulViewActivityListView(
-                            viewReader: .init(publisher: viewStore.publisher)
-                        )
-                    )
-                },
+                        activeSheet = .viewActivities
+                    }
+                ),
                 
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Delete Goal",
                     tapAction: {
                         deletingGoal = true
-                    },
-                    isSheetPresented: $deletingGoal
-                ) {
-                    AnyView(Text("Deleting goal placeholder"))
-                },
+                    }
+                ),
             ]
         )
+        .sheet(item: $activeSheet, content: { activeSheet in
+            switch activeSheet {
+            case .addTime:
+                Text("Adding time placeholder")
+            case .editGoal:
+                let viewStore = EditGoalStore(
+                    goalPublisher: context.goalPublisher,
+                    goalStoreWriter: context.goalStoreWriter,
+                    editing: $editingGoal
+                )
+                StatefulEditGoalView(
+                    goalNameReader: .init(publisher: viewStore.goalNamePublisher),
+                    viewWriter: viewStore,
+                    goalID: context.goalID
+                )
+            case .viewActivities:
+                let viewStore = ViewActivityListViewStore(
+                    goalPublisher: context.goalPublisher
+                )
+                StatefulViewActivityListView(
+                    viewReader: .init(publisher: viewStore.publisher)
+                )
+            }
+        })
     }
 }
 

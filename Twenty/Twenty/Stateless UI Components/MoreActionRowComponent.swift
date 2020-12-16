@@ -22,29 +22,22 @@ extension View {
     }
 }
 
-struct MoreActionRowComponent<SheetContent: View>: View {
+struct MoreActionRowComponent: View {
     private let icon: Image
     private let title: String
     let tapAction: () -> Void
     private var isActionDistructive: Bool
-    private let sheetContent: () -> SheetContent
-    private var isSheetPresented: Binding<Bool>
-
-    
+   
     init(
         icon: Image,
         title: String,
         tapAction: @escaping () -> Void,
-        isActionDistructive: Bool = false,
-        isSheetPresented: Binding<Bool>,
-        @ViewBuilder sheetContent: @escaping () -> SheetContent
+        isActionDistructive: Bool = false
     ) {
         self.icon = icon
         self.title = title
         self.isActionDistructive = false
         self.tapAction = tapAction
-        self.isSheetPresented = isSheetPresented
-        self.sheetContent = sheetContent
     }
     
     var body: some View {
@@ -59,10 +52,6 @@ struct MoreActionRowComponent<SheetContent: View>: View {
             Spacer()
         }
         .padding(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
-        .sheet(
-            isPresented: isSheetPresented,
-            content: sheetContent
-        )
     }
 }
 
@@ -71,11 +60,8 @@ struct MoreActionRowComponent_Previews: PreviewProvider {
         MoreActionRowComponent(
             icon: Image(systemName: "number.square"),
             title: "Edit Goal",
-            tapAction: {},
-            isSheetPresented: .constant(false)
-        ) {
-            Text("sheet content")
-        }
+            tapAction: {}
+        )
         .previewLayout(.fixed(width: 320, height: 40))
     }
 }

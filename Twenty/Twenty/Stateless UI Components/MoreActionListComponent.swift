@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MoreActionListComponent: View {
-    let rows: [MoreActionRowComponent<AnyView>]
+    let rows: [MoreActionRowComponent]
     let rowHeight: CGFloat = 56
     
     var body: some View {
@@ -29,22 +29,14 @@ struct MoreActionListComponent_Previews: PreviewProvider {
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Add Time",
-                    tapAction: {},
-                    isActionDistructive: false,
-                    isSheetPresented: .constant(false)
-                ) {
-                    AnyView(Text("Adding time placeholder"))
-                },
-                
+                    tapAction: {}
+                ),
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Edit Goal",
                     tapAction: {},
-                    isActionDistructive: false,
-                    isSheetPresented: .constant(false)
-                ) {
-                    AnyView(Text("Editing goal placeholder"))
-                },
+                    isActionDistructive: false
+                )
             ]
         )
     }
