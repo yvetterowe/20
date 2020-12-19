@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AddTimeComponent: View {
-    let currentTime: Date
+    let dateInterval: DateInterval
     let editStartTimeAction: () -> Void
     let editEndTimeAction: () -> Void
     
@@ -19,12 +19,12 @@ struct AddTimeComponent: View {
             List {
                 EditTimeRowComponent(
                     title: "Start at",
-                    buttonTitle: currentTime.timeFormat(),
+                    buttonTitle: dateInterval.start.timeFormat(),
                     buttonAction: editStartTimeAction
                 )
                 EditTimeRowComponent(
                     title: "End at",
-                    buttonTitle: currentTime.timeFormat(),
+                    buttonTitle: dateInterval.end.timeFormat(),
                     buttonAction: editEndTimeAction
                 )
             }
@@ -34,6 +34,6 @@ struct AddTimeComponent: View {
 
 struct AddTimeComponent_Previews: PreviewProvider {
     static var previews: some View {
-        AddTimeComponent(currentTime: .init(), editStartTimeAction: {}, editEndTimeAction: {})
+        AddTimeComponent(dateInterval: .init(), editStartTimeAction: {}, editEndTimeAction: {})
     }
 }

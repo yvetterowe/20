@@ -60,6 +60,7 @@
 		E7C72B1F2583544E00A3E0EC /* StatefulUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C72B1E2583544E00A3E0EC /* StatefulUserProfileView.swift */; };
 		E7C72B232589CA7E00A3E0EC /* AddTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C72B222589CA7E00A3E0EC /* AddTimeComponent.swift */; };
 		E7C72B272589CAAE00A3E0EC /* EditTimeRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C72B262589CAAE00A3E0EC /* EditTimeRowComponent.swift */; };
+		E7C72B312589DAAC00A3E0EC /* StatefulAddTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C72B302589DAAC00A3E0EC /* StatefulAddTimeView.swift */; };
 		E7CE50C9257F19F3001F5656 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50C8257F19F3001F5656 /* AuthenticationService.swift */; };
 		E7CE50CD257F1ABE001F5656 /* FirebaseAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50CC257F1ABE001F5656 /* FirebaseAuthenticationService.swift */; };
 		E7CE50D3257F1DC6001F5656 /* AuthenticationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CE50D2257F1DC6001F5656 /* AuthenticationStore.swift */; };
@@ -167,6 +168,7 @@
 		E7C72B1E2583544E00A3E0EC /* StatefulUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulUserProfileView.swift; sourceTree = "<group>"; };
 		E7C72B222589CA7E00A3E0EC /* AddTimeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeComponent.swift; sourceTree = "<group>"; };
 		E7C72B262589CAAE00A3E0EC /* EditTimeRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimeRowComponent.swift; sourceTree = "<group>"; };
+		E7C72B302589DAAC00A3E0EC /* StatefulAddTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulAddTimeView.swift; sourceTree = "<group>"; };
 		E7CE50C8257F19F3001F5656 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		E7CE50CC257F1ABE001F5656 /* FirebaseAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationService.swift; sourceTree = "<group>"; };
 		E7CE50D2257F1DC6001F5656 /* AuthenticationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationStore.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
 				E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */,
+				E7C72B302589DAAC00A3E0EC /* StatefulAddTimeView.swift */,
 				E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */,
 				E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */,
 				E7F727E8251632C300F62832 /* StatefulCalendarListView.swift */,
@@ -704,6 +707,7 @@
 				E7C4102D2506840000DBB926 /* GoalSummarySectionComponent.swift in Sources */,
 				E739A0702509D622001A4940 /* MockData.swift in Sources */,
 				E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */,
+				E7C72B312589DAAC00A3E0EC /* StatefulAddTimeView.swift in Sources */,
 				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
 				E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */,
 				E7B95F9D251C43F800BC90BD /* BottomSheetHeaderComponent.swift in Sources */,

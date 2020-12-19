@@ -63,3 +63,8 @@ final class NoOpAuthService: AuthenticationService {
     func signIn(email: String, password: String) {}
     func signOut() {}
 }
+
+final class NoOpAddTimeViewWriter: AddTimeViewWriter {
+    func cancel() {}
+    func save(_ newRecord: TrackRecord) {}
+}

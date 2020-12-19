@@ -120,7 +120,7 @@ struct StatefulMoreActionListView: View {
         .sheet(item: $activeSheet, content: { activeSheet in
             switch activeSheet {
             case .addTime:
-                Text("Adding time placeholder")
+                StatefulAddTimeView(viewWriter: NoOpAddTimeViewWriter(), initialDateInterval: .init())
             case .editGoal:
                 let viewStore = EditGoalStore(
                     goalPublisher: context.goalPublisher,
