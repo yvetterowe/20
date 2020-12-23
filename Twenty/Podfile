@@ -2,6 +2,7 @@ platform :ios, '13.0'
 
 target 'Twenty' do
     pod 'CalendarKit', :git => 'https://github.com/yvetterowe/CalendarKit.git', :branch => '20'
+    pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
     pod 'Firebase/Auth'
     pod 'FirebaseFirestoreSwift', :modular_headers => true
     pod 'FirebaseFirestore', :modular_headers => true

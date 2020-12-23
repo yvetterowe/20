@@ -51,7 +51,6 @@ struct MoreActionRowComponent: View {
                 .foregroundColor(isActionDistructive ? ColorManager.Pink : ColorManager.Blue)
             Spacer()
         }
-        .padding(.init(top: 8, leading: 12, bottom: 8, trailing: 12))
     }
 }
 

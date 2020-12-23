@@ -13,7 +13,7 @@ struct OnboardingTitleLabelComponent: View {
     
     var body: some View {
         Text(title)
-            .font(.title)
+            .font(Font.custom("VarelaRound-Regular", size: 40))            
     }
 }
 

@@ -223,6 +223,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
+  - BottomSheet (1.0.5)
   - CalendarKit (0.12.3):
     - DateToolsSwift
   - DateToolsSwift (5.0.0)
@@ -331,6 +332,7 @@ PODS:
   - PromisesObjC (1.2.10)
 
 DEPENDENCIES:
+  - BottomSheet (from `https://github.com/weitieda/bottom-sheet.git`)
   - CalendarKit (from `https://github.com/yvetterowe/CalendarKit.git`, branch `20`)
   - FBSDKCoreKit (= 5.8.0)
   - FBSDKLoginKit (= 5.8.0)
@@ -365,11 +367,16 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  BottomSheet:
+    :git: https://github.com/weitieda/bottom-sheet.git
   CalendarKit:
     :branch: '20'
     :git: https://github.com/yvetterowe/CalendarKit.git
 
 CHECKOUT OPTIONS:
+  BottomSheet:
+    :commit: f2cd6acd19e1cdcbf25e34b92ca1ee7081f7a13c
+    :git: https://github.com/weitieda/bottom-sheet.git
   CalendarKit:
     :commit: eab0324c385ed31a09dcf5d165ffa42ff68bf5c3
     :git: https://github.com/yvetterowe/CalendarKit.git
@@ -378,6 +385,7 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
+  BottomSheet: ef1e03a999a7ab82b0bc82c0fd2a6a1f43ebc90b
   CalendarKit: 735d58d18db54a75090d76cad131385235db18e0
   DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
   FBSDKCoreKit: e7dcac0aabcfb09d0166998edd95fe3b05a0ce5d
@@ -399,6 +407,6 @@ SPEC CHECKSUMS:
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
 
-PODFILE CHECKSUM: 3a2f976e8951ba543170bfbea4071fe65afb9c43
+PODFILE CHECKSUM: 543eaadb2864d615f33e90e2cf5b2a709df4adb7
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

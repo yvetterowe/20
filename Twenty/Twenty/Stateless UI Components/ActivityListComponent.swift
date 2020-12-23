@@ -35,7 +35,12 @@ struct ActivityListComponent: View {
     var body: some View {
         List {
             ForEach(model.sortedRecordsByMonth.filter{!$0.isEmpty}, id: \.self) { recordsInMonth in
-                Section(header: Text("\(recordsInMonth.first!.start.format(with: "MMM yyyy"))")) {
+                Section(header:
+                            Text("\(recordsInMonth.first!.start.format(with: "MMM yyyy"))")
+                            .font(Font.custom("VarelaRound-Regular", size: 14))
+                            .foregroundColor(ColorManager.MidGray)
+                )
+                {
                     ForEach(recordsInMonth, id: \.self) { record in
                         ActivityRowComponent(recordTime: record)
                     }

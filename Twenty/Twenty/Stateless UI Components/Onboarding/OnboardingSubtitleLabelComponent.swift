@@ -11,7 +11,8 @@ import SwiftUI
 struct OnboardingSubtitleLabelComponent: View {
     let subtitle: String
     var body: some View {
-        Text(subtitle).font(.subheadline)
+        Text(subtitle)
+            .font(Font.custom("VarelaRound-Regular", size: 16))
     }
 }
 

@@ -14,11 +14,12 @@ struct OnboardingTextFieldComponent: View {
     
     var body: some View {
         TextField(placeholder, text: text)
+            .font(Font.custom("VarelaRound-Regular", size: 18))
     }
 }
 
 struct OnboardingTextFieldComponent_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingTextFieldComponent(placeholder: "Username", text: .constant("helloworld"))
+        OnboardingTextFieldComponent(placeholder: "Username", text: .constant("Name"))
     }
 }
