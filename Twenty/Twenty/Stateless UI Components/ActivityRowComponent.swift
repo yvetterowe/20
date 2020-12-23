@@ -14,9 +14,17 @@ struct ActivityRowComponent: View {
     var body: some View {
         HStack {
             Text(recordTime.duration.format(showSecond: false))
+                .font(Font.custom("VarelaRound-Regular", size: 18))
+                .foregroundColor(ColorManager.MidGray)
+            
             Spacer()
             Text(recordTime.start.formatString())
+                .font(Font.custom("VarelaRound-Regular", size: 18))
+                .foregroundColor(ColorManager.MidGray)
+            
         }
+        .padding(.top, 16)
+        .padding(.bottom, 16)
     }
 }
 
@@ -25,6 +33,7 @@ private extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
+        dateFormatter.dateFormat="MMM dd HH:mm"
         return dateFormatter.string(from: self)
     }
 }

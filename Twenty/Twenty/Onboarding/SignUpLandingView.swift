@@ -30,6 +30,7 @@ struct SignUpLandingView: View {
                 
                 HStack {
                     OnboardingSubtitleLabelComponent(subtitle: "Already have an account?")
+                    Spacer()
                     NavigationLink(
                         destination: EmailSignInView(store: .init(authService: authService)),
                         isActive: $signInButtonTapped

@@ -16,9 +16,15 @@ struct EditTimeRowComponent: View {
     var body: some View {
         HStack {
             Text(title)
+                .foregroundColor(ColorManager.MidGray)
             Spacer()
             Button(buttonTitle, action: buttonAction)
+                .foregroundColor(ColorManager.Blue)
+                
         }
+        .font(Font.custom("VarelaRound-Regular", size: 18))
+        .padding(.top, 16)
+        .padding(.bottom, 16)
     }
 }
 
