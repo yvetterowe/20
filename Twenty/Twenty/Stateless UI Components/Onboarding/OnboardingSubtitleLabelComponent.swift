@@ -13,6 +13,8 @@ struct OnboardingSubtitleLabelComponent: View {
     var body: some View {
         Text(subtitle)
             .font(Font.custom("VarelaRound-Regular", size: 16))
+            .frame(maxWidth: .infinity, alignment:.leading)
+            .foregroundColor(ColorManager.White)
     }
 }
 
