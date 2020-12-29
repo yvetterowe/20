@@ -31,6 +31,7 @@ struct EmailSignUpView: View {
     var body: some View {
         VStack {
             OnboardingTitleLabelComponent(title: "Let's get started")
+            Spacer()
             OnboardingTextFieldComponent(placeholder: "First name", text: $firstName)
             OnboardingTextFieldComponent(placeholder: "Last name", text: $lastName)
             OnboardingTextFieldComponent(placeholder: "Email", text: $email)
@@ -44,6 +45,9 @@ struct EmailSignUpView: View {
                 )
             }
         }
+        .padding(20)
+        .background(ColorManager.Blue)
+        .ignoresSafeArea(.all)
     }
 }
 

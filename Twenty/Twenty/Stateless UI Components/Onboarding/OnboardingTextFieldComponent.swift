@@ -11,10 +11,19 @@ import SwiftUI
 struct OnboardingTextFieldComponent: View {
     let placeholder: String
     let text: Binding<String>
+    @State private var isEditing = false
     
     var body: some View {
         TextField(placeholder, text: text)
-            .font(Font.custom("VarelaRound-Regular", size: 18))
+        { isEditing in
+                self.isEditing = isEditing
+            }
+        .foregroundColor(isEditing ? ColorManager.White : ColorManager.MidGray)
+        .font(Font.custom("VarelaRound-Regular", size: 18))
+        .frame(height: 56, alignment: .leading)
+        .textFieldStyle(RoundedBorderTextFieldStyle())
+        
+        
     }
 }
 

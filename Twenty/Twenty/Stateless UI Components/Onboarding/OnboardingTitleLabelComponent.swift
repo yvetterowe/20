@@ -13,7 +13,9 @@ struct OnboardingTitleLabelComponent: View {
     
     var body: some View {
         Text(title)
-            .font(Font.custom("VarelaRound-Regular", size: 40))            
+            .font(Font.custom("VarelaRound-Regular", size: 40))
+            .frame(maxWidth: .infinity, alignment:.leading)
+            .foregroundColor(ColorManager.White)
     }
 }
 

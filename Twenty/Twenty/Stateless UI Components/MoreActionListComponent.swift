@@ -12,14 +12,19 @@ struct MoreActionListComponent: View {
     let rows: [MoreActionRowComponent]
     let rowHeight: CGFloat = 56
     
+    
     var body: some View {
-        List(0..<rows.count) { rowIndex in
-            Button(action: rows[rowIndex].tapAction) {
-                rows[rowIndex]
+        NavigationView{
+            List(0..<rows.count) { rowIndex in
+                Button(action: rows[rowIndex].tapAction) {
+                    rows[rowIndex]
+                }
+                .frame(height: rowHeight)
             }
-            .frame(height: rowHeight)
+            .navigationBarTitle("Actions")
         }
-    }
+        }
+        
 }
 
 struct MoreActionListComponent_Previews: PreviewProvider {
@@ -29,15 +34,30 @@ struct MoreActionListComponent_Previews: PreviewProvider {
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Add Time",
-                    tapAction: {}
+                    tapAction: {},
+                    isActionDistructive: false
                 ),
                 .init(
                     icon: Image(systemName: "number.square"),
                     title: "Edit Goal",
                     tapAction: {},
                     isActionDistructive: false
+                ),
+                .init(
+                    icon: Image(systemName: "number.square"),
+                    title: "View actvities",
+                    tapAction: {},
+                    isActionDistructive: false
+                ),
+                .init(
+                    icon: Image(systemName: "number.square"),
+                    title: "Delete Goal",
+                    tapAction: {},
+                    isActionDistructive: true
                 )
             ]
         )
+        
     }
+
 }

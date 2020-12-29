@@ -59,7 +59,8 @@ struct MoreActionRowComponent_Previews: PreviewProvider {
         MoreActionRowComponent(
             icon: Image(systemName: "number.square"),
             title: "Edit Goal",
-            tapAction: {}
+            tapAction: {},
+            isActionDistructive: false
         )
         .previewLayout(.fixed(width: 320, height: 40))
     }

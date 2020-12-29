@@ -19,6 +19,7 @@ struct SignUpLandingView: View {
             VStack {
                 OnboardingTitleLabelComponent(title: "Learn Something new in 20hrs")
                 OnboardingSubtitleLabelComponent(subtitle: "Research shows...")
+                Spacer()
                 NavigationLink(
                     destination: EmailSignUpView(store: .init(authService: authService)),
                     isActive: $signUpButtonTapped
@@ -27,10 +28,9 @@ struct SignUpLandingView: View {
                         signUpButtonTapped = true
                     }
                 }
-                
+                Spacer()
                 HStack {
                     OnboardingSubtitleLabelComponent(subtitle: "Already have an account?")
-                    Spacer()
                     NavigationLink(
                         destination: EmailSignInView(store: .init(authService: authService)),
                         isActive: $signInButtonTapped
@@ -41,6 +41,11 @@ struct SignUpLandingView: View {
                     }
                 }
             }
+            .padding(20)
+            .background(ColorManager.Blue)
+            .ignoresSafeArea(.all)
+            
+
         }
     }
 }
