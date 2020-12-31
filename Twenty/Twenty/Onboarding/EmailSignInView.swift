@@ -40,6 +40,9 @@ struct EmailSignInView: View {
                 )
             }
         }
+        .padding(20)
+        .background(ColorManager.Blue)
+        .ignoresSafeArea(.all)
     }
 }
 
