@@ -27,7 +27,6 @@ extension View {
 struct GoalSummarySectionComponent: View {
     let title: String
     let buttonAction: () -> Void
-    @State var showDetail = false
     
     var body: some View {
         HStack {
@@ -36,13 +35,9 @@ struct GoalSummarySectionComponent: View {
                 .foregroundColor(ColorManager.DarkGray)
             Spacer()
             
-            Button(action: {
-                self.showDetail.toggle()
-            }) {
+            Button(action: buttonAction, label: {
                 Image("more-horizontal")
-            }.sheet(isPresented: $showDetail) {
-                List(20..<40) { Text("\($0)") }
-            }
+            })
         }
         .padding(.init(top: 4, leading: 20, bottom: 4, trailing: 20))
     }
