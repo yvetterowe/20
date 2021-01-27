@@ -29,6 +29,7 @@
 		E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */; };
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
 		E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687F24F5FA8E005DC050 /* ImageModel.swift */; };
+		E768C42725C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
 		E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054C247F495D0066C687 /* AppDelegate.swift */; };
 		E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054E247F495D0066C687 /* SceneDelegate.swift */; };
@@ -133,6 +134,7 @@
 		E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewHeader.swift; sourceTree = "<group>"; };
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
 		E73E687F24F5FA8E005DC050 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateGoalTitleLabelComponent.swift; sourceTree = "<group>"; };
 		E77A51292484130C009243CC /* GoalStoreWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreWriter.swift; sourceTree = "<group>"; };
 		E78F0549247F495D0066C687 /* Twenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78F054C247F495D0066C687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */,
+				E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */,
 				E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */,
 				E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */,
 			);
@@ -720,6 +723,7 @@
 				73544F672496F8170038914D /* ViewController.swift in Sources */,
 				73B7E98E249873C00061D923 /* Utilities.swift in Sources */,
 				E78F059324809CB90066C687 /* StatefulDayView.swift in Sources */,
+				E768C42725C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift in Sources */,
 				E739A0B1250EAECC001A4940 /* EditSheetComponent.swift in Sources */,
 				E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */,
 				E739A0B3250EB11F001A4940 /* StatefulEditGoalView.swift in Sources */,
