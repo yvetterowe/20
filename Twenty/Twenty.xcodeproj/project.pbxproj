@@ -30,6 +30,7 @@
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
 		E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687F24F5FA8E005DC050 /* ImageModel.swift */; };
 		E768C42725C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */; };
+		E768C42B25C1104100E858DE /* TextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42A25C1104100E858DE /* TextFieldComponent.swift */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
 		E78F054D247F495D0066C687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054C247F495D0066C687 /* AppDelegate.swift */; };
 		E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F054E247F495D0066C687 /* SceneDelegate.swift */; };
@@ -135,6 +136,7 @@
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
 		E73E687F24F5FA8E005DC050 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateGoalTitleLabelComponent.swift; sourceTree = "<group>"; };
+		E768C42A25C1104100E858DE /* TextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldComponent.swift; sourceTree = "<group>"; };
 		E77A51292484130C009243CC /* GoalStoreWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreWriter.swift; sourceTree = "<group>"; };
 		E78F0549247F495D0066C687 /* Twenty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twenty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78F054C247F495D0066C687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */,
 				E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */,
 				E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */,
+				E768C42A25C1104100E858DE /* TextFieldComponent.swift */,
 				E739A0B0250EAECC001A4940 /* EditSheetComponent.swift */,
 				E7F727DC2510579100F62832 /* ActivityRowComponent.swift */,
 				E7F727DE25105A7700F62832 /* ActivityListComponent.swift */,
@@ -684,6 +687,7 @@
 				E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E7CE50D3257F1DC6001F5656 /* AuthenticationStore.swift in Sources */,
+				E768C42B25C1104100E858DE /* TextFieldComponent.swift in Sources */,
 				E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */,
 				E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */,
 				E7C72B232589CA7E00A3E0EC /* AddTimeComponent.swift in Sources */,
