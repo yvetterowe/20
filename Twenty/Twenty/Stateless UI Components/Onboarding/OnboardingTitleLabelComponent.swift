@@ -21,6 +21,10 @@ struct OnboardingTitleLabelComponent: View {
 
 struct OnboardingTitleLabelComponent_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingTitleLabelComponent(title: "Let's get started")
+        ZStack{
+            ColorManager.Blue.edgesIgnoringSafeArea(.all)
+            OnboardingTitleLabelComponent(title: "Let's get started")
+        }
+        
     }
 }

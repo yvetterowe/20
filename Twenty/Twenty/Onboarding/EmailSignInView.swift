@@ -30,8 +30,8 @@ struct EmailSignInView: View {
     var body: some View {
         VStack {
             OnboardingTitleLabelComponent(title: "Welcome back")
-            OnboardingTextFieldComponent(placeholder: "Email address", text: $email)
-            OnboardingTextFieldComponent(placeholder: "Password", text: $password)
+            OnboardingTextFieldComponent(label: "Email address", text: $email, image: "edit")
+            OnboardingTextFieldComponent(label: "Password", text: $password, image: "edit")
             Text("Forgot your password?")
             Button("Log in") {
                 store.signInButtonTapped(

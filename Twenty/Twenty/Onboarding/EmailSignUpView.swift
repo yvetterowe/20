@@ -29,25 +29,29 @@ struct EmailSignUpView: View {
     let store: EmailSignUpStore
     
     var body: some View {
-        VStack {
-            OnboardingTitleLabelComponent(title: "Let's get started")
-            Spacer()
-            OnboardingTextFieldComponent(placeholder: "First name", text: $firstName)
-            OnboardingTextFieldComponent(placeholder: "Last name", text: $lastName)
-            OnboardingTextFieldComponent(placeholder: "Email", text: $email)
-            OnboardingTextFieldComponent(placeholder: "Password (8+ characters)", text: $password)
-            Button("Sign up") {
-                store.signUpButtonTapped(
-                    email: email.trimmingCharacters(in: .whitespacesAndNewlines),
-                    password: password.trimmingCharacters(in: .whitespacesAndNewlines),
-                    firstName: firstName.trimmingCharacters(in: .whitespacesAndNewlines),
-                    lastName: lastName.trimmingCharacters(in: .whitespacesAndNewlines)
-                )
-            }
+        ZStack(alignment: .topLeading){
+            ColorManager.Blue.edgesIgnoringSafeArea(.all)
+            VStack {
+                    OnboardingTitleLabelComponent(title: "Let's get start")
+                OnboardingTextFieldComponent(label: "First name", text: $firstName)
+                    OnboardingTextFieldComponent(label: "Last name", text: $lastName)
+                    OnboardingTextFieldComponent(label : "Email", text: $email)
+                    OnboardingTextFieldComponent(label: "Password (8+ characters)", text: $password, image: "edit")
+                Spacer()
+                Button("Sign Up") {
+                    store.signUpButtonTapped(
+                        email: email.trimmingCharacters(in: .whitespacesAndNewlines),
+                        password: password.trimmingCharacters(in: .whitespacesAndNewlines),
+                        firstName: firstName.trimmingCharacters(in: .whitespacesAndNewlines),
+                        lastName: lastName.trimmingCharacters(in: .whitespacesAndNewlines)
+                    )
+                }
+                .buttonStyle(PrimaryTextButtonStyle())
+                
+            }.padding(20)
         }
-        .padding(20)
-        .background(ColorManager.Blue)
-        .ignoresSafeArea(.all)
+        
+
     }
 }
 
