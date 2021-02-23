@@ -13,7 +13,7 @@ struct OnboardingTitleLabelComponent: View {
     
     var body: some View {
         Text(title)
-            .font(Font.custom("VarelaRound-Regular", size: 40))
+            .font(Font.custom("VarelaRound-Regular", size: 32))
             .frame(maxWidth: .infinity, alignment:.leading)
             .foregroundColor(ColorManager.White)
     }
@@ -21,6 +21,10 @@ struct OnboardingTitleLabelComponent: View {
 
 struct OnboardingTitleLabelComponent_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingTitleLabelComponent(title: "Let's get started")
+        ZStack{
+            ColorManager.Blue.edgesIgnoringSafeArea(.all)
+            OnboardingTitleLabelComponent(title: "Let's get started")
+        }
+        
     }
 }

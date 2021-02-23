@@ -28,21 +28,24 @@ struct EmailSignInView: View {
     let store: EmailSignInStore
     
     var body: some View {
-        VStack {
-            OnboardingTitleLabelComponent(title: "Welcome back")
-            OnboardingTextFieldComponent(placeholder: "Email address", text: $email)
-            OnboardingTextFieldComponent(placeholder: "Password", text: $password)
-            Text("Forgot your password?")
-            Button("Log in") {
-                store.signInButtonTapped(
-                    email: email.trimmingCharacters(in: .whitespacesAndNewlines),
-                    password: password.trimmingCharacters(in: .whitespacesAndNewlines)
-                )
+        ZStack(alignment: .topLeading){
+            ColorManager.Blue.edgesIgnoringSafeArea(.all)
+            VStack{
+                OnboardingTitleLabelComponent(title: "Welcome back")
+                OnboardingTextFieldComponent(label: "Email address", text: $email, image: "edit")
+                OnboardingTextFieldComponent(label: "Password", text: $password, image: "edit")
+                Text("Forgot your password?")
+                Button("Log in") {
+                    store.signInButtonTapped(
+                        email: email.trimmingCharacters(in: .whitespacesAndNewlines),
+                        password: password.trimmingCharacters(in: .whitespacesAndNewlines)
+                    )
+                }
+                .buttonStyle(PrimaryTextButtonStyle())
             }
+            .padding(20)
         }
-        .padding(20)
-        .background(ColorManager.Blue)
-        .ignoresSafeArea(.all)
+
     }
 }
 
