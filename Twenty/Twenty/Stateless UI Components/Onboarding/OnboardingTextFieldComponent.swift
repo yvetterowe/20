@@ -41,6 +41,7 @@ struct OnboardingTextFieldComponent: View {
                     .font(Font.custom("VarelaRound-Regular", size: 18))
                     .foregroundColor(Color.White)
                     .opacity(0.5)
+
                 HStack{
                     TextField(
                         "",
