@@ -11,21 +11,9 @@ struct InputFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<_Label>) -> some View {
         configuration
             .font(Font.custom("VarelaRound-Regular", size: 18))
+            .foregroundColor(.white)
             .frame(maxHeight: 56)
     }
-}
-
-//add bottom border
-extension UITextField {
-  func useUnderline() -> Void {
-    let border = CALayer()
-    let borderWidth = CGFloat(2.0) // Border Width
-    border.borderColor = UIColor.red.cgColor
-    border.frame = CGRect(origin: CGPoint(x: 0,y :self.frame.size.height - borderWidth), size: CGSize(width: self.frame.size.width, height: self.frame.size.height))
-    border.borderWidth = borderWidth
-    self.layer.addSublayer(border)
-    self.layer.masksToBounds = true
-  }
 }
 
 
@@ -37,17 +25,19 @@ struct OnboardingTextFieldComponent: View {
     
     var body: some View {
         ZStack(alignment: .leading){
+            if text.wrappedValue == "" {
                 Text(label)
                     .font(Font.custom("VarelaRound-Regular", size: 18))
                     .foregroundColor(Color.White)
                     .opacity(0.5)
+            }
 
                 HStack{
                     TextField(
                         "",
                         text: text,
-                        onEditingChanged: { _ in print("changed") },
-                        onCommit: { print("commit") }
+                        onEditingChanged: { _ in isEditing = true },
+                        onCommit: {   isEditing = false }
                     )
                     .textFieldStyle(InputFieldStyle())
                     
@@ -61,8 +51,14 @@ struct OnboardingTextFieldComponent: View {
 
                 }
         }
-        Divider()
-            .background(Color.white).opacity(0.5)
+        if isEditing {
+            Divider()
+                .background(Color.red).opacity(1)
+        }else{
+            Divider()
+                .background(Color.white).opacity(0.5)
+        }
+        
     }
 }
 
