@@ -20,6 +20,7 @@ struct ColorManager {
     static let DarkGray = Color("DarkGray")
     static let MidGray = Color("MidGray")
     static let LightGray = Color("LightGray")
+    static let LightPink = Color("LightPink")
     static let UltraLightGray = Color("UltraLightGray")
     
 
@@ -38,6 +39,7 @@ extension Color {
     static let DarkGray = Color("DarkGray")
     static let MidGray = Color("MidGray")
     static let LightGray = Color("LightGray")
+    static let LightPink = Color("LightPink")
     static let UltraLightGray = Color("UltraLightGray")
     // ... add the rest of your colors here
 }

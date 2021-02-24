@@ -20,16 +20,16 @@ struct SignUpLandingView: View {
                 ColorManager.Blue.edgesIgnoringSafeArea(.all)
                 VStack{
                     VStack(alignment: .leading, spacing: 20){
-                        Text("TWENTY").foregroundColor(Color.White)
-                        OnboardingTitleLabelComponent(title: "Learn something new in 20hrs")
-                        OnboardingSubtitleLabelComponent(subtitle: "That learning curve differs immensely between various skills but Kauffman found that most skills can be acquired, at least at a basic level of proficiency, within just 20 hours. Just 20 hours of deliberate, focused practise is all you really need to build basic proficiency in any new skill.")
+                        Text("TWENTY").bodyText()
+                        Text("Learn something new in 20hrs").headerText()
+                        Text("That learning curve differs immensely between various skills but Kauffman found that most skills can be acquired, at least at a basic level of proficiency, within just 20 hours. Just 20 hours of deliberate, focused practise is all you really need to build basic proficiency in any new skill.").bodyText()
                     }
                     Spacer()
                     
-                    NavigationLink(
-                        destination: EmailSignUpView(store: .init(authService: authService)),
-                        isActive: $signUpButtonTapped
-                    ){
+                        NavigationLink(
+                            destination: EmailSignUpView(store: .init(authService: authService)),
+                            isActive: $signUpButtonTapped
+                        ){
                         Button("Sign Up") {
                             signUpButtonTapped = true
                         }
@@ -40,7 +40,7 @@ struct SignUpLandingView: View {
                     Spacer()
                     
                     HStack {
-                        OnboardingSubtitleLabelComponent(subtitle: "Already have an account?")
+                        Text("Already have an account?").helperText()
                         NavigationLink(
                             destination: EmailSignInView(store: .init(authService: authService)),
                             isActive: $signInButtonTapped
@@ -48,7 +48,7 @@ struct SignUpLandingView: View {
                             Button("Sign in") {
                                 signInButtonTapped = true
                             }
-                            .foregroundColor(ColorManager.Pink)
+                            .foregroundColor(Color.LightPink)
                             
                         }
                     }

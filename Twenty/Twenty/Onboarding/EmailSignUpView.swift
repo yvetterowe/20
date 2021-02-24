@@ -25,6 +25,9 @@ struct EmailSignUpView: View {
     @State private var lastName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var errorMessage: String = ""
+
+
     
     let store: EmailSignUpStore
     
@@ -32,12 +35,18 @@ struct EmailSignUpView: View {
         ZStack(alignment: .topLeading){
             ColorManager.Blue.edgesIgnoringSafeArea(.all)
             VStack {
-                    OnboardingTitleLabelComponent(title: "Let's get start")
-                OnboardingTextFieldComponent(label: "First name", text: $firstName)
+
+                Text("Let's get start").headerText()
+                VStack(alignment: .leading){
+                    OnboardingTextFieldComponent(label: "First name", text: $firstName)
                     OnboardingTextFieldComponent(label: "Last name", text: $lastName)
                     OnboardingTextFieldComponent(label : "Email", text: $email)
                     OnboardingTextFieldComponent(label: "Password (8+ characters)", text: $password, image: "edit")
-                Spacer()
+                    if errorMessage != "" {
+                        Text(errorMessage).errorText()
+                    }
+                }
+
                 Button("Sign Up") {
                     store.signUpButtonTapped(
                         email: email.trimmingCharacters(in: .whitespacesAndNewlines),
@@ -48,7 +57,17 @@ struct EmailSignUpView: View {
                 }
                 .buttonStyle(PrimaryTextButtonStyle())
                 
+                VStack{
+                    Text("By continuing, you agree to Twenty’s ").helperText()
+                    Link("Terms & Conditions",
+                         destination: URL(string: "https://www.example.com/TOS.html")!).foregroundColor(ColorManager.LightPink)
+                    Text(" and ").helperText()
+                    Link("Privacy Policy",
+                         destination: URL(string: "https://www.example.com/TOS.html")!)
+                        .foregroundColor(ColorManager.LightPink)
+                }
             }.padding(20)
+            
         }
         
 

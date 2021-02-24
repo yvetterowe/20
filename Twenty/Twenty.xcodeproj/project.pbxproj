@@ -17,6 +17,9 @@
 		7372079625E3134300206DC3 /* PrimaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7372079525E3134300206DC3 /* PrimaryTextButton.swift */; };
 		739C10E62497346D003B9B15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C10E52497346D003B9B15 /* Constants.swift */; };
 		73B7E98E249873C00061D923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E98D249873BF0061D923 /* Utilities.swift */; };
+		73E8583A25E6164C008A305F /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E8583925E6164C008A305F /* TextStyles.swift */; };
+		73E8584625E62759008A305F /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E8584525E62759008A305F /* TermsView.swift */; };
+		73E8584A25E628B0008A305F /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E8584925E628B0008A305F /* PrivacyView.swift */; };
 		73F20740250EE92600B1673B /* VarelaRound-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */; };
 		E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */; };
 		E739A06E2509D598001A4940 /* NoOpMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06D2509D598001A4940 /* NoOpMocks.swift */; };
@@ -120,6 +123,9 @@
 		7372079525E3134300206DC3 /* PrimaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextButton.swift; sourceTree = "<group>"; };
 		739C10E52497346D003B9B15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		73B7E98D249873BF0061D923 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		73E8583925E6164C008A305F /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		73E8584525E62759008A305F /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
+		73E8584925E628B0008A305F /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		73F2073F250EE92600B1673B /* VarelaRound-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "VarelaRound-Regular.ttf"; path = "Assets/VarelaRound-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		889D85D83787130A2704596A /* Pods-Twenty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twenty.debug.xcconfig"; path = "Target Support Files/Pods-Twenty/Pods-Twenty.debug.xcconfig"; sourceTree = "<group>"; };
 		8F718BB692FA2755032BE0AF /* Pods-TwentyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwentyTests.debug.xcconfig"; path = "Target Support Files/Pods-TwentyTests/Pods-TwentyTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +249,8 @@
 				73544F632495F0CF0038914D /* HomeWrapperView.swift */,
 				73544F662496F8170038914D /* ViewController.swift */,
 				735D5BBB24A0571000AFD70E /* UserViewController.swift */,
+				73E8584525E62759008A305F /* TermsView.swift */,
+				73E8584925E628B0008A305F /* PrivacyView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -254,6 +262,14 @@
 				739C10E52497346D003B9B15 /* Constants.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		73E8583825E6158C008A305F /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				73E8583925E6164C008A305F /* TextStyles.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		DBABA955D96A1FAC323980DE /* Pods */ = {
@@ -396,6 +412,7 @@
 		E7C410292506806800DBB926 /* Stateless UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				73E8583825E6158C008A305F /* Styles */,
 				E7F389522565F31900A15A60 /* Onboarding */,
 				E7C4102A2506829E00DBB926 /* DayViewHeaderComponent.swift */,
 				E7C4102C2506840000DBB926 /* GoalSummarySectionComponent.swift */,
@@ -671,10 +688,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73E8583A25E6164C008A305F /* TextStyles.swift in Sources */,
 				E7C72B1A2583538300A3E0EC /* UserProfileComponent.swift in Sources */,
 				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
 				E7B95F9B251C32FC00BC90BD /* BottomSheetComponent.swift in Sources */,
 				E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */,
+				73E8584A25E628B0008A305F /* PrivacyView.swift in Sources */,
 				E7F727DD2510579100F62832 /* ActivityRowComponent.swift in Sources */,
 				E7CE50CD257F1ABE001F5656 /* FirebaseAuthenticationService.swift in Sources */,
 				E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */,
@@ -694,6 +713,7 @@
 				E7F389582565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift in Sources */,
 				E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */,
 				735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */,
+				73E8584625E62759008A305F /* TermsView.swift in Sources */,
 				E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */,
 				E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
