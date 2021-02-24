@@ -14,8 +14,8 @@ struct OnboardingSubtitleLabelComponent: View {
         Text(subtitle)
             .font(.custom("VarelaRound-Regular", size: 18))
             .multilineTextAlignment(.leading)
-            .foregroundColor(ColorManager.White)
-            .lineSpacing(12)
+            .foregroundColor(ColorManager.White).opacity(0.6)
+            .lineSpacing(4)
             
 
     }

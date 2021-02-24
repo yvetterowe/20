@@ -18,8 +18,10 @@ struct PrimaryTextButtonStyle: ButtonStyle {
                     .fill(Color.White)
                     .frame(width: UIScreen.main.bounds.width - 40, height: 56)
                     .padding(.all, 20)
-                    
             )
+            .frame(maxWidth:.infinity, maxHeight: 56)
+            .padding(20)
+            
     }
 }
 

@@ -36,8 +36,7 @@ struct OnboardingTextFieldComponent: View {
                     TextField(
                         "",
                         text: text,
-                        onEditingChanged: { _ in isEditing = true },
-                        onCommit: {   isEditing = false }
+                        onEditingChanged: {isEditing in self.isEditing = isEditing}
                     )
                     .textFieldStyle(InputFieldStyle())
                     
@@ -51,13 +50,7 @@ struct OnboardingTextFieldComponent: View {
 
                 }
         }
-        if isEditing {
-            Divider()
-                .background(Color.red).opacity(1)
-        }else{
-            Divider()
-                .background(Color.white).opacity(0.5)
-        }
+        Divider().frame(height: 1.0).background(Color.White).opacity(isEditing ? 1.0 : 0.2)
         
     }
 }

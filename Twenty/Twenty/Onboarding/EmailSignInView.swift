@@ -31,10 +31,10 @@ struct EmailSignInView: View {
         ZStack(alignment: .topLeading){
             ColorManager.Blue.edgesIgnoringSafeArea(.all)
             VStack{
-                OnboardingTitleLabelComponent(title: "Welcome back")
+                Text("Welcome back").headerText()
                 OnboardingTextFieldComponent(label: "Email address", text: $email, image: "edit")
                 OnboardingTextFieldComponent(label: "Password", text: $password, image: "edit")
-                Text("Forgot your password?")
+                Text("Forgot your password?").helperText()
                 Button("Log in") {
                     store.signInButtonTapped(
                         email: email.trimmingCharacters(in: .whitespacesAndNewlines),
