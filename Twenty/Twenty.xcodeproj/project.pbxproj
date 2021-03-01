@@ -11,6 +11,7 @@
 		2308FE3AFDD07D2D44011C87 /* libPods-TwentyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B89DAA20B7DE9543689DD2 /* libPods-TwentyTests.a */; };
 		73544F642495F0CF0038914D /* HomeWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F632495F0CF0038914D /* HomeWrapperView.swift */; };
 		73544F672496F8170038914D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F662496F8170038914D /* ViewController.swift */; };
+		7355B1DA25ECC0EA00A25B10 /* ImageStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355B1D925ECC0EA00A25B10 /* ImageStyles.swift */; };
 		735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D5BBB24A0571000AFD70E /* UserViewController.swift */; };
 		736665FF2576012200EFB600 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736665FE2576012200EFB600 /* Colors.xcassets */; };
 		736666012576062B00EFB600 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736666002576062B00EFB600 /* ColorManager.swift */; };
@@ -34,7 +35,6 @@
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
 		E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687F24F5FA8E005DC050 /* ImageModel.swift */; };
 		E768C42725C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */; };
-		E768C42B25C1104100E858DE /* TextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42A25C1104100E858DE /* TextFieldComponent.swift */; };
 		E768C42F25C117FB00E858DE /* CreateGoalRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42E25C117FB00E858DE /* CreateGoalRowComponent.swift */; };
 		E768C43325C1186A00E858DE /* CreateGoalListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C43225C1186A00E858DE /* CreateGoalListComponent.swift */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
@@ -117,6 +117,7 @@
 /* Begin PBXFileReference section */
 		73544F632495F0CF0038914D /* HomeWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWrapperView.swift; sourceTree = "<group>"; };
 		73544F662496F8170038914D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7355B1D925ECC0EA00A25B10 /* ImageStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyles.swift; sourceTree = "<group>"; };
 		735D5BBB24A0571000AFD70E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		736665FE2576012200EFB600 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		736666002576062B00EFB600 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
@@ -146,7 +147,6 @@
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
 		E73E687F24F5FA8E005DC050 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateGoalTitleLabelComponent.swift; sourceTree = "<group>"; };
-		E768C42A25C1104100E858DE /* TextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldComponent.swift; sourceTree = "<group>"; };
 		E768C42E25C117FB00E858DE /* CreateGoalRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalRowComponent.swift; sourceTree = "<group>"; };
 		E768C43225C1186A00E858DE /* CreateGoalListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalListComponent.swift; sourceTree = "<group>"; };
 		E77A51292484130C009243CC /* GoalStoreWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreWriter.swift; sourceTree = "<group>"; };
@@ -268,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				73E8583925E6164C008A305F /* TextStyles.swift */,
+				7355B1D925ECC0EA00A25B10 /* ImageStyles.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -421,7 +422,6 @@
 				E7C410322506B51500DBB926 /* StatisticSectionComponent.swift */,
 				E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */,
 				E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */,
-				E768C42A25C1104100E858DE /* TextFieldComponent.swift */,
 				E739A0B0250EAECC001A4940 /* EditSheetComponent.swift */,
 				E7F727DC2510579100F62832 /* ActivityRowComponent.swift */,
 				E7F727DE25105A7700F62832 /* ActivityListComponent.swift */,
@@ -718,7 +718,6 @@
 				E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */,
 				E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */,
 				E7CE50D3257F1DC6001F5656 /* AuthenticationStore.swift in Sources */,
-				E768C42B25C1104100E858DE /* TextFieldComponent.swift in Sources */,
 				E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */,
 				E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */,
 				E7C72B232589CA7E00A3E0EC /* AddTimeComponent.swift in Sources */,
@@ -748,6 +747,7 @@
 				E7C72B312589DAAC00A3E0EC /* StatefulAddTimeView.swift in Sources */,
 				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
 				E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */,
+				7355B1DA25ECC0EA00A25B10 /* ImageStyles.swift in Sources */,
 				E7B95F9D251C43F800BC90BD /* BottomSheetHeaderComponent.swift in Sources */,
 				E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */,
 				736666012576062B00EFB600 /* ColorManager.swift in Sources */,

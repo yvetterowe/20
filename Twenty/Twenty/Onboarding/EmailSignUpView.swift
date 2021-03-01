@@ -26,10 +26,15 @@ struct EmailSignUpView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var errorMessage: String = ""
+    @State var isFocused = false
 
 
     
     let store: EmailSignUpStore
+    
+    func hideKeyboard(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
     
     var body: some View {
         ZStack(alignment: .topLeading){
@@ -38,13 +43,16 @@ struct EmailSignUpView: View {
 
                 Text("Let's get start").headerText()
                 VStack(alignment: .leading){
-                    OnboardingTextFieldComponent(label: "First name", text: $firstName)
-                    OnboardingTextFieldComponent(label: "Last name", text: $lastName)
-                    OnboardingTextFieldComponent(label : "Email", text: $email)
-                    OnboardingTextFieldComponent(label: "Password (8+ characters)", text: $password, image: "edit")
+                    LightTextFieldComponent(label: "First name", text: $firstName)
+                    LightTextFieldComponent(label: "Last name", text: $lastName)
+                    LightTextFieldComponent(label : "Email", text: $email)
+                    LightSecureFieldComponent(label: "Password (8+ characters)", text: $password, image: "edit")
                     if errorMessage != "" {
                         Text(errorMessage).errorText()
                     }
+                }
+                .onTapGesture {
+                    self.isFocused = true
                 }
 
                 Button("Sign Up") {
@@ -57,16 +65,18 @@ struct EmailSignUpView: View {
                 }
                 .buttonStyle(PrimaryTextButtonStyle())
                 
-                VStack{
-                    Text("By continuing, you agree to Twenty’s ").helperText()
-                    Link("Terms & Conditions",
-                         destination: URL(string: "https://www.example.com/TOS.html")!).foregroundColor(ColorManager.LightPink)
-                    Text(" and ").helperText()
-                    Link("Privacy Policy",
-                         destination: URL(string: "https://www.example.com/TOS.html")!)
-                        .foregroundColor(ColorManager.LightPink)
+                HStack(spacing: 0){
+                    Text("By continuing, you agree to Twenty’s Terms & Conditions ").helperText()
+
                 }
+                
             }.padding(20)
+            .offset(y: isFocused ? -56 : 0)
+            .animation(isFocused ? .timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8) : .none)
+            .onTapGesture {
+                self.isFocused = false
+                self.hideKeyboard()
+            }
             
         }
         
@@ -77,5 +87,6 @@ struct EmailSignUpView: View {
 struct EmailSignUpView_Previews: PreviewProvider {
     static var previews: some View {
         EmailSignUpView(store: .init(authService: NoOpAuthService()))
+            .previewDevice("iPhone 11 Pro")
     }
 }
