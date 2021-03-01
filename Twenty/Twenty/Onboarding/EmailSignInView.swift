@@ -32,8 +32,8 @@ struct EmailSignInView: View {
             ColorManager.Blue.edgesIgnoringSafeArea(.all)
             VStack{
                 Text("Welcome back").headerText()
-                OnboardingTextFieldComponent(label: "Email address", text: $email, image: "edit")
-                OnboardingTextFieldComponent(label: "Password", text: $password, image: "edit")
+                LightTextFieldComponent(label: "Email address", text: $email, image: "edit")
+                LightSecureFieldComponent(label: "Password", text: $password, image: "edit")
                 Text("Forgot your password?").helperText()
                 Button("Log in") {
                     store.signInButtonTapped(
