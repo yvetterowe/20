@@ -33,7 +33,7 @@ struct SignUpLandingView: View {
                         Button("Sign Up") {
                             signUpButtonTapped = true
                         }
-                        .buttonStyle(PrimaryTextButtonStyle())
+                        .buttonStyle(LightPrimaryTextButtonStyle())
                         
                     }
                     

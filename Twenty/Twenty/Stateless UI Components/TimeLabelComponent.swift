@@ -12,10 +12,13 @@ struct TimeLabelComponent: View {
     let duration: TimeInterval
     
     var body: some View {
-        Text("\(duration.format(showSecond: false))")
-            .font(Font.custom("VarelaRound-Regular", size: 40))
-            .foregroundColor(ColorManager.Blue)
-            
+        HStack{
+            Text("\(duration.format(showSecond: false))")
+                .font(Font.custom("VarelaRound-Regular", size: 40))
+                .foregroundColor(ColorManager.Blue)
+                .lineLimit(1)
+            Spacer()
+        }
     }
 }
 

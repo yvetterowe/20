@@ -77,7 +77,7 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading){
             StatefulDayViewHeader(
                 viewModelStore: .init(publisher: dayViewHeaderViewModelStore.publisher),
                 selectDayWriter: context.selectDayStore,
@@ -89,37 +89,41 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
             StatefulSelectDayHeader(
                 store: context.selectDayStore
             )
-            
-            StatefulDayViewSummarySection(
-                viewModelStore: .init(
-                    publisher: StatefulDayViewSummarySectionViewModelStore(
-                        selectedDayPublisher: context.selectDayStore.selectDayPublisher,
-                        goalPublisher: context.goalPublisher
-                    ).publisher
-                ), tapMoreButtonAction: {
-                    presentingMoreActionSheet = true
-                }
-            )
-            
-            StatefulStatisticSectionView(
-                viewReader: .init(
-                    publisher: StatisticSectionViewStore(
-                        goalPublisher: context.goalPublisher,
-                        selectedDayPublisher: context.selectDayStore.selectDayPublisher
-                    ).publisher
+            VStack(alignment: .leading){
+                StatefulDayViewSummarySection(
+                    viewModelStore: .init(
+                        publisher: StatefulDayViewSummarySectionViewModelStore(
+                            selectedDayPublisher: context.selectDayStore.selectDayPublisher,
+                            goalPublisher: context.goalPublisher
+                        ).publisher
+                    ), tapMoreButtonAction: {
+                        presentingMoreActionSheet = true
+                    }
                 )
-            )
-            
-            if viewStateStore.value.isToday {
-                if #available(iOS 14.0, *) {
-                    Button("Start Tracking") {
-                        presentingTimer = true
-                    }
-                    .fullScreenCover(isPresented: $presentingTimer) {
-                        self.timerView($presentingTimer)
+                Divider()
+                StatefulStatisticSectionView(
+                    viewReader: .init(
+                        publisher: StatisticSectionViewStore(
+                            goalPublisher: context.goalPublisher,
+                            selectedDayPublisher: context.selectDayStore.selectDayPublisher
+                        ).publisher
+                    )
+                )
+                Divider()
+                Spacer()
+                if viewStateStore.value.isToday {
+                    if #available(iOS 14.0, *) {
+                        Button("Start Tracking") {
+                            presentingTimer = true
+                        }
+                        .buttonStyle(DarkPrimaryTextButtonStyle())
+                        .fullScreenCover(isPresented: $presentingTimer) {
+                            self.timerView($presentingTimer)
+                        }
                     }
                 }
-            }
+            }.padding(.horizontal, 20)
+
         }.bottomSheet(
             isOpen: $presentingMoreActionSheet,
             maxHeight: 360,
@@ -136,6 +140,7 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
                 context: context
             )
         }
+  
     }
 }
 

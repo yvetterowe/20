@@ -29,10 +29,10 @@ struct DayViewHeaderComponent: View {
     var body: some View {
         HStack {
             Text(title)
-                .titleStyle()
+                .title1Text()
                 .foregroundColor(ColorManager.DarkGray)
             Text(subtitle)
-                .titleStyle()
+                .title2Text()
                 .foregroundColor(ColorManager.MidGray)
         }
     }

@@ -44,7 +44,7 @@ struct StatefulSelectDayHeader: View {
     var body: some View {
         VStack {
             CalendarWeekHeaderView(selectDayStore: store)
-                .frame(height: 80)
+                .frame(height: 96)
         }
     }
 }

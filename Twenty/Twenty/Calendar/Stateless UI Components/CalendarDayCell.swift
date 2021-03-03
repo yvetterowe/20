@@ -29,10 +29,9 @@ struct CalendarDayCell: View {
 }
 
 private extension TextButton {
-    
     static let CalendarDayCellPlaceholder: TextButton = .init(
         model: .init(
-            textModel: .init(text: "", textColor: .clear, textFont: .title),
+            textModel: .init(text: "", textColor: .clear, textFont: .body),
             backgroundColorMode: .single(.clear),
             action: {}
         )

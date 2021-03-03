@@ -22,7 +22,7 @@ struct StatisticSectionComponent: View {
                     model: items[itemIndex]
                 )
             }
-        }
+        }.padding(.vertical, 16)
     }
 }
 
@@ -32,29 +32,28 @@ struct StatisticSectionComponent_Previews: PreviewProvider {
             StatisticSectionComponent(
                 items: [
                     .init(
-                        icon: .init("activity_icon"),
-                        title: "1h 3m",
+                        icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
+                        title: "0h 0m",
                         subtitle: "subtitle"
                     ),
                     .init(
-                        icon: .init("activity_icon"),
-                        title: "7",
+                        icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
+                        title: "1",
                         subtitle: "short"
                     ),
                     .init(
-                        icon: .init("activity_icon"),
-                        title: "1h 3m",
+                        icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
+                        title: "0h 0m",
                         subtitle: "lonnnnnnng"
                     ),
                     .init(
-                        icon: .init("activity_icon"),
-                        title: "looooooong",
+                        icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
+                        title: "0h 0m",
                         subtitle: "avg"
                     ),
                 ],
                 rowCount: 2
             )
-            .padding(.init(top: 16, leading: 20, bottom: 16, trailing: 20))
         } else {
             // Fallback on earlier versions
         }

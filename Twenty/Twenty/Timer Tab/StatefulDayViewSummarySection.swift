@@ -55,20 +55,21 @@ struct StatefulDayViewSummarySection: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 8) {
             GoalSummarySectionComponent(
                 title: viewModel.subtitle,
                 buttonAction: tapMoreButtonAction
             )
             TimeLabelComponent(duration: viewModel.duration)
         }
+        .padding(.vertical, 16)
     }
 }
 
 struct StatefulDayViewSummarySection_Previews: PreviewProvider {
     static var previews: some View {
         StatefulDayViewSummarySection(
-            viewModelStore: .init(publisher: Just(StatefulDayViewSummarySection.ViewModel(subtitle: "", duration: 100)).eraseToAnyPublisher()),
+            viewModelStore: .init(publisher: Just(StatefulDayViewSummarySection.ViewModel(subtitle: "Learn Swift UI", duration: 100)).eraseToAnyPublisher()),
             tapMoreButtonAction: {}
         )
     }

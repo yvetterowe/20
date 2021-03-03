@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PrimaryTextButtonStyle: ButtonStyle {
+struct LightPrimaryTextButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .font(Font.custom("VarelaRound-Regular", size: 18))
@@ -25,12 +25,34 @@ struct PrimaryTextButtonStyle: ButtonStyle {
     }
 }
 
+struct DarkPrimaryTextButtonStyle: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .font(Font.custom("VarelaRound-Regular", size: 18))
+            .foregroundColor(Color.White)
+            .background(
+                Capsule()
+                    .fill(ColorManager.Blue)
+                    .frame(width: UIScreen.main.bounds.width - 40, height: 56)
+                    .padding(.all, 20)
+            )
+            .frame(maxWidth:.infinity, maxHeight: 56)
+            .padding(20)
+            
+    }
+}
+
 struct PrimaryTextButton_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             ColorManager.Blue.edgesIgnoringSafeArea(.all)
-            Button("Primary Text Button"){}
-                .buttonStyle(PrimaryTextButtonStyle())
+            VStack{
+                Button("Light Primary Text Button"){}
+                    .buttonStyle(LightPrimaryTextButtonStyle())
+                Button("Dark Primary Text Button"){}
+                    .buttonStyle(DarkPrimaryTextButtonStyle())
+            }
+
         }
        
     }

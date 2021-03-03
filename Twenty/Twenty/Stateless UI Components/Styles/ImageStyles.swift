@@ -16,6 +16,7 @@ extension Image {
             .aspectRatio(contentMode: .fit)
             .frame(width: 24)
             .foregroundColor(ColorManager.Blue)
+            .padding(8)
     }
     
     func LightIconImage() -> some View {
@@ -24,13 +25,12 @@ extension Image {
             .aspectRatio(contentMode: .fit)
             .frame(width: 24)
             .foregroundColor(Color.White)
+            .padding(8)
     }
 }
 
 struct ImageStyles_Previews: PreviewProvider {
     static var previews: some View {
         Image(uiImage: #imageLiteral(resourceName: "settings")).DarkIconImage()
-        Image(uiImage: #imageLiteral(resourceName: "settings")).LightIconImage()
-
     }
 }
