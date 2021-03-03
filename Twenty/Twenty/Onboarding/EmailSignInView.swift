@@ -41,7 +41,7 @@ struct EmailSignInView: View {
                         password: password.trimmingCharacters(in: .whitespacesAndNewlines)
                     )
                 }
-                .buttonStyle(PrimaryTextButtonStyle())
+                .buttonStyle(LightPrimaryTextButtonStyle())
             }
             .padding(20)
         }

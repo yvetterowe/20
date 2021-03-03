@@ -82,7 +82,8 @@ struct StatefulDayViewHeader: View {
             Button(action: {
                 presentingProfile = true
             }, label: {
-                Image(systemName: "person")
+                Image(uiImage: #imageLiteral(resourceName: "user"))
+                    .DarkIconImage()
             })
             .sheet(isPresented: $presentingProfile) {
                 StatefulUserProfileView(store: profileStore)
@@ -91,12 +92,13 @@ struct StatefulDayViewHeader: View {
             Button(action: {
                 presentingCalendar = true
             }, label: {
-                Image(systemName: "calendar")
+                Image(uiImage: #imageLiteral(resourceName: "calendar"))
+                    .DarkIconImage()
             })
             .sheet(isPresented: $presentingCalendar) {
                 StatefulCalendarListView(selectedDay: $calendarStore.selectedDate)
             }
-        }
+        }.padding(.horizontal, 20)
     }
 }
 

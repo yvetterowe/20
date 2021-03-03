@@ -22,22 +22,22 @@ final class StatisticSectionViewStore: StatisticSectionViewReader {
         self.publisher = Publishers.CombineLatest(goalPublisher, selectedDayPublisher).map { (goal, selectedDay) -> [StatisticCellComponent.Model] in
             return [
                 .init(
-                    icon: .init(systemName: "number.square"),
+                    icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
                     title: "\(goal.remainingTime(asOf: selectedDay).format(showSecond: false))",
                     subtitle: "To milestone"
                 ),
                 .init(
-                    icon: .init(systemName: "number.square"),
+                    icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
                     title: "\(goal.avgTimePerDay(asOf: selectedDay).format(showSecond: false))",
                     subtitle: "Avg everyday"
                 ),
                 .init(
-                    icon: .init(systemName: "number.square"),
+                    icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
                     title: "\(goal.recordsCount(asOf: selectedDay))",
                     subtitle: "Records count"
                 ),
                 .init(
-                    icon: .init(systemName: "number.square"),
+                    icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
                     title: "\(goal.streakCount(asOf: selectedDay))",
                     subtitle: "Streak"
                 ),
@@ -74,7 +74,7 @@ struct StatefulStatisticSectionView_Previews: PreviewProvider {
     static var previews: some View {
         StatefulStatisticSectionView(
             viewReader: .init(publisher: Just(Array(repeating: StatisticCellComponent.Model(
-                icon: .init(systemName: "number.square"),
+                icon: .init(uiImage: #imageLiteral(resourceName: "activity_icon")),
                 title: "1h 3m",
                 subtitle: "subtitle"
             ), count: 4)).eraseToAnyPublisher())

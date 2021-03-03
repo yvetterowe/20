@@ -63,7 +63,7 @@ struct EmailSignUpView: View {
                         lastName: lastName.trimmingCharacters(in: .whitespacesAndNewlines)
                     )
                 }
-                .buttonStyle(PrimaryTextButtonStyle())
+                .buttonStyle(LightPrimaryTextButtonStyle())
                 
                 HStack(spacing: 0){
                     Text("By continuing, you agree to Twenty’s Terms & Conditions ").helperText()

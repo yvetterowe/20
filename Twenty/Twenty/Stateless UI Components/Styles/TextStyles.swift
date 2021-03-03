@@ -15,6 +15,16 @@ extension Text {
             .font(Font.custom("VarelaRound-Regular", size: 32))
             .frame(maxWidth: .infinity, alignment:.leading)
     }
+    
+    func title1Text() -> some View {
+        self.font(Font.custom("VarelaRound-Regular", size: 24))
+            .lineLimit(1)
+    }
+    
+    func title2Text() -> some View {
+        self.font(Font.custom("VarelaRound-Regular", size: 18))
+            .lineLimit(1)
+    }
 
     func bodyText() -> some View {
         self.foregroundColor(Color.white)
@@ -69,6 +79,12 @@ struct TextStyles_Previews: PreviewProvider {
             VStack(alignment: .leading){
                 Text("Header")
                    .headerText()
+                
+                Text("Title1")
+                   .title1Text()
+                
+                Text("Title2")
+                   .title2Text()
 
                 Text("Super long body test")
                    .bodyText()

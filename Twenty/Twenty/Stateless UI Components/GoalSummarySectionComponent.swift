@@ -31,15 +31,15 @@ struct GoalSummarySectionComponent: View {
     var body: some View {
         HStack {
             Text(title)
-                .sectionTitleStyle()
+                .title2Text()
                 .foregroundColor(ColorManager.DarkGray)
             Spacer()
             
             Button(action: buttonAction, label: {
-                Image("more-horizontal")
+                Image(uiImage: #imageLiteral(resourceName: "more-horizontal"))
+                    .DarkIconImage()
             })
         }
-        .padding(.init(top: 4, leading: 20, bottom: 4, trailing: 20))
     }
 }
 
