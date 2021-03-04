@@ -10,7 +10,6 @@
 		2174D9B9E6EA8A3150EB28E3 /* libPods-Twenty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A5AC360BE63538BD4D7714 /* libPods-Twenty.a */; };
 		2308FE3AFDD07D2D44011C87 /* libPods-TwentyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B89DAA20B7DE9543689DD2 /* libPods-TwentyTests.a */; };
 		73544F642495F0CF0038914D /* HomeWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F632495F0CF0038914D /* HomeWrapperView.swift */; };
-		73544F672496F8170038914D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73544F662496F8170038914D /* ViewController.swift */; };
 		7355B1DA25ECC0EA00A25B10 /* ImageStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355B1D925ECC0EA00A25B10 /* ImageStyles.swift */; };
 		735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D5BBB24A0571000AFD70E /* UserViewController.swift */; };
 		736665FF2576012200EFB600 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736665FE2576012200EFB600 /* Colors.xcassets */; };
@@ -33,7 +32,6 @@
 		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
 		E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */; };
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
-		E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687F24F5FA8E005DC050 /* ImageModel.swift */; };
 		E768C42725C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */; };
 		E768C42F25C117FB00E858DE /* CreateGoalRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42E25C117FB00E858DE /* CreateGoalRowComponent.swift */; };
 		E768C43325C1186A00E858DE /* CreateGoalListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C43225C1186A00E858DE /* CreateGoalListComponent.swift */; };
@@ -44,18 +42,14 @@
 		E78F0553247F49630066C687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78F0552247F49630066C687 /* Assets.xcassets */; };
 		E78F0556247F49630066C687 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78F0555247F49630066C687 /* Preview Assets.xcassets */; };
 		E78F0559247F49630066C687 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78F0557247F49630066C687 /* LaunchScreen.storyboard */; };
-		E78F057D247F53260066C687 /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057C247F53260066C687 /* TextModel.swift */; };
 		E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F057E247F6CF30066C687 /* ColorPalette.swift */; };
 		E78F0589248093140066C687 /* BackgroundColorMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F0588248093140066C687 /* BackgroundColorMode.swift */; };
 		E78F058B248093D30066C687 /* BorderMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058A248093D30066C687 /* BorderMode.swift */; };
-		E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058C2480946C0066C687 /* ButtonModel.swift */; };
-		E78F058F248094E40066C687 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F058E248094E40066C687 /* TextButton.swift */; };
 		E78F059324809CB90066C687 /* StatefulDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059224809CB90066C687 /* StatefulDayView.swift */; };
 		E78F059A2481D0D10066C687 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F05992481D0D10066C687 /* BackgroundTimer.swift */; };
 		E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F059B2482B99A0066C687 /* TimerStateStore.swift */; };
 		E7B95F9B251C32FC00BC90BD /* BottomSheetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B95F9A251C32FC00BC90BD /* BottomSheetComponent.swift */; };
 		E7B95F9D251C43F800BC90BD /* BottomSheetHeaderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B95F9C251C43F800BC90BD /* BottomSheetHeaderComponent.swift */; };
-		E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7B8249EC8520011ED12 /* SwipeView.swift */; };
 		E7C2B7BB24A301440011ED12 /* CalendarWeekHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */; };
 		E7C40FEC24FC3A9400DBB926 /* StatefulEditTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */; };
 		E7C40FEE2501ED7600DBB926 /* StatefulTimeConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C40FED2501ED7500DBB926 /* StatefulTimeConfirmView.swift */; };
@@ -76,12 +70,8 @@
 		E7D3DC732483055800422C77 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC722483055800422C77 /* Goal.swift */; };
 		E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */; };
 		E7D3F44A2489567100463D48 /* BackgroundShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4492489567100463D48 /* BackgroundShape.swift */; };
-		E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F44B248956FE00463D48 /* CalendarDayCell.swift */; };
 		E7D3F453248993BE00463D48 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F452248993BE00463D48 /* Calendar.swift */; };
 		E7D3F455248997F100463D48 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F454248997F000463D48 /* CalendarTests.swift */; };
-		E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */; };
-		E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */; };
-		E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F45D248BF2F700463D48 /* UnwrapView.swift */; };
 		E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */; };
 		E7E00235249AF48F00403E50 /* GoalImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00234249AF48F00403E50 /* GoalImpl.swift */; };
 		E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E00237249AF61400403E50 /* PersistentDataStore.swift */; };
@@ -116,7 +106,6 @@
 
 /* Begin PBXFileReference section */
 		73544F632495F0CF0038914D /* HomeWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWrapperView.swift; sourceTree = "<group>"; };
-		73544F662496F8170038914D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7355B1D925ECC0EA00A25B10 /* ImageStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyles.swift; sourceTree = "<group>"; };
 		735D5BBB24A0571000AFD70E /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		736665FE2576012200EFB600 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -145,7 +134,6 @@
 		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewHeader.swift; sourceTree = "<group>"; };
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
-		E73E687F24F5FA8E005DC050 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateGoalTitleLabelComponent.swift; sourceTree = "<group>"; };
 		E768C42E25C117FB00E858DE /* CreateGoalRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalRowComponent.swift; sourceTree = "<group>"; };
 		E768C43225C1186A00E858DE /* CreateGoalListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalListComponent.swift; sourceTree = "<group>"; };
@@ -160,18 +148,14 @@
 		E78F055A247F49630066C687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E78F055F247F49640066C687 /* TwentyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwentyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78F0565247F49640066C687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E78F057C247F53260066C687 /* TextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
 		E78F057E247F6CF30066C687 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		E78F0588248093140066C687 /* BackgroundColorMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorMode.swift; sourceTree = "<group>"; };
 		E78F058A248093D30066C687 /* BorderMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderMode.swift; sourceTree = "<group>"; };
-		E78F058C2480946C0066C687 /* ButtonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModel.swift; sourceTree = "<group>"; };
-		E78F058E248094E40066C687 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		E78F059224809CB90066C687 /* StatefulDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayView.swift; sourceTree = "<group>"; };
 		E78F05992481D0D10066C687 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
 		E78F059B2482B99A0066C687 /* TimerStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStateStore.swift; sourceTree = "<group>"; };
 		E7B95F9A251C32FC00BC90BD /* BottomSheetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetComponent.swift; sourceTree = "<group>"; };
 		E7B95F9C251C43F800BC90BD /* BottomSheetHeaderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetHeaderComponent.swift; sourceTree = "<group>"; };
-		E7C2B7B8249EC8520011ED12 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekHeaderView.swift; sourceTree = "<group>"; };
 		E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulEditTimeView.swift; sourceTree = "<group>"; };
 		E7C40FED2501ED7500DBB926 /* StatefulTimeConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimeConfirmView.swift; sourceTree = "<group>"; };
@@ -192,12 +176,8 @@
 		E7D3DC722483055800422C77 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		E7D3DC7424833DD700422C77 /* GoalStoreReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreReader.swift; sourceTree = "<group>"; };
 		E7D3F4492489567100463D48 /* BackgroundShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShape.swift; sourceTree = "<group>"; };
-		E7D3F44B248956FE00463D48 /* CalendarDayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		E7D3F452248993BE00463D48 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		E7D3F454248997F000463D48 /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
-		E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWeekView.swift; sourceTree = "<group>"; };
-		E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthView.swift; sourceTree = "<group>"; };
-		E7D3F45D248BF2F700463D48 /* UnwrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnwrapView.swift; sourceTree = "<group>"; };
 		E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulSelectDayHeader.swift; sourceTree = "<group>"; };
 		E7E00234249AF48F00403E50 /* GoalImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalImpl.swift; sourceTree = "<group>"; };
 		E7E00237249AF61400403E50 /* PersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataStore.swift; sourceTree = "<group>"; };
@@ -247,7 +227,6 @@
 				E7F389482565ECB300A15A60 /* EmailSignUpView.swift */,
 				E7F3894C2565ED3C00A15A60 /* EmailSignInView.swift */,
 				73544F632495F0CF0038914D /* HomeWrapperView.swift */,
-				73544F662496F8170038914D /* ViewController.swift */,
 				735D5BBB24A0571000AFD70E /* UserViewController.swift */,
 				73E8584525E62759008A305F /* TermsView.swift */,
 				73E8584925E628B0008A305F /* PrivacyView.swift */,
@@ -296,7 +275,6 @@
 		E77A512F2485565F009243CC /* Architecture */ = {
 			isa = PBXGroup;
 			children = (
-				E7D3F45D248BF2F700463D48 /* UnwrapView.swift */,
 				E739A06A2509AFF7001A4940 /* ObservableWrapper.swift */,
 			);
 			path = Architecture;
@@ -374,15 +352,10 @@
 		E78F0578247F52EB0066C687 /* CommonUI */ = {
 			isa = PBXGroup;
 			children = (
-				E78F058E248094E40066C687 /* TextButton.swift */,
-				E78F057C247F53260066C687 /* TextModel.swift */,
-				E73E687F24F5FA8E005DC050 /* ImageModel.swift */,
-				E78F058C2480946C0066C687 /* ButtonModel.swift */,
 				E78F057E247F6CF30066C687 /* ColorPalette.swift */,
 				E78F0588248093140066C687 /* BackgroundColorMode.swift */,
 				E7D3F4492489567100463D48 /* BackgroundShape.swift */,
 				E78F058A248093D30066C687 /* BorderMode.swift */,
-				E7C2B7B8249EC8520011ED12 /* SwipeView.swift */,
 				7372079525E3134300206DC3 /* PrimaryTextButton.swift */,
 			);
 			path = CommonUI;
@@ -469,21 +442,10 @@
 		E7D3F44F2489933B00463D48 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				E7D3F45A2489BB8B00463D48 /* Stateless UI Components */,
 				E7D3F452248993BE00463D48 /* Calendar.swift */,
 				E7C2B7BA24A301440011ED12 /* CalendarWeekHeaderView.swift */,
 			);
 			path = Calendar;
-			sourceTree = "<group>";
-		};
-		E7D3F45A2489BB8B00463D48 /* Stateless UI Components */ = {
-			isa = PBXGroup;
-			children = (
-				E7D3F44B248956FE00463D48 /* CalendarDayCell.swift */,
-				E7D3F4562489AE3C00463D48 /* CalendarWeekView.swift */,
-				E7D3F4582489B2DF00463D48 /* CalendarMonthView.swift */,
-			);
-			path = "Stateless UI Components";
 			sourceTree = "<group>";
 		};
 		E7E0023B249AFD7B00403E50 /* Persistence */ = {
@@ -690,7 +652,6 @@
 			files = (
 				73E8583A25E6164C008A305F /* TextStyles.swift in Sources */,
 				E7C72B1A2583538300A3E0EC /* UserProfileComponent.swift in Sources */,
-				E78F058F248094E40066C687 /* TextButton.swift in Sources */,
 				E7B95F9B251C32FC00BC90BD /* BottomSheetComponent.swift in Sources */,
 				E7F727DF25105A7700F62832 /* ActivityListComponent.swift in Sources */,
 				73E8584A25E628B0008A305F /* PrivacyView.swift in Sources */,
@@ -701,9 +662,6 @@
 				E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */,
 				E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */,
 				E7C4102B2506829E00DBB926 /* DayViewHeaderComponent.swift in Sources */,
-				E7D3F45E248BF2F700463D48 /* UnwrapView.swift in Sources */,
-				E7C2B7B9249EC8520011ED12 /* SwipeView.swift in Sources */,
-				E7D3F44C248956FE00463D48 /* CalendarDayCell.swift in Sources */,
 				E768C43325C1186A00E858DE /* CreateGoalListComponent.swift in Sources */,
 				E7C72B272589CAAE00A3E0EC /* EditTimeRowComponent.swift in Sources */,
 				E7D3F46624907D8E00463D48 /* StatefulSelectDayHeader.swift in Sources */,
@@ -732,31 +690,26 @@
 				E7E0023A249AF88700403E50 /* GoalStoreImpl.swift in Sources */,
 				E7C4102F2506854E00DBB926 /* TimeLabelComponent.swift in Sources */,
 				E7CE50C9257F19F3001F5656 /* AuthenticationService.swift in Sources */,
-				E7D3F4592489B2DF00463D48 /* CalendarMonthView.swift in Sources */,
 				E7CE50D7257F1E43001F5656 /* RootView.swift in Sources */,
 				E78F058B248093D30066C687 /* BorderMode.swift in Sources */,
 				E7D3DC7524833DD700422C77 /* GoalStoreReader.swift in Sources */,
 				E7C40FEC24FC3A9400DBB926 /* StatefulEditTimeView.swift in Sources */,
 				E7C4103125068A4D00DBB926 /* StatisticCellComponent.swift in Sources */,
 				E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */,
-				E78F057D247F53260066C687 /* TextModel.swift in Sources */,
 				E78F054F247F495D0066C687 /* SceneDelegate.swift in Sources */,
 				E7C4102D2506840000DBB926 /* GoalSummarySectionComponent.swift in Sources */,
 				E739A0702509D622001A4940 /* MockData.swift in Sources */,
 				E78F059C2482B99B0066C687 /* TimerStateStore.swift in Sources */,
 				E7C72B312589DAAC00A3E0EC /* StatefulAddTimeView.swift in Sources */,
 				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
-				E73E688024F5FA8E005DC050 /* ImageModel.swift in Sources */,
 				7355B1DA25ECC0EA00A25B10 /* ImageStyles.swift in Sources */,
 				E7B95F9D251C43F800BC90BD /* BottomSheetHeaderComponent.swift in Sources */,
 				E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */,
 				736666012576062B00EFB600 /* ColorManager.swift in Sources */,
 				7372079625E3134300206DC3 /* PrimaryTextButton.swift in Sources */,
 				E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */,
-				E78F058D2480946C0066C687 /* ButtonModel.swift in Sources */,
 				E7F727E12510638700F62832 /* StatefulViewActivityListView.swift in Sources */,
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
-				73544F672496F8170038914D /* ViewController.swift in Sources */,
 				73B7E98E249873C00061D923 /* Utilities.swift in Sources */,
 				E78F059324809CB90066C687 /* StatefulDayView.swift in Sources */,
 				E768C42725C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift in Sources */,
@@ -766,7 +719,6 @@
 				E7F389542565F34200A15A60 /* OnboardingTitleLabelComponent.swift in Sources */,
 				E7F389492565ECB300A15A60 /* EmailSignUpView.swift in Sources */,
 				E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */,
-				E7D3F4572489AE3C00463D48 /* CalendarWeekView.swift in Sources */,
 				E7F727E9251632C300F62832 /* StatefulCalendarListView.swift in Sources */,
 				E7D3DC732483055800422C77 /* Goal.swift in Sources */,
 				E78F057F247F6CF30066C687 /* ColorPalette.swift in Sources */,
