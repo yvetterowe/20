@@ -47,7 +47,7 @@ struct MoreActionRowComponent: View {
                 .foregroundColor(isActionDistructive ? ColorManager.Pink : ColorManager.Blue)
                 .padding(8)
             Text(title)
-                .btnTextStyle()
+                .bodyText()
                 .foregroundColor(isActionDistructive ? ColorManager.Pink : ColorManager.Blue)
             Spacer()
         }

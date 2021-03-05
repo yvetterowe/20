@@ -61,6 +61,7 @@ struct StatefulDayViewSummarySection: View {
                 buttonAction: tapMoreButtonAction
             )
             TimeLabelComponent(duration: viewModel.duration)
+                .foregroundColor(ColorManager.Blue)
         }
         .padding(.vertical, 16)
     }

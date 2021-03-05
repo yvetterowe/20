@@ -162,35 +162,49 @@ struct StatefulTimerView: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            TimeLabelComponent(duration: viewState.elapsedTime.duration)
-            if viewState.isActive {
-                Text("Start at \(viewState.elapsedTime.start.timeFormat())")
-            } else {
-                StatefulTimeConfirmView(
-                    viewStateStore: .init(
-                        timerViewWriter: timerViewModelWriter,
-                        initialElapsedTime: viewState.elapsedTime
-                    ),
-                    initialElapsedTime: viewState.elapsedTime,
-                    editingStartTime: $editingTimerStartTime,
-                    editingEndTime: $editingTimerEndTime
-                )
-            }
-            Spacer()
-            Button(viewState.isActive ? "Stop" : "Start") {
+        ZStack{
+            ColorManager.Blue.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            VStack {
+                Spacer()
+                TimeLabelComponent(duration: viewState.elapsedTime.duration)
+                .foregroundColor(Color.White)
                 if viewState.isActive {
-                    timerViewModelWriter.send(.pauseButtonTapped)
+                    Text("Start at \(viewState.elapsedTime.start.timeFormat())")
+                        .linkButtonText()
+                        .frame(width:.infinity, height: 48)
+
                 } else {
-                    timerViewModelWriter.send(.startButtonTapped)
+                    StatefulTimeConfirmView(
+                        viewStateStore: .init(
+                            timerViewWriter: timerViewModelWriter,
+                            initialElapsedTime: viewState.elapsedTime
+                        ),
+                        initialElapsedTime: viewState.elapsedTime,
+                        editingStartTime: $editingTimerStartTime,
+                        editingEndTime: $editingTimerEndTime
+                    )
                 }
-            }.disabled(!viewState.isActive)
-            Button("Confirm and Save") {
-                presentingTimer = false
-                timerViewModelWriter.send(.confirmButtonTapped)
+                Spacer()
+                ZStack{
+                    VStack{
+                        Button(viewState.isActive ? "Swipe to Stop" : "Swipe to Start") {
+                            if viewState.isActive {
+                                timerViewModelWriter.send(.pauseButtonTapped)
+                            } else {
+                                timerViewModelWriter.send(.startButtonTapped)
+                            }
+                        }.disabled(!viewState.isActive)
+                        
+                    }
+
+                    Button("Stop Tracking") {
+                        presentingTimer = false
+                        timerViewModelWriter.send(.confirmButtonTapped)
+                        
+                    }.disabled(viewState.isActive)
+                }
                 
-            }.disabled(viewState.isActive)
+            }
         }
     }
 }
@@ -198,7 +212,7 @@ struct StatefulTimerView: View {
 extension Date {
     func timeFormat() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
 }

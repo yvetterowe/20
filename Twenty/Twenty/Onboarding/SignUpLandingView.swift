@@ -83,9 +83,14 @@ struct CoverView: View {
                 .offset(x: viewState.width/25, y: viewState.height/25)
                 .scaleEffect(1.05)
             
-            Text("Learn something new in 20hrs").headerText()
+            Text("Learn something new in 20hrs")
+                .headerText()
+                .foregroundColor(Color.White)
                 .offset(x: viewState.width/15, y: viewState.height/15)
-            Text("That learning curve differs immensely between various skills but Kauffman found that most skills can be acquired, at least at a basic level of proficiency, within just 20 hours. Just 20 hours of deliberate, focused practise is all you really need to build basic proficiency in any new skill.").bodyText()
+            Text("That learning curve differs immensely between various skills but Kauffman found that most skills can be acquired, at least at a basic level of proficiency, within just 20 hours. Just 20 hours of deliberate, focused practise is all you really need to build basic proficiency in any new skill.")
+                .bodyText()
+                .foregroundColor(Color.White)
+                .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                 .offset(x: viewState.width/20, y: viewState.height/20)
         }
         .background(

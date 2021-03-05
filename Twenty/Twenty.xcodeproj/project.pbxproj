@@ -15,6 +15,7 @@
 		736665FF2576012200EFB600 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 736665FE2576012200EFB600 /* Colors.xcassets */; };
 		736666012576062B00EFB600 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736666002576062B00EFB600 /* ColorManager.swift */; };
 		7372079625E3134300206DC3 /* PrimaryTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7372079525E3134300206DC3 /* PrimaryTextButton.swift */; };
+		73973E1425F2120900647869 /* SecondaryTextButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73973E1325F2120900647869 /* SecondaryTextButtonStyle.swift */; };
 		739C10E62497346D003B9B15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739C10E52497346D003B9B15 /* Constants.swift */; };
 		73B7E98E249873C00061D923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E98D249873BF0061D923 /* Utilities.swift */; };
 		73E8583A25E6164C008A305F /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E8583925E6164C008A305F /* TextStyles.swift */; };
@@ -32,7 +33,6 @@
 		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
 		E73E687A24F2B786005DC050 /* StatefulDayViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */; };
 		E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */; };
-		E768C42725C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */; };
 		E768C42F25C117FB00E858DE /* CreateGoalRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C42E25C117FB00E858DE /* CreateGoalRowComponent.swift */; };
 		E768C43325C1186A00E858DE /* CreateGoalListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E768C43225C1186A00E858DE /* CreateGoalListComponent.swift */; };
 		E77A512A2484130C009243CC /* GoalStoreWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A51292484130C009243CC /* GoalStoreWriter.swift */; };
@@ -80,8 +80,6 @@
 		E7F389452565EBAA00A15A60 /* SignUpLandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389442565EBA900A15A60 /* SignUpLandingView.swift */; };
 		E7F389492565ECB300A15A60 /* EmailSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389482565ECB300A15A60 /* EmailSignUpView.swift */; };
 		E7F3894D2565ED3C00A15A60 /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3894C2565ED3C00A15A60 /* EmailSignInView.swift */; };
-		E7F389542565F34200A15A60 /* OnboardingTitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */; };
-		E7F389582565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */; };
 		E7F3895C2565F54A00A15A60 /* OnboardingTextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */; };
 		E7F389B62567405100A15A60 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F389B52567405100A15A60 /* User.swift */; };
 		E7F39BC6249C523C00E5B751 /* FirebasePersistentDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */; };
@@ -111,6 +109,7 @@
 		736665FE2576012200EFB600 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		736666002576062B00EFB600 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		7372079525E3134300206DC3 /* PrimaryTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextButton.swift; sourceTree = "<group>"; };
+		73973E1325F2120900647869 /* SecondaryTextButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTextButtonStyle.swift; sourceTree = "<group>"; };
 		739C10E52497346D003B9B15 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		73B7E98D249873BF0061D923 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		73E8583925E6164C008A305F /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
@@ -134,7 +133,6 @@
 		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
 		E73E687924F2B786005DC050 /* StatefulDayViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewHeader.swift; sourceTree = "<group>"; };
 		E73E687B24F5EFE2005DC050 /* StatefulDayViewSummarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulDayViewSummarySection.swift; sourceTree = "<group>"; };
-		E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCreateGoalTitleLabelComponent.swift; sourceTree = "<group>"; };
 		E768C42E25C117FB00E858DE /* CreateGoalRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalRowComponent.swift; sourceTree = "<group>"; };
 		E768C43225C1186A00E858DE /* CreateGoalListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalListComponent.swift; sourceTree = "<group>"; };
 		E77A51292484130C009243CC /* GoalStoreWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStoreWriter.swift; sourceTree = "<group>"; };
@@ -186,8 +184,6 @@
 		E7F389442565EBA900A15A60 /* SignUpLandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpLandingView.swift; sourceTree = "<group>"; };
 		E7F389482565ECB300A15A60 /* EmailSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignUpView.swift; sourceTree = "<group>"; };
 		E7F3894C2565ED3C00A15A60 /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
-		E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTitleLabelComponent.swift; sourceTree = "<group>"; };
-		E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSubtitleLabelComponent.swift; sourceTree = "<group>"; };
 		E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTextFieldComponent.swift; sourceTree = "<group>"; };
 		E7F389B52567405100A15A60 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E7F39BC5249C523B00E5B751 /* FirebasePersistentDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebasePersistentDataStore.swift; sourceTree = "<group>"; };
@@ -248,6 +244,7 @@
 			children = (
 				73E8583925E6164C008A305F /* TextStyles.swift */,
 				7355B1D925ECC0EA00A25B10 /* ImageStyles.swift */,
+				73973E1325F2120900647869 /* SecondaryTextButtonStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -460,11 +457,8 @@
 		E7F389522565F31900A15A60 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				E7F389532565F34200A15A60 /* OnboardingTitleLabelComponent.swift */,
-				E768C42625C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift */,
 				E768C42E25C117FB00E858DE /* CreateGoalRowComponent.swift */,
 				E768C43225C1186A00E858DE /* CreateGoalListComponent.swift */,
-				E7F389572565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift */,
 				E7F3895B2565F54A00A15A60 /* OnboardingTextFieldComponent.swift */,
 			);
 			path = Onboarding;
@@ -661,6 +655,7 @@
 				E7F3895C2565F54A00A15A60 /* OnboardingTextFieldComponent.swift in Sources */,
 				E7F727E52512F76200F62832 /* StatefulStatisticSectionView.swift in Sources */,
 				E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */,
+				73973E1425F2120900647869 /* SecondaryTextButtonStyle.swift in Sources */,
 				E7C4102B2506829E00DBB926 /* DayViewHeaderComponent.swift in Sources */,
 				E768C43325C1186A00E858DE /* CreateGoalListComponent.swift in Sources */,
 				E7C72B272589CAAE00A3E0EC /* EditTimeRowComponent.swift in Sources */,
@@ -668,7 +663,6 @@
 				E768C42F25C117FB00E858DE /* CreateGoalRowComponent.swift in Sources */,
 				73544F642495F0CF0038914D /* HomeWrapperView.swift in Sources */,
 				E7F3894D2565ED3C00A15A60 /* EmailSignInView.swift in Sources */,
-				E7F389582565F43500A15A60 /* OnboardingSubtitleLabelComponent.swift in Sources */,
 				E7C410332506B51500DBB926 /* StatisticSectionComponent.swift in Sources */,
 				735D5BBC24A0571000AFD70E /* UserViewController.swift in Sources */,
 				73E8584625E62759008A305F /* TermsView.swift in Sources */,
@@ -712,11 +706,9 @@
 				E78F0551247F495D0066C687 /* ContentView.swift in Sources */,
 				73B7E98E249873C00061D923 /* Utilities.swift in Sources */,
 				E78F059324809CB90066C687 /* StatefulDayView.swift in Sources */,
-				E768C42725C10F8F00E858DE /* OnboardingCreateGoalTitleLabelComponent.swift in Sources */,
 				E739A0B1250EAECC001A4940 /* EditSheetComponent.swift in Sources */,
 				E739A06B2509AFF7001A4940 /* ObservableWrapper.swift in Sources */,
 				E739A0B3250EB11F001A4940 /* StatefulEditGoalView.swift in Sources */,
-				E7F389542565F34200A15A60 /* OnboardingTitleLabelComponent.swift in Sources */,
 				E7F389492565ECB300A15A60 /* EmailSignUpView.swift in Sources */,
 				E73E687C24F5EFE3005DC050 /* StatefulDayViewSummarySection.swift in Sources */,
 				E7F727E9251632C300F62832 /* StatefulCalendarListView.swift in Sources */,
