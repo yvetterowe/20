@@ -14,7 +14,6 @@ struct LightSecondaryTextButtonStyle: ButtonStyle {
             .font(Font.custom("VarelaRound-Regular", size: 18))
             .foregroundColor(Color.White)
             .frame(maxWidth:.infinity, maxHeight: 56)
-            .padding(20)
             
     }
 }

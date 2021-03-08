@@ -146,6 +146,8 @@ struct StatefulTimerView: View {
     @Binding private var presentingTimer: Bool
     @State private var editingTimerStartTime: Bool = false
     @State private var editingTimerEndTime: Bool = false
+    @State var viewOffsetState = CGSize.zero
+    @State var isDragging = false
 
     private var viewState: TimerViewState {
         return viewStateStore.value
@@ -168,10 +170,11 @@ struct StatefulTimerView: View {
                 Spacer()
                 TimeLabelComponent(duration: viewState.elapsedTime.duration)
                 .foregroundColor(Color.White)
+                
                 if viewState.isActive {
                     Text("Start at \(viewState.elapsedTime.start.timeFormat())")
                         .linkButtonText()
-                        .frame(width:.infinity, height: 48)
+                        .padding(10)
 
                 } else {
                     StatefulTimeConfirmView(
@@ -184,27 +187,49 @@ struct StatefulTimerView: View {
                         editingEndTime: $editingTimerEndTime
                     )
                 }
+
                 Spacer()
                 ZStack{
-                    VStack{
-                        Button(viewState.isActive ? "Swipe to Stop" : "Swipe to Start") {
+                    VStack(spacing: 0){
+                        Image(uiImage: #imageLiteral(resourceName: "chevron-up"))
+                            .LightIconImage()
+                            .padding(8)
+                        Button(viewState.isActive ? "Swipe to Stop":"Swipe to Start") {
                             if viewState.isActive {
                                 timerViewModelWriter.send(.pauseButtonTapped)
                             } else {
                                 timerViewModelWriter.send(.startButtonTapped)
                             }
-                        }.disabled(!viewState.isActive)
-                        
+                        }
+                        .disabled(!viewState.isActive)
+                        .buttonStyle(LightSecondaryTextButtonStyle())
                     }
-
-                    Button("Stop Tracking") {
-                        presentingTimer = false
-                        timerViewModelWriter.send(.confirmButtonTapped)
-                        
-                    }.disabled(viewState.isActive)
-                }
-                
+                    
+//                    VStack{
+//                        Image(uiImage: #imageLiteral(resourceName: "close"))
+//                            .LightIconImage()
+//                            .padding(8)
+//                        Button("Stop Tracking") {
+//                            presentingTimer = false
+//                            timerViewModelWriter.send(.confirmButtonTapped)
+//                        }
+//                        .disabled(viewState.isActive)
+//                        .buttonStyle(LightSecondaryTextButtonStyle())
+//                    }
+                }.offset(y: viewOffsetState.height)
             }
+            .gesture(
+                DragGesture()
+                    .onChanged{value in
+                        self.isDragging = true
+                       self.viewOffsetState = value.translation
+                        print(self.viewOffsetState)
+                    }
+                    .onEnded{value in
+                        self.isDragging = false
+                        self.viewOffsetState = .zero
+                    }
+            )
         }
     }
 }
