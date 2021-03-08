@@ -119,13 +119,13 @@ final class TimerViewStateStore: TimerViewModelReader, TimerViewModelWriter {
             
         case let .timerStateUpdated(newTimerState):
             switch (subject.value, newTimerState) {
-            case (let .active(_), let .active(newInterval)):
+                case ( .active(_), let .active(newInterval)):
                 subject.value = .active(newInterval)
-            case (let .active(_), let .inactive(newInterval)):
+                case ( .active(_), let .inactive(newInterval)):
                 subject.value = .confirm(newInterval)
-            case (let .confirm(_), let .active(newInterval)):
+                case ( .confirm(_), let .active(newInterval)):
                 subject.value = .active(newInterval)
-            case (let .confirm(interval), let .inactive(_)):
+                case ( .confirm(_), .inactive(_)):
                 break // no-op
             }
         
@@ -148,6 +148,7 @@ struct StatefulTimerView: View {
     @State private var editingTimerEndTime: Bool = false
     @State var viewOffsetState = CGSize.zero
     @State var isDragging = false
+    @State var isPaused = false
 
     private var viewState: TimerViewState {
         return viewStateStore.value
@@ -167,69 +168,82 @@ struct StatefulTimerView: View {
         ZStack{
             ColorManager.Blue.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
-                Spacer()
-                TimeLabelComponent(duration: viewState.elapsedTime.duration)
-                .foregroundColor(Color.White)
                 
-                if viewState.isActive {
-                    Text("Start at \(viewState.elapsedTime.start.timeFormat())")
-                        .linkButtonText()
-                        .padding(10)
-
-                } else {
-                    StatefulTimeConfirmView(
-                        viewStateStore: .init(
-                            timerViewWriter: timerViewModelWriter,
-                            initialElapsedTime: viewState.elapsedTime
-                        ),
-                        initialElapsedTime: viewState.elapsedTime,
-                        editingStartTime: $editingTimerStartTime,
-                        editingEndTime: $editingTimerEndTime
-                    )
-                }
-
-                Spacer()
-                ZStack{
-                    VStack(spacing: 0){
-                        Image(uiImage: #imageLiteral(resourceName: "chevron-up"))
-                            .LightIconImage()
-                            .padding(8)
-                        Button(viewState.isActive ? "Swipe to Stop":"Swipe to Start") {
-                            if viewState.isActive {
-                                timerViewModelWriter.send(.pauseButtonTapped)
-                            } else {
-                                timerViewModelWriter.send(.startButtonTapped)
-                            }
-                        }
-                        .disabled(!viewState.isActive)
-                        .buttonStyle(LightSecondaryTextButtonStyle())
-                    }
+                VStack{
+                    Spacer()
+                    TimeLabelComponent(duration: viewState.elapsedTime.duration)
+                    .foregroundColor(Color.White)
                     
-//                    VStack{
-//                        Image(uiImage: #imageLiteral(resourceName: "close"))
-//                            .LightIconImage()
-//                            .padding(8)
-//                        Button("Stop Tracking") {
-//                            presentingTimer = false
-//                            timerViewModelWriter.send(.confirmButtonTapped)
-//                        }
-//                        .disabled(viewState.isActive)
-//                        .buttonStyle(LightSecondaryTextButtonStyle())
-//                    }
-                }.offset(y: viewOffsetState.height)
+                    if viewState.isActive {
+                        Text("Start at \(viewState.elapsedTime.start.timeFormat())")
+                            .linkButtonText()
+                            .padding(10)
+
+                    } else {
+                        StatefulTimeConfirmView(
+                            viewStateStore: .init(
+                                timerViewWriter: timerViewModelWriter,
+                                initialElapsedTime: viewState.elapsedTime
+                            ),
+                            initialElapsedTime: viewState.elapsedTime,
+                            editingStartTime: $editingTimerStartTime,
+                            editingEndTime: $editingTimerEndTime
+                        )
+                    }
+                    Spacer()
+                }
+                .offset(y: viewOffsetState.height * 2)
+                
+                HStack{
+                    if (viewState.isActive){
+                        Button("Pause"){
+                                timerViewModelWriter.send(.pauseButtonTapped)
+                        } .buttonStyle(LightSecondaryTextButtonStyle())
+                        
+                    }else{
+                        Button("Confirm"){
+                                presentingTimer = false
+                                timerViewModelWriter.send(.confirmButtonTapped)
+                        }.buttonStyle(LightSecondaryTextButtonStyle())
+                        
+                        Button("Cancel"){
+                            timerViewModelWriter.send(.startButtonTapped)
+                        }.buttonStyle(LightSecondaryTextButtonStyle())
+                    }
+                }
+                .offset(y: viewOffsetState.height)
             }
+            .background(ColorManager.Blue)
             .gesture(
                 DragGesture()
                     .onChanged{value in
                         self.isDragging = true
                        self.viewOffsetState = value.translation
-                        print(self.viewOffsetState)
+                        print(self.viewOffsetState.height * 1.6)
                     }
                     .onEnded{value in
                         self.isDragging = false
-                        self.viewOffsetState = .zero
+                        
+                        if(viewOffsetState.height > -100){
+                            print("cancel")
+                            self.viewOffsetState = .zero
+                            
+                        }else if(viewOffsetState.height > -250 && -300 < viewOffsetState.height){
+                            print("pause, show cancel button")
+                            self.viewOffsetState = CGSize(width: 0, height: -320)
+//                            timerViewModelWriter.send(.pauseButtonTapped)
+                        }
+                        
+                        else{
+                            print("stop")
+                            self.viewOffsetState = CGSize(width: 0, height: -640)
+//                            presentingTimer = false
+//                            timerViewModelWriter.send(.confirmButtonTapped)
+                        }
+                        
                     }
             )
+            
         }
     }
 }

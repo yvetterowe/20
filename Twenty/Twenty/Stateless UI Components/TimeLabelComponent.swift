@@ -13,7 +13,7 @@ struct TimeLabelComponent: View {
     
     var body: some View {
 
-            Text("\(duration.format(showSecond: false))")
+        Text("\(duration.format(showSecond: true))")
                 .font(Font.custom("VarelaRound-Regular", size: 40))
                 .lineLimit(1)
 
