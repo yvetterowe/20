@@ -26,9 +26,11 @@ struct StatisticCellComponent: View {
                 Text(model.title)
                     .font(Font.custom("VarelaRound-Regular", size: 16))
                     .foregroundColor(ColorManager.Blue)
+                    .lineLimit(1)
                 Text(model.subtitle)
                     .font(Font.custom("VarelaRound-Regular", size: 14))
                     .foregroundColor(ColorManager.MidGray)
+                    .lineLimit(1)
                 
                     
             }

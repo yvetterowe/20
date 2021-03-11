@@ -41,7 +41,9 @@ struct EmailSignUpView: View {
             ColorManager.Blue.edgesIgnoringSafeArea(.all)
             VStack {
 
-                Text("Let's get start").headerText()
+                Text("Let's get start")
+                    .headerText()
+                    .foregroundColor(Color.White)
                 VStack(alignment: .leading){
                     LightTextFieldComponent(label: "First name", text: $firstName)
                     LightTextFieldComponent(label: "Last name", text: $lastName)

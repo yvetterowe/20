@@ -31,7 +31,9 @@ struct EmailSignInView: View {
         ZStack(alignment: .topLeading){
             ColorManager.Blue.edgesIgnoringSafeArea(.all)
             VStack{
-                Text("Welcome back").headerText()
+                Text("Welcome back")
+                    .headerText()
+                    .foregroundColor(Color.White)
                 LightTextFieldComponent(label: "Email address", text: $email, image: "edit")
                 LightSecureFieldComponent(label: "Password", text: $password, image: "edit")
                 Text("Forgot your password?").helperText()

@@ -85,6 +85,7 @@ final class TimerViewStateStore: TimerViewModelReader, TimerViewModelWriter {
     }
         
     // MARK: - TimerViewModelWriter
+    // Pause and resume are not used
     
     func send(_ action: TimerViewAction) {
         switch action {
@@ -103,9 +104,11 @@ final class TimerViewStateStore: TimerViewModelReader, TimerViewModelWriter {
             timerStateWriter.send(.toggleTimerButtonTapped)
             
         case .confirmButtonTapped:
-            guard case let .confirm(interval) = subject.value else {
+            guard case let .active(interval) = subject.value else {
                 fatalError("Timer should be in confirm state")
             }
+            subject.value = .confirm(interval)
+            timerStateWriter.send(.toggleTimerButtonTapped)
             _ = goalStoreWriter.appendTrackRecord(
                 .init(
                     id: UUID().uuidString,
@@ -119,13 +122,13 @@ final class TimerViewStateStore: TimerViewModelReader, TimerViewModelWriter {
             
         case let .timerStateUpdated(newTimerState):
             switch (subject.value, newTimerState) {
-            case (let .active(_), let .active(newInterval)):
+                case ( .active(_), let .active(newInterval)):
                 subject.value = .active(newInterval)
-            case (let .active(_), let .inactive(newInterval)):
+                case ( .active(_), let .inactive(newInterval)):
                 subject.value = .confirm(newInterval)
-            case (let .confirm(_), let .active(newInterval)):
+                case ( .confirm(_), let .active(newInterval)):
                 subject.value = .active(newInterval)
-            case (let .confirm(interval), let .inactive(_)):
+                case ( .confirm(_), .inactive(_)):
                 break // no-op
             }
         
@@ -146,6 +149,12 @@ struct StatefulTimerView: View {
     @Binding private var presentingTimer: Bool
     @State private var editingTimerStartTime: Bool = false
     @State private var editingTimerEndTime: Bool = false
+    @State var viewOffsetState = CGSize.zero
+    @State var isDragging = false
+    @State var isConfirmed = false
+    @State var isCancelled = false
+    
+    let SH = UIScreen.main.bounds.height
 
     private var viewState: TimerViewState {
         return viewStateStore.value
@@ -162,35 +171,81 @@ struct StatefulTimerView: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            TimeLabelComponent(duration: viewState.elapsedTime.duration)
-            if viewState.isActive {
-                Text("Start at \(viewState.elapsedTime.start.timeFormat())")
-            } else {
-                StatefulTimeConfirmView(
-                    viewStateStore: .init(
-                        timerViewWriter: timerViewModelWriter,
-                        initialElapsedTime: viewState.elapsedTime
-                    ),
-                    initialElapsedTime: viewState.elapsedTime,
-                    editingStartTime: $editingTimerStartTime,
-                    editingEndTime: $editingTimerEndTime
-                )
-            }
-            Spacer()
-            Button(viewState.isActive ? "Stop" : "Start") {
-                if viewState.isActive {
-                    timerViewModelWriter.send(.pauseButtonTapped)
-                } else {
-                    timerViewModelWriter.send(.startButtonTapped)
+        ZStack{
+            ColorManager.Blue.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            VStack {
+                VStack{
+                    Spacer()
+                    TimeLabelComponent(duration: viewState.elapsedTime.duration)
+                    .foregroundColor(Color.White)
+                    
+                    if viewState.isActive {
+                        Text("Start at \(viewState.elapsedTime.start.timeFormat())")
+                            .linkButtonText()
+                            .padding(10)
+
+                    } else {
+                        StatefulTimeConfirmView(
+                            viewStateStore: .init(
+                                timerViewWriter: timerViewModelWriter,
+                                initialElapsedTime: viewState.elapsedTime
+                            ),
+                            initialElapsedTime: viewState.elapsedTime,
+                            editingStartTime: $editingTimerStartTime,
+                            editingEndTime: $editingTimerEndTime
+                        )
+                    }
+                    Spacer()
                 }
-            }.disabled(!viewState.isActive)
-            Button("Confirm and Save") {
-                presentingTimer = false
-                timerViewModelWriter.send(.confirmButtonTapped)
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+                .offset(y: isDragging ? viewOffsetState.height * 2 : 0)
+                .opacity( isDragging ? Double(1 + viewOffsetState.height/120) : 1)
+                .offset(y: isConfirmed ? -1000 : 0)
+                .opacity( isConfirmed ? 0 : 1)
                 
-            }.disabled(viewState.isActive)
+              
+                VStack{
+                    if (viewOffsetState.height > -200){
+                        Image.init(uiImage: #imageLiteral(resourceName: "chevron-up") )
+                            .LightIconImage()
+                        Button("Stop Tracking"){
+                        }.buttonStyle(LightSecondaryTextButtonStyle())
+                    }
+                    else{
+                        Image.init(uiImage: #imageLiteral(resourceName: "close") )
+                            .LightIconImage()
+                        Button("Confirm"){
+                        }.buttonStyle(LightSecondaryTextButtonStyle())
+                    }
+                }
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+                .offset(y: isDragging ? ((viewOffsetState.height > -200) ? viewOffsetState.height * 1.2 : -240 ) : 0)
+                .offset(y: isConfirmed ? -1000 : 0)
+                .opacity( isConfirmed ? 0 : 1)
+            }
+            .background(ColorManager.Blue)
+            .gesture(
+                DragGesture()
+                    .onChanged{value in
+                        self.isDragging = true
+                       self.viewOffsetState = value.translation
+                    }
+                    .onEnded{value in
+                        self.isDragging = false
+                        if(viewOffsetState.height > -120){
+                            self.isCancelled = true
+                            self.viewOffsetState = .zero
+                        }
+                        
+                        else{
+                            self.isConfirmed = true
+                            presentingTimer = false
+                            timerViewModelWriter.send(.confirmButtonTapped)
+                        }
+                        
+                    }
+            )
+            
         }
     }
 }
@@ -198,7 +253,7 @@ struct StatefulTimerView: View {
 extension Date {
     func timeFormat() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
 }
