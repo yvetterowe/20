@@ -151,7 +151,8 @@ struct StatefulTimerView: View {
     @State private var editingTimerEndTime: Bool = false
     @State var viewOffsetState = CGSize.zero
     @State var isDragging = false
-    @State var isPaused = false
+    @State var isConfirmed = false
+    @State var isCancelled = false
     
     let SH = UIScreen.main.bounds.height
 
@@ -173,7 +174,6 @@ struct StatefulTimerView: View {
         ZStack{
             ColorManager.Blue.edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             VStack {
-                
                 VStack{
                     Spacer()
                     TimeLabelComponent(duration: viewState.elapsedTime.duration)
@@ -197,18 +197,31 @@ struct StatefulTimerView: View {
                     }
                     Spacer()
                 }
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
                 .offset(y: isDragging ? viewOffsetState.height * 2 : 0)
-                .opacity( isDragging ? Double(CGFloat((SH + viewOffsetState.height) / SH)) : 1)
+                .opacity( isDragging ? Double(1 + viewOffsetState.height/120) : 1)
+                .offset(y: isConfirmed ? -1000 : 0)
+                .opacity( isConfirmed ? 0 : 1)
                 
+              
                 VStack{
-                    Image.init(uiImage: #imageLiteral(resourceName: "chevron-up"))
-                        .LightIconImage()
-                    Button("Stop Tracking"){
-                    }.buttonStyle(LightSecondaryTextButtonStyle())
-                    
+                    if (viewOffsetState.height > -200){
+                        Image.init(uiImage: #imageLiteral(resourceName: "chevron-up") )
+                            .LightIconImage()
+                        Button("Stop Tracking"){
+                        }.buttonStyle(LightSecondaryTextButtonStyle())
+                    }
+                    else{
+                        Image.init(uiImage: #imageLiteral(resourceName: "close") )
+                            .LightIconImage()
+                        Button("Confirm"){
+                        }.buttonStyle(LightSecondaryTextButtonStyle())
+                    }
                 }
-                .offset(y: viewOffsetState.height)
-
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+                .offset(y: isDragging ? ((viewOffsetState.height > -200) ? viewOffsetState.height * 1.2 : -240 ) : 0)
+                .offset(y: isConfirmed ? -1000 : 0)
+                .opacity( isConfirmed ? 0 : 1)
             }
             .background(ColorManager.Blue)
             .gesture(
@@ -216,20 +229,16 @@ struct StatefulTimerView: View {
                     .onChanged{value in
                         self.isDragging = true
                        self.viewOffsetState = value.translation
-                        print((SH+viewOffsetState.height)/(4 * SH))
                     }
                     .onEnded{value in
                         self.isDragging = false
-                        
-                        if(viewOffsetState.height > -200){
-                            print("cancel")
+                        if(viewOffsetState.height > -120){
+                            self.isCancelled = true
                             self.viewOffsetState = .zero
-                            
                         }
                         
                         else{
-                            print("stop")
-                            self.viewOffsetState = CGSize(width: 0, height: -640)
+                            self.isConfirmed = true
                             presentingTimer = false
                             timerViewModelWriter.send(.confirmButtonTapped)
                         }
