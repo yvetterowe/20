@@ -85,6 +85,7 @@ final class TimerViewStateStore: TimerViewModelReader, TimerViewModelWriter {
     }
         
     // MARK: - TimerViewModelWriter
+    // Pause and resume are not used
     
     func send(_ action: TimerViewAction) {
         switch action {
@@ -103,9 +104,11 @@ final class TimerViewStateStore: TimerViewModelReader, TimerViewModelWriter {
             timerStateWriter.send(.toggleTimerButtonTapped)
             
         case .confirmButtonTapped:
-            guard case let .confirm(interval) = subject.value else {
+            guard case let .active(interval) = subject.value else {
                 fatalError("Timer should be in confirm state")
             }
+            subject.value = .confirm(interval)
+            timerStateWriter.send(.toggleTimerButtonTapped)
             _ = goalStoreWriter.appendTrackRecord(
                 .init(
                     id: UUID().uuidString,
@@ -149,6 +152,8 @@ struct StatefulTimerView: View {
     @State var viewOffsetState = CGSize.zero
     @State var isDragging = false
     @State var isPaused = false
+    
+    let SH = UIScreen.main.bounds.height
 
     private var viewState: TimerViewState {
         return viewStateStore.value
@@ -192,26 +197,18 @@ struct StatefulTimerView: View {
                     }
                     Spacer()
                 }
-                .offset(y: viewOffsetState.height * 2)
+                .offset(y: isDragging ? viewOffsetState.height * 2 : 0)
+                .opacity( isDragging ? Double(CGFloat((SH + viewOffsetState.height) / SH)) : 1)
                 
-                HStack{
-                    if (viewState.isActive){
-                        Button("Pause"){
-                                timerViewModelWriter.send(.pauseButtonTapped)
-                        } .buttonStyle(LightSecondaryTextButtonStyle())
-                        
-                    }else{
-                        Button("Confirm"){
-                                presentingTimer = false
-                                timerViewModelWriter.send(.confirmButtonTapped)
-                        }.buttonStyle(LightSecondaryTextButtonStyle())
-                        
-                        Button("Cancel"){
-                            timerViewModelWriter.send(.startButtonTapped)
-                        }.buttonStyle(LightSecondaryTextButtonStyle())
-                    }
+                VStack{
+                    Image.init(uiImage: #imageLiteral(resourceName: "chevron-up"))
+                        .LightIconImage()
+                    Button("Stop Tracking"){
+                    }.buttonStyle(LightSecondaryTextButtonStyle())
+                    
                 }
                 .offset(y: viewOffsetState.height)
+
             }
             .background(ColorManager.Blue)
             .gesture(
@@ -219,26 +216,22 @@ struct StatefulTimerView: View {
                     .onChanged{value in
                         self.isDragging = true
                        self.viewOffsetState = value.translation
-                        print(self.viewOffsetState.height * 1.6)
+                        print((SH+viewOffsetState.height)/(4 * SH))
                     }
                     .onEnded{value in
                         self.isDragging = false
                         
-                        if(viewOffsetState.height > -100){
+                        if(viewOffsetState.height > -200){
                             print("cancel")
                             self.viewOffsetState = .zero
                             
-                        }else if(viewOffsetState.height > -250 && -300 < viewOffsetState.height){
-                            print("pause, show cancel button")
-                            self.viewOffsetState = CGSize(width: 0, height: -320)
-//                            timerViewModelWriter.send(.pauseButtonTapped)
                         }
                         
                         else{
                             print("stop")
                             self.viewOffsetState = CGSize(width: 0, height: -640)
-//                            presentingTimer = false
-//                            timerViewModelWriter.send(.confirmButtonTapped)
+                            presentingTimer = false
+                            timerViewModelWriter.send(.confirmButtonTapped)
                         }
                         
                     }
