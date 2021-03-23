@@ -124,22 +124,36 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
                 }
             }.padding(.horizontal, 20)
 
-        }.bottomSheet(
-            isOpen: $presentingMoreActionSheet,
-            maxHeight: 360,
-            title: viewStateStore.value.goalName,
-            navigationLeadingItem: {},
-            navigationTrailingItem: {}
-        ) {
-            let viewStore = MoreActionListViewStore(
-                goalPublisher: context.goalPublisher
-            )
-            StatefulMoreActionListView(
-                viewReader: .init(publisher: viewStore.titlePublisher),
-                viewWriter: viewStore,
-                context: context
+        }.actionSheet(isPresented: $presentingMoreActionSheet){
+            ActionSheet(
+                title: Text("Actions"),
+                buttons: [
+                    .default(Text("Add time"), action : {print("Add time pressed")}),
+                    .default(Text("Edit goal"), action : {print("Edit goal pressed")}),
+                    .default(Text("View activity"), action : {print("View activity pressed")}),
+                    .destructive(Text("Delete goal"), action : {print("Delete goal pressed")}),
+                    .cancel()
+                ]
             )
         }
+//replace bottomSheet with actionSheet
+        
+//        .bottomSheet(
+//            isOpen: $presentingMoreActionSheet,
+//            maxHeight: 360,
+//            title: viewStateStore.value.goalName,
+//            navigationLeadingItem: {},
+//            navigationTrailingItem: {}
+//        ) {
+//            let viewStore = MoreActionListViewStore(
+//                goalPublisher: context.goalPublisher
+//            )
+//            StatefulMoreActionListView(
+//                viewReader: .init(publisher: viewStore.titlePublisher),
+//                viewWriter: viewStore,
+//                context: context
+//            )
+//        }
   
     }
 }
