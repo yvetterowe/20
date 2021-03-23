@@ -126,7 +126,7 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
 
         }.actionSheet(isPresented: $presentingMoreActionSheet){
             ActionSheet(
-                title: Text("Action sheet"),
+                title: Text("Actions"),
                 buttons: [
                     .default(Text("Add time"), action : {print("Add time pressed")}),
                     .default(Text("Edit goal"), action : {print("Edit goal pressed")}),
