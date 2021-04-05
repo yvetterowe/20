@@ -24,23 +24,20 @@ extension View {
 }
 
 
-struct BottomSheetHeaderComponent<NavigationLeadingItem: View, NavigationTrailingItem: View>: View {
+struct BottomSheetHeaderComponent<NavigationLeadingItem: View>: View {
     
     private let height: CGFloat
     private let navigationLeadingItem: NavigationLeadingItem?
-    private let navigationTrailingItem: NavigationTrailingItem?
     private let title: String
     
     init(
         title: String,
         height: CGFloat = 56,
-        @ViewBuilder navigationLeadingItem: () -> NavigationLeadingItem?,
-        @ViewBuilder navigationTrailingItem: () -> NavigationTrailingItem?
+        @ViewBuilder navigationLeadingItem: () -> NavigationLeadingItem?
     ) {
         self.title = title
         self.height = height
         self.navigationLeadingItem = navigationLeadingItem()
-        self.navigationTrailingItem = navigationTrailingItem()
     }
     
     var body: some View {
@@ -52,7 +49,6 @@ struct BottomSheetHeaderComponent<NavigationLeadingItem: View, NavigationTrailin
                     Text("\(self.title)")
                         .subHeaderStyle()
                     Spacer()
-                    self.navigationTrailingItem
                 }
                 Divider()
             }
@@ -64,24 +60,15 @@ struct BottomSheetHeaderComponent<NavigationLeadingItem: View, NavigationTrailin
 struct BottomSheetHeaderComponent_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {}, navigationTrailingItem: {})
+            BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {})
             BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {
                 Text("Left")
                     .subHeaderStyle()
-            }, navigationTrailingItem: {
-                
             })
             BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {
-            }, navigationTrailingItem: {
-                Text("Right")
-                    .subHeaderStyle()
-
             })
             BottomSheetHeaderComponent(title: "Title", navigationLeadingItem: {
                 Text("Left")
-                    .subHeaderStyle()
-            }, navigationTrailingItem: {
-                Text("Right")
                     .subHeaderStyle()
             })
         }

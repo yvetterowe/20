@@ -17,7 +17,7 @@ fileprivate enum Constants {
     static let headerHeight: CGFloat = 56
 }
 
-struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, NavigationTrailingItem: View>: View {
+struct BottomSheetComponent<Content: View, NavigationLeadingItem: View>: View {
     @Binding var isOpen: Bool
     
     let maxHeight: CGFloat
@@ -25,7 +25,6 @@ struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, Navigati
     let content: Content
     let title: String
     private let navigationLeadingItem: () -> NavigationLeadingItem?
-    private let navigationTrailingItem: () -> NavigationTrailingItem?
     
     @GestureState private var translation: CGFloat = 0
 
@@ -49,7 +48,6 @@ struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, Navigati
         maxHeight: CGFloat,
         title: String,
         @ViewBuilder navigationLeadingItem: @escaping () -> NavigationLeadingItem?,
-        @ViewBuilder navigationTrailingItem: @escaping () -> NavigationTrailingItem?,
         @ViewBuilder content: () -> Content
     ) {
         self.minHeight = maxHeight * Constants.minHeightRatio
@@ -57,7 +55,6 @@ struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, Navigati
         self.content = content()
         self.title = title
         self.navigationLeadingItem = navigationLeadingItem
-        self.navigationTrailingItem = navigationTrailingItem
         self._isOpen = isOpen
     }
 
@@ -66,8 +63,7 @@ struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, Navigati
             VStack(spacing: 0) {
                 BottomSheetHeaderComponent(
                     title: self.title,
-                    navigationLeadingItem: self.navigationLeadingItem,
-                    navigationTrailingItem: self.navigationTrailingItem
+                    navigationLeadingItem: self.navigationLeadingItem
                 )
                 self.content
                 Spacer()
@@ -102,22 +98,20 @@ struct BottomSheetComponent<Content: View, NavigationLeadingItem: View, Navigati
 }
 
 extension View {
-    func bottomSheet<Content: View, NavigationLeadingItem: View, NavigationTrailingItem: View>(
+    func bottomSheet<Content: View, NavigationLeadingItem: View>(
         isOpen: Binding<Bool>,
         maxHeight: CGFloat,
         title: String,
         @ViewBuilder navigationLeadingItem: @escaping () -> NavigationLeadingItem?,
-        @ViewBuilder navigationTrailingItem: @escaping () -> NavigationTrailingItem?,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
         ZStack {
             self
-            BottomSheetComponent<Content, NavigationLeadingItem, NavigationTrailingItem>(
+            BottomSheetComponent<Content, NavigationLeadingItem>(
                 isOpen: isOpen,
                 maxHeight: maxHeight,
                 title: title,
                 navigationLeadingItem: navigationLeadingItem,
-                navigationTrailingItem: navigationTrailingItem,
                 content: content
             )
         }
@@ -126,12 +120,11 @@ extension View {
 
 struct BottomSheetComponent_Previews: PreviewProvider {
     static var previews: some View {
-        BottomSheetComponent<VStack<TupleView<(Text, Text)>>, Button<Text>, Button<Text>>(
+        BottomSheetComponent<VStack<TupleView<(Text, Text)>>, Button<Text>>(
             isOpen: .constant(true),
             maxHeight: 300,
             title: "Title",
-            navigationLeadingItem: { Button("Cancel") {} },
-            navigationTrailingItem: { Button("Done") {} }
+            navigationLeadingItem: { Button("Cancel") {} }
         ) {
             VStack {
                 Text("hello")
