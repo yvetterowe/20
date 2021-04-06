@@ -33,11 +33,6 @@ final class NoOpEditTimeViewWriter: EditTimeViewWriter {
     }
 }
 
-final class NoOpMoreActionListViewWriter: MoreActionListViewWriter {
-    func send(_ action: MoreActionListViewAction) {
-    }
-}
-
 final class NoOpEditGoalViewWriter: EditGoalViewWriter{
     func cancelEditGoal() {}
     func saveEditGoalName(_ newGoalName: String, forGoal goalID: GoalID) {}

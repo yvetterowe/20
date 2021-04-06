@@ -27,7 +27,6 @@
 		E739A0702509D622001A4940 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A06F2509D622001A4940 /* MockData.swift */; };
 		E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */; };
 		E739A0AB250E94D9001A4940 /* MoreActionListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */; };
-		E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */; };
 		E739A0B1250EAECC001A4940 /* EditSheetComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0B0250EAECC001A4940 /* EditSheetComponent.swift */; };
 		E739A0B3250EB11F001A4940 /* StatefulEditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */; };
 		E73E684024E4DE9E005DC050 /* StatefulTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */; };
@@ -127,7 +126,6 @@
 		E739A06F2509D622001A4940 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		E739A0A8250E9494001A4940 /* MoreActionRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreActionRowComponent.swift; sourceTree = "<group>"; };
 		E739A0AA250E94D9001A4940 /* MoreActionListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreActionListComponent.swift; sourceTree = "<group>"; };
-		E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulMoreActionListView.swift; sourceTree = "<group>"; };
 		E739A0B0250EAECC001A4940 /* EditSheetComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetComponent.swift; sourceTree = "<group>"; };
 		E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulEditGoalView.swift; sourceTree = "<group>"; };
 		E73E683F24E4DE9E005DC050 /* StatefulTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulTimerView.swift; sourceTree = "<group>"; };
@@ -371,7 +369,6 @@
 				E7C40FEB24FC3A9400DBB926 /* StatefulEditTimeView.swift */,
 				E78F059B2482B99A0066C687 /* TimerStateStore.swift */,
 				E7D3F46524907D8E00463D48 /* StatefulSelectDayHeader.swift */,
-				E739A0AC250E9E3D001A4940 /* StatefulMoreActionListView.swift */,
 				E7C72B302589DAAC00A3E0EC /* StatefulAddTimeView.swift */,
 				E7F727E02510638700F62832 /* StatefulViewActivityListView.swift */,
 				E739A0B2250EB11F001A4940 /* StatefulEditGoalView.swift */,
@@ -698,7 +695,6 @@
 				E7E00238249AF61400403E50 /* PersistentDataStore.swift in Sources */,
 				7355B1DA25ECC0EA00A25B10 /* ImageStyles.swift in Sources */,
 				E7B95F9D251C43F800BC90BD /* BottomSheetHeaderComponent.swift in Sources */,
-				E739A0AD250E9E3D001A4940 /* StatefulMoreActionListView.swift in Sources */,
 				736666012576062B00EFB600 /* ColorManager.swift in Sources */,
 				7372079625E3134300206DC3 /* PrimaryTextButton.swift in Sources */,
 				E739A0A9250E9495001A4940 /* MoreActionRowComponent.swift in Sources */,

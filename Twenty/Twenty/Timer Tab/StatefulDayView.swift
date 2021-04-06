@@ -56,6 +56,14 @@ struct Context {
 
 struct StatefulDayView<TimerView>: View where TimerView: View{
     
+    enum ActiveSheet: Identifiable {
+        case addTime, editGoal, viewActivities, deleteGoal
+        
+        var id: Int {
+            hashValue
+        }
+    }
+    
     private let context: Context
     private let timerView: (Binding<Bool>) -> TimerView
     @ObservedObject private var viewStateStore: ObservableWrapper<SelectedDayViewState>
@@ -64,6 +72,9 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
     @State private var presentingMoreActionSheet: Bool = false
     @State private var presentingCalendar: Bool = false
     @State private var presentingProfile: Bool = false
+    
+    @State private var activeSheet: ActiveSheet?
+    @State private var editingGoal: Bool = false
     
     init(
         context: Context,
@@ -128,33 +139,42 @@ struct StatefulDayView<TimerView>: View where TimerView: View{
             ActionSheet(
                 title: Text("Actions"),
                 buttons: [
-                    .default(Text("Add time"), action : {print("Add time pressed")}),
-                    .default(Text("Edit goal"), action : {print("Edit goal pressed")}),
-                    .default(Text("View activity"), action : {print("View activity pressed")}),
-                    .destructive(Text("Delete goal"), action : {print("Delete goal pressed")}),
+                    .default(Text("Add time"), action : {
+                        activeSheet = .addTime
+                        editingGoal = true
+                    }),
+                    .default(Text("Edit goal"), action : { activeSheet = .editGoal }),
+                    .default(Text("View activity"), action : { activeSheet = .viewActivities }),
+                    .destructive(Text("Delete goal"), action : { activeSheet = .deleteGoal }),
                     .cancel()
                 ]
             )
-        }
-//replace bottomSheet with actionSheet
-        
-//        .bottomSheet(
-//            isOpen: $presentingMoreActionSheet,
-//            maxHeight: 360,
-//            title: viewStateStore.value.goalName,
-//            navigationLeadingItem: {},
-//            navigationTrailingItem: {}
-//        ) {
-//            let viewStore = MoreActionListViewStore(
-//                goalPublisher: context.goalPublisher
-//            )
-//            StatefulMoreActionListView(
-//                viewReader: .init(publisher: viewStore.titlePublisher),
-//                viewWriter: viewStore,
-//                context: context
-//            )
-//        }
-  
+        }.sheet(item: $activeSheet, content: { activeSheet in
+            switch activeSheet {
+            case .addTime:
+                StatefulAddTimeView(viewWriter: NoOpAddTimeViewWriter(), initialDateInterval: .init())
+            case .editGoal:
+                let viewStore = EditGoalStore(
+                    goalPublisher: context.goalPublisher,
+                    goalStoreWriter: context.goalStoreWriter,
+                    editing: $editingGoal
+                )
+                StatefulEditGoalView(
+                    goalNameReader: .init(publisher: viewStore.goalNamePublisher),
+                    viewWriter: viewStore,
+                    goalID: context.goalID
+                )
+            case .viewActivities:
+                let viewStore = ViewActivityListViewStore(
+                    goalPublisher: context.goalPublisher
+                )
+                StatefulViewActivityListView(
+                    viewReader: .init(publisher: viewStore.publisher)
+                )
+            case .deleteGoal:
+                Text("Delete goal pressed")
+            }
+        })
     }
 }
 
